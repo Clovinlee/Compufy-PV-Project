@@ -16,5 +16,10 @@ namespace Compufy_PV_Projek
         {
             InitializeComponent();
         }
+
+        private void menu_kasir_Load(object sender, EventArgs e)
+        {
+            //test
+        }
     }
 }
