@@ -121,7 +121,7 @@ namespace Compufy_PV_Projek
                     {
                         frm_kasir = new menu_kasir();
                     }
-                    frm_kasir.lbl
+                    
                 }
                 this.Hide();
             }
