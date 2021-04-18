@@ -21,7 +21,14 @@ namespace Compufy_PV_Projek
 
         private void menu_kasir_Load(object sender, EventArgs e)
         {
-            this.MinimumSize = new Size(925, 639);
+            this.MinimumSize = new Size(1008, 639);
+            lbl_memberdaftar.Text = "00-00-0000";
+            lbl_memberid.Text = "000000";
+            lbl_membernama.Text = "Anon";
+            gb_detailmember.Enabled = false;
+            pl_leftmain.AutoScroll = true;
+            pl_leftmain.HorizontalScroll.Enabled = false;
+            pl_leftmain.HorizontalScroll.Visible = false;
         }
 
         private void pl_menulogo_Paint(object sender, PaintEventArgs e)
@@ -53,6 +60,39 @@ namespace Compufy_PV_Projek
             if (logout == false)
             {
                 Application.Exit();
+            }
+        }
+
+
+        private void tb_inputmember_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btn_membercheck_Click(btn_membercheck, e);
+            }
+        }
+
+        private void btn_membercheck_Click(object sender, EventArgs e)
+        {
+            gb_detailmember.Enabled = true;
+            MessageBox.Show("Check Working!");
+        }
+
+        private void btn_memberreset_Click(object sender, EventArgs e)
+        {
+            gb_detailmember.Enabled = false;
+            lbl_memberdaftar.Text = "00-00-0000";
+            lbl_memberid.Text = "000000";
+            lbl_membernama.Text = "Anon";
+        }
+
+        int lb_idx = -1;
+        private void lb_daftarbarang_DoubleClick(object sender, EventArgs e)
+        {
+            lb_idx = lb_daftarbarang.SelectedIndex;
+            if(lb_idx != -1)
+            {
+
             }
         }
     }
