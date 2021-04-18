@@ -26,7 +26,7 @@ namespace Compufy_PV_Projek
         private void menu_admin_Load(object sender, EventArgs e)
         {
             this.ActiveControl = btn_menudashboard;
-            this.MinimumSize = new Size(925, 632);
+            this.MinimumSize = new Size(925, 639);
 
         }
 

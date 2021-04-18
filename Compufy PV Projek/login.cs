@@ -117,12 +117,17 @@ namespace Compufy_PV_Projek
                 }
                 else if (tipe == 2)
                 {
-                    if(frm_kasir == null)
+                    if (frm_kasir == null)
                     {
                         frm_kasir = new menu_kasir();
                     }
-                    
-                }
+                    frm_kasir.lbl_namauser.Text = ds.Tables["akun"].Rows[0]["username"].ToString();
+                    frm_admin.lbl_jabatanuser.Text = role;
+
+                    frm_kasir.frm_login = frm_login;
+                    frm_kasir.Show();
+
+                    }
                 this.Hide();
             }
         }

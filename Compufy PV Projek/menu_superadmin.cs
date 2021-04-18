@@ -91,23 +91,23 @@ namespace Compufy_PV_Projek
 
         private void link_logout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                frm_login.Show();
-                login.frm_super = null;
-                if(frm_superdash != null)
-                {
-                    frm_superdash.Close();
-                    frm_superdash = null;
-                }
-                if(frm_supermanage != null)
-                {
-                    frm_supermanage.Close();
-                    frm_supermanage = null;
-                }
-                logout = true;
-                this.Close();
-            }
+            //if (MessageBox.Show("Are you sure you want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            //{
+            //    frm_login.Show();
+            //    login.frm_super = null;
+            //    if(frm_superdash != null)
+            //    {
+            //        frm_superdash.Close();
+            //        frm_superdash = null;
+            //    }
+            //    if(frm_supermanage != null)
+            //    {
+            //        frm_supermanage.Close();
+            //        frm_supermanage = null;
+            //    }
+            //    logout = true;
+            //    this.Close();
+            //}
         }
 
         private void menu_superadmin_FormClosing(object sender, FormClosingEventArgs e)
