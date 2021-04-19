@@ -42,6 +42,15 @@
     <Reference Include="JDragControl">
       <HintPath>..\..\..\..\Downloads\Compressed\JControls\JDragControl.dll</HintPath>
     </Reference>
+    <Reference Include="JGradient Panel">
+      <HintPath>..\..\..\..\Downloads\Compressed\JControls\JGradient Panel.dll</HintPath>
+    </Reference>
+    <Reference Include="JImageButton">
+      <HintPath>..\..\..\..\Downloads\Compressed\JControls\JImageButton.dll</HintPath>
+    </Reference>
+    <Reference Include="JMaterialTextbox">
+      <HintPath>..\..\..\..\Downloads\Compressed\JControls\JMaterialTextbox.dll</HintPath>
+    </Reference>
     <Reference Include="JMetroTextBox">
       <HintPath>..\..\..\..\Downloads\Compressed\JControls\JMetroTextBox.dll</HintPath>
     </Reference>
@@ -51,6 +60,10 @@
     <Reference Include="JTextBox2">
       <HintPath>..\..\..\..\Downloads\Compressed\JControls\JTextBox2.dll</HintPath>
     </Reference>
+    <Reference Include="JThinButton">
+      <HintPath>..\..\..\..\Downloads\Compressed\JControls\JThinButton.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
