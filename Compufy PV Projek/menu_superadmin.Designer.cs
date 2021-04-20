@@ -195,7 +195,7 @@
             // 
             // pl_submenu
             // 
-            this.pl_submenu.BackColor = System.Drawing.Color.Orange;
+            this.pl_submenu.BackColor = System.Drawing.Color.Moccasin;
             this.pl_submenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pl_submenu.Location = new System.Drawing.Point(182, 92);
             this.pl_submenu.Name = "pl_submenu";
