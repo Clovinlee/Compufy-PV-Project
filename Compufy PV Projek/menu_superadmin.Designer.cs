@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.pl_leftbar = new System.Windows.Forms.Panel();
+            this.btn_member = new FontAwesome.Sharp.IconButton();
+            this.btn_manageuser = new FontAwesome.Sharp.IconButton();
+            this.btn_menudashboard = new FontAwesome.Sharp.IconButton();
             this.pl_menulogo = new System.Windows.Forms.Panel();
             this.pl_avatar = new System.Windows.Forms.Panel();
             this.lbl_namauser = new System.Windows.Forms.Label();
@@ -36,9 +39,6 @@
             this.lbl_jabatanuser = new System.Windows.Forms.Label();
             this.pl_topbar = new System.Windows.Forms.Panel();
             this.pl_submenu = new System.Windows.Forms.Panel();
-            this.btn_manageuser = new FontAwesome.Sharp.IconButton();
-            this.btn_menudashboard = new FontAwesome.Sharp.IconButton();
-            this.btn_member = new FontAwesome.Sharp.IconButton();
             this.pl_leftbar.SuspendLayout();
             this.pl_topbar.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +55,76 @@
             this.pl_leftbar.Name = "pl_leftbar";
             this.pl_leftbar.Size = new System.Drawing.Size(182, 505);
             this.pl_leftbar.TabIndex = 6;
+            // 
+            // btn_member
+            // 
+            this.btn_member.FlatAppearance.BorderSize = 0;
+            this.btn_member.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_member.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_member.ForeColor = System.Drawing.Color.BlanchedAlmond;
+            this.btn_member.IconChar = FontAwesome.Sharp.IconChar.AddressCard;
+            this.btn_member.IconColor = System.Drawing.Color.BlanchedAlmond;
+            this.btn_member.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_member.IconSize = 45;
+            this.btn_member.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_member.Location = new System.Drawing.Point(0, 258);
+            this.btn_member.Name = "btn_member";
+            this.btn_member.Size = new System.Drawing.Size(182, 82);
+            this.btn_member.TabIndex = 4;
+            this.btn_member.Tag = "";
+            this.btn_member.Text = "Manage Member";
+            this.btn_member.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_member.UseVisualStyleBackColor = true;
+            this.btn_member.Enter += new System.EventHandler(this.btn_submenu_Enter);
+            this.btn_member.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
+            this.btn_member.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
+            // 
+            // btn_manageuser
+            // 
+            this.btn_manageuser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(82)))));
+            this.btn_manageuser.FlatAppearance.BorderSize = 0;
+            this.btn_manageuser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_manageuser.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_manageuser.ForeColor = System.Drawing.Color.BlanchedAlmond;
+            this.btn_manageuser.IconChar = FontAwesome.Sharp.IconChar.UsersCog;
+            this.btn_manageuser.IconColor = System.Drawing.Color.BlanchedAlmond;
+            this.btn_manageuser.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_manageuser.IconSize = 45;
+            this.btn_manageuser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_manageuser.Location = new System.Drawing.Point(0, 175);
+            this.btn_manageuser.Name = "btn_manageuser";
+            this.btn_manageuser.Size = new System.Drawing.Size(182, 82);
+            this.btn_manageuser.TabIndex = 1;
+            this.btn_manageuser.Tag = "";
+            this.btn_manageuser.Text = "Manage User";
+            this.btn_manageuser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_manageuser.UseVisualStyleBackColor = false;
+            this.btn_manageuser.Enter += new System.EventHandler(this.btn_submenu_Enter);
+            this.btn_manageuser.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
+            this.btn_manageuser.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
+            // 
+            // btn_menudashboard
+            // 
+            this.btn_menudashboard.FlatAppearance.BorderSize = 0;
+            this.btn_menudashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_menudashboard.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_menudashboard.ForeColor = System.Drawing.Color.BlanchedAlmond;
+            this.btn_menudashboard.IconChar = FontAwesome.Sharp.IconChar.Home;
+            this.btn_menudashboard.IconColor = System.Drawing.Color.BlanchedAlmond;
+            this.btn_menudashboard.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_menudashboard.IconSize = 45;
+            this.btn_menudashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_menudashboard.Location = new System.Drawing.Point(0, 93);
+            this.btn_menudashboard.Name = "btn_menudashboard";
+            this.btn_menudashboard.Size = new System.Drawing.Size(182, 82);
+            this.btn_menudashboard.TabIndex = 1;
+            this.btn_menudashboard.Tag = "";
+            this.btn_menudashboard.Text = "Dashboard";
+            this.btn_menudashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_menudashboard.UseVisualStyleBackColor = true;
+            this.btn_menudashboard.Enter += new System.EventHandler(this.btn_submenu_Enter);
+            this.btn_menudashboard.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
+            this.btn_menudashboard.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
             // 
             // pl_menulogo
             // 
@@ -131,76 +201,6 @@
             this.pl_submenu.Name = "pl_submenu";
             this.pl_submenu.Size = new System.Drawing.Size(727, 413);
             this.pl_submenu.TabIndex = 5;
-            // 
-            // btn_manageuser
-            // 
-            this.btn_manageuser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(82)))));
-            this.btn_manageuser.FlatAppearance.BorderSize = 0;
-            this.btn_manageuser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_manageuser.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_manageuser.ForeColor = System.Drawing.Color.BlanchedAlmond;
-            this.btn_manageuser.IconChar = FontAwesome.Sharp.IconChar.UsersCog;
-            this.btn_manageuser.IconColor = System.Drawing.Color.BlanchedAlmond;
-            this.btn_manageuser.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_manageuser.IconSize = 45;
-            this.btn_manageuser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_manageuser.Location = new System.Drawing.Point(0, 175);
-            this.btn_manageuser.Name = "btn_manageuser";
-            this.btn_manageuser.Size = new System.Drawing.Size(182, 82);
-            this.btn_manageuser.TabIndex = 1;
-            this.btn_manageuser.Tag = "";
-            this.btn_manageuser.Text = "Manage User";
-            this.btn_manageuser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_manageuser.UseVisualStyleBackColor = false;
-            this.btn_manageuser.Enter += new System.EventHandler(this.btn_submenu_Enter);
-            this.btn_manageuser.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
-            this.btn_manageuser.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
-            // 
-            // btn_menudashboard
-            // 
-            this.btn_menudashboard.FlatAppearance.BorderSize = 0;
-            this.btn_menudashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_menudashboard.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_menudashboard.ForeColor = System.Drawing.Color.BlanchedAlmond;
-            this.btn_menudashboard.IconChar = FontAwesome.Sharp.IconChar.Home;
-            this.btn_menudashboard.IconColor = System.Drawing.Color.BlanchedAlmond;
-            this.btn_menudashboard.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_menudashboard.IconSize = 45;
-            this.btn_menudashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_menudashboard.Location = new System.Drawing.Point(0, 93);
-            this.btn_menudashboard.Name = "btn_menudashboard";
-            this.btn_menudashboard.Size = new System.Drawing.Size(182, 82);
-            this.btn_menudashboard.TabIndex = 1;
-            this.btn_menudashboard.Tag = "";
-            this.btn_menudashboard.Text = "Dashboard";
-            this.btn_menudashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_menudashboard.UseVisualStyleBackColor = true;
-            this.btn_menudashboard.Enter += new System.EventHandler(this.btn_submenu_Enter);
-            this.btn_menudashboard.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
-            this.btn_menudashboard.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
-            // 
-            // btn_member
-            // 
-            this.btn_member.FlatAppearance.BorderSize = 0;
-            this.btn_member.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_member.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_member.ForeColor = System.Drawing.Color.BlanchedAlmond;
-            this.btn_member.IconChar = FontAwesome.Sharp.IconChar.AddressCard;
-            this.btn_member.IconColor = System.Drawing.Color.BlanchedAlmond;
-            this.btn_member.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_member.IconSize = 45;
-            this.btn_member.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_member.Location = new System.Drawing.Point(0, 258);
-            this.btn_member.Name = "btn_member";
-            this.btn_member.Size = new System.Drawing.Size(182, 82);
-            this.btn_member.TabIndex = 4;
-            this.btn_member.Tag = "";
-            this.btn_member.Text = "Manage Member";
-            this.btn_member.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_member.UseVisualStyleBackColor = true;
-            this.btn_member.Enter += new System.EventHandler(this.btn_submenu_Enter);
-            this.btn_member.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
-            this.btn_member.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
             // 
             // menu_superadmin
             // 

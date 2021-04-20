@@ -40,7 +40,7 @@
       <HintPath>..\packages\FontAwesome.Sharp.5.15.3\lib\net472\FontAwesome.Sharp.dll</HintPath>
     </Reference>
     <Reference Include="JDragControl">
-      <HintPath>..\..\..\..\Downloads\Compressed\JControls\JDragControl.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\T\JControls\JDragControl.dll</HintPath>
     </Reference>
     <Reference Include="JGradient Panel">
       <HintPath>..\..\..\..\Downloads\Compressed\JControls\JGradient Panel.dll</HintPath>
@@ -55,10 +55,10 @@
       <HintPath>..\..\..\..\Downloads\Compressed\JControls\JMetroTextBox.dll</HintPath>
     </Reference>
     <Reference Include="JTextBox">
-      <HintPath>..\..\..\..\Downloads\Compressed\JControls\JTextBox.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\T\JTextBox.dll</HintPath>
     </Reference>
     <Reference Include="JTextBox2">
-      <HintPath>..\..\..\..\Downloads\Compressed\JControls\JTextBox2.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\T\JControls\JTextBox2.dll</HintPath>
     </Reference>
     <Reference Include="JThinButton">
       <HintPath>..\..\..\..\Downloads\Compressed\JControls\JThinButton.dll</HintPath>
@@ -81,6 +81,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form_stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_stock.Designer.cs">
+      <DependentUpon>Form_stock.cs</DependentUpon>
+    </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
