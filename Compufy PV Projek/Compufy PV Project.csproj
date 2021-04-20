@@ -130,6 +130,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>win_icons.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form_stock.resx">
+      <DependentUpon>Form_stock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
     </EmbeddedResource>
