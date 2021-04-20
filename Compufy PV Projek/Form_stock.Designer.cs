@@ -34,11 +34,11 @@ namespace Compufy_PV_Projek
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(171, 67);
+            this.button1.Location = new System.Drawing.Point(364, 187);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(311, 147);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "Kevin Ariantot";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // Form_stock
