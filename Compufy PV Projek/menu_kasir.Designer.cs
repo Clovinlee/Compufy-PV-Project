@@ -135,7 +135,7 @@
             this.lbl_namauser.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbl_namauser.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_namauser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(185)))), ((int)(((byte)(146)))));
-            this.lbl_namauser.Location = new System.Drawing.Point(759, 5);
+            this.lbl_namauser.Location = new System.Drawing.Point(758, 5);
             this.lbl_namauser.Name = "lbl_namauser";
             this.lbl_namauser.Size = new System.Drawing.Size(251, 37);
             this.lbl_namauser.TabIndex = 4;
