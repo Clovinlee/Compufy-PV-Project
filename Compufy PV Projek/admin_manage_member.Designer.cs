@@ -29,7 +29,7 @@ namespace Compufy_PV_Projek
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.btnInsert = new FontAwesome.Sharp.IconButton();
             this.btn_search = new FontAwesome.Sharp.IconButton();
@@ -41,21 +41,21 @@ namespace Compufy_PV_Projek
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btnDelete = new FontAwesome.Sharp.IconButton();
             this.btnUpdate = new FontAwesome.Sharp.IconButton();
-            this.txtStok = new System.Windows.Forms.TextBox();
-            this.txtHarga = new System.Windows.Forms.TextBox();
+            this.txtNOHP = new System.Windows.Forms.TextBox();
+            this.txtNama = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.cbKategori = new System.Windows.Forms.ComboBox();
+            this.cbGender = new System.Windows.Forms.ComboBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.id_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.no_hp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Usia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BirthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgl_daftar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Alamat = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -128,18 +128,18 @@ namespace Compufy_PV_Projek
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.PapayaWhip;
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.dateTimePicker2);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnUpdate);
-            this.panel1.Controls.Add(this.txtStok);
-            this.panel1.Controls.Add(this.txtHarga);
+            this.panel1.Controls.Add(this.txtNOHP);
+            this.panel1.Controls.Add(this.txtNama);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.cbKategori);
+            this.panel1.Controls.Add(this.cbGender);
             this.panel1.Controls.Add(this.txtID);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
@@ -163,9 +163,9 @@ namespace Compufy_PV_Projek
             this.label7.Location = new System.Drawing.Point(245, 88);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 20);
+            this.label7.Size = new System.Drawing.Size(102, 20);
             this.label7.TabIndex = 19;
-            this.label7.Text = "Usia";
+            this.label7.Text = "Tanggal Lahir";
             // 
             // label4
             // 
@@ -203,6 +203,7 @@ namespace Compufy_PV_Projek
             this.btnDelete.Text = "Delete";
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
@@ -222,20 +223,21 @@ namespace Compufy_PV_Projek
             this.btnUpdate.Text = "Update";
             this.btnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // txtStok
+            // txtNOHP
             // 
-            this.txtStok.Location = new System.Drawing.Point(94, 88);
-            this.txtStok.Name = "txtStok";
-            this.txtStok.Size = new System.Drawing.Size(144, 20);
-            this.txtStok.TabIndex = 14;
+            this.txtNOHP.Location = new System.Drawing.Point(94, 88);
+            this.txtNOHP.Name = "txtNOHP";
+            this.txtNOHP.Size = new System.Drawing.Size(144, 20);
+            this.txtNOHP.TabIndex = 14;
             // 
-            // txtHarga
+            // txtNama
             // 
-            this.txtHarga.Location = new System.Drawing.Point(94, 51);
-            this.txtHarga.Name = "txtHarga";
-            this.txtHarga.Size = new System.Drawing.Size(144, 20);
-            this.txtHarga.TabIndex = 13;
+            this.txtNama.Location = new System.Drawing.Point(94, 51);
+            this.txtNama.Name = "txtNama";
+            this.txtNama.Size = new System.Drawing.Size(144, 20);
+            this.txtNama.TabIndex = 13;
             // 
             // label5
             // 
@@ -259,13 +261,16 @@ namespace Compufy_PV_Projek
             this.label6.TabIndex = 10;
             this.label6.Text = "Nama ";
             // 
-            // cbKategori
+            // cbGender
             // 
-            this.cbKategori.FormattingEnabled = true;
-            this.cbKategori.Location = new System.Drawing.Point(354, 51);
-            this.cbKategori.Name = "cbKategori";
-            this.cbKategori.Size = new System.Drawing.Size(135, 21);
-            this.cbKategori.TabIndex = 9;
+            this.cbGender.FormattingEnabled = true;
+            this.cbGender.Items.AddRange(new object[] {
+            "L",
+            "P"});
+            this.cbGender.Location = new System.Drawing.Point(354, 51);
+            this.cbGender.Name = "cbGender";
+            this.cbGender.Size = new System.Drawing.Size(135, 21);
+            this.cbGender.TabIndex = 9;
             // 
             // txtID
             // 
@@ -314,20 +319,20 @@ namespace Compufy_PV_Projek
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.PapayaWhip;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Nirmala UI", 11F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Nirmala UI", 11F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_barang,
             this.Nama,
             this.no_hp,
-            this.Usia,
+            this.BirthDate,
             this.tgl_daftar,
             this.Gender,
             this.Alamat});
@@ -337,13 +342,14 @@ namespace Compufy_PV_Projek
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(682, 219);
             this.dataGridView1.TabIndex = 24;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
-            // textBox3
+            // dateTimePicker2
             // 
-            this.textBox3.Location = new System.Drawing.Point(354, 90);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(135, 20);
-            this.textBox3.TabIndex = 21;
+            this.dateTimePicker2.Location = new System.Drawing.Point(354, 88);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(135, 20);
+            this.dateTimePicker2.TabIndex = 21;
             // 
             // id_barang
             // 
@@ -360,10 +366,10 @@ namespace Compufy_PV_Projek
             this.no_hp.HeaderText = "No HP";
             this.no_hp.Name = "no_hp";
             // 
-            // Usia
+            // BirthDate
             // 
-            this.Usia.HeaderText = "Usia";
-            this.Usia.Name = "Usia";
+            this.BirthDate.HeaderText = "Tanggal Lahir";
+            this.BirthDate.Name = "BirthDate";
             // 
             // tgl_daftar
             // 
@@ -411,27 +417,27 @@ namespace Compufy_PV_Projek
         private FontAwesome.Sharp.IconButton btn_search;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private FontAwesome.Sharp.IconButton btnDelete;
         private FontAwesome.Sharp.IconButton btnUpdate;
-        private System.Windows.Forms.TextBox txtStok;
-        private System.Windows.Forms.TextBox txtHarga;
+        private System.Windows.Forms.TextBox txtNOHP;
+        private System.Windows.Forms.TextBox txtNama;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbKategori;
+        private System.Windows.Forms.ComboBox cbGender;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_barang;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
         private System.Windows.Forms.DataGridViewTextBoxColumn no_hp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Usia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BirthDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn tgl_daftar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
         private System.Windows.Forms.DataGridViewTextBoxColumn Alamat;
