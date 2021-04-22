@@ -39,8 +39,18 @@
             this.lbl_jabatanuser = new System.Windows.Forms.Label();
             this.pl_topbar = new System.Windows.Forms.Panel();
             this.pl_submenu = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.iconButton7 = new FontAwesome.Sharp.IconButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.iconButton5 = new FontAwesome.Sharp.IconButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.iconButton6 = new FontAwesome.Sharp.IconButton();
             this.pl_leftbar.SuspendLayout();
             this.pl_topbar.SuspendLayout();
+            this.pl_submenu.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // pl_leftbar
@@ -196,11 +206,111 @@
             // pl_submenu
             // 
             this.pl_submenu.BackColor = System.Drawing.Color.Red;
+            this.pl_submenu.Controls.Add(this.panel3);
             this.pl_submenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pl_submenu.Location = new System.Drawing.Point(182, 92);
             this.pl_submenu.Name = "pl_submenu";
             this.pl_submenu.Size = new System.Drawing.Size(727, 413);
             this.pl_submenu.TabIndex = 5;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.DarkOrange;
+            this.panel3.Controls.Add(this.label7);
+            this.panel3.Controls.Add(this.iconButton7);
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.iconButton5);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.iconButton6);
+            this.panel3.Location = new System.Drawing.Point(81, 53);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(376, 42);
+            this.panel3.TabIndex = 7;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label7.Location = new System.Drawing.Point(215, 12);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 18);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Rp 19.280.000";
+            // 
+            // iconButton7
+            // 
+            this.iconButton7.FlatAppearance.BorderSize = 0;
+            this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.iconButton7.IconColor = System.Drawing.Color.Red;
+            this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton7.IconSize = 30;
+            this.iconButton7.Location = new System.Drawing.Point(332, 4);
+            this.iconButton7.Name = "iconButton7";
+            this.iconButton7.Size = new System.Drawing.Size(26, 32);
+            this.iconButton7.TabIndex = 7;
+            this.iconButton7.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.Silver;
+            this.label6.Location = new System.Drawing.Point(161, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(22, 1);
+            this.label6.TabIndex = 5;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(159, 8);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(25, 20);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.Text = "1";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // iconButton5
+            // 
+            this.iconButton5.FlatAppearance.BorderSize = 0;
+            this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
+            this.iconButton5.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(234)))), ((int)(((byte)(104)))));
+            this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton5.IconSize = 22;
+            this.iconButton5.Location = new System.Drawing.Point(137, 7);
+            this.iconButton5.Name = "iconButton5";
+            this.iconButton5.Size = new System.Drawing.Size(16, 25);
+            this.iconButton5.TabIndex = 3;
+            this.iconButton5.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label5.Location = new System.Drawing.Point(6, 4);
+            this.label5.MaximumSize = new System.Drawing.Size(130, 33);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(130, 33);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Xiaomi Official 64GB Ram Ultra Pro";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // iconButton6
+            // 
+            this.iconButton6.FlatAppearance.BorderSize = 0;
+            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.MinusSquare;
+            this.iconButton6.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(234)))), ((int)(((byte)(104)))));
+            this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton6.IconSize = 22;
+            this.iconButton6.Location = new System.Drawing.Point(190, 7);
+            this.iconButton6.Name = "iconButton6";
+            this.iconButton6.Size = new System.Drawing.Size(16, 25);
+            this.iconButton6.TabIndex = 3;
+            this.iconButton6.UseVisualStyleBackColor = true;
             // 
             // menu_superadmin
             // 
@@ -218,6 +328,9 @@
             this.pl_leftbar.ResumeLayout(false);
             this.pl_topbar.ResumeLayout(false);
             this.pl_topbar.PerformLayout();
+            this.pl_submenu.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -235,5 +348,13 @@
         private System.Windows.Forms.Panel pl_topbar;
         private System.Windows.Forms.Panel pl_submenu;
         private FontAwesome.Sharp.IconButton btn_member;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label7;
+        private FontAwesome.Sharp.IconButton iconButton7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox1;
+        private FontAwesome.Sharp.IconButton iconButton5;
+        private System.Windows.Forms.Label label5;
+        private FontAwesome.Sharp.IconButton iconButton6;
     }
 }
