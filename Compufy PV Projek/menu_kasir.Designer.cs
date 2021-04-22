@@ -35,6 +35,7 @@
             this.link_logout = new System.Windows.Forms.LinkLabel();
             this.lbl_namauser = new System.Windows.Forms.Label();
             this.pl_main = new System.Windows.Forms.Panel();
+            this.btn_member = new System.Windows.Forms.Button();
             this.btn_reset = new System.Windows.Forms.Button();
             this.pl_submainleft = new System.Windows.Forms.Panel();
             this.fpl_products = new System.Windows.Forms.FlowLayoutPanel();
@@ -144,6 +145,7 @@
             // pl_main
             // 
             this.pl_main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(191)))), ((int)(((byte)(201)))));
+            this.pl_main.Controls.Add(this.btn_member);
             this.pl_main.Controls.Add(this.btn_reset);
             this.pl_main.Controls.Add(this.pl_submainleft);
             this.pl_main.Controls.Add(this.pl_checkout);
@@ -152,6 +154,22 @@
             this.pl_main.Name = "pl_main";
             this.pl_main.Size = new System.Drawing.Size(1127, 508);
             this.pl_main.TabIndex = 2;
+            // 
+            // btn_member
+            // 
+            this.btn_member.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_member.BackColor = System.Drawing.Color.SlateGray;
+            this.btn_member.FlatAppearance.BorderSize = 0;
+            this.btn_member.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_member.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_member.ForeColor = System.Drawing.Color.White;
+            this.btn_member.Location = new System.Drawing.Point(12, 459);
+            this.btn_member.Name = "btn_member";
+            this.btn_member.Size = new System.Drawing.Size(145, 37);
+            this.btn_member.TabIndex = 8;
+            this.btn_member.Text = "Member";
+            this.btn_member.UseVisualStyleBackColor = false;
+            this.btn_member.Click += new System.EventHandler(this.btn_member_Click);
             // 
             // btn_reset
             // 
@@ -417,7 +435,7 @@
             // 
             this.btn_checkout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_checkout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(222)))), ((int)(((byte)(79)))));
+            this.btn_checkout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(179)))), ((int)(((byte)(50)))));
             this.btn_checkout.FlatAppearance.BorderSize = 0;
             this.btn_checkout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_checkout.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -569,5 +587,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btn_member;
     }
 }

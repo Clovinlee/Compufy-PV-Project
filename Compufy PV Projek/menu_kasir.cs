@@ -26,15 +26,8 @@ namespace Compufy_PV_Projek
             lbl_subtotal.Text = "Rp 0";
             lbl_discount.Text = "Rp 0";
             lbl_grandtotal.Text = "Rp 0";
-            PrintStartupPath();
         }
-        private void PrintStartupPath()
-        {
-            string wanted_path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-            MessageBox.Show("The path for the executable file that " +
-               "started the application is: " +
-               wanted_path);
-        }
+        
         private void pl_menulogo_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -327,6 +320,19 @@ namespace Compufy_PV_Projek
                 flp_checkout.Controls.Clear();
                 sumHarga();
             }
+        }
+
+        public kasir_addmember frm_kasiraddmember;
+
+        private void btn_member_Click(object sender, EventArgs e)
+        {
+            if(frm_kasiraddmember == null)
+            {
+                frm_kasiraddmember = new kasir_addmember();
+            }
+            frm_kasiraddmember.frm_kasir = this;
+            frm_kasiraddmember.frm_login = frm_login;
+            frm_kasiraddmember.ShowDialog();
         }
     }
 }

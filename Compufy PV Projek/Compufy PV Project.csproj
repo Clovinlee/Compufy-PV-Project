@@ -129,6 +129,12 @@
     <Compile Include="Form_stock.Designer.cs">
       <DependentUpon>Form_stock.cs</DependentUpon>
     </Compile>
+    <Compile Include="kasir_addmember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="kasir_addmember.Designer.cs">
+      <DependentUpon>kasir_addmember.cs</DependentUpon>
+    </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_stock.resx">
       <DependentUpon>Form_stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="kasir_addmember.resx">
+      <DependentUpon>kasir_addmember.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
