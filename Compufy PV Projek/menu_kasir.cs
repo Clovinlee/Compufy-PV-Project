@@ -137,7 +137,7 @@ namespace Compufy_PV_Projek
             l_harga.Location = new Point(215, 12);
             l_harga.Size = new Size(98, 30);
             l_harga.Tag = info[1];
-            l_harga.Text = "Rp "+info[1];
+            l_harga.Text = "Rp "+Convert.ToInt32(info[1]).ToString("#,##");
 
             // 
             // qty textbox
@@ -242,7 +242,7 @@ namespace Compufy_PV_Projek
                     {
                         if (child is Label)
                         {
-                            if(((Label)child).Tag != "")
+                            if(((Label)child).Tag != null)
                             {
                                 harga = Convert.ToInt32(((Label)child).Tag);
                             }
@@ -255,7 +255,7 @@ namespace Compufy_PV_Projek
                     subtotal += harga * jumlah;
                 }
             }
-            lbl_subtotal.Text = subtotal.ToString();
+            lbl_subtotal.Text = "Rp "+subtotal.ToString("#,##");
         }
 
         private void checkQTY(object sender, EventArgs e)

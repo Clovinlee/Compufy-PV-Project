@@ -22,13 +22,85 @@ namespace Compufy_PV_Projek
         //CODE BEGIN//
 
         public login frm_login;
+        public admin_stock frm_stock;
+        public admin_dashboard frm_dashboard;
 
+        Button sub_active;
+        
         private void menu_admin_Load(object sender, EventArgs e)
         {
-            this.ActiveControl = btn_menudashboard;
+            sub_active = btn_menusales;
             this.MinimumSize = new Size(925, 639);
 
+            //CREATE FORM
+            frm_stock = new admin_stock();
+            frm_stock.TopLevel = false;
+            frm_stock.Dock = DockStyle.Fill;
+            frm_stock.frm_login = frm_login;
+            frm_stock.Hide();
+
+            frm_dashboard = new admin_dashboard();
+            frm_dashboard.TopLevel = false;
+            frm_dashboard.Dock = DockStyle.Fill;
+            frm_dashboard.frm_login = frm_login;
+            frm_dashboard.Hide();
+
+            pl_submenu.Controls.Add(frm_stock);
+            pl_submenu.Controls.Add(frm_dashboard);
+
+            this.ActiveControl = btn_menudashboard;
         }
+
+        private void btn_submenu_Enter(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            foreach(Form f in pl_submenu.Controls)
+            {
+                f.Hide();
+            }
+            if (b != sub_active)
+            {
+                sub_active.BackColor = Color.FromArgb(0, 65, 82);
+                sub_active.TextImageRelation = TextImageRelation.ImageBeforeText;
+                sub_active.ImageAlign = ContentAlignment.MiddleLeft;
+
+                b.BackColor = Color.FromArgb(8, 117, 146);
+                b.TextImageRelation = TextImageRelation.TextBeforeImage;
+                b.ImageAlign = ContentAlignment.MiddleRight;
+
+                if (b.Text == "Dashboard")
+                {
+                    frm_dashboard.Show();
+                }
+                else if (b.Text == "Sales")
+                {
+                    
+                }else if(b.Text == "Transactions") 
+                { 
+
+                }
+                else if(b.Text == "Stocks")
+                {
+                    frm_stock.Show();
+                }
+                sub_active = b;
+            }
+        }
+
+        private void btn_submenu_MouseUp(object sender, MouseEventArgs e)
+        {
+            Button b = (Button)sender;
+            b.BackColor = b_color;
+        }
+
+        private void btn_submenu_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button b = (Button)sender;
+            b_color = b.BackColor;
+            b.BackColor = Color.FromArgb(11, 85, 150);
+        }
+
+        Color b_color;
 
         private void pl_menulogo_Paint(object sender, PaintEventArgs e)
         {
@@ -52,36 +124,6 @@ namespace Compufy_PV_Projek
                 logout = true;
                 this.Close();
             }
-        }
-
-        private void btn_submenu_Enter(object sender, EventArgs e)
-        {
-            Button b = (Button)sender;
-            b.BackColor = Color.FromArgb(8, 117, 146);
-            b.TextImageRelation = TextImageRelation.TextBeforeImage;
-            b.ImageAlign = ContentAlignment.MiddleRight;
-        }
-
-        private void btn_submenu_Leave(object sender, EventArgs e)
-        {
-            Button b = (Button)sender;
-            b.BackColor = Color.FromArgb(0, 65, 82);
-            b.TextImageRelation = TextImageRelation.ImageBeforeText;
-            b.ImageAlign = ContentAlignment.MiddleLeft;
-        }
-
-        Color b_color;
-        private void btn_submenu_MouseDown(object sender, MouseEventArgs e)
-        {
-            Button b = (Button)sender;
-            b_color = b.BackColor;
-            b.BackColor = Color.FromArgb(11, 85, 150);
-        }
-
-        private void btn_submenu_MouseUp(object sender, MouseEventArgs e)
-        {
-            Button b = (Button)sender;
-            b.BackColor = b_color;
         }
 
         private void menu_admin_FormClosing(object sender, FormClosingEventArgs e)

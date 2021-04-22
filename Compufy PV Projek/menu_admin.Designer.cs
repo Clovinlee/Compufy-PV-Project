@@ -76,10 +76,13 @@
             this.btn_member.Name = "btn_member";
             this.btn_member.Size = new System.Drawing.Size(182, 82);
             this.btn_member.TabIndex = 6;
-            this.btn_member.Tag = "";
+            this.btn_member.Tag = "Manage Member";
             this.btn_member.Text = "Manage Member";
             this.btn_member.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_member.UseVisualStyleBackColor = true;
+            this.btn_member.Enter += new System.EventHandler(this.btn_submenu_Enter);
+            this.btn_member.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
+            this.btn_member.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
             // 
             // btn_manageuser
             // 
@@ -97,10 +100,13 @@
             this.btn_manageuser.Name = "btn_manageuser";
             this.btn_manageuser.Size = new System.Drawing.Size(182, 82);
             this.btn_manageuser.TabIndex = 5;
-            this.btn_manageuser.Tag = "";
+            this.btn_manageuser.Tag = "Manage User";
             this.btn_manageuser.Text = "Manage User";
             this.btn_manageuser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_manageuser.UseVisualStyleBackColor = false;
+            this.btn_manageuser.Enter += new System.EventHandler(this.btn_submenu_Enter);
+            this.btn_manageuser.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
+            this.btn_manageuser.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
             // 
             // btn_menustocks
             // 
@@ -117,9 +123,13 @@
             this.btn_menustocks.Name = "btn_menustocks";
             this.btn_menustocks.Size = new System.Drawing.Size(182, 82);
             this.btn_menustocks.TabIndex = 1;
+            this.btn_menustocks.Tag = "Stocks";
             this.btn_menustocks.Text = "Stocks";
             this.btn_menustocks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_menustocks.UseVisualStyleBackColor = true;
+            this.btn_menustocks.Enter += new System.EventHandler(this.btn_submenu_Enter);
+            this.btn_menustocks.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
+            this.btn_menustocks.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
             // 
             // btn_menutransactions
             // 
@@ -136,9 +146,13 @@
             this.btn_menutransactions.Name = "btn_menutransactions";
             this.btn_menutransactions.Size = new System.Drawing.Size(182, 82);
             this.btn_menutransactions.TabIndex = 1;
+            this.btn_menutransactions.Tag = "Transactions";
             this.btn_menutransactions.Text = "Transactions";
             this.btn_menutransactions.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_menutransactions.UseVisualStyleBackColor = true;
+            this.btn_menutransactions.Enter += new System.EventHandler(this.btn_submenu_Enter);
+            this.btn_menutransactions.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
+            this.btn_menutransactions.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
             // 
             // btn_menusales
             // 
@@ -155,9 +169,13 @@
             this.btn_menusales.Name = "btn_menusales";
             this.btn_menusales.Size = new System.Drawing.Size(182, 82);
             this.btn_menusales.TabIndex = 1;
+            this.btn_menusales.Tag = "Sales";
             this.btn_menusales.Text = "Sales";
             this.btn_menusales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_menusales.UseVisualStyleBackColor = true;
+            this.btn_menusales.Enter += new System.EventHandler(this.btn_submenu_Enter);
+            this.btn_menusales.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
+            this.btn_menusales.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
             // 
             // btn_menudashboard
             // 
@@ -174,9 +192,13 @@
             this.btn_menudashboard.Name = "btn_menudashboard";
             this.btn_menudashboard.Size = new System.Drawing.Size(182, 82);
             this.btn_menudashboard.TabIndex = 1;
+            this.btn_menudashboard.Tag = "Dashboard";
             this.btn_menudashboard.Text = "Dashboard";
             this.btn_menudashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_menudashboard.UseVisualStyleBackColor = true;
+            this.btn_menudashboard.Enter += new System.EventHandler(this.btn_submenu_Enter);
+            this.btn_menudashboard.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
+            this.btn_menudashboard.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
             // 
             // pl_menulogo
             // 

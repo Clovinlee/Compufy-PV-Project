@@ -18,12 +18,14 @@ namespace Compufy_PV_Projek
         }
 
         add_stock frmAdd;
+        public login frm_login;
 
         private void admin_stock_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new Size(727, 508);
             frmAdd = new add_stock();
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 11, FontStyle.Bold);
+            this.FormBorderStyle = FormBorderStyle.None;
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
