@@ -72,10 +72,11 @@ namespace Compufy_PV_Projek
         SqlCommand query;
         //SqlDataReader reader;
 
-        public void executeDataSet(DataSet ds, SqlCommand query, string namaTabel)
+        public void executeDataSet(DataSet ds,string query, string namaTabel)
         {
             conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query);
+            SqlCommand q = new SqlCommand(query, conn);
+            SqlDataAdapter da = new SqlDataAdapter(q);
             da.Fill(ds, namaTabel);
             conn.Close();
         }
@@ -90,9 +91,9 @@ namespace Compufy_PV_Projek
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            query = new SqlCommand($"SELECT * FROM [User] WHERE username = '{tb_username.Text}' AND password = '{tb_password.Text}';",conn);
+            string qu = $"SELECT * FROM [User] WHERE username = '{tb_username.Text}' AND password = '{tb_password.Text}';";
             ds = new DataSet();
-            executeDataSet(ds, query, "akun");
+            executeDataSet(ds, qu, "akun");
 
             if (ds.Tables["akun"].Rows.Count == 0)
             {
