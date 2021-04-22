@@ -135,6 +135,12 @@
     <Compile Include="kasir_addmember.Designer.cs">
       <DependentUpon>kasir_addmember.cs</DependentUpon>
     </Compile>
+    <Compile Include="kasir_registermember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="kasir_registermember.Designer.cs">
+      <DependentUpon>kasir_registermember.cs</DependentUpon>
+    </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="kasir_addmember.resx">
       <DependentUpon>kasir_addmember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="kasir_registermember.resx">
+      <DependentUpon>kasir_registermember.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>

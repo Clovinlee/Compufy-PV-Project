@@ -35,6 +35,7 @@
             this.link_logout = new System.Windows.Forms.LinkLabel();
             this.lbl_namauser = new System.Windows.Forms.Label();
             this.pl_main = new System.Windows.Forms.Panel();
+            this.btn_inputmember = new System.Windows.Forms.Button();
             this.btn_member = new System.Windows.Forms.Button();
             this.btn_reset = new System.Windows.Forms.Button();
             this.pl_submainleft = new System.Windows.Forms.Panel();
@@ -62,6 +63,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.cb_member = new System.Windows.Forms.CheckBox();
             this.pl_topbar.SuspendLayout();
             this.pl_main.SuspendLayout();
             this.pl_submainleft.SuspendLayout();
@@ -145,6 +147,8 @@
             // pl_main
             // 
             this.pl_main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(191)))), ((int)(((byte)(201)))));
+            this.pl_main.Controls.Add(this.btn_inputmember);
+            this.pl_main.Controls.Add(this.cb_member);
             this.pl_main.Controls.Add(this.btn_member);
             this.pl_main.Controls.Add(this.btn_reset);
             this.pl_main.Controls.Add(this.pl_submainleft);
@@ -155,19 +159,35 @@
             this.pl_main.Size = new System.Drawing.Size(1127, 508);
             this.pl_main.TabIndex = 2;
             // 
+            // btn_inputmember
+            // 
+            this.btn_inputmember.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_inputmember.BackColor = System.Drawing.Color.SlateGray;
+            this.btn_inputmember.FlatAppearance.BorderSize = 0;
+            this.btn_inputmember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_inputmember.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_inputmember.ForeColor = System.Drawing.Color.White;
+            this.btn_inputmember.Location = new System.Drawing.Point(163, 457);
+            this.btn_inputmember.Name = "btn_inputmember";
+            this.btn_inputmember.Size = new System.Drawing.Size(145, 37);
+            this.btn_inputmember.TabIndex = 9;
+            this.btn_inputmember.Text = "Input Member";
+            this.btn_inputmember.UseVisualStyleBackColor = false;
+            this.btn_inputmember.Click += new System.EventHandler(this.btn_inputMember_Click);
+            // 
             // btn_member
             // 
             this.btn_member.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_member.BackColor = System.Drawing.Color.SlateGray;
             this.btn_member.FlatAppearance.BorderSize = 0;
             this.btn_member.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_member.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_member.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_member.ForeColor = System.Drawing.Color.White;
-            this.btn_member.Location = new System.Drawing.Point(12, 459);
+            this.btn_member.Location = new System.Drawing.Point(12, 457);
             this.btn_member.Name = "btn_member";
             this.btn_member.Size = new System.Drawing.Size(145, 37);
             this.btn_member.TabIndex = 8;
-            this.btn_member.Text = "Member";
+            this.btn_member.Text = "Registrasi Member";
             this.btn_member.UseVisualStyleBackColor = false;
             this.btn_member.Click += new System.EventHandler(this.btn_member_Click);
             // 
@@ -179,7 +199,7 @@
             this.btn_reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_reset.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_reset.ForeColor = System.Drawing.Color.White;
-            this.btn_reset.Location = new System.Drawing.Point(556, 459);
+            this.btn_reset.Location = new System.Drawing.Point(556, 457);
             this.btn_reset.Name = "btn_reset";
             this.btn_reset.Size = new System.Drawing.Size(145, 37);
             this.btn_reset.TabIndex = 7;
@@ -197,7 +217,7 @@
             this.pl_submainleft.Controls.Add(this.btn_search);
             this.pl_submainleft.Controls.Add(this.pl_categories);
             this.pl_submainleft.Controls.Add(this.tb_inputsearch);
-            this.pl_submainleft.Location = new System.Drawing.Point(12, 20);
+            this.pl_submainleft.Location = new System.Drawing.Point(12, 18);
             this.pl_submainleft.Name = "pl_submainleft";
             this.pl_submainleft.Size = new System.Drawing.Size(689, 433);
             this.pl_submainleft.TabIndex = 5;
@@ -345,7 +365,7 @@
             this.pl_checkout.Controls.Add(this.flp_checkout);
             this.pl_checkout.Controls.Add(this.panel1);
             this.pl_checkout.Controls.Add(this.label1);
-            this.pl_checkout.Location = new System.Drawing.Point(714, 20);
+            this.pl_checkout.Location = new System.Drawing.Point(714, 18);
             this.pl_checkout.Name = "pl_checkout";
             this.pl_checkout.Size = new System.Drawing.Size(401, 476);
             this.pl_checkout.TabIndex = 6;
@@ -526,6 +546,19 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Checkout";
             // 
+            // cb_member
+            // 
+            this.cb_member.AutoSize = true;
+            this.cb_member.Enabled = false;
+            this.cb_member.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_member.ForeColor = System.Drawing.Color.DarkGreen;
+            this.cb_member.Location = new System.Drawing.Point(314, 461);
+            this.cb_member.Name = "cb_member";
+            this.cb_member.Size = new System.Drawing.Size(106, 29);
+            this.cb_member.TabIndex = 10;
+            this.cb_member.Text = "Member";
+            this.cb_member.UseVisualStyleBackColor = true;
+            // 
             // menu_kasir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -535,12 +568,14 @@
             this.Controls.Add(this.pl_main);
             this.Controls.Add(this.pl_topbar);
             this.Name = "menu_kasir";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "menu_kasir";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.menu_kasir_FormClosing);
             this.Load += new System.EventHandler(this.menu_kasir_Load);
             this.pl_topbar.ResumeLayout(false);
             this.pl_topbar.PerformLayout();
             this.pl_main.ResumeLayout(false);
+            this.pl_main.PerformLayout();
             this.pl_submainleft.ResumeLayout(false);
             this.pl_submainleft.PerformLayout();
             this.pl_categories.ResumeLayout(false);
@@ -588,5 +623,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btn_member;
+        private System.Windows.Forms.Button btn_inputmember;
+        public System.Windows.Forms.CheckBox cb_member;
     }
 }
