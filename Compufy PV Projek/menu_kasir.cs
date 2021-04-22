@@ -21,7 +21,10 @@ namespace Compufy_PV_Projek
 
         private void menu_kasir_Load(object sender, EventArgs e)
         {
-            this.MinimumSize = new Size(1060, 639);
+            this.MinimumSize = new Size(820, 639);
+            lbl_subtotal.Text = "0";
+            lbl_discount.Text = "0";
+            lbl_grandtotal.Text = "0";
         }
 
         private void pl_menulogo_Paint(object sender, PaintEventArgs e)
@@ -76,8 +79,8 @@ namespace Compufy_PV_Projek
             p_container.Controls.Add(l_harga);
             l_harga.AutoSize = false;
             l_harga.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
-            l_harga.Size = new Size(160, 21);
-            l_harga.Text = "Rp 24.999.000";
+            l_harga.Size = new Size(163, 21);
+            l_harga.Text = "Rp 5.000.000";
             l_harga.TextAlign = ContentAlignment.MiddleCenter;
             l_harga.Location = new Point(0, 155);
             l_harga.Tag = "harga";
@@ -89,7 +92,7 @@ namespace Compufy_PV_Projek
             p_picture.BackColor = Color.Peru;
             p_picture.Click += new EventHandler(buttonItemAdd_Click);
 
-            p_container.Tag = l_judul.Text + "=" + "24.999.000";
+            p_container.Tag = l_judul.Text + "=" + "5000000";
 
             fpl_products.Controls.Add(p_container);
         }
@@ -133,6 +136,7 @@ namespace Compufy_PV_Projek
             l_harga.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             l_harga.Location = new Point(215, 12);
             l_harga.Size = new Size(98, 30);
+            l_harga.Tag = info[1];
             l_harga.Text = "Rp "+info[1];
 
             // 
@@ -147,6 +151,7 @@ namespace Compufy_PV_Projek
             tb_input.Size = new Size(25, 20);
             tb_input.Text = "1";
             tb_input.TextAlign = HorizontalAlignment.Center;
+            tb_input.TextChanged += new EventHandler(checkQTY);
 
             // 
             // Underline
@@ -172,6 +177,7 @@ namespace Compufy_PV_Projek
             b_add.Size = new Size(16, 25);
             b_add.Tag = "+";
             b_add.UseVisualStyleBackColor = true;
+            b_add.Click += new EventHandler(b_modify_Click);
 
 
             // 
@@ -189,6 +195,7 @@ namespace Compufy_PV_Projek
             b_minus.Size = new Size(16, 25);
             b_minus.Tag = "-";
             b_minus.UseVisualStyleBackColor = true;
+            b_minus.Click += new EventHandler(b_modify_Click);
 
             // 
             // button trash
@@ -207,6 +214,7 @@ namespace Compufy_PV_Projek
             b_trash.Click += new EventHandler(b_trash_Click);
 
             flp_checkout.Controls.Add(p_container);
+            sumHarga();
         }
 
         private void b_trash_Click(object sender, EventArgs e)
@@ -217,6 +225,93 @@ namespace Compufy_PV_Projek
             if(MessageBox.Show($"Yakin menghapus item {info[0]} dari checkout?","Konfirmasi Hapus Order",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 flp_checkout.Controls.Remove(p);
+                sumHarga();
+            }
+        }
+
+        public void sumHarga()
+        {
+            subtotal = 0;
+            foreach(var p in flp_checkout.Controls)
+            {
+                if (p is Panel)
+                {
+                    decimal harga = 1;
+                    int jumlah = 1;
+                    foreach(var child in ((Panel)p).Controls)
+                    {
+                        if (child is Label)
+                        {
+                            if(((Label)child).Tag != "")
+                            {
+                                harga = Convert.ToInt32(((Label)child).Tag);
+                            }
+                        }
+                        else if(child is TextBox)
+                        {
+                            jumlah = Convert.ToInt32(((TextBox)child).Text);
+                        }
+                    }
+                    subtotal += harga * jumlah;
+                }
+            }
+            lbl_subtotal.Text = subtotal.ToString();
+        }
+
+        private void checkQTY(object sender, EventArgs e)
+        {
+            TextBox t = (TextBox)sender;
+            bool digit = true;
+            foreach(char c in t.Text)
+            {
+                if (!Char.IsDigit(c))
+                {
+                    digit = false;
+                }
+            }
+            if(digit == false)
+            {
+                t.Text = "1";
+            }
+        }
+
+        private void b_modify_Click(object sender, EventArgs e)
+        {
+            FontAwesome.Sharp.IconButton b = (FontAwesome.Sharp.IconButton)sender;
+            Panel p = (Panel)b.Parent;
+            foreach(var itm in p.Controls)
+            {
+                if (itm is TextBox)
+                {
+                    if(b.Tag.ToString() == "+")
+                    {
+                        ((TextBox)itm).Text = $"{Convert.ToInt32(((TextBox)itm).Text) + 1}";
+                    }
+                    else
+                    {
+                        if(Convert.ToInt32(((TextBox)itm).Text)-1 <= 0)
+                        {
+                        }
+                        else
+                        {
+                            ((TextBox)itm).Text = $"{Convert.ToInt32(((TextBox)itm).Text) - 1}";
+                        }
+                    }
+                }
+            }
+            sumHarga();
+        }
+
+        decimal subtotal = 0;
+        decimal discount = 0;
+
+        private void btn_reset_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Yakin reset checkout?","Reset Checkout",MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                flp_checkout.Controls.Clear();
+                subtotal = 0;
+                discount = 0;
             }
         }
     }
