@@ -51,31 +51,39 @@ namespace Compufy_PV_Projek
         }
 
         public int id;
-        int temp_id;
+        int temp_id = -1;
         private void btn_checkmember_Click(object sender, EventArgs e)
         {
-            foreach(DataRow r in ds_member.Tables[0].Rows)
+            if(tb_id.Text != "")
             {
-                if(r[0].ToString() == tb_id.Text)
+                foreach (DataRow r in ds_member.Tables[0].Rows)
                 {
-                    temp_id = Convert.ToInt32(r[0]);
-                    tb_nama.Text = r[1].ToString();
-                    tb_birthdate.Text = Convert.ToDateTime(r[3]).ToString("dd-MM-yyyy");
-                    if(r[5].ToString() == "l")
+                    if (r[0].ToString() == tb_id.Text)
                     {
-                        rb_pria.Checked = true;
+                        temp_id = Convert.ToInt32(r[0]);
+                        tb_nama.Text = r[1].ToString();
+                        tb_birthdate.Text = Convert.ToDateTime(r[3]).ToString("dd-MM-yyyy");
+                        if (r[5].ToString() == "l")
+                        {
+                            rb_pria.Checked = true;
+                        }
+                        else
+                        {
+                            rb_wanita.Checked = false;
+                        }
+                        btn_tambahmember.Enabled = true;
                     }
-                    else
-                    {
-                        rb_wanita.Checked = false;
-                    }
-                    btn_tambahmember.Enabled = true;
+                }
+                if (temp_id == -1)
+                {
+                    MessageBox.Show($"Member dengan ID {tb_id.Text} tidak ditemukan!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            if(temp_id == -1)
+            else
             {
-                MessageBox.Show($"Member dengan ID {tb_id.Text} tidak ditemukan!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Field Kosong!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            
         }
 
         private void btn_reset_Click(object sender, EventArgs e)
