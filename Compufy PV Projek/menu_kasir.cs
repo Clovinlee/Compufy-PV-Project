@@ -26,15 +26,8 @@ namespace Compufy_PV_Projek
             lbl_subtotal.Text = "Rp 0";
             lbl_discount.Text = "Rp 0";
             lbl_grandtotal.Text = "Rp 0";
-            PrintStartupPath();
         }
-        private void PrintStartupPath()
-        {
-            string wanted_path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-            MessageBox.Show("The path for the executable file that " +
-               "started the application is: " +
-               wanted_path);
-        }
+        
         private void pl_menulogo_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -53,7 +46,7 @@ namespace Compufy_PV_Projek
             {
                 frm_login.Show();
                 frm_login.resetLogin();
-                login.frm_admin = null;
+                login.frm_kasir = null;
                 logout = true;
                 this.Close();
             }
@@ -240,6 +233,7 @@ namespace Compufy_PV_Projek
         public void sumHarga()
         {
             subtotal = 0;
+            discount = 0;
             foreach(var p in flp_checkout.Controls)
             {
                 if (p is Panel)
@@ -263,14 +257,14 @@ namespace Compufy_PV_Projek
                     subtotal += harga * jumlah;
                 }
             }
-            if (subtotal == 0)
+            if(id_member != -1)
             {
-                lbl_subtotal.Text = "Rp 0";
+                discount = subtotal * 5 / 100;
             }
-            else
-            {
-                lbl_subtotal.Text = "Rp " + subtotal.ToString("#,##");
-            }
+
+            lbl_subtotal.Text = subtotal == 0 ? "Rp 0" : "Rp " + subtotal.ToString("#,##");
+            lbl_discount.Text = discount == 0 ? "Rp 0" : "Rp " +  (discount).ToString("#,##");
+            lbl_grandtotal.Text = (subtotal - discount) == 0 ? "Rp 0" : "Rp " + (subtotal - discount).ToString("#,##");
         }
 
         private void checkQTY(object sender, EventArgs e)
@@ -325,8 +319,43 @@ namespace Compufy_PV_Projek
             if(MessageBox.Show("Yakin reset checkout?","Reset Checkout",MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 flp_checkout.Controls.Clear();
+                id_member = -1;
+                cb_member.Enabled = true;
+                if(cb_member.Checked == true)
+                {
+                    cb_member.Checked = false;
+                }
+                cb_member.Enabled = false;
                 sumHarga();
             }
+        }
+
+        public kasir_registermember frm_registermember;
+        public kasir_addmember frm_addmember;
+
+        private void btn_member_Click(object sender, EventArgs e)
+        {
+            if(frm_registermember == null)
+            {
+                frm_registermember = new kasir_registermember();
+            }
+            frm_registermember.frm_kasir = this;
+            frm_registermember.frm_login = frm_login;
+            frm_registermember.ShowDialog();
+        }
+
+        public int id_member = -1;
+
+        private void btn_inputMember_Click(object sender, EventArgs e)
+        {
+            if (frm_addmember == null)
+            {
+                frm_addmember = new kasir_addmember();
+            }
+            frm_addmember.id = id_member;
+            frm_addmember.frm_kasir = this;
+            frm_addmember.frm_login = frm_login;
+            frm_addmember.ShowDialog();
         }
     }
 }
