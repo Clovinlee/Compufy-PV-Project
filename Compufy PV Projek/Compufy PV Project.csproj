@@ -81,6 +81,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="add_stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_stock.Designer.cs">
+      <DependentUpon>add_stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="admin_stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin_stock.Designer.cs">
+      <DependentUpon>admin_stock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_stock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +142,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>win_icons.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="add_stock.resx">
+      <DependentUpon>add_stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin_stock.resx">
+      <DependentUpon>admin_stock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_stock.resx">
       <DependentUpon>Form_stock.cs</DependentUpon>
     </EmbeddedResource>
