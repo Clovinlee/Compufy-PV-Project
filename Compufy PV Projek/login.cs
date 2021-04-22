@@ -61,7 +61,7 @@ namespace Compufy_PV_Projek
         private void login_Load(object sender, EventArgs e)
         {
             resetLogin();
-            connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename="+Application.StartupPath+@"\data.mdf;Integrated Security=True;Connect Timeout=30";
+            connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename="+Application.StartupPath+@"\DB Compufy.mdf;Integrated Security=True;Connect Timeout=30";
             conn = new SqlConnection(connStr);
         }
 
