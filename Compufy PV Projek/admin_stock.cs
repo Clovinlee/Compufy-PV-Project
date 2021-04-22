@@ -23,6 +23,7 @@ namespace Compufy_PV_Projek
         {
             this.MinimumSize = new Size(727, 508);
             frmAdd = new add_stock();
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 11, FontStyle.Bold);
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
