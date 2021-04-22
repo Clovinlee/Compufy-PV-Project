@@ -22,9 +22,9 @@ namespace Compufy_PV_Projek
         private void menu_kasir_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new Size(820, 639);
-            lbl_subtotal.Text = "0";
-            lbl_discount.Text = "0";
-            lbl_grandtotal.Text = "0";
+            lbl_subtotal.Text = "Rp 0";
+            lbl_discount.Text = "Rp 0";
+            lbl_grandtotal.Text = "Rp 0";
         }
 
         private void pl_menulogo_Paint(object sender, PaintEventArgs e)
@@ -255,7 +255,14 @@ namespace Compufy_PV_Projek
                     subtotal += harga * jumlah;
                 }
             }
-            lbl_subtotal.Text = "Rp "+subtotal.ToString("#,##");
+            if (subtotal == 0)
+            {
+                lbl_subtotal.Text = "Rp 0";
+            }
+            else
+            {
+                lbl_subtotal.Text = "Rp " + subtotal.ToString("#,##");
+            }
         }
 
         private void checkQTY(object sender, EventArgs e)
@@ -310,8 +317,7 @@ namespace Compufy_PV_Projek
             if(MessageBox.Show("Yakin reset checkout?","Reset Checkout",MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 flp_checkout.Controls.Clear();
-                subtotal = 0;
-                discount = 0;
+                sumHarga();
             }
         }
     }

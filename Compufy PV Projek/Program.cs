@@ -16,7 +16,7 @@ namespace Compufy_PV_Projek
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new menu_admin());
+            Application.Run(new menu_kasir());
         }
     }
 }
