@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Compufy_PV_Projek
 {
@@ -25,8 +26,15 @@ namespace Compufy_PV_Projek
             lbl_subtotal.Text = "Rp 0";
             lbl_discount.Text = "Rp 0";
             lbl_grandtotal.Text = "Rp 0";
+            PrintStartupPath();
         }
-
+        private void PrintStartupPath()
+        {
+            string wanted_path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+            MessageBox.Show("The path for the executable file that " +
+               "started the application is: " +
+               wanted_path);
+        }
         private void pl_menulogo_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
