@@ -60,7 +60,7 @@ namespace Compufy_PV_Projek
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string query = $"UPDATE [Akun] set username = '{txtUsername}', passsword = '{(txtPassword.Text)}', nama_user = '{textBox2.Text}', tgl_lahir_user = '{dateTimePicker1.Value}', jk_user = '{cbGender.SelectedItem.ToString()}', tipe_user = '{comboBox1.SelectedItem.ToString()}' WHERE id_user = '{Convert.ToInt32(txtID.Text)}'";
+            string query = $"UPDATE [Akun] set username = '{txtUsername}', passsword = '{(txtPassword.Text)}', nama_user = '{textBox2.Text}', tgl_lahir_user = '{dateTimePicker1.Value}', jk_user = '{cbGender.SelectedItem.ToString()}', tipe_user = '{comboBox1.SelectedItem.ToString()}' WHERE id_user = '{txtID.Text}'";
             frm_login.executeQuery(query);
             LoadBarang();
         }
@@ -71,7 +71,7 @@ namespace Compufy_PV_Projek
 
             if (dialogResult == DialogResult.Yes)
             {
-                string query = $"DELETE [Akun] where id_user = '{Convert.ToInt32(txtID.Text)}'";
+                string query = $"DELETE [Akun] where id_user = '{txtID.Text}'";
                 frm_login.executeQuery(query);
                 LoadBarang();
             }
