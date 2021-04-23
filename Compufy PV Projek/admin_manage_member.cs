@@ -24,6 +24,7 @@ namespace Compufy_PV_Projek
             this.MinimumSize = new Size(727, 508);
             frmAdd = new Add_Member();
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 11, FontStyle.Bold);
+            LoadBarang();
             //this.FormBorderStyle = FormBorderStyle.None;
         }
 
@@ -61,7 +62,7 @@ namespace Compufy_PV_Projek
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string query = $"UPDATE [Member] set nama_member = '{txtNama.Text}', no_hp_member = '{(txtNOHP.Text)}', birthdate = '{dateTimePicker2.Value}', tgl_daftar = '{dateTimePicker1.Value}', jk_member = '{cbGender.SelectedItem.ToString()}', alamat_member = '{textBox2.Text}' WHERE id_member = '{Convert.ToInt32(txtID.Text)}'";
+            string query = $"UPDATE [Member] set nama_member = '{txtNama.Text}', no_hp_member = '{(txtNOHP.Text)}', birthdate = '{dateTimePicker2.Value}', tgl_daftar = '{dateTimePicker1.Value}', jk_member = '{cbGender.SelectedItem.ToString()}', alamat_member = '{textBox2.Text}' WHERE id_member = '{txtID.Text}'";
             frm_login.executeQuery(query);
             LoadBarang();
         }
@@ -72,7 +73,7 @@ namespace Compufy_PV_Projek
 
             if (dialogResult == DialogResult.Yes)
             {
-                string query = $"DELETE [Member] where id_member = '{Convert.ToInt32(txtID.Text)}'";
+                string query = $"DELETE [Member] where id_member = '{txtID.Text}'";
                 frm_login.executeQuery(query);
                 LoadBarang();
             }
