@@ -76,7 +76,7 @@
             this.btn_reset.Location = new System.Drawing.Point(252, 83);
             this.btn_reset.Name = "btn_reset";
             this.btn_reset.Size = new System.Drawing.Size(79, 34);
-            this.btn_reset.TabIndex = 11;
+            this.btn_reset.TabIndex = 2;
             this.btn_reset.Text = "Reset";
             this.btn_reset.UseVisualStyleBackColor = false;
             this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
@@ -150,7 +150,7 @@
             this.tb_birthdate.Location = new System.Drawing.Point(147, 53);
             this.tb_birthdate.Name = "tb_birthdate";
             this.tb_birthdate.Size = new System.Drawing.Size(173, 23);
-            this.tb_birthdate.TabIndex = 13;
+            this.tb_birthdate.TabIndex = 1;
             // 
             // label3
             // 
@@ -168,7 +168,7 @@
             this.tb_nama.Location = new System.Drawing.Point(147, 24);
             this.tb_nama.Name = "tb_nama";
             this.tb_nama.Size = new System.Drawing.Size(173, 23);
-            this.tb_nama.TabIndex = 11;
+            this.tb_nama.TabIndex = 0;
             // 
             // btn_tambahmember
             // 
@@ -183,7 +183,7 @@
             this.btn_tambahmember.Location = new System.Drawing.Point(11, 346);
             this.btn_tambahmember.Name = "btn_tambahmember";
             this.btn_tambahmember.Size = new System.Drawing.Size(348, 37);
-            this.btn_tambahmember.TabIndex = 5;
+            this.btn_tambahmember.TabIndex = 3;
             this.btn_tambahmember.Text = "Input Member";
             this.btn_tambahmember.UseVisualStyleBackColor = false;
             this.btn_tambahmember.Click += new System.EventHandler(this.btn_tambahmember_Click);
@@ -200,7 +200,7 @@
             this.btn_checkmember.Location = new System.Drawing.Point(158, 83);
             this.btn_checkmember.Name = "btn_checkmember";
             this.btn_checkmember.Size = new System.Drawing.Size(79, 34);
-            this.btn_checkmember.TabIndex = 9;
+            this.btn_checkmember.TabIndex = 1;
             this.btn_checkmember.Text = "Check";
             this.btn_checkmember.UseVisualStyleBackColor = false;
             this.btn_checkmember.Click += new System.EventHandler(this.btn_checkmember_Click);
@@ -221,7 +221,7 @@
             this.tb_id.Location = new System.Drawing.Point(158, 54);
             this.tb_id.Name = "tb_id";
             this.tb_id.Size = new System.Drawing.Size(173, 23);
-            this.tb_id.TabIndex = 6;
+            this.tb_id.TabIndex = 0;
             // 
             // label1
             // 

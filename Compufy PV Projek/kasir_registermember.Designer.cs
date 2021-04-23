@@ -70,7 +70,7 @@
             this.btn_tambah.Location = new System.Drawing.Point(11, 371);
             this.btn_tambah.Name = "btn_tambah";
             this.btn_tambah.Size = new System.Drawing.Size(348, 37);
-            this.btn_tambah.TabIndex = 5;
+            this.btn_tambah.TabIndex = 6;
             this.btn_tambah.Text = "Tambah Member";
             this.btn_tambah.UseVisualStyleBackColor = false;
             this.btn_tambah.Click += new System.EventHandler(this.btn_tambah_Click);
@@ -105,7 +105,7 @@
             this.rb_wanita.Location = new System.Drawing.Point(209, 164);
             this.rb_wanita.Name = "rb_wanita";
             this.rb_wanita.Size = new System.Drawing.Size(62, 19);
-            this.rb_wanita.TabIndex = 14;
+            this.rb_wanita.TabIndex = 4;
             this.rb_wanita.Text = "Wanita";
             this.rb_wanita.UseVisualStyleBackColor = true;
             // 
@@ -117,7 +117,7 @@
             this.rb_pria.Location = new System.Drawing.Point(158, 164);
             this.rb_pria.Name = "rb_pria";
             this.rb_pria.Size = new System.Drawing.Size(45, 19);
-            this.rb_pria.TabIndex = 13;
+            this.rb_pria.TabIndex = 3;
             this.rb_pria.TabStop = true;
             this.rb_pria.Text = "Pria";
             this.rb_pria.UseVisualStyleBackColor = true;
@@ -127,7 +127,7 @@
             this.dt_birthdate.Location = new System.Drawing.Point(158, 126);
             this.dt_birthdate.Name = "dt_birthdate";
             this.dt_birthdate.Size = new System.Drawing.Size(173, 20);
-            this.dt_birthdate.TabIndex = 12;
+            this.dt_birthdate.TabIndex = 2;
             // 
             // label6
             // 
@@ -186,7 +186,7 @@
             this.tb_tempattinggal.Multiline = true;
             this.tb_tempattinggal.Name = "tb_tempattinggal";
             this.tb_tempattinggal.Size = new System.Drawing.Size(173, 54);
-            this.tb_tempattinggal.TabIndex = 6;
+            this.tb_tempattinggal.TabIndex = 5;
             // 
             // tb_nohp
             // 
@@ -194,7 +194,7 @@
             this.tb_nohp.Location = new System.Drawing.Point(158, 93);
             this.tb_nohp.Name = "tb_nohp";
             this.tb_nohp.Size = new System.Drawing.Size(173, 23);
-            this.tb_nohp.TabIndex = 6;
+            this.tb_nohp.TabIndex = 1;
             // 
             // tb_nama
             // 
@@ -202,9 +202,9 @@
             this.tb_nama.Location = new System.Drawing.Point(156, 54);
             this.tb_nama.Name = "tb_nama";
             this.tb_nama.Size = new System.Drawing.Size(173, 23);
-            this.tb_nama.TabIndex = 6;
+            this.tb_nama.TabIndex = 0;
             // 
-            // kasir_addmember
+            // kasir_registermember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -212,7 +212,7 @@
             this.ClientSize = new System.Drawing.Size(375, 426);
             this.Controls.Add(this.pl_addmember);
             this.MaximizeBox = false;
-            this.Name = "kasir_addmember";
+            this.Name = "kasir_registermember";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "kasir_addmember";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.kasir_addmember_FormClosing);

@@ -249,6 +249,7 @@
             this.link_logout.TabIndex = 5;
             this.link_logout.TabStop = true;
             this.link_logout.Text = "Logout";
+            this.link_logout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.link_logout_LinkClicked);
             // 
             // lbl_namauser
             // 

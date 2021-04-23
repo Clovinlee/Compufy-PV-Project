@@ -61,7 +61,7 @@ namespace Compufy_PV_Projek
         private void login_Load(object sender, EventArgs e)
         {
             resetLogin();
-            connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename="+Application.StartupPath+@"\DB Compufy.mdf;Integrated Security=True;Connect Timeout=30";
+            connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename="+Application.StartupPath+@"\DB_Compufy.mdf;Integrated Security=True;Connect Timeout=30";
             conn = new SqlConnection(connStr);
         }
 
@@ -91,7 +91,7 @@ namespace Compufy_PV_Projek
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            string qu = $"SELECT * FROM [User] WHERE username = '{tb_username.Text}' AND password = '{tb_password.Text}';";
+            string qu = $"SELECT * FROM [Akun] WHERE username = '{tb_username.Text}' AND password = '{tb_password.Text}';";
             ds = new DataSet();
             executeDataSet(ds, qu, "akun");
 
@@ -131,7 +131,7 @@ namespace Compufy_PV_Projek
                         frm_kasir = new menu_kasir();
                     }
                     frm_kasir.lbl_namauser.Text = ds.Tables["akun"].Rows[0]["username"].ToString();
-                    frm_admin.lbl_jabatanuser.Text = role;
+                    frm_kasir.lbl_jabatanuser.Text = role;
 
                     frm_kasir.frm_login = frm_login;
                     frm_kasir.Show();

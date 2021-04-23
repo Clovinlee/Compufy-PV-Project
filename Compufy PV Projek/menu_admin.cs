@@ -24,6 +24,8 @@ namespace Compufy_PV_Projek
         public login frm_login;
         public admin_stock frm_stock;
         public admin_dashboard frm_dashboard;
+        public admin_manage_user frm_manageuser;
+        public admin_manage_member frm_managemember;
 
         Button sub_active;
         
@@ -37,16 +39,34 @@ namespace Compufy_PV_Projek
             frm_stock.TopLevel = false;
             frm_stock.Dock = DockStyle.Fill;
             frm_stock.frm_login = frm_login;
+            frm_stock.FormBorderStyle = FormBorderStyle.None;
             frm_stock.Hide();
 
             frm_dashboard = new admin_dashboard();
             frm_dashboard.TopLevel = false;
             frm_dashboard.Dock = DockStyle.Fill;
             frm_dashboard.frm_login = frm_login;
+            frm_dashboard.FormBorderStyle = FormBorderStyle.None;
             frm_dashboard.Hide();
+
+            frm_manageuser = new admin_manage_user();
+            frm_manageuser.TopLevel = false;
+            frm_manageuser.Dock = DockStyle.Fill;
+            frm_manageuser.frm_login = frm_login;
+            frm_manageuser.FormBorderStyle = FormBorderStyle.None;
+            frm_manageuser.Hide();
+
+            frm_managemember = new admin_manage_member();
+            frm_managemember.TopLevel = false;
+            frm_managemember.Dock = DockStyle.Fill;
+            frm_managemember.frm_login = frm_login;
+            frm_managemember.FormBorderStyle = FormBorderStyle.None;
+            frm_managemember.Hide();
 
             pl_submenu.Controls.Add(frm_stock);
             pl_submenu.Controls.Add(frm_dashboard);
+            pl_submenu.Controls.Add(frm_manageuser);
+            pl_submenu.Controls.Add(frm_managemember);
 
             this.ActiveControl = btn_menudashboard;
         }
@@ -82,6 +102,14 @@ namespace Compufy_PV_Projek
                 else if(b.Text == "Stocks")
                 {
                     frm_stock.Show();
+                }
+                else if(b.Text == "Manage User")
+                {
+                    frm_manageuser.Show();
+                }
+                else if (b.Text == "Manage Member")
+                {
+                    frm_managemember.Show();
                 }
                 sub_active = b;
             }
