@@ -18,10 +18,19 @@ namespace Compufy_PV_Projek
         }
         Add_User frmAdd;
         public login frm_login;
+        Update_User frmUpdate;
+        public string id;
+        public string username;
+        public string password;
+        public string nama;
+        public string datebirth;
+        public string gender;
+        public string tipeuser;
         private void admin_manage_user_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new Size(727, 508);
             frmAdd = new Add_User();
+            frmUpdate = new Update_User();
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 11, FontStyle.Bold);
             LoadBarang();
             //this.FormBorderStyle = FormBorderStyle.None;
@@ -49,19 +58,27 @@ namespace Compufy_PV_Projek
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             idx = e.RowIndex;
-            txtID.Text = dataGridView1.Rows[idx].Cells[0].Value.ToString();
-            txtUsername.Text = dataGridView1.Rows[idx].Cells[1].Value.ToString();
-            txtPassword.Text = dataGridView1.Rows[idx].Cells[2].Value.ToString();
-            textBox2.Text = (dataGridView1.Rows[idx].Cells[3].Value.ToString());
-            dateTimePicker1.Value = Convert.ToDateTime(dataGridView1.Rows[idx].Cells[4].Value);
-            cbGender.Text = dataGridView1.Rows[idx].Cells[5].Value.ToString();
-            comboBox1.Text = dataGridView1.Rows[idx].Cells[6].Value.ToString();
+            id = dataGridView1.Rows[idx].Cells[0].Value.ToString();
+            username = dataGridView1.Rows[idx].Cells[1].Value.ToString();
+            password = dataGridView1.Rows[idx].Cells[2].Value.ToString();
+            nama = (dataGridView1.Rows[idx].Cells[3].Value.ToString());
+            datebirth = dataGridView1.Rows[idx].Cells[4].Value.ToString();
+            gender = dataGridView1.Rows[idx].Cells[5].Value.ToString();
+            tipeuser = dataGridView1.Rows[idx].Cells[6].Value.ToString();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{(txtPassword.Text)}', nama_user = '{textBox2.Text}', tgl_lahir_user = '{dateTimePicker1.Value}', jk_user = '{cbGender.SelectedItem.ToString()}', tipe_user = '{comboBox1.SelectedItem.ToString()}' WHERE id_user = '{txtID.Text}'";
-            frm_login.executeQuery(query);
+            frmUpdate.frm_login = frm_login;
+            frmUpdate.id = id;
+            frmUpdate.username = username;
+            frmUpdate.password = password;
+            frmUpdate.nama = nama;
+            frmUpdate.datebirth = datebirth;
+            frmUpdate.gender = gender;
+            frmUpdate.tipeuser = tipeuser;
+            frmUpdate.ShowDialog();
+            
             LoadBarang();
         }
 
@@ -71,7 +88,7 @@ namespace Compufy_PV_Projek
 
             if (dialogResult == DialogResult.Yes)
             {
-                string query = $"DELETE [Akun] where id_user = '{txtID.Text}'";
+                string query = $"DELETE [Akun] where id_user = '{id}'";
                 frm_login.executeQuery(query);
                 LoadBarang();
             }
