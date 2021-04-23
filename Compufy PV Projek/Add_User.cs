@@ -16,9 +16,12 @@ namespace Compufy_PV_Projek
         {
             InitializeComponent();
         }
+        public login frm_login;
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            string query = $"INSERT into [Akun] (username, password, nama_user, tgl_lahir_user, jk_user, tipe_user) VALUES('{txtUsername.Text}', '{textBox1.Text}', '{txtNama.Text}', '{dateTimePicker1.Value}', '{cbGender.SelectedItem.ToString()}', '{comboBox1.SelectedItem.ToString()}')";
+            frm_login.executeQuery(query);
             this.Close();
         }
 

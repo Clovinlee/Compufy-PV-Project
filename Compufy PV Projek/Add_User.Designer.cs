@@ -29,12 +29,11 @@ namespace Compufy_PV_Projek
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbKategori = new System.Windows.Forms.ComboBox();
-            this.txtStok = new System.Windows.Forms.TextBox();
-            this.txtNama = new System.Windows.Forms.TextBox();
+            this.cbGender = new System.Windows.Forms.ComboBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
             this.btnUpdate = new FontAwesome.Sharp.IconButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtHarga = new System.Windows.Forms.TextBox();
+            this.txtNama = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -42,32 +41,28 @@ namespace Compufy_PV_Projek
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
-            // cbKategori
+            // cbGender
             // 
-            this.cbKategori.FormattingEnabled = true;
-            this.cbKategori.Location = new System.Drawing.Point(127, 161);
-            this.cbKategori.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cbKategori.Name = "cbKategori";
-            this.cbKategori.Size = new System.Drawing.Size(292, 21);
-            this.cbKategori.TabIndex = 18;
+            this.cbGender.FormattingEnabled = true;
+            this.cbGender.Items.AddRange(new object[] {
+            "L",
+            "P"});
+            this.cbGender.Location = new System.Drawing.Point(127, 161);
+            this.cbGender.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbGender.Name = "cbGender";
+            this.cbGender.Size = new System.Drawing.Size(292, 21);
+            this.cbGender.TabIndex = 18;
             // 
-            // txtStok
+            // txtUsername
             // 
-            this.txtStok.Location = new System.Drawing.Point(127, 131);
-            this.txtStok.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtStok.Name = "txtStok";
-            this.txtStok.Size = new System.Drawing.Size(292, 20);
-            this.txtStok.TabIndex = 23;
-            // 
-            // txtNama
-            // 
-            this.txtNama.Location = new System.Drawing.Point(127, 14);
-            this.txtNama.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtNama.Name = "txtNama";
-            this.txtNama.Size = new System.Drawing.Size(292, 20);
-            this.txtNama.TabIndex = 17;
+            this.txtUsername.Location = new System.Drawing.Point(127, 14);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(292, 20);
+            this.txtUsername.TabIndex = 17;
             // 
             // btnUpdate
             // 
@@ -101,13 +96,13 @@ namespace Compufy_PV_Projek
             this.label3.TabIndex = 16;
             this.label3.Text = "Username";
             // 
-            // txtHarga
+            // txtNama
             // 
-            this.txtHarga.Location = new System.Drawing.Point(127, 90);
-            this.txtHarga.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtHarga.Name = "txtHarga";
-            this.txtHarga.Size = new System.Drawing.Size(292, 20);
-            this.txtHarga.TabIndex = 22;
+            this.txtNama.Location = new System.Drawing.Point(127, 90);
+            this.txtNama.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNama.Name = "txtNama";
+            this.txtNama.Size = new System.Drawing.Size(292, 20);
+            this.txtNama.TabIndex = 22;
             // 
             // label2
             // 
@@ -175,11 +170,22 @@ namespace Compufy_PV_Projek
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
             this.comboBox1.Location = new System.Drawing.Point(127, 192);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(292, 21);
             this.comboBox1.TabIndex = 26;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(127, 129);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(292, 20);
+            this.dateTimePicker1.TabIndex = 28;
             // 
             // Add_User
             // 
@@ -187,16 +193,16 @@ namespace Compufy_PV_Projek
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(494, 265);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.cbKategori);
-            this.Controls.Add(this.txtStok);
-            this.Controls.Add(this.txtNama);
+            this.Controls.Add(this.cbGender);
+            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtHarga);
+            this.Controls.Add(this.txtNama);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
@@ -210,12 +216,11 @@ namespace Compufy_PV_Projek
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cbKategori;
-        private System.Windows.Forms.TextBox txtStok;
-        private System.Windows.Forms.TextBox txtNama;
+        private System.Windows.Forms.ComboBox cbGender;
+        private System.Windows.Forms.TextBox txtUsername;
         private FontAwesome.Sharp.IconButton btnUpdate;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtHarga;
+        private System.Windows.Forms.TextBox txtNama;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -223,5 +228,6 @@ namespace Compufy_PV_Projek
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
