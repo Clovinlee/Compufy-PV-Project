@@ -28,9 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.id_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kategori = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stok = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gambar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Hapus = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtStok = new System.Windows.Forms.TextBox();
+            this.txtHarga = new System.Windows.Forms.TextBox();
+            this.lblDirectory = new System.Windows.Forms.Label();
+            this.btnFile = new FontAwesome.Sharp.IconButton();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnDelete = new FontAwesome.Sharp.IconButton();
             this.btnUpdate = new FontAwesome.Sharp.IconButton();
             this.label5 = new System.Windows.Forms.Label();
@@ -41,23 +53,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.btnInsert = new FontAwesome.Sharp.IconButton();
             this.btn_search = new FontAwesome.Sharp.IconButton();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnFile = new FontAwesome.Sharp.IconButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.lblDirectory = new System.Windows.Forms.Label();
-            this.txtHarga = new System.Windows.Forms.TextBox();
-            this.txtStok = new System.Windows.Forms.TextBox();
-            this.id_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kategori = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Stok = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gambar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Hapus = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
@@ -71,14 +71,14 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.PapayaWhip;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Nirmala UI", 11F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Nirmala UI", 11F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_barang,
@@ -95,6 +95,51 @@
             this.dataGridView1.Size = new System.Drawing.Size(682, 203);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
+            // 
+            // id_barang
+            // 
+            this.id_barang.FillWeight = 35F;
+            this.id_barang.HeaderText = "ID";
+            this.id_barang.Name = "id_barang";
+            // 
+            // Kategori
+            // 
+            this.Kategori.FillWeight = 75F;
+            this.Kategori.HeaderText = "Kategori";
+            this.Kategori.Name = "Kategori";
+            // 
+            // Nama
+            // 
+            this.Nama.FillWeight = 150F;
+            this.Nama.HeaderText = "Nama";
+            this.Nama.Name = "Nama";
+            // 
+            // Harga
+            // 
+            this.Harga.FillWeight = 75F;
+            this.Harga.HeaderText = "Harga";
+            this.Harga.Name = "Harga";
+            // 
+            // Stok
+            // 
+            this.Stok.FillWeight = 40F;
+            this.Stok.HeaderText = "Stok";
+            this.Stok.Name = "Stok";
+            // 
+            // Gambar
+            // 
+            this.Gambar.FillWeight = 75F;
+            this.Gambar.HeaderText = "Gambar";
+            this.Gambar.Name = "Gambar";
+            this.Gambar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Gambar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Hapus
+            // 
+            this.Hapus.FillWeight = 75F;
+            this.Hapus.HeaderText = "Hapus";
+            this.Hapus.Name = "Hapus";
+            this.Hapus.Text = "";
             // 
             // panel1
             // 
@@ -120,6 +165,62 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(506, 187);
             this.panel1.TabIndex = 2;
+            // 
+            // txtStok
+            // 
+            this.txtStok.Location = new System.Drawing.Point(79, 145);
+            this.txtStok.Name = "txtStok";
+            this.txtStok.Size = new System.Drawing.Size(167, 27);
+            this.txtStok.TabIndex = 22;
+            // 
+            // txtHarga
+            // 
+            this.txtHarga.Location = new System.Drawing.Point(79, 112);
+            this.txtHarga.Name = "txtHarga";
+            this.txtHarga.Size = new System.Drawing.Size(167, 27);
+            this.txtHarga.TabIndex = 21;
+            // 
+            // lblDirectory
+            // 
+            this.lblDirectory.AutoSize = true;
+            this.lblDirectory.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDirectory.Location = new System.Drawing.Point(270, 45);
+            this.lblDirectory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDirectory.Name = "lblDirectory";
+            this.lblDirectory.Size = new System.Drawing.Size(49, 17);
+            this.lblDirectory.TabIndex = 20;
+            this.lblDirectory.Text = "No File";
+            // 
+            // btnFile
+            // 
+            this.btnFile.BackColor = System.Drawing.SystemColors.Control;
+            this.btnFile.FlatAppearance.BorderSize = 0;
+            this.btnFile.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFile.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFile.ForeColor = System.Drawing.Color.Black;
+            this.btnFile.IconChar = FontAwesome.Sharp.IconChar.FolderPlus;
+            this.btnFile.IconColor = System.Drawing.Color.DarkOrange;
+            this.btnFile.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnFile.IconSize = 25;
+            this.btnFile.Location = new System.Drawing.Point(349, 8);
+            this.btnFile.Name = "btnFile";
+            this.btnFile.Size = new System.Drawing.Size(110, 28);
+            this.btnFile.TabIndex = 19;
+            this.btnFile.Text = "Pilih File";
+            this.btnFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFile.UseVisualStyleBackColor = false;
+            this.btnFile.Click += new System.EventHandler(this.btnFile_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(269, 12);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(73, 20);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Gambar :";
             // 
             // btnDelete
             // 
@@ -239,13 +340,17 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "ID ";
             // 
-            // textBox1
+            // txtSearch
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox1.Location = new System.Drawing.Point(16, 219);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(274, 27);
-            this.textBox1.TabIndex = 6;
+            this.txtSearch.BackColor = System.Drawing.SystemColors.Info;
+            this.txtSearch.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtSearch.Location = new System.Drawing.Point(16, 219);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(274, 27);
+            this.txtSearch.TabIndex = 6;
+            this.txtSearch.Text = "Search By ID/Nama";
+            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // iconPictureBox1
             // 
@@ -297,111 +402,11 @@
             this.btn_search.Size = new System.Drawing.Size(34, 36);
             this.btn_search.TabIndex = 8;
             this.btn_search.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(269, 12);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 20);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "Gambar :";
-            // 
-            // btnFile
-            // 
-            this.btnFile.BackColor = System.Drawing.SystemColors.Control;
-            this.btnFile.FlatAppearance.BorderSize = 0;
-            this.btnFile.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnFile.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFile.ForeColor = System.Drawing.Color.Black;
-            this.btnFile.IconChar = FontAwesome.Sharp.IconChar.FolderPlus;
-            this.btnFile.IconColor = System.Drawing.Color.DarkOrange;
-            this.btnFile.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnFile.IconSize = 25;
-            this.btnFile.Location = new System.Drawing.Point(349, 8);
-            this.btnFile.Name = "btnFile";
-            this.btnFile.Size = new System.Drawing.Size(110, 28);
-            this.btnFile.TabIndex = 19;
-            this.btnFile.Text = "Pilih File";
-            this.btnFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnFile.UseVisualStyleBackColor = false;
-            this.btnFile.Click += new System.EventHandler(this.btnFile_Click);
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // lblDirectory
-            // 
-            this.lblDirectory.AutoSize = true;
-            this.lblDirectory.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDirectory.Location = new System.Drawing.Point(270, 45);
-            this.lblDirectory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDirectory.Name = "lblDirectory";
-            this.lblDirectory.Size = new System.Drawing.Size(49, 17);
-            this.lblDirectory.TabIndex = 20;
-            this.lblDirectory.Text = "No File";
-            // 
-            // txtHarga
-            // 
-            this.txtHarga.Location = new System.Drawing.Point(79, 112);
-            this.txtHarga.Name = "txtHarga";
-            this.txtHarga.Size = new System.Drawing.Size(167, 27);
-            this.txtHarga.TabIndex = 21;
-            // 
-            // txtStok
-            // 
-            this.txtStok.Location = new System.Drawing.Point(79, 145);
-            this.txtStok.Name = "txtStok";
-            this.txtStok.Size = new System.Drawing.Size(167, 27);
-            this.txtStok.TabIndex = 22;
-            // 
-            // id_barang
-            // 
-            this.id_barang.FillWeight = 35F;
-            this.id_barang.HeaderText = "ID";
-            this.id_barang.Name = "id_barang";
-            // 
-            // Kategori
-            // 
-            this.Kategori.FillWeight = 75F;
-            this.Kategori.HeaderText = "Kategori";
-            this.Kategori.Name = "Kategori";
-            // 
-            // Nama
-            // 
-            this.Nama.FillWeight = 150F;
-            this.Nama.HeaderText = "Nama";
-            this.Nama.Name = "Nama";
-            // 
-            // Harga
-            // 
-            this.Harga.FillWeight = 75F;
-            this.Harga.HeaderText = "Harga";
-            this.Harga.Name = "Harga";
-            // 
-            // Stok
-            // 
-            this.Stok.FillWeight = 40F;
-            this.Stok.HeaderText = "Stok";
-            this.Stok.Name = "Stok";
-            // 
-            // Gambar
-            // 
-            this.Gambar.FillWeight = 75F;
-            this.Gambar.HeaderText = "Gambar";
-            this.Gambar.Name = "Gambar";
-            this.Gambar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Gambar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Hapus
-            // 
-            this.Hapus.FillWeight = 75F;
-            this.Hapus.HeaderText = "Hapus";
-            this.Hapus.Name = "Hapus";
-            this.Hapus.Text = "";
             // 
             // admin_stock
             // 
@@ -412,7 +417,7 @@
             this.Controls.Add(this.iconPictureBox1);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.btn_search);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Nirmala UI", 11F);
@@ -435,7 +440,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearch;
         private FontAwesome.Sharp.IconButton btn_search;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
