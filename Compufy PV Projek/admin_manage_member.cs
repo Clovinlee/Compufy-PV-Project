@@ -61,18 +61,18 @@ namespace Compufy_PV_Projek
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string query = $"UPDATE [Barang] set nama_member = '{txtNama.Text}', no_hp_member = '{(txtNOHP.Text)}', birthdate = '{dateTimePicker2.Value}', tgl_daftar = '{dateTimePicker1.Value}', jk_member = '{cbGender.SelectedItem.ToString()}', alamat_member = '{textBox2.Text}' WHERE id_member = '{txtID.Text}'";
+            string query = $"UPDATE [Member] set nama_member = '{txtNama.Text}', no_hp_member = '{(txtNOHP.Text)}', birthdate = '{dateTimePicker2.Value}', tgl_daftar = '{dateTimePicker1.Value}', jk_member = '{cbGender.SelectedItem.ToString()}', alamat_member = '{textBox2.Text}' WHERE id_member = '{Convert.ToInt32(txtID.Text)}'";
             frm_login.executeQuery(query);
             LoadBarang();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Yakin mau delete barang ini ?", "Delete Barang", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult dialogResult = MessageBox.Show("Yakin mau delete Member ini ?", "Delete Member", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (dialogResult == DialogResult.Yes)
             {
-                string query = $"DELETE [Member] where id_member = '{txtID.Text}'";
+                string query = $"DELETE [Member] where id_member = '{Convert.ToInt32(txtID.Text)}'";
                 frm_login.executeQuery(query);
                 LoadBarang();
             }

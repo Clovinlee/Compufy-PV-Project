@@ -29,29 +29,29 @@ namespace Compufy_PV_Projek
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.btnInsert = new FontAwesome.Sharp.IconButton();
             this.btn_search = new FontAwesome.Sharp.IconButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btnDelete = new FontAwesome.Sharp.IconButton();
             this.btnUpdate = new FontAwesome.Sharp.IconButton();
-            this.txtStok = new System.Windows.Forms.TextBox();
-            this.txtHarga = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.cbKategori = new System.Windows.Forms.ComboBox();
+            this.cbGender = new System.Windows.Forms.ComboBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.id_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -135,11 +135,11 @@ namespace Compufy_PV_Projek
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnUpdate);
-            this.panel1.Controls.Add(this.txtStok);
-            this.panel1.Controls.Add(this.txtHarga);
+            this.panel1.Controls.Add(this.txtPassword);
+            this.panel1.Controls.Add(this.txtUsername);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.cbKategori);
+            this.panel1.Controls.Add(this.cbGender);
             this.panel1.Controls.Add(this.txtID);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
@@ -148,6 +148,54 @@ namespace Compufy_PV_Projek
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(506, 174);
             this.panel1.TabIndex = 19;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(94, 134);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(144, 20);
+            this.textBox2.TabIndex = 20;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(7, 129);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 20);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Nama";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.comboBox1.Location = new System.Drawing.Point(354, 85);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(135, 21);
+            this.comboBox1.TabIndex = 18;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(245, 86);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 20);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Tipe User";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(354, 12);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(135, 20);
+            this.dateTimePicker1.TabIndex = 16;
             // 
             // btnDelete
             // 
@@ -167,6 +215,7 @@ namespace Compufy_PV_Projek
             this.btnDelete.Text = "Delete";
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
@@ -186,20 +235,21 @@ namespace Compufy_PV_Projek
             this.btnUpdate.Text = "Update";
             this.btnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // txtStok
+            // txtPassword
             // 
-            this.txtStok.Location = new System.Drawing.Point(94, 88);
-            this.txtStok.Name = "txtStok";
-            this.txtStok.Size = new System.Drawing.Size(144, 20);
-            this.txtStok.TabIndex = 14;
+            this.txtPassword.Location = new System.Drawing.Point(94, 88);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(144, 20);
+            this.txtPassword.TabIndex = 14;
             // 
-            // txtHarga
+            // txtUsername
             // 
-            this.txtHarga.Location = new System.Drawing.Point(94, 51);
-            this.txtHarga.Name = "txtHarga";
-            this.txtHarga.Size = new System.Drawing.Size(144, 20);
-            this.txtHarga.TabIndex = 13;
+            this.txtUsername.Location = new System.Drawing.Point(94, 51);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(144, 20);
+            this.txtUsername.TabIndex = 13;
             // 
             // label5
             // 
@@ -223,13 +273,16 @@ namespace Compufy_PV_Projek
             this.label6.TabIndex = 10;
             this.label6.Text = "Username";
             // 
-            // cbKategori
+            // cbGender
             // 
-            this.cbKategori.FormattingEnabled = true;
-            this.cbKategori.Location = new System.Drawing.Point(354, 51);
-            this.cbKategori.Name = "cbKategori";
-            this.cbKategori.Size = new System.Drawing.Size(135, 21);
-            this.cbKategori.TabIndex = 9;
+            this.cbGender.FormattingEnabled = true;
+            this.cbGender.Items.AddRange(new object[] {
+            "L",
+            "P"});
+            this.cbGender.Location = new System.Drawing.Point(354, 51);
+            this.cbGender.Name = "cbGender";
+            this.cbGender.Size = new System.Drawing.Size(135, 21);
+            this.cbGender.TabIndex = 9;
             // 
             // txtID
             // 
@@ -278,14 +331,14 @@ namespace Compufy_PV_Projek
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.PapayaWhip;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Nirmala UI", 11F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Nirmala UI", 11F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_barang,
@@ -301,50 +354,7 @@ namespace Compufy_PV_Projek
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(682, 219);
             this.dataGridView1.TabIndex = 18;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(354, 12);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(135, 20);
-            this.dateTimePicker1.TabIndex = 16;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(354, 85);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(135, 21);
-            this.comboBox1.TabIndex = 18;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(245, 86);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 20);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Tipe User";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(7, 129);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 20);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Nama";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(94, 134);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(144, 20);
-            this.textBox2.TabIndex = 20;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // id_barang
             // 
@@ -419,11 +429,11 @@ namespace Compufy_PV_Projek
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private FontAwesome.Sharp.IconButton btnDelete;
         private FontAwesome.Sharp.IconButton btnUpdate;
-        private System.Windows.Forms.TextBox txtStok;
-        private System.Windows.Forms.TextBox txtHarga;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbKategori;
+        private System.Windows.Forms.ComboBox cbGender;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
