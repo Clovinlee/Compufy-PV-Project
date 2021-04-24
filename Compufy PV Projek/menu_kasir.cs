@@ -19,6 +19,7 @@ namespace Compufy_PV_Projek
         }
 
         public login frm_login;
+        DataSet ds_barang;
 
         private void menu_kasir_Load(object sender, EventArgs e)
         {
@@ -26,6 +27,57 @@ namespace Compufy_PV_Projek
             lbl_subtotal.Text = "Rp 0";
             lbl_discount.Text = "Rp 0";
             lbl_grandtotal.Text = "Rp 0";
+
+            ds_barang = new DataSet();
+            string q = "SELECT * FROM barang";
+            frm_login.executeDataSet(ds_barang, q, "barang");
+
+            foreach(DataRow r in ds_barang.Tables["barang"].Rows)
+            {
+                Panel p_container = new Panel();
+                p_container.Size = new Size(154, 180);
+
+                Label l_judul = new Label();
+                p_container.Controls.Add(l_judul);
+                l_judul.Font = new Font("Nirmala UI", 10);
+                l_judul.Size = new Size(156, 40);
+                l_judul.Text = r[2].ToString();
+                l_judul.TextAlign = ContentAlignment.MiddleCenter;
+                l_judul.Location = new Point(0, 115);
+                l_judul.Tag = "judul";
+                l_judul.Click += new EventHandler(buttonItemAdd_Click);
+
+
+                Label l_harga = new Label();
+                p_container.Controls.Add(l_harga);
+                l_harga.AutoSize = false;
+                l_harga.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
+                l_harga.Size = new Size(163, 21);
+                l_harga.Text = "Rp " + Convert.ToDecimal(r[3]).ToString("#,##");
+                l_harga.TextAlign = ContentAlignment.MiddleCenter;
+                l_harga.Location = new Point(0, 155);
+                l_harga.Tag = "harga";
+
+                Panel p_picture = new Panel();
+                p_container.Controls.Add(p_picture);
+                p_picture.Location = new Point(27, 12);
+                p_picture.Size = new Size(100, 100);
+                if(r[5] is null)
+                {
+                    p_picture.BackColor = Color.Peru;
+                }
+                else
+                {
+                    p_picture.BackgroundImage = Image.FromFile(r[5].ToString());
+                }
+                p_picture.Click += new EventHandler(buttonItemAdd_Click);
+
+
+                p_container.Tag = $"{r[0]}={r[1]}={r[2]}={r[3]}={r[4]}={r[5]}";
+
+                fpl_products.Controls.Add(p_container);
+            }
+
         }
         
         private void pl_menulogo_Paint(object sender, PaintEventArgs e)
@@ -62,40 +114,7 @@ namespace Compufy_PV_Projek
 
         private void btn_search_Click(object sender, EventArgs e)
         {
-            Panel p_container = new Panel();
-            p_container.Size = new Size(154, 180);
-
-            Label l_judul = new Label();
-            p_container.Controls.Add(l_judul);
-            l_judul.Font = new Font("Nirmala UI", 10);
-            l_judul.Size = new Size(156, 40);
-            l_judul.Text = tb_inputsearch.Text;
-            l_judul.TextAlign = ContentAlignment.MiddleCenter;
-            l_judul.Location = new Point(0,115);
-            l_judul.Tag = "judul";
-            l_judul.Click += new EventHandler(buttonItemAdd_Click);
-
-
-            Label l_harga = new Label();
-            p_container.Controls.Add(l_harga);
-            l_harga.AutoSize = false;
-            l_harga.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
-            l_harga.Size = new Size(163, 21);
-            l_harga.Text = "Rp 5.000.000";
-            l_harga.TextAlign = ContentAlignment.MiddleCenter;
-            l_harga.Location = new Point(0, 155);
-            l_harga.Tag = "harga";
-
-            Panel p_picture = new Panel();
-            p_container.Controls.Add(p_picture);
-            p_picture.Location = new Point(27, 12);
-            p_picture.Size = new Size(100, 100);
-            p_picture.BackColor = Color.Peru;
-            p_picture.Click += new EventHandler(buttonItemAdd_Click);
-
-            p_container.Tag = l_judul.Text + "=" + "5000000";
-
-            fpl_products.Controls.Add(p_container);
+            
         }
 
         private void buttonItemAdd_Click(object sender, EventArgs e)
@@ -356,6 +375,23 @@ namespace Compufy_PV_Projek
             frm_addmember.frm_kasir = this;
             frm_addmember.frm_login = frm_login;
             frm_addmember.ShowDialog();
+        }
+
+        private void btn_checkout_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_member_Click(object sender, EventArgs e)
+        {
+            if (cb_member.Checked == true)
+            {
+                cb_member.Checked = false;
+            }
+            else
+            {
+                id_member = -1;
+            }
         }
     }
 }

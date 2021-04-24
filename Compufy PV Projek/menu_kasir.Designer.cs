@@ -36,6 +36,7 @@
             this.lbl_namauser = new System.Windows.Forms.Label();
             this.pl_main = new System.Windows.Forms.Panel();
             this.btn_inputmember = new System.Windows.Forms.Button();
+            this.cb_member = new System.Windows.Forms.CheckBox();
             this.btn_member = new System.Windows.Forms.Button();
             this.btn_reset = new System.Windows.Forms.Button();
             this.pl_submainleft = new System.Windows.Forms.Panel();
@@ -63,7 +64,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cb_member = new System.Windows.Forms.CheckBox();
             this.pl_topbar.SuspendLayout();
             this.pl_main.SuspendLayout();
             this.pl_submainleft.SuspendLayout();
@@ -174,6 +174,19 @@
             this.btn_inputmember.Text = "Input Member";
             this.btn_inputmember.UseVisualStyleBackColor = false;
             this.btn_inputmember.Click += new System.EventHandler(this.btn_inputMember_Click);
+            // 
+            // cb_member
+            // 
+            this.cb_member.AutoSize = true;
+            this.cb_member.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_member.ForeColor = System.Drawing.Color.DarkGreen;
+            this.cb_member.Location = new System.Drawing.Point(314, 461);
+            this.cb_member.Name = "cb_member";
+            this.cb_member.Size = new System.Drawing.Size(106, 29);
+            this.cb_member.TabIndex = 10;
+            this.cb_member.Text = "Member";
+            this.cb_member.UseVisualStyleBackColor = true;
+            this.cb_member.Click += new System.EventHandler(this.cb_member_Click);
             // 
             // btn_member
             // 
@@ -466,6 +479,7 @@
             this.btn_checkout.TabIndex = 5;
             this.btn_checkout.Text = "Checkout";
             this.btn_checkout.UseVisualStyleBackColor = false;
+            this.btn_checkout.Click += new System.EventHandler(this.btn_checkout_Click);
             // 
             // flp_checkout
             // 
@@ -545,19 +559,6 @@
             this.label1.Size = new System.Drawing.Size(121, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Checkout";
-            // 
-            // cb_member
-            // 
-            this.cb_member.AutoSize = true;
-            this.cb_member.Enabled = false;
-            this.cb_member.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_member.ForeColor = System.Drawing.Color.DarkGreen;
-            this.cb_member.Location = new System.Drawing.Point(314, 461);
-            this.cb_member.Name = "cb_member";
-            this.cb_member.Size = new System.Drawing.Size(106, 29);
-            this.cb_member.TabIndex = 10;
-            this.cb_member.Text = "Member";
-            this.cb_member.UseVisualStyleBackColor = true;
             // 
             // menu_kasir
             // 
