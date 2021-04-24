@@ -147,6 +147,9 @@
       <DependentUpon>cr_nota.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ds_nota.cs">
+      <DependentUpon>ds_nota.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ds_nota.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

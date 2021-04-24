@@ -393,7 +393,14 @@ namespace Compufy_PV_Projek
 
         private void btn_checkout_Click(object sender, EventArgs e)
         {
+            if(flp_checkout.Controls.Count == 0)
+            {
+                MessageBox.Show("Tidak ada item!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
 
+            }
         }
 
         private void cb_member_Click(object sender, EventArgs e)
