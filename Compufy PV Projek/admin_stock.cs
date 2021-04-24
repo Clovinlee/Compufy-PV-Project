@@ -102,5 +102,51 @@ namespace Compufy_PV_Projek
                 LoadBarang();
             }  
         }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+
+            if (txtSearch.Text == "Search By ID/Nama" || txtSearch.Text == "")
+            {
+                LoadBarang();
+            }
+            else
+            {
+                DataSet ds = new DataSet();
+                string query = $"SELECT b.id_barang, k.nama_kategori, b.nama_barang, b.harga_barang, b.stok_barang from Barang b, Kategori k WHERE b.id_barang like '%{txtSearch.Text}%' or b.nama_barang like '%{txtSearch.Text}%'";
+                frm_login.executeDataSet(ds, query, "Barang");
+
+                for (int i = 0; i < ds.Tables["Barang"].Rows.Count; i++)
+                {
+                    dataGridView1.Rows.Add(ds.Tables["Barang"].Rows[i].ItemArray[0], ds.Tables["Barang"].Rows[i].ItemArray[1], ds.Tables["Barang"].Rows[i].ItemArray[2], ds.Tables["Barang"].Rows[i].ItemArray[3], ds.Tables["Barang"].Rows[i].ItemArray[4]);
+
+                    if (!cbKategori.Items.Contains(ds.Tables["Barang"].Rows[i].ItemArray[1]))
+                    {
+                        cbKategori.Items.Add(ds.Tables["Barang"].Rows[i].ItemArray[1]);
+                    }
+                }
+
+                txtSearch.Focus();
+            }
+        }
+
+        private void txtSearch_Enter(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == "Search By ID/Nama")
+            {
+                txtSearch.Text = "";
+                txtSearch.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtSearch_Leave(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == "")
+            {
+                txtSearch.Text = "Search By ID/Nama";
+                txtSearch.ForeColor = SystemColors.ScrollBar;
+            }
+        }
     }
 }
