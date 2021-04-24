@@ -28,7 +28,8 @@ namespace Compufy_PV_Projek
         public admin_manage_member frm_managemember;
 
         Button sub_active;
-        
+        public string id_login;
+
         private void menu_admin_Load(object sender, EventArgs e)
         {
             sub_active = btn_menusales;

@@ -177,9 +177,10 @@
             // 
             // cb_member
             // 
+            this.cb_member.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cb_member.AutoSize = true;
             this.cb_member.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_member.ForeColor = System.Drawing.Color.DarkGreen;
+            this.cb_member.ForeColor = System.Drawing.Color.Chocolate;
             this.cb_member.Location = new System.Drawing.Point(314, 461);
             this.cb_member.Name = "cb_member";
             this.cb_member.Size = new System.Drawing.Size(106, 29);
