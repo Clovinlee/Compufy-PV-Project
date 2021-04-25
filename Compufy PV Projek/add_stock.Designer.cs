@@ -37,15 +37,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAdd = new FontAwesome.Sharp.IconButton();
-            this.lblDirectory = new System.Windows.Forms.Label();
             this.btnFile = new FontAwesome.Sharp.IconButton();
             this.label4 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtStok
             // 
-            this.txtStok.Location = new System.Drawing.Point(87, 145);
+            this.txtStok.Location = new System.Drawing.Point(94, 145);
             this.txtStok.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtStok.Name = "txtStok";
             this.txtStok.Size = new System.Drawing.Size(146, 27);
@@ -53,7 +54,7 @@
             // 
             // txtHarga
             // 
-            this.txtHarga.Location = new System.Drawing.Point(87, 108);
+            this.txtHarga.Location = new System.Drawing.Point(94, 108);
             this.txtHarga.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtHarga.Name = "txtHarga";
             this.txtHarga.Size = new System.Drawing.Size(146, 27);
@@ -63,7 +64,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(37, 148);
+            this.label5.Location = new System.Drawing.Point(44, 148);
             this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 20);
@@ -74,7 +75,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(26, 111);
+            this.label6.Location = new System.Drawing.Point(33, 111);
             this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 20);
@@ -84,7 +85,7 @@
             // cbKategori
             // 
             this.cbKategori.FormattingEnabled = true;
-            this.cbKategori.Location = new System.Drawing.Point(87, 69);
+            this.cbKategori.Location = new System.Drawing.Point(94, 69);
             this.cbKategori.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbKategori.Name = "cbKategori";
             this.cbKategori.Size = new System.Drawing.Size(146, 28);
@@ -92,7 +93,7 @@
             // 
             // txtNama
             // 
-            this.txtNama.Location = new System.Drawing.Point(87, 32);
+            this.txtNama.Location = new System.Drawing.Point(94, 32);
             this.txtNama.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNama.Name = "txtNama";
             this.txtNama.Size = new System.Drawing.Size(146, 27);
@@ -102,7 +103,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(26, 35);
+            this.label3.Location = new System.Drawing.Point(33, 35);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 20);
@@ -113,7 +114,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(8, 72);
+            this.label2.Location = new System.Drawing.Point(15, 72);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 20);
@@ -131,26 +132,15 @@
             this.btnAdd.IconColor = System.Drawing.Color.DeepSkyBlue;
             this.btnAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAdd.IconSize = 30;
-            this.btnAdd.Location = new System.Drawing.Point(418, 197);
+            this.btnAdd.Location = new System.Drawing.Point(353, 207);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(103, 40);
+            this.btnAdd.Size = new System.Drawing.Size(105, 40);
             this.btnAdd.TabIndex = 12;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "Insert";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // lblDirectory
-            // 
-            this.lblDirectory.AutoSize = true;
-            this.lblDirectory.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDirectory.Location = new System.Drawing.Point(261, 69);
-            this.lblDirectory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDirectory.Name = "lblDirectory";
-            this.lblDirectory.Size = new System.Drawing.Size(49, 17);
-            this.lblDirectory.TabIndex = 23;
-            this.lblDirectory.Text = "No File";
             // 
             // btnFile
             // 
@@ -163,7 +153,7 @@
             this.btnFile.IconColor = System.Drawing.Color.DarkOrange;
             this.btnFile.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnFile.IconSize = 25;
-            this.btnFile.Location = new System.Drawing.Point(340, 28);
+            this.btnFile.Location = new System.Drawing.Point(348, 27);
             this.btnFile.Name = "btnFile";
             this.btnFile.Size = new System.Drawing.Size(110, 28);
             this.btnFile.TabIndex = 22;
@@ -176,7 +166,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(260, 32);
+            this.label4.Location = new System.Drawing.Point(268, 31);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 20);
@@ -187,13 +177,22 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(294, 72);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(140, 112);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
+            // 
             // add_stock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
-            this.ClientSize = new System.Drawing.Size(534, 251);
-            this.Controls.Add(this.lblDirectory);
+            this.ClientSize = new System.Drawing.Size(484, 261);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnFile);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cbKategori);
@@ -210,6 +209,7 @@
             this.Name = "add_stock";
             this.Text = "add_stock";
             this.Load += new System.EventHandler(this.add_stock_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,17 +218,17 @@
         #endregion
 
         private FontAwesome.Sharp.IconButton btnAdd;
-        private System.Windows.Forms.TextBox txtStok;
-        private System.Windows.Forms.TextBox txtHarga;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbKategori;
-        private System.Windows.Forms.TextBox txtNama;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblDirectory;
         private FontAwesome.Sharp.IconButton btnFile;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.TextBox txtStok;
+        public System.Windows.Forms.TextBox txtHarga;
+        public System.Windows.Forms.ComboBox cbKategori;
+        public System.Windows.Forms.TextBox txtNama;
     }
 }

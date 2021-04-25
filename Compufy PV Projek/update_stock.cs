@@ -11,46 +11,17 @@ using System.IO;
 
 namespace Compufy_PV_Projek
 {
-    public partial class add_stock : Form
+    public partial class update_stock : Form
     {
-        public add_stock()
+        public update_stock()
         {
             InitializeComponent();
         }
 
         public login frm_login;
-        bool kosong;
+        public string id;
 
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            foreach (Control tb in this.Controls)
-            {
-                if (tb is TextBox)
-                {
-                    if (tb.Text == "")
-                    {
-                        kosong = true;
-                    }
-                }
-            }
-
-            if (pictureBox1.ImageLocation == null || kosong == true)
-            {
-                MessageBox.Show("Ada field kosong!",
-                    "Field Kosong",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                kosong = false;
-            }
-            else
-            {
-                string query = $"INSERT into [Barang] (nama_barang, id_kategori, harga_barang, stok_barang, gambar) VALUES('{txtNama.Text}', '{cbKategori.SelectedIndex + 1}', '{txtHarga.Text}', '{txtStok.Text}', '{openFileDialog1.SafeFileName}')";
-                frm_login.executeQuery(query);
-                this.Close();
-            }
-        }
-
-        private void add_stock_Load(object sender, EventArgs e)
+        private void update_stock_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new Size(500, 300);
             this.MaximumSize = new Size(500, 300);
@@ -89,7 +60,44 @@ namespace Compufy_PV_Projek
                 MessageBox.Show("No File",
                     "No File Choosen",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        bool kosong;
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            foreach (Control tb in this.Controls)
+            {
+                if (tb is TextBox)
+                {
+                    if (tb.Text == "")
+                    {
+                        kosong = true;
+                    }
+                }
+            }
+
+            if (pictureBox1.ImageLocation == null || kosong == true)
+            {
+                MessageBox.Show("Ada field kosong!",
+                    "Field Kosong",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                kosong = false;
+            }
+            else
+            {
+                try
+                {
+                    string query = $"UPDATE [Barang] set nama_barang = '{txtNama.Text}', id_kategori = '{cbKategori.SelectedIndex + 1}', harga_barang = '{txtHarga.Text}', stok_barang = '{txtStok.Text}', gambar = '{openFileDialog1.SafeFileName}' where id_barang = {id}";
+                    frm_login.executeQuery(query);
+                    this.Close();
+                }
+                catch
+                {
+
+                }
             }
         }
     }
