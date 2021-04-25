@@ -82,7 +82,9 @@
       <HintPath>..\..\..\..\Downloads\Compressed\JControls\JThinButton.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
@@ -166,6 +168,12 @@
     </Compile>
     <Compile Include="kasir_addmember.Designer.cs">
       <DependentUpon>kasir_addmember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="kasir_bayar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="kasir_bayar.Designer.cs">
+      <DependentUpon>kasir_bayar.cs</DependentUpon>
     </Compile>
     <Compile Include="kasir_registermember.cs">
       <SubType>Form</SubType>
@@ -252,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="kasir_addmember.resx">
       <DependentUpon>kasir_addmember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="kasir_bayar.resx">
+      <DependentUpon>kasir_bayar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="kasir_registermember.resx">
       <DependentUpon>kasir_registermember.cs</DependentUpon>
