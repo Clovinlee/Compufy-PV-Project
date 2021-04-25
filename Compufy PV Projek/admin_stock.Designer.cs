@@ -195,7 +195,7 @@
             // 
             // Stok
             // 
-            this.Stok.FillWeight = 40F;
+            this.Stok.FillWeight = 45F;
             this.Stok.HeaderText = "Stok";
             this.Stok.Name = "Stok";
             // 
