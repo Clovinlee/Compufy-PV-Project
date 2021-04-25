@@ -19,13 +19,66 @@ namespace Compufy_PV_Projek
         }
 
         public login frm_login;
+        DataSet ds_barang;
+        public string id_login;
 
         private void menu_kasir_Load(object sender, EventArgs e)
         {
-            this.MinimumSize = new Size(820, 639);
+            this.MinimumSize = new Size(1014, 639);
             lbl_subtotal.Text = "Rp 0";
             lbl_discount.Text = "Rp 0";
             lbl_grandtotal.Text = "Rp 0";
+
+            ds_barang = new DataSet();
+            string q = "SELECT * FROM barang";
+            frm_login.executeDataSet(ds_barang, q, "barang");
+
+            foreach(DataRow r in ds_barang.Tables["barang"].Rows)
+            {
+                Panel p_container = new Panel();
+                p_container.Size = new Size(154, 180);
+
+                Label l_judul = new Label();
+                p_container.Controls.Add(l_judul);
+                l_judul.Font = new Font("Nirmala UI", 10);
+                l_judul.Size = new Size(156, 40);
+                l_judul.Text = r[2].ToString();
+                l_judul.TextAlign = ContentAlignment.MiddleCenter;
+                l_judul.Location = new Point(0, 115);
+                l_judul.Tag = "judul";
+                l_judul.Click += new EventHandler(buttonItemAdd_Click);
+
+
+                Label l_harga = new Label();
+                p_container.Controls.Add(l_harga);
+                l_harga.AutoSize = false;
+                l_harga.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
+                l_harga.Size = new Size(163, 21);
+                l_harga.Text = "Rp " + Convert.ToDecimal(r[3]).ToString("#,##");
+                l_harga.TextAlign = ContentAlignment.MiddleCenter;
+                l_harga.Location = new Point(0, 155);
+                l_harga.Tag = "harga";
+
+                Panel p_picture = new Panel();
+                p_container.Controls.Add(p_picture);
+                p_picture.Location = new Point(27, 12);
+                p_picture.Size = new Size(100, 100);
+                if(r[5].ToString() == "")
+                {
+                    p_picture.BackColor = Color.Peru;
+                }
+                else
+                {
+                    p_picture.BackgroundImage = Image.FromFile(r[5].ToString());
+                }
+                p_picture.Click += new EventHandler(buttonItemAdd_Click);
+
+
+                p_container.Tag = $"{r[0]}={r[1]}={r[2]}={r[3]}={r[4]}={r[5]}";
+
+                fpl_products.Controls.Add(p_container);
+            }
+
         }
         
         private void pl_menulogo_Paint(object sender, PaintEventArgs e)
@@ -62,40 +115,7 @@ namespace Compufy_PV_Projek
 
         private void btn_search_Click(object sender, EventArgs e)
         {
-            Panel p_container = new Panel();
-            p_container.Size = new Size(154, 180);
-
-            Label l_judul = new Label();
-            p_container.Controls.Add(l_judul);
-            l_judul.Font = new Font("Nirmala UI", 10);
-            l_judul.Size = new Size(156, 40);
-            l_judul.Text = tb_inputsearch.Text;
-            l_judul.TextAlign = ContentAlignment.MiddleCenter;
-            l_judul.Location = new Point(0,115);
-            l_judul.Tag = "judul";
-            l_judul.Click += new EventHandler(buttonItemAdd_Click);
-
-
-            Label l_harga = new Label();
-            p_container.Controls.Add(l_harga);
-            l_harga.AutoSize = false;
-            l_harga.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
-            l_harga.Size = new Size(163, 21);
-            l_harga.Text = "Rp 5.000.000";
-            l_harga.TextAlign = ContentAlignment.MiddleCenter;
-            l_harga.Location = new Point(0, 155);
-            l_harga.Tag = "harga";
-
-            Panel p_picture = new Panel();
-            p_container.Controls.Add(p_picture);
-            p_picture.Location = new Point(27, 12);
-            p_picture.Size = new Size(100, 100);
-            p_picture.BackColor = Color.Peru;
-            p_picture.Click += new EventHandler(buttonItemAdd_Click);
-
-            p_container.Tag = l_judul.Text + "=" + "5000000";
-
-            fpl_products.Controls.Add(p_container);
+            MessageBox.Show("IN PROGRESS");
         }
 
         private void buttonItemAdd_Click(object sender, EventArgs e)
@@ -110,112 +130,125 @@ namespace Compufy_PV_Projek
                 p_parent = (Panel)((Panel)sender).Parent;
             }
             string[] info = p_parent.Tag.ToString().Split('=');
+            bool valid = true;
+            foreach(Panel p in flp_checkout.Controls)
+            {
+                if(info[0] == p.Tag.ToString().Split('=')[0])
+                {
+                    MessageBox.Show("Barang sudah ada di checkout!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    valid = false;
+                }
+            }
+            if (valid == true)
+            {
+                Panel p_container = new Panel();
+                p_container.Size = new Size(374, 42);
+                p_container.Tag = p_parent.Tag.ToString();
 
-            Panel p_container = new Panel();
-            p_container.Size = new Size(374, 42);
-            p_container.Tag = p_parent.Tag.ToString();
+                // 
+                // label judul
+                // 
+                Label l_judul = new Label();
+                p_container.Controls.Add(l_judul);
+                l_judul.TextAlign = ContentAlignment.MiddleLeft;
+                l_judul.Font = new Font("Nirmala UI", 9F, FontStyle.Bold);
+                l_judul.ForeColor = Color.FromArgb(64, 64, 64);
+                l_judul.Location = new Point(6, 4);
+                l_judul.MaximumSize = new Size(130, 33);
+                l_judul.Size = new Size(130, 33);
+                l_judul.Text = info[2];
 
-            // 
-            // label judul
-            // 
-            Label l_judul = new Label();
-            p_container.Controls.Add(l_judul);
-            l_judul.TextAlign = ContentAlignment.MiddleLeft;
-            l_judul.Font = new Font("Nirmala UI", 9F, FontStyle.Bold);
-            l_judul.ForeColor = Color.FromArgb(64, 64, 64);
-            l_judul.Location = new Point(6, 4);
-            l_judul.MaximumSize = new Size(130, 33);
-            l_judul.Size = new Size(130, 33);
-            l_judul.Text = info[0];
+                // 
+                // label harga
+                // 
+                Label l_harga = new Label();
+                p_container.Controls.Add(l_harga);
+                l_harga.Font = new Font("Nirmala UI", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                l_harga.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+                l_harga.Location = new Point(215, 12);
+                l_harga.Size = new Size(98, 30);
+                l_harga.Tag = info[3];
+                l_harga.Text = "Rp " + Convert.ToInt32(info[3]).ToString("#,##");
 
-            // 
-            // label harga
-            // 
-            Label l_harga = new Label();
-            p_container.Controls.Add(l_harga);
-            l_harga.Font = new Font("Nirmala UI", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
-            l_harga.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            l_harga.Location = new Point(215, 12);
-            l_harga.Size = new Size(98, 30);
-            l_harga.Tag = info[1];
-            l_harga.Text = "Rp "+Convert.ToInt32(info[1]).ToString("#,##");
+                // 
+                // qty textbox
+                // 
+                TextBox tb_input = new TextBox();
+                p_container.Controls.Add(tb_input);
+                tb_input.BackColor = Color.AntiqueWhite;
+                tb_input.BorderStyle = BorderStyle.None;
+                tb_input.Font = new Font("Nirmala UI", 11.25F, FontStyle.Bold);
+                tb_input.Location = new Point(159, 8);
+                tb_input.Size = new Size(25, 20);
+                tb_input.Text = "1";
+                tb_input.TextAlign = HorizontalAlignment.Center;
+                tb_input.TextChanged += new EventHandler(checkQTY);
 
-            // 
-            // qty textbox
-            // 
-            TextBox tb_input = new TextBox();
-            p_container.Controls.Add(tb_input);
-            tb_input.BackColor = Color.AntiqueWhite;
-            tb_input.BorderStyle = BorderStyle.None;
-            tb_input.Font = new Font("Nirmala UI", 11.25F, FontStyle.Bold);
-            tb_input.Location = new Point(159, 8);
-            tb_input.Size = new Size(25, 20);
-            tb_input.Text = "1";
-            tb_input.TextAlign = HorizontalAlignment.Center;
-            tb_input.TextChanged += new EventHandler(checkQTY);
+                // 
+                // Underline
+                // 
+                Label underline = new Label();
+                p_container.Controls.Add(underline);
+                underline.BackColor = Color.Silver;
+                underline.Location = new Point(161, 29);
+                underline.Size = new Size(22, 1);
 
-            // 
-            // Underline
-            // 
-            Label underline = new Label();
-            p_container.Controls.Add(underline);
-            underline.BackColor = Color.Silver;
-            underline.Location = new Point(161, 29);
-            underline.Size = new Size(22, 1);
-
-            // 
-            // button +
-            // 
-            FontAwesome.Sharp.IconButton b_add = new FontAwesome.Sharp.IconButton();
-            p_container.Controls.Add(b_add);
-            b_add.FlatAppearance.BorderSize = 0;
-            b_add.FlatStyle = FlatStyle.Flat;
-            b_add.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
-            b_add.IconColor = Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(234)))), ((int)(((byte)(104)))));
-            b_add.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            b_add.IconSize = 22;
-            b_add.Location = new Point(137, 7);
-            b_add.Size = new Size(16, 25);
-            b_add.Tag = "+";
-            b_add.UseVisualStyleBackColor = true;
-            b_add.Click += new EventHandler(b_modify_Click);
+                // 
+                // button +
+                // 
+                FontAwesome.Sharp.IconButton b_add = new FontAwesome.Sharp.IconButton();
+                p_container.Controls.Add(b_add);
+                b_add.FlatAppearance.BorderSize = 0;
+                b_add.FlatStyle = FlatStyle.Flat;
+                b_add.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
+                b_add.IconColor = Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(234)))), ((int)(((byte)(104)))));
+                b_add.IconFont = FontAwesome.Sharp.IconFont.Auto;
+                b_add.IconSize = 22;
+                b_add.Location = new Point(137, 7);
+                b_add.Size = new Size(16, 25);
+                b_add.Tag = "+";
+                b_add.UseVisualStyleBackColor = true;
+                b_add.Click += new EventHandler(b_modify_Click);
 
 
-            // 
-            // button -
-            // 
-            FontAwesome.Sharp.IconButton b_minus = new FontAwesome.Sharp.IconButton();
-            p_container.Controls.Add(b_minus);
-            b_minus.FlatAppearance.BorderSize = 0;
-            b_minus.FlatStyle = FlatStyle.Flat;
-            b_minus.IconChar = FontAwesome.Sharp.IconChar.MinusSquare;
-            b_minus.IconColor = Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(234)))), ((int)(((byte)(104)))));
-            b_minus.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            b_minus.IconSize = 22;
-            b_minus.Location = new Point(190, 7);
-            b_minus.Size = new Size(16, 25);
-            b_minus.Tag = "-";
-            b_minus.UseVisualStyleBackColor = true;
-            b_minus.Click += new EventHandler(b_modify_Click);
+                // 
+                // button -
+                // 
+                FontAwesome.Sharp.IconButton b_minus = new FontAwesome.Sharp.IconButton();
+                p_container.Controls.Add(b_minus);
+                b_minus.FlatAppearance.BorderSize = 0;
+                b_minus.FlatStyle = FlatStyle.Flat;
+                b_minus.IconChar = FontAwesome.Sharp.IconChar.MinusSquare;
+                b_minus.IconColor = Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(234)))), ((int)(((byte)(104)))));
+                b_minus.IconFont = FontAwesome.Sharp.IconFont.Auto;
+                b_minus.IconSize = 22;
+                b_minus.Location = new Point(190, 7);
+                b_minus.Size = new Size(16, 25);
+                b_minus.Tag = "-";
+                b_minus.UseVisualStyleBackColor = true;
+                b_minus.Click += new EventHandler(b_modify_Click);
 
-            // 
-            // button trash
-            // 
-            FontAwesome.Sharp.IconButton b_trash = new FontAwesome.Sharp.IconButton();
-            p_container.Controls.Add(b_trash);
-            b_trash.FlatAppearance.BorderSize = 0;
-            b_trash.FlatStyle = FlatStyle.Flat;
-            b_trash.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            b_trash.IconColor = Color.Red;
-            b_trash.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            b_trash.IconSize = 30;
-            b_trash.Location = new Point(332, 4);
-            b_trash.Size = new Size(26, 32);
-            b_trash.UseVisualStyleBackColor = true;
-            b_trash.Click += new EventHandler(b_trash_Click);
+                // 
+                // button trash
+                // 
+                FontAwesome.Sharp.IconButton b_trash = new FontAwesome.Sharp.IconButton();
+                p_container.Controls.Add(b_trash);
+                b_trash.FlatAppearance.BorderSize = 0;
+                b_trash.FlatStyle = FlatStyle.Flat;
+                b_trash.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+                b_trash.IconColor = Color.Red;
+                b_trash.IconFont = FontAwesome.Sharp.IconFont.Auto;
+                b_trash.IconSize = 30;
+                b_trash.Location = new Point(332, 4);
+                b_trash.Size = new Size(26, 32);
+                b_trash.UseVisualStyleBackColor = true;
+                b_trash.Click += new EventHandler(b_trash_Click);
 
-            flp_checkout.Controls.Add(p_container);
-            sumHarga();
+                p_container.Tag = info[0];
+
+                flp_checkout.Controls.Add(p_container);
+                sumHarga();
+            }
         }
 
         private void b_trash_Click(object sender, EventArgs e)
@@ -356,6 +389,31 @@ namespace Compufy_PV_Projek
             frm_addmember.frm_kasir = this;
             frm_addmember.frm_login = frm_login;
             frm_addmember.ShowDialog();
+        }
+
+        private void btn_checkout_Click(object sender, EventArgs e)
+        {
+            if(flp_checkout.Controls.Count == 0)
+            {
+                MessageBox.Show("Tidak ada item!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+
+            }
+        }
+
+        private void cb_member_Click(object sender, EventArgs e)
+        {
+            if (cb_member.Checked == true)
+            {
+                cb_member.Checked = false;
+            }
+            else
+            {
+                id_member = -1;
+                sumHarga();
+            }
         }
     }
 }

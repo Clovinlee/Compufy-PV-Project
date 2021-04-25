@@ -98,9 +98,7 @@ namespace Compufy_PV_Projek
                 btn_tambahmember.Enabled = false;
                 frm_kasir.id_member = -1;
                 frm_kasir.sumHarga();
-                frm_kasir.cb_member.Enabled = true;
                 frm_kasir.cb_member.Checked = false;
-                frm_kasir.cb_member.Enabled = false;
             }
         }
 
@@ -108,9 +106,7 @@ namespace Compufy_PV_Projek
         {
             id = temp_id;
             frm_kasir.id_member = id;
-            frm_kasir.cb_member.Enabled = true;
             frm_kasir.cb_member.Checked = true;
-            frm_kasir.cb_member.Enabled = false;
             frm_kasir.sumHarga();
             MessageBox.Show("Berhasil input member!");
             this.Close();

@@ -118,10 +118,11 @@ namespace Compufy_PV_Projek
                     {
                         frm_admin = new menu_admin();
                     }
-                    frm_admin.lbl_namauser.Text = ds.Tables["akun"].Rows[0]["username"].ToString();
+                    frm_admin.lbl_namauser.Text = ds.Tables["akun"].Rows[0]["nama_user"].ToString();
                     frm_admin.lbl_jabatanuser.Text = role;
 
                     frm_admin.frm_login = this;
+                    frm_admin.id_login = ds.Tables["akun"].Rows[0]["id_user"].ToString();
                     frm_admin.Show();
                 }
                 else if (tipe == 2)
@@ -130,10 +131,11 @@ namespace Compufy_PV_Projek
                     {
                         frm_kasir = new menu_kasir();
                     }
-                    frm_kasir.lbl_namauser.Text = ds.Tables["akun"].Rows[0]["username"].ToString();
+                    frm_kasir.lbl_namauser.Text = ds.Tables["akun"].Rows[0]["nama_user"].ToString();
                     frm_kasir.lbl_jabatanuser.Text = role;
 
                     frm_kasir.frm_login = frm_login;
+                    frm_kasir.id_login = ds.Tables["akun"].Rows[0]["id_user"].ToString();
                     frm_kasir.Show();
 
                     }
