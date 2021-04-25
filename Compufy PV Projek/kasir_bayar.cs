@@ -51,13 +51,13 @@ namespace Compufy_PV_Projek
             {
                 num_cash.Value = total;
             }
-            if(num_cash.Value < total)
+            if (num_cash.Value < total)
             {
                 MessageBox.Show("Uang yang dibayarkan tidak cukup!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                frm_kasir.bayar = num_cash.Value;
+                frm_kasir.bayar = Convert.ToDecimal(num_cash.Value);
                 string metode = rb_cash.Checked == true ? "Cash" : "Kredit";
                 frm_kasir.metode = metode;
                 this.Close();

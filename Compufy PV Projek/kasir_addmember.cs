@@ -54,6 +54,7 @@ namespace Compufy_PV_Projek
         int temp_id = -1;
         private void btn_checkmember_Click(object sender, EventArgs e)
         {
+            bool found = false;
             if(tb_id.Text != "")
             {
                 foreach (DataRow r in ds_member.Tables[0].Rows)
@@ -72,9 +73,10 @@ namespace Compufy_PV_Projek
                             rb_wanita.Checked = false;
                         }
                         btn_tambahmember.Enabled = true;
+                        found = true;
                     }
                 }
-                if (temp_id == -1)
+                if (found == false)
                 {
                     MessageBox.Show($"Member dengan ID {tb_id.Text} tidak ditemukan!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -97,6 +99,7 @@ namespace Compufy_PV_Projek
                 temp_id = -1;
                 btn_tambahmember.Enabled = false;
                 frm_kasir.id_member = -1;
+                frm_kasir.nama_member = "";
                 frm_kasir.sumHarga();
                 frm_kasir.cb_member.Checked = false;
             }
@@ -107,6 +110,7 @@ namespace Compufy_PV_Projek
             id = temp_id;
             frm_kasir.id_member = id;
             frm_kasir.cb_member.Checked = true;
+            frm_kasir.nama_member = tb_nama.Text;
             frm_kasir.sumHarga();
             MessageBox.Show("Berhasil input member!");
             this.Close();

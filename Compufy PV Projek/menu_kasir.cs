@@ -361,15 +361,7 @@ namespace Compufy_PV_Projek
         {
             if(MessageBox.Show("Yakin reset checkout?","Reset Checkout",MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                flp_checkout.Controls.Clear();
-                id_member = -1;
-                cb_member.Enabled = true;
-                if(cb_member.Checked == true)
-                {
-                    cb_member.Checked = false;
-                }
-                cb_member.Enabled = false;
-                sumHarga();
+                resetCheckout();
             }
         }
 
@@ -388,6 +380,7 @@ namespace Compufy_PV_Projek
         }
 
         public int id_member = -1;
+        public string nama_member = "";
 
         private void btn_inputMember_Click(object sender, EventArgs e)
         {
@@ -399,43 +392,48 @@ namespace Compufy_PV_Projek
             frm_addmember.frm_kasir = this;
             frm_addmember.frm_login = frm_login;
             frm_addmember.ShowDialog();
+            Console.WriteLine(id_member);
+            Console.WriteLine(nama_member);
         }
 
         public decimal bayar = -1;
         public string metode = "";
         public kasir_bayar frm_kasirbayar;
-
+        public kasir_nota frm_nota;
         private void btn_checkout_Click(object sender, EventArgs e)
         {
-            if(flp_checkout.Controls.Count == 0)
+            int h_id = -1;
+            List<string> id_barang = new List<string>();
+            if (flp_checkout.Controls.Count == 0)
             {
                 MessageBox.Show("Tidak ada item!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                ds_nota ds_checkout = new ds_nota();
-                
                 if (frm_kasirbayar == null)
                 {
                     frm_kasirbayar = new kasir_bayar();
                 }
+
                 frm_kasirbayar.total = total;
                 frm_kasirbayar.frm_kasir = this;
                 frm_kasirbayar.ShowDialog();
+
                 if(bayar != -1)
                 {
                     //Insert H_transaksi
                     string q;
                     if (id_member == -1)
                     {
-                        q = $"INSERT INTO h_transaksi(id_user,total_trans,tgl_trans,metode_trans,diskon) VALUES({id_login},{subtotal},CONVERT(datetime,'{System.DateTime.Now}',103),{metode},{discount})";
+                        q = $"INSERT INTO h_transaksi(id_user,total_trans,tgl_trans,metode_trans,diskon) VALUES('{id_login}','{subtotal}',CONVERT(datetime,'{System.DateTime.Now}',103),'{metode}','{discount}')";
                     }
                     else
                     {
                         q = $"INSERT INTO h_transaksi(id_user,id_member,total_trans,tgl_trans,metode_trans,diskon) VALUES('{id_login}','{id_member}','{subtotal}',CONVERT(datetime,'{System.DateTime.Now}',103),'{metode}','{discount}')";
                     }
                     frm_login.executeQuery(q);
-                    int h_id = frm_login.execScalar("SELECT MAX(id_trans) FROM h_transaksi");
+                    h_id = frm_login.execScalar("SELECT MAX(id_trans) FROM h_transaksi");
+
                     foreach (Panel p in flp_checkout.Controls)
                     {
                         int jumlah = 1;
@@ -448,11 +446,44 @@ namespace Compufy_PV_Projek
                         }
                         //INSERT D_transaksi
                         string[] info = p.Tag.ToString().Split('=');
+                        id_barang.Add(info[0]);
+
                         q = $"INSERT INTO d_transaksi(id_barang, id_trans, jumlah_barang) VALUES('{info[0]}','{h_id}','{jumlah}')";
                         frm_login.executeQuery(q);
+
                     }
+                    if(frm_nota == null)
+                    {
+                        frm_nota = new kasir_nota();
+                    }
+                    frm_nota.frm_login = frm_login;
+                    frm_nota.frm_kasir = this;
+                    frm_nota.h_id = h_id;
+                    frm_nota.id_barang = id_barang;
+                    frm_nota.bayar = bayar;
+                    frm_nota.nama_member = nama_member;
+                    frm_nota.metode = metode;
+                    this.Hide();
+                    resetCheckout();
+                    frm_nota.Show();
                 }
             }
+        }
+
+        public void resetCheckout()
+        {
+            flp_checkout.Controls.Clear();
+            id_member = -1;
+            cb_member.Enabled = true;
+            if (cb_member.Checked == true)
+            {
+                cb_member.Checked = false;
+            }
+            cb_member.Enabled = false;
+            bayar = -1;
+            nama_member = "";
+            metode = "";
+            sumHarga();
         }
 
         private void cb_member_Click(object sender, EventArgs e)

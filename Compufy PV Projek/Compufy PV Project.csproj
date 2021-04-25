@@ -48,9 +48,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="FlatButton">
       <HintPath>..\..\..\..\Downloads\Compressed\JControls\FlatButton.dll</HintPath>
     </Reference>
@@ -87,6 +89,8 @@
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -174,6 +178,12 @@
     </Compile>
     <Compile Include="kasir_bayar.Designer.cs">
       <DependentUpon>kasir_bayar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="kasir_nota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="kasir_nota.Designer.cs">
+      <DependentUpon>kasir_nota.cs</DependentUpon>
     </Compile>
     <Compile Include="kasir_registermember.cs">
       <SubType>Form</SubType>
@@ -269,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="kasir_bayar.resx">
       <DependentUpon>kasir_bayar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="kasir_nota.resx">
+      <DependentUpon>kasir_nota.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="kasir_registermember.resx">
       <DependentUpon>kasir_registermember.cs</DependentUpon>

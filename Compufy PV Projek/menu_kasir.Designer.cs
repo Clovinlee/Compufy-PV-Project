@@ -43,6 +43,7 @@
             this.fpl_products = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_search = new FontAwesome.Sharp.IconButton();
             this.pl_categories = new System.Windows.Forms.Panel();
+            this.btn_restartcategory = new FontAwesome.Sharp.IconButton();
             this.cb_categories = new System.Windows.Forms.ComboBox();
             this.tb_inputsearch = new System.Windows.Forms.TextBox();
             this.pl_checkout = new System.Windows.Forms.Panel();
@@ -61,7 +62,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_restartcategory = new FontAwesome.Sharp.IconButton();
             this.pl_topbar.SuspendLayout();
             this.pl_main.SuspendLayout();
             this.pl_submainleft.SuspendLayout();
@@ -280,6 +280,21 @@
             this.pl_categories.Name = "pl_categories";
             this.pl_categories.Size = new System.Drawing.Size(399, 46);
             this.pl_categories.TabIndex = 8;
+            // 
+            // btn_restartcategory
+            // 
+            this.btn_restartcategory.FlatAppearance.BorderSize = 0;
+            this.btn_restartcategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_restartcategory.IconChar = FontAwesome.Sharp.IconChar.SyncAlt;
+            this.btn_restartcategory.IconColor = System.Drawing.Color.Black;
+            this.btn_restartcategory.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_restartcategory.IconSize = 30;
+            this.btn_restartcategory.Location = new System.Drawing.Point(212, 7);
+            this.btn_restartcategory.Name = "btn_restartcategory";
+            this.btn_restartcategory.Size = new System.Drawing.Size(33, 33);
+            this.btn_restartcategory.TabIndex = 2;
+            this.btn_restartcategory.UseVisualStyleBackColor = true;
+            this.btn_restartcategory.Click += new System.EventHandler(this.btn_restartcategory_Click);
             // 
             // cb_categories
             // 
@@ -505,21 +520,6 @@
             this.label1.Size = new System.Drawing.Size(121, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Checkout";
-            // 
-            // btn_restartcategory
-            // 
-            this.btn_restartcategory.FlatAppearance.BorderSize = 0;
-            this.btn_restartcategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_restartcategory.IconChar = FontAwesome.Sharp.IconChar.SyncAlt;
-            this.btn_restartcategory.IconColor = System.Drawing.Color.Black;
-            this.btn_restartcategory.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_restartcategory.IconSize = 30;
-            this.btn_restartcategory.Location = new System.Drawing.Point(212, 7);
-            this.btn_restartcategory.Name = "btn_restartcategory";
-            this.btn_restartcategory.Size = new System.Drawing.Size(33, 33);
-            this.btn_restartcategory.TabIndex = 2;
-            this.btn_restartcategory.UseVisualStyleBackColor = true;
-            this.btn_restartcategory.Click += new System.EventHandler(this.btn_restartcategory_Click);
             // 
             // menu_kasir
             // 
