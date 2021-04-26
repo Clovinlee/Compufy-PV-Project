@@ -43,6 +43,8 @@
             this.fpl_products = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_search = new FontAwesome.Sharp.IconButton();
             this.pl_categories = new System.Windows.Forms.Panel();
+            this.btn_restartcategory = new FontAwesome.Sharp.IconButton();
+            this.cb_categories = new System.Windows.Forms.ComboBox();
             this.tb_inputsearch = new System.Windows.Forms.TextBox();
             this.pl_checkout = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
@@ -60,7 +62,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cb_categories = new System.Windows.Forms.ComboBox();
             this.pl_topbar.SuspendLayout();
             this.pl_main.SuspendLayout();
             this.pl_submainleft.SuspendLayout();
@@ -273,11 +274,42 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pl_categories.AutoScroll = true;
             this.pl_categories.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.pl_categories.Controls.Add(this.btn_restartcategory);
             this.pl_categories.Controls.Add(this.cb_categories);
             this.pl_categories.Location = new System.Drawing.Point(9, 0);
             this.pl_categories.Name = "pl_categories";
             this.pl_categories.Size = new System.Drawing.Size(399, 46);
             this.pl_categories.TabIndex = 8;
+            // 
+            // btn_restartcategory
+            // 
+            this.btn_restartcategory.FlatAppearance.BorderSize = 0;
+            this.btn_restartcategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_restartcategory.IconChar = FontAwesome.Sharp.IconChar.SyncAlt;
+            this.btn_restartcategory.IconColor = System.Drawing.Color.Black;
+            this.btn_restartcategory.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_restartcategory.IconSize = 30;
+            this.btn_restartcategory.Location = new System.Drawing.Point(212, 7);
+            this.btn_restartcategory.Name = "btn_restartcategory";
+            this.btn_restartcategory.Size = new System.Drawing.Size(33, 33);
+            this.btn_restartcategory.TabIndex = 2;
+            this.btn_restartcategory.UseVisualStyleBackColor = true;
+            this.btn_restartcategory.Click += new System.EventHandler(this.btn_restartcategory_Click);
+            // 
+            // cb_categories
+            // 
+            this.cb_categories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(201)))), ((int)(((byte)(166)))));
+            this.cb_categories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_categories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cb_categories.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_categories.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.cb_categories.FormattingEnabled = true;
+            this.cb_categories.Location = new System.Drawing.Point(13, 7);
+            this.cb_categories.Name = "cb_categories";
+            this.cb_categories.Size = new System.Drawing.Size(193, 29);
+            this.cb_categories.TabIndex = 1;
+            this.cb_categories.SelectedIndexChanged += new System.EventHandler(this.cb_categories_SelectedIndexChanged);
+            this.cb_categories.DropDownClosed += new System.EventHandler(this.cb_categories_DropDownClosed);
             // 
             // tb_inputsearch
             // 
@@ -489,18 +521,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Checkout";
             // 
-            // cb_categories
-            // 
-            this.cb_categories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(201)))), ((int)(((byte)(166)))));
-            this.cb_categories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_categories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cb_categories.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_categories.FormattingEnabled = true;
-            this.cb_categories.Location = new System.Drawing.Point(13, 7);
-            this.cb_categories.Name = "cb_categories";
-            this.cb_categories.Size = new System.Drawing.Size(164, 29);
-            this.cb_categories.TabIndex = 1;
-            // 
             // menu_kasir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -564,5 +584,6 @@
         private System.Windows.Forms.Button btn_inputmember;
         public System.Windows.Forms.CheckBox cb_member;
         private System.Windows.Forms.ComboBox cb_categories;
+        private FontAwesome.Sharp.IconButton btn_restartcategory;
     }
 }

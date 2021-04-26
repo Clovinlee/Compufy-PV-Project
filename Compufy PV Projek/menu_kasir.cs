@@ -78,9 +78,16 @@ namespace Compufy_PV_Projek
 
                 fpl_products.Controls.Add(p_container);
             }
+            DataSet ds_categories = new DataSet();
+            q = "SELECT id_kategori, nama_kategori FROM KATEGORI";
+            frm_login.executeDataSet(ds_categories, q, "kategori");
+            cb_categories.DataSource = ds_categories.Tables[0];
+            cb_categories.ValueMember = "id_kategori";
+            cb_categories.DisplayMember = "nama_kategori";
+            cb_categories.SelectedIndex = -1;
 
         }
-        
+
         private void pl_menulogo_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -262,27 +269,31 @@ namespace Compufy_PV_Projek
                 sumHarga();
             }
         }
+        decimal subtotal = 0;
+        decimal discount = 0;
+        decimal total = 0;
 
         public void sumHarga()
         {
             subtotal = 0;
             discount = 0;
+            total = 0;
             foreach(var p in flp_checkout.Controls)
             {
                 if (p is Panel)
                 {
                     decimal harga = 1;
                     int jumlah = 1;
-                    foreach(var child in ((Panel)p).Controls)
+                    foreach (var child in ((Panel)p).Controls)
                     {
                         if (child is Label)
                         {
-                            if(((Label)child).Tag != null)
+                            if (((Label)child).Tag != null)
                             {
                                 harga = Convert.ToInt32(((Label)child).Tag);
                             }
                         }
-                        else if(child is TextBox)
+                        else if (child is TextBox)
                         {
                             jumlah = Convert.ToInt32(((TextBox)child).Text);
                         }
@@ -294,10 +305,10 @@ namespace Compufy_PV_Projek
             {
                 discount = subtotal * 5 / 100;
             }
-
+            total = subtotal - discount;
             lbl_subtotal.Text = subtotal == 0 ? "Rp 0" : "Rp " + subtotal.ToString("#,##");
             lbl_discount.Text = discount == 0 ? "Rp 0" : "Rp " +  (discount).ToString("#,##");
-            lbl_grandtotal.Text = (subtotal - discount) == 0 ? "Rp 0" : "Rp " + (subtotal - discount).ToString("#,##");
+            lbl_grandtotal.Text = (subtotal - discount) == 0 ? "Rp 0" : "Rp " + total.ToString("#,##");
         }
 
         private void checkQTY(object sender, EventArgs e)
@@ -344,22 +355,13 @@ namespace Compufy_PV_Projek
             sumHarga();
         }
 
-        decimal subtotal = 0;
-        decimal discount = 0;
+        
 
         private void btn_reset_Click(object sender, EventArgs e)
         {
             if(MessageBox.Show("Yakin reset checkout?","Reset Checkout",MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                flp_checkout.Controls.Clear();
-                id_member = -1;
-                cb_member.Enabled = true;
-                if(cb_member.Checked == true)
-                {
-                    cb_member.Checked = false;
-                }
-                cb_member.Enabled = false;
-                sumHarga();
+                resetCheckout();
             }
         }
 
@@ -378,6 +380,7 @@ namespace Compufy_PV_Projek
         }
 
         public int id_member = -1;
+        public string nama_member = "";
 
         private void btn_inputMember_Click(object sender, EventArgs e)
         {
@@ -389,18 +392,98 @@ namespace Compufy_PV_Projek
             frm_addmember.frm_kasir = this;
             frm_addmember.frm_login = frm_login;
             frm_addmember.ShowDialog();
+            Console.WriteLine(id_member);
+            Console.WriteLine(nama_member);
         }
 
+        public decimal bayar = -1;
+        public string metode = "";
+        public kasir_bayar frm_kasirbayar;
+        public kasir_nota frm_nota;
         private void btn_checkout_Click(object sender, EventArgs e)
         {
-            if(flp_checkout.Controls.Count == 0)
+            int h_id = -1;
+            List<string> id_barang = new List<string>();
+            if (flp_checkout.Controls.Count == 0)
             {
                 MessageBox.Show("Tidak ada item!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
+                if (frm_kasirbayar == null)
+                {
+                    frm_kasirbayar = new kasir_bayar();
+                }
 
+                frm_kasirbayar.total = total;
+                frm_kasirbayar.frm_kasir = this;
+                frm_kasirbayar.ShowDialog();
+
+                if(bayar != -1)
+                {
+                    //Insert H_transaksi
+                    string q;
+                    if (id_member == -1)
+                    {
+                        q = $"INSERT INTO h_transaksi(id_user,total_trans,tgl_trans,metode_trans,diskon) VALUES('{id_login}','{subtotal}',CONVERT(datetime,'{System.DateTime.Now}',103),'{metode}','{discount}')";
+                    }
+                    else
+                    {
+                        q = $"INSERT INTO h_transaksi(id_user,id_member,total_trans,tgl_trans,metode_trans,diskon) VALUES('{id_login}','{id_member}','{subtotal}',CONVERT(datetime,'{System.DateTime.Now}',103),'{metode}','{discount}')";
+                    }
+                    frm_login.executeQuery(q);
+                    h_id = frm_login.execScalar("SELECT MAX(id_trans) FROM h_transaksi");
+
+                    foreach (Panel p in flp_checkout.Controls)
+                    {
+                        int jumlah = 1;
+                        foreach (var child in p.Controls)
+                        {
+                            if (child is TextBox)
+                            {
+                                jumlah = Convert.ToInt32(((TextBox)child).Text);
+                            }
+                        }
+                        //INSERT D_transaksi
+                        string[] info = p.Tag.ToString().Split('=');
+                        id_barang.Add(info[0]);
+
+                        q = $"INSERT INTO d_transaksi(id_barang, id_trans, jumlah_barang) VALUES('{info[0]}','{h_id}','{jumlah}')";
+                        frm_login.executeQuery(q);
+
+                    }
+                    if(frm_nota == null)
+                    {
+                        frm_nota = new kasir_nota();
+                    }
+                    frm_nota.frm_login = frm_login;
+                    frm_nota.frm_kasir = this;
+                    frm_nota.h_id = h_id;
+                    frm_nota.id_barang = id_barang;
+                    frm_nota.bayar = bayar;
+                    frm_nota.nama_member = nama_member;
+                    frm_nota.metode = metode;
+                    this.Hide();
+                    resetCheckout();
+                    frm_nota.Show();
+                }
             }
+        }
+
+        public void resetCheckout()
+        {
+            flp_checkout.Controls.Clear();
+            id_member = -1;
+            cb_member.Enabled = true;
+            if (cb_member.Checked == true)
+            {
+                cb_member.Checked = false;
+            }
+            cb_member.Enabled = false;
+            bayar = -1;
+            nama_member = "";
+            metode = "";
+            sumHarga();
         }
 
         private void cb_member_Click(object sender, EventArgs e)
@@ -414,6 +497,32 @@ namespace Compufy_PV_Projek
                 id_member = -1;
                 sumHarga();
             }
+        }
+
+        private void cb_categories_DropDownClosed(object sender, EventArgs e)
+        {
+            lbl_namauser.Focus();
+        }
+
+        private void cb_categories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach(Panel p in fpl_products.Controls)
+            {
+                string[] info = p.Tag.ToString().Split('=');
+                if (cb_categories.SelectedIndex == -1 || info[1] == cb_categories.SelectedValue.ToString())
+                {
+                    p.Visible = true;
+                }
+                else
+                {
+                    p.Visible = false;
+                }
+            }
+        }
+
+        private void btn_restartcategory_Click(object sender, EventArgs e)
+        {
+            cb_categories.SelectedIndex = -1;
         }
     }
 }

@@ -81,6 +81,15 @@ namespace Compufy_PV_Projek
             conn.Close();
         }
 
+        public int execScalar(string q)
+        {
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(q, conn);
+            int r = Convert.ToInt32(cmd.ExecuteScalar());
+            conn.Close();
+            return r;
+        }
+
         public void executeQuery(string q)
         {
             conn.Open();
