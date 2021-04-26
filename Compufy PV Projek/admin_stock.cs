@@ -95,9 +95,16 @@ namespace Compufy_PV_Projek
             {
                 dataGridView1.Rows.Add(ds.Tables["Barang"].Rows[i].ItemArray[0], ds.Tables["Barang"].Rows[i].ItemArray[1], ds.Tables["Barang"].Rows[i].ItemArray[2], ds.Tables["Barang"].Rows[i].ItemArray[3], ds.Tables["Barang"].Rows[i].ItemArray[4]);
 
-                Bitmap original = new Bitmap(Application.StartupPath + "\\product_picture\\" + ds.Tables["Barang"].Rows[i].ItemArray[5]);
-                Bitmap resized = new Bitmap(original, new Size(75, 75));
-                ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[5]).Value = resized;
+                try
+                {
+                    Bitmap original = new Bitmap(Application.StartupPath + "\\product_picture\\" + ds.Tables["Barang"].Rows[i].ItemArray[5]);
+                    Bitmap resized = new Bitmap(original, new Size(75, 75));
+                    ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[5]).Value = resized;
+                }
+                catch
+                {
+
+                }
             }
         }
 
