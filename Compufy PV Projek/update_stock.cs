@@ -27,6 +27,7 @@ namespace Compufy_PV_Projek
             this.MaximumSize = new Size(500, 300);
             kosong = false;
             loadKategori();
+            cbKategori.SelectedIndex = cbKategori.Items.IndexOf(cbKategori.Text);
         }
 
         private void loadKategori()
@@ -78,7 +79,7 @@ namespace Compufy_PV_Projek
                 }
             }
 
-            if (pictureBox1.ImageLocation == null || kosong == true)
+            if (kosong == true)
             {
                 MessageBox.Show("Ada field kosong!",
                     "Field Kosong",
@@ -86,18 +87,20 @@ namespace Compufy_PV_Projek
                     MessageBoxIcon.Error);
                 kosong = false;
             }
-            else
+            else if (pictureBox1.ImageLocation == null)
             {
-                try
+                if (MessageBox.Show("Yakin update tanpa gambar ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     string query = $"UPDATE [Barang] set nama_barang = '{txtNama.Text}', id_kategori = '{cbKategori.SelectedIndex + 1}', harga_barang = '{txtHarga.Text}', stok_barang = '{txtStok.Text}', gambar = '{openFileDialog1.SafeFileName}' where id_barang = {id}";
                     frm_login.executeQuery(query);
                     this.Close();
                 }
-                catch
-                {
-
-                }
+            }
+            else
+            {
+                string query = $"UPDATE [Barang] set nama_barang = '{txtNama.Text}', id_kategori = '{cbKategori.SelectedIndex + 1}', harga_barang = '{txtHarga.Text}', stok_barang = '{txtStok.Text}', gambar = '{openFileDialog1.SafeFileName}' where id_barang = {id}";
+                frm_login.executeQuery(query);
+                this.Close();
             }
         }
     }

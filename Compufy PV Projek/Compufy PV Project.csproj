@@ -229,6 +229,12 @@
     <Compile Include="super_manage.Designer.cs">
       <DependentUpon>super_manage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Update_Member.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Update_Member.Designer.cs">
+      <DependentUpon>Update_Member.cs</DependentUpon>
+    </Compile>
     <Compile Include="update_stock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -313,11 +319,11 @@
     <EmbeddedResource Include="super_manage.resx">
       <DependentUpon>super_manage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Update_Member.resx">
+      <DependentUpon>Update_Member.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="update_stock.resx">
       <DependentUpon>update_stock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Update_User.resx">
-      <DependentUpon>Update_User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="win_icons.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -34,13 +34,22 @@ namespace Compufy_PV_Projek
                 }
             }
 
-            if (pictureBox1.ImageLocation == null || kosong == true)
+            if (kosong == true)
             {
                 MessageBox.Show("Ada field kosong!",
                     "Field Kosong",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 kosong = false;
+            }
+            else if (pictureBox1.ImageLocation == null)
+            {
+                if (MessageBox.Show("Gambar kosong, yakin menambah stok ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    string query = $"INSERT into [Barang] (nama_barang, id_kategori, harga_barang, stok_barang, gambar) VALUES('{txtNama.Text}', '{cbKategori.SelectedIndex + 1}', '{txtHarga.Text}', '{txtStok.Text}', '{openFileDialog1.SafeFileName}')";
+                    frm_login.executeQuery(query);
+                    this.Close();
+                }
             }
             else
             {

@@ -28,8 +28,8 @@ namespace Compufy_PV_Projek
 
         private void Add_Member_Load(object sender, EventArgs e)
         {
-            this.MinimumSize = new Size(510, 290);
-            this.MaximumSize = new Size(510, 290);
+            this.MinimumSize = new Size(510, 304);
+            this.MaximumSize = new Size(510, 304);
         }
     }
 }
