@@ -63,13 +63,15 @@ namespace Compufy_PV_Projek
                 p_container.Controls.Add(p_picture);
                 p_picture.Location = new Point(27, 12);
                 p_picture.Size = new Size(100, 100);
-                if(r[5].ToString() == "")
+                p_picture.BackColor = Color.Peru;
+                try
                 {
-                    p_picture.BackColor = Color.Peru;
+                    p_picture.BackgroundImage = Image.FromFile(@"product_picture\"+r[5].ToString());
+                    p_picture.BackgroundImageLayout = ImageLayout.Stretch;
                 }
-                else
+                catch (Exception)
                 {
-                    p_picture.BackgroundImage = Image.FromFile(r[5].ToString());
+                    Console.WriteLine(r[5].ToString() + " Error!");
                 }
                 p_picture.Click += new EventHandler(buttonItemAdd_Click);
 
