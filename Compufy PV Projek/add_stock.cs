@@ -89,8 +89,12 @@ namespace Compufy_PV_Projek
             {
                 string directory = "product_picture\\";
                 Directory.CreateDirectory(directory);
-                File.Copy(openFileDialog1.FileName, directory + openFileDialog1.SafeFileName, true);
 
+                if (!File.Exists(Application.StartupPath + "\\product_picture\\" + openFileDialog1.SafeFileName))
+                {
+                    File.Copy(openFileDialog1.FileName, directory + openFileDialog1.SafeFileName, true);
+                }
+                
                 pictureBox1.ImageLocation = Application.StartupPath + "\\product_picture\\" + openFileDialog1.SafeFileName;
             }
             else
