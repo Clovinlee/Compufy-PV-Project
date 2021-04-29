@@ -74,8 +74,8 @@ namespace Compufy_PV_Projek
                     Console.WriteLine(r[5].ToString() + " Error!");
                 }
                 p_picture.Click += new EventHandler(buttonItemAdd_Click);
-
-
+                //ID_Barang-ID_Kategori-Nama-Harga-QTY-Image
+               
                 p_container.Tag = $"{r[0]}={r[1]}={r[2]}={r[3]}={r[4]}={r[5]}";
 
                 fpl_products.Controls.Add(p_container);
@@ -122,9 +122,53 @@ namespace Compufy_PV_Projek
             }
         }
 
+        public Boolean isAngka(string exp)
+        {
+            if (exp == "")
+            {
+                return false;
+            }
+            foreach (char x in exp)
+            {
+                if (!Char.IsDigit(x))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         private void btn_search_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("IN PROGRESS");
+            
+            //ID_Barang-ID_Kategori-Nama-Harga-QTY-Image
+            foreach (Panel p in fpl_products.Controls)
+            {
+                string[] info = p.Tag.ToString().Split('=');
+                if (isAngka(tb_inputsearch.Text))
+                {
+                    if (info[0] == tb_inputsearch.Text)
+                    {
+                        p.Visible = true;
+                    }
+                    else
+                    {
+                        p.Visible = false;
+                    }
+                }
+                else
+                {
+                    if (info[2].Contains(tb_inputsearch.Text))
+                    {
+                        p.Visible = true;
+                    }
+                    else
+                    {
+                        p.Visible = false;
+                    }
+                }
+                
+            }
         }
 
         private void buttonItemAdd_Click(object sender, EventArgs e)
@@ -451,6 +495,9 @@ namespace Compufy_PV_Projek
                         id_barang.Add(info[0]);
 
                         q = $"INSERT INTO d_transaksi(id_barang, id_trans, jumlah_barang) VALUES('{info[0]}','{h_id}','{jumlah}')";
+                        frm_login.executeQuery(q);
+
+                        q = $"UPDATE Barang SET stok_barang = stok_barang - {jumlah} WHERE id_barang = {info[0]}";
                         frm_login.executeQuery(q);
 
                     }
