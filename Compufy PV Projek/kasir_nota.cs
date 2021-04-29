@@ -33,7 +33,6 @@ namespace Compufy_PV_Projek
                 barang += id_barang[x] + ",";
             }
             barang += id_barang[id_barang.Count - 1] + ")";
-            Console.WriteLine(barang);
             string q;
             ds_checkout = new ds_nota();
             q = $"SELECT * FROM h_transaksi WHERE id_trans = '{h_id}'";
