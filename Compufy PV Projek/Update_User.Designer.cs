@@ -177,10 +177,10 @@ namespace Compufy_PV_Projek
             this.btnUpdate.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnUpdate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnUpdate.IconSize = 30;
-            this.btnUpdate.Location = new System.Drawing.Point(154, 218);
+            this.btnUpdate.Location = new System.Drawing.Point(119, 218);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(116, 35);
-            this.btnUpdate.TabIndex = 42;
+            this.btnUpdate.TabIndex = 58;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnUpdate.UseVisualStyleBackColor = false;
