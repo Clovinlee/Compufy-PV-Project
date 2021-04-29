@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace Compufy_PV_Projek
 {
@@ -49,7 +50,10 @@ namespace Compufy_PV_Projek
 
             for (int i = 0; i < ds.Tables["Barang"].Rows.Count; i++)
             {
-                dataGridView1.Rows.Add(ds.Tables["Barang"].Rows[i].ItemArray[0], ds.Tables["Barang"].Rows[i].ItemArray[1], ds.Tables["Barang"].Rows[i].ItemArray[2], ds.Tables["Barang"].Rows[i].ItemArray[3], ds.Tables["Barang"].Rows[i].ItemArray[4]);
+                string harga = Convert.ToInt32(ds.Tables["Barang"].Rows[i].ItemArray[3]).ToString("C", new CultureInfo("id-ID"));
+                string stok = ds.Tables["Barang"].Rows[i].ItemArray[4].ToString() + " Unit";
+
+                dataGridView1.Rows.Add(ds.Tables["Barang"].Rows[i].ItemArray[0], ds.Tables["Barang"].Rows[i].ItemArray[1], ds.Tables["Barang"].Rows[i].ItemArray[2], harga, stok);
 
                 try
                 {

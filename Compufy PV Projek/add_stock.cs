@@ -34,6 +34,9 @@ namespace Compufy_PV_Projek
                 }
             }
 
+            checkHarga = CheckNumber(txtHarga.Text);
+            checkStok = CheckNumber(txtStok.Text);
+
             if (kosong == true)
             {
                 MessageBox.Show("Ada field kosong!",
@@ -42,9 +45,13 @@ namespace Compufy_PV_Projek
                     MessageBoxIcon.Error);
                 kosong = false;
             }
+            else if (checkHarga == false || checkStok == false)
+            {
+                MessageBox.Show("Harga dan Stok harus angka !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else if (pictureBox1.ImageLocation == null)
             {
-                if (MessageBox.Show("Gambar kosong, yakin menambah stok ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (MessageBox.Show("Gambar kosong, yakin menambah barang ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     string query = $"INSERT into [Barang] (nama_barang, id_kategori, harga_barang, stok_barang, gambar) VALUES('{txtNama.Text}', '{cbKategori.SelectedIndex + 1}', '{txtHarga.Text}', '{txtStok.Text}', '{openFileDialog1.SafeFileName}')";
                     frm_login.executeQuery(query);
@@ -83,7 +90,7 @@ namespace Compufy_PV_Projek
 
         private void btnFile_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "Images (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|" + "All files (*.*)|*.*";
+            openFileDialog1.Filter = "Images (*.PNG;*.JPG)|*.PNG;*.JPG";
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -102,8 +109,24 @@ namespace Compufy_PV_Projek
                 MessageBox.Show("No File",
                     "No File Choosen",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                    MessageBoxIcon.Error);
             }
+        }
+
+        bool checkHarga;
+        bool checkStok;
+
+        private bool CheckNumber(string txt)
+        {
+            foreach (char c in txt)
+            {
+                if (!char.IsDigit(c))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

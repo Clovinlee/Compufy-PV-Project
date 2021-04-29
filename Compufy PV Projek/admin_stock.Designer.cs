@@ -30,6 +30,8 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnInsert = new FontAwesome.Sharp.IconButton();
@@ -171,6 +173,8 @@
             // 
             // id_barang
             // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.id_barang.DefaultCellStyle = dataGridViewCellStyle2;
             this.id_barang.FillWeight = 35F;
             this.id_barang.HeaderText = "ID";
             this.id_barang.Name = "id_barang";
@@ -195,6 +199,8 @@
             // 
             // Stok
             // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Stok.DefaultCellStyle = dataGridViewCellStyle3;
             this.Stok.FillWeight = 45F;
             this.Stok.HeaderText = "Stok";
             this.Stok.Name = "Stok";
@@ -209,13 +215,13 @@
             // Hapus
             // 
             this.Hapus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Tomato;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Heydings Controls", 24F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Tomato;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.Hapus.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Tomato;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Heydings Controls", 24F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Tomato;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.Hapus.DefaultCellStyle = dataGridViewCellStyle4;
             this.Hapus.FillWeight = 50F;
             this.Hapus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Hapus.HeaderText = "Hapus";

@@ -70,6 +70,9 @@ namespace Compufy_PV_Projek
         }
 
         bool kosong;
+        bool checkHarga;
+        bool checkStok;
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             foreach (Control tb in this.Controls)
@@ -83,6 +86,9 @@ namespace Compufy_PV_Projek
                 }
             }
 
+            checkHarga = CheckNumber(txtHarga.Text);
+            checkStok = CheckNumber(txtStok.Text);
+
             if (kosong == true)
             {
                 MessageBox.Show("Ada field kosong!",
@@ -90,6 +96,10 @@ namespace Compufy_PV_Projek
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 kosong = false;
+            }
+            else if (checkHarga == false || checkStok == false)
+            {
+                MessageBox.Show("Harga dan Stok harus angka !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (pictureBox1.ImageLocation == null)
             {
@@ -106,6 +116,19 @@ namespace Compufy_PV_Projek
                 frm_login.executeQuery(query);
                 this.Close();
             }
+        }
+
+        private bool CheckNumber(string txt)
+        {
+            foreach (char c in txt)
+            {
+                if (!char.IsDigit(c))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(menu_admin));
             this.pl_leftbar = new System.Windows.Forms.Panel();
             this.btn_member = new FontAwesome.Sharp.IconButton();
             this.btn_manageuser = new FontAwesome.Sharp.IconButton();
@@ -42,6 +43,7 @@
             this.lbl_namauser = new System.Windows.Forms.Label();
             this.pl_avatar = new System.Windows.Forms.Panel();
             this.pl_submenu = new System.Windows.Forms.Panel();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pl_leftbar.SuspendLayout();
             this.pl_topbar.SuspendLayout();
             this.SuspendLayout();
@@ -203,11 +205,13 @@
             // pl_menulogo
             // 
             this.pl_menulogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(82)))));
-            this.pl_menulogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pl_menulogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pl_menulogo.BackgroundImage")));
+            this.pl_menulogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pl_menulogo.Location = new System.Drawing.Point(0, 0);
             this.pl_menulogo.Name = "pl_menulogo";
             this.pl_menulogo.Size = new System.Drawing.Size(182, 92);
             this.pl_menulogo.TabIndex = 3;
+            this.pl_menulogo.Click += new System.EventHandler(this.pl_menulogo_Click);
             this.pl_menulogo.Paint += new System.Windows.Forms.PaintEventHandler(this.pl_menulogo_Paint);
             // 
             // pl_topbar
@@ -279,6 +283,10 @@
             this.pl_submenu.Size = new System.Drawing.Size(727, 508);
             this.pl_submenu.TabIndex = 6;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // menu_admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -316,6 +324,7 @@
         public System.Windows.Forms.Label lbl_namauser;
         private System.Windows.Forms.Panel pl_avatar;
         private System.Windows.Forms.Panel pl_submenu;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

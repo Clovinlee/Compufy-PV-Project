@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace Compufy_PV_Projek
 {
@@ -70,6 +71,10 @@ namespace Compufy_PV_Projek
             pl_submenu.Controls.Add(frm_managemember);
 
             this.ActiveControl = btn_menudashboard;
+            noGambar = true;
+            setToolTip();
+
+            readLogoDirectory();
         }
 
         private void btn_submenu_Enter(object sender, EventArgs e)
@@ -130,6 +135,7 @@ namespace Compufy_PV_Projek
         }
 
         Color b_color;
+        bool noGambar;
 
         private void pl_menulogo_Paint(object sender, PaintEventArgs e)
         {
@@ -139,7 +145,11 @@ namespace Compufy_PV_Projek
             format.LineAlignment = StringAlignment.Center;
             format.Alignment = StringAlignment.Center;
             //g.DrawImage(new Bitmap(materials.compufy_0), 0,0,pl_menulogo.Width, pl_menulogo.Height);
-            g.DrawString("<Logo>", new Font("Arial", 20), Brushes.White, container, format);
+
+            if (noGambar == true)
+            {
+                g.DrawString("<Logo>", new Font("Arial", 20), Brushes.White, container, format);
+            }
         }
 
         bool logout = false;
@@ -161,6 +171,79 @@ namespace Compufy_PV_Projek
             {
                 Application.Exit();
             }
+        }
+
+        private void pl_menulogo_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Images (*.PNG;*.JPG)|*.PNG;*.JPG";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string directory = "product_picture\\";
+                Directory.CreateDirectory(directory);
+
+                if (!File.Exists(Application.StartupPath + "\\product_picture\\" + openFileDialog1.SafeFileName))
+                {
+                    File.Copy(openFileDialog1.FileName, directory + openFileDialog1.SafeFileName, true);
+                }
+
+                Bitmap logo = new Bitmap(Application.StartupPath + "\\product_picture\\" + openFileDialog1.SafeFileName);
+                writeLogoDirectory();
+
+                pl_menulogo.BackgroundImage = logo;
+                noGambar = false;
+                pl_menulogo.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("No File",
+                    "No File Choosen",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void setToolTip()
+        {
+            ToolTip panelToolTip = new ToolTip();
+            panelToolTip.ToolTipTitle = "Ganti Logo";
+            panelToolTip.UseFading = true;
+            panelToolTip.UseAnimation = true;
+            panelToolTip.IsBalloon = true;
+            panelToolTip.ShowAlways = true;
+            panelToolTip.AutoPopDelay = 5000;
+            panelToolTip.InitialDelay = 500;
+            panelToolTip.ReshowDelay = 500;
+            panelToolTip.SetToolTip(pl_menulogo, "Klik untuk ganti logo");
+        }
+
+        private void writeLogoDirectory()
+        {
+            StreamWriter sw = new StreamWriter(Application.StartupPath + "/directoryLogo.txt");
+            sw.Write(Application.StartupPath + "\\product_picture\\" + openFileDialog1.SafeFileName);
+            sw.Close();
+        }
+
+        StreamReader sr;
+        private void readLogoDirectory()
+        {
+            pl_menulogo.BackgroundImage = null;
+            try
+            {
+                sr = new StreamReader(Application.StartupPath + "/directoryLogo.txt");
+                while (!sr.EndOfStream)
+                {
+                    string directory = sr.ReadLine();
+                    Bitmap logo = new Bitmap(directory);
+                    pl_menulogo.BackgroundImage = logo;
+                }
+                noGambar = false;
+            }
+            catch
+            {
+                noGambar = true;
+            }
+            sr.Close();
         }
     }
 }
