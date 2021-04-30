@@ -88,7 +88,6 @@ namespace Compufy_PV_Projek
             cb_categories.DisplayMember = "nama_kategori";
             cb_categories.SelectedIndex = -1;
 
-            setToolTip();
             readLogoDirectory();
         }
 
@@ -576,20 +575,6 @@ namespace Compufy_PV_Projek
             cb_categories.SelectedIndex = -1;
         }
 
-        private void setToolTip()
-        {
-            ToolTip panelToolTip = new ToolTip();
-            panelToolTip.ToolTipTitle = "Ganti Logo";
-            panelToolTip.UseFading = true;
-            panelToolTip.UseAnimation = true;
-            panelToolTip.IsBalloon = true;
-            panelToolTip.ShowAlways = true;
-            panelToolTip.AutoPopDelay = 5000;
-            panelToolTip.InitialDelay = 250;
-            panelToolTip.ReshowDelay = 500;
-            panelToolTip.SetToolTip(pl_menulogo, "Klik untuk ganti logo");
-        }
-
         private void pl_menulogo_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Images (*.PNG;*.JPG)|*.PNG;*.JPG";
@@ -620,7 +605,7 @@ namespace Compufy_PV_Projek
         }
         private void writeLogoDirectory()
         {
-            StreamWriter sw = new StreamWriter(Application.StartupPath + "/dirLogoKasir.txt");
+            StreamWriter sw = new StreamWriter(Application.StartupPath + "/dirLogoAdm.txt");
             sw.Write(Application.StartupPath + "\\logo_picture\\" + openFileDialog1.SafeFileName);
             sw.Close();
         }
@@ -630,7 +615,7 @@ namespace Compufy_PV_Projek
         {
             try
             {
-                sr = new StreamReader(Application.StartupPath + "/dirLogoKasir.txt");
+                sr = new StreamReader(Application.StartupPath + "/dirLogoAdm.txt");
                 while (!sr.EndOfStream)
                 {
                     string directory = sr.ReadLine();
