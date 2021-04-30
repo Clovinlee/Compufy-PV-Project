@@ -52,6 +52,14 @@ namespace Compufy_PV_Projek
             for (int i = 0; i < ds.Tables["Akun"].Rows.Count; i++)
             {
                 dataGridView1.Rows.Add(ds.Tables["Akun"].Rows[i].ItemArray[0], ds.Tables["Akun"].Rows[i].ItemArray[1], ds.Tables["Akun"].Rows[i].ItemArray[2], ds.Tables["Akun"].Rows[i].ItemArray[3], ds.Tables["Akun"].Rows[i].ItemArray[4], ds.Tables["Akun"].Rows[i].ItemArray[5], ds.Tables["Akun"].Rows[i].ItemArray[6]);
+                if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "1")
+                {
+                    dataGridView1.Rows[i].Cells[6].Value = "Admin";
+                }
+                if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "2")
+                {
+                    dataGridView1.Rows[i].Cells[6].Value = "Kasir";
+                }
             }
         }
         int idx;
