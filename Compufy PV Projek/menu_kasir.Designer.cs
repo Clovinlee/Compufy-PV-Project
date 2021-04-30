@@ -62,6 +62,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pl_topbar.SuspendLayout();
             this.pl_main.SuspendLayout();
             this.pl_submainleft.SuspendLayout();
@@ -73,12 +74,13 @@
             // pl_menulogo
             // 
             this.pl_menulogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(56)))), ((int)(((byte)(70)))));
-            this.pl_menulogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pl_menulogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pl_menulogo.Dock = System.Windows.Forms.DockStyle.Left;
             this.pl_menulogo.Location = new System.Drawing.Point(0, 0);
             this.pl_menulogo.Name = "pl_menulogo";
             this.pl_menulogo.Size = new System.Drawing.Size(184, 92);
             this.pl_menulogo.TabIndex = 3;
+            this.pl_menulogo.Click += new System.EventHandler(this.pl_menulogo_Click);
             // 
             // pl_topbar
             // 
@@ -521,6 +523,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Checkout";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // menu_kasir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -585,5 +591,6 @@
         public System.Windows.Forms.CheckBox cb_member;
         private System.Windows.Forms.ComboBox cb_categories;
         private FontAwesome.Sharp.IconButton btn_restartcategory;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

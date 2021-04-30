@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(menu_admin));
             this.pl_leftbar = new System.Windows.Forms.Panel();
             this.btn_member = new FontAwesome.Sharp.IconButton();
             this.btn_manageuser = new FontAwesome.Sharp.IconButton();
@@ -205,7 +204,6 @@
             // pl_menulogo
             // 
             this.pl_menulogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(82)))));
-            this.pl_menulogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pl_menulogo.BackgroundImage")));
             this.pl_menulogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pl_menulogo.Location = new System.Drawing.Point(0, 0);
             this.pl_menulogo.Name = "pl_menulogo";

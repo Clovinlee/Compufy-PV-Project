@@ -88,6 +88,8 @@ namespace Compufy_PV_Projek
             cb_categories.DisplayMember = "nama_kategori";
             cb_categories.SelectedIndex = -1;
 
+            setToolTip();
+            readLogoDirectory();
         }
 
         private void pl_menulogo_Paint(object sender, PaintEventArgs e)
@@ -572,6 +574,75 @@ namespace Compufy_PV_Projek
         private void btn_restartcategory_Click(object sender, EventArgs e)
         {
             cb_categories.SelectedIndex = -1;
+        }
+
+        private void setToolTip()
+        {
+            ToolTip panelToolTip = new ToolTip();
+            panelToolTip.ToolTipTitle = "Ganti Logo";
+            panelToolTip.UseFading = true;
+            panelToolTip.UseAnimation = true;
+            panelToolTip.IsBalloon = true;
+            panelToolTip.ShowAlways = true;
+            panelToolTip.AutoPopDelay = 5000;
+            panelToolTip.InitialDelay = 500;
+            panelToolTip.ReshowDelay = 500;
+            panelToolTip.SetToolTip(pl_menulogo, "Klik untuk ganti logo");
+        }
+
+        private void pl_menulogo_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Images (*.PNG;*.JPG)|*.PNG;*.JPG";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string directory = "logo_picture\\";
+                Directory.CreateDirectory(directory);
+
+                if (!File.Exists(Application.StartupPath + "\\logo_picture\\" + openFileDialog1.SafeFileName))
+                {
+                    File.Copy(openFileDialog1.FileName, directory + openFileDialog1.SafeFileName, true);
+                }
+
+                Bitmap logo = new Bitmap(Application.StartupPath + "\\logo_picture\\" + openFileDialog1.SafeFileName);
+                writeLogoDirectory();
+
+                pl_menulogo.BackgroundImage = logo;
+                pl_menulogo.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("No File",
+                    "No File Choosen",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+        private void writeLogoDirectory()
+        {
+            StreamWriter sw = new StreamWriter(Application.StartupPath + "/dirLogoKasir.txt");
+            sw.Write(Application.StartupPath + "\\logo_picture\\" + openFileDialog1.SafeFileName);
+            sw.Close();
+        }
+
+        StreamReader sr;
+        private void readLogoDirectory()
+        {
+            try
+            {
+                sr = new StreamReader(Application.StartupPath + "/dirLogoKasir.txt");
+                while (!sr.EndOfStream)
+                {
+                    string directory = sr.ReadLine();
+                    Bitmap logo = new Bitmap(directory);
+                    pl_menulogo.BackgroundImage = logo;
+                }
+            }
+            catch
+            {
+
+            }
+            sr.Close();
         }
     }
 }

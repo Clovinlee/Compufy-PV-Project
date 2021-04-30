@@ -179,15 +179,15 @@ namespace Compufy_PV_Projek
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string directory = "product_picture\\";
+                string directory = "logo_picture\\";
                 Directory.CreateDirectory(directory);
 
-                if (!File.Exists(Application.StartupPath + "\\product_picture\\" + openFileDialog1.SafeFileName))
+                if (!File.Exists(Application.StartupPath + "\\logo_picture\\" + openFileDialog1.SafeFileName))
                 {
                     File.Copy(openFileDialog1.FileName, directory + openFileDialog1.SafeFileName, true);
                 }
 
-                Bitmap logo = new Bitmap(Application.StartupPath + "\\product_picture\\" + openFileDialog1.SafeFileName);
+                Bitmap logo = new Bitmap(Application.StartupPath + "\\logo_picture\\" + openFileDialog1.SafeFileName);
                 writeLogoDirectory();
 
                 pl_menulogo.BackgroundImage = logo;
@@ -212,25 +212,24 @@ namespace Compufy_PV_Projek
             panelToolTip.IsBalloon = true;
             panelToolTip.ShowAlways = true;
             panelToolTip.AutoPopDelay = 5000;
-            panelToolTip.InitialDelay = 500;
+            panelToolTip.InitialDelay = 250;
             panelToolTip.ReshowDelay = 500;
             panelToolTip.SetToolTip(pl_menulogo, "Klik untuk ganti logo");
         }
 
         private void writeLogoDirectory()
         {
-            StreamWriter sw = new StreamWriter(Application.StartupPath + "/directoryLogo.txt");
-            sw.Write(Application.StartupPath + "\\product_picture\\" + openFileDialog1.SafeFileName);
+            StreamWriter sw = new StreamWriter(Application.StartupPath + "/dirLogoAdm.txt");
+            sw.Write(Application.StartupPath + "\\logo_picture\\" + openFileDialog1.SafeFileName);
             sw.Close();
         }
 
         StreamReader sr;
         private void readLogoDirectory()
         {
-            pl_menulogo.BackgroundImage = null;
             try
             {
-                sr = new StreamReader(Application.StartupPath + "/directoryLogo.txt");
+                sr = new StreamReader(Application.StartupPath + "/dirLogoAdm.txt");
                 while (!sr.EndOfStream)
                 {
                     string directory = sr.ReadLine();
@@ -244,6 +243,11 @@ namespace Compufy_PV_Projek
                 noGambar = true;
             }
             sr.Close();
+
+            if (pl_menulogo.BackgroundImage == null)
+            {
+                noGambar = true;
+            }
         }
     }
 }
