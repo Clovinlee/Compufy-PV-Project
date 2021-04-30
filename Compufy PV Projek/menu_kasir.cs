@@ -402,8 +402,6 @@ namespace Compufy_PV_Projek
             sumHarga();
         }
 
-        
-
         private void btn_reset_Click(object sender, EventArgs e)
         {
             if(MessageBox.Show("Yakin reset checkout?","Reset Checkout",MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -573,41 +571,6 @@ namespace Compufy_PV_Projek
         private void btn_restartcategory_Click(object sender, EventArgs e)
         {
             cb_categories.SelectedIndex = -1;
-        }
-
-        private void pl_menulogo_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.Filter = "Images (*.PNG;*.JPG)|*.PNG;*.JPG";
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                string directory = "logo_picture\\";
-                Directory.CreateDirectory(directory);
-
-                if (!File.Exists(Application.StartupPath + "\\logo_picture\\" + openFileDialog1.SafeFileName))
-                {
-                    File.Copy(openFileDialog1.FileName, directory + openFileDialog1.SafeFileName, true);
-                }
-
-                Bitmap logo = new Bitmap(Application.StartupPath + "\\logo_picture\\" + openFileDialog1.SafeFileName);
-                writeLogoDirectory();
-
-                pl_menulogo.BackgroundImage = logo;
-                pl_menulogo.Refresh();
-            }
-            else
-            {
-                MessageBox.Show("No File",
-                    "No File Choosen",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
-        }
-        private void writeLogoDirectory()
-        {
-            StreamWriter sw = new StreamWriter(Application.StartupPath + "/dirLogoAdm.txt");
-            sw.Write(Application.StartupPath + "\\logo_picture\\" + openFileDialog1.SafeFileName);
-            sw.Close();
         }
 
         StreamReader sr;

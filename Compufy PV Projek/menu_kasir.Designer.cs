@@ -80,7 +80,6 @@
             this.pl_menulogo.Name = "pl_menulogo";
             this.pl_menulogo.Size = new System.Drawing.Size(184, 92);
             this.pl_menulogo.TabIndex = 3;
-            this.pl_menulogo.Click += new System.EventHandler(this.pl_menulogo_Click);
             // 
             // pl_topbar
             // 
