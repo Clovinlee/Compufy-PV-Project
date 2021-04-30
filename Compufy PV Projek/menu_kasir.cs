@@ -159,7 +159,7 @@ namespace Compufy_PV_Projek
                 }
                 else
                 {
-                    if (info[2].Contains(tb_inputsearch.Text))
+                    if (info[2].ToLower().Contains(tb_inputsearch.Text.ToLower()))
                     {
                         p.Visible = true;
                     }
