@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.Drawing.Text;
+using System.IO;
 
 namespace Compufy_PV_Projek
 {
@@ -30,6 +32,7 @@ namespace Compufy_PV_Projek
             //this.FormBorderStyle = FormBorderStyle.None;
 
             LoadBarang();
+            CustomFont();
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -149,6 +152,13 @@ namespace Compufy_PV_Projek
                     LoadBarang();
                 }
             }
+        }
+
+        private void CustomFont()
+        {
+            PrivateFontCollection pfc = new PrivateFontCollection();
+            pfc.AddFontFile(Path.Combine(Application.StartupPath, "HeydingsControls-GBlZ.ttf"));
+            dataGridView1.Columns[6].DefaultCellStyle.Font = new Font(pfc.Families[0], 24);
         }
     }
 }

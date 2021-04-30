@@ -217,7 +217,7 @@
             this.Hapus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Tomato;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Heydings Controls", 24F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Tomato;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;

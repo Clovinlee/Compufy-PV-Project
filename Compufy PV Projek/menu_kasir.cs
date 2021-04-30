@@ -585,7 +585,7 @@ namespace Compufy_PV_Projek
             panelToolTip.IsBalloon = true;
             panelToolTip.ShowAlways = true;
             panelToolTip.AutoPopDelay = 5000;
-            panelToolTip.InitialDelay = 500;
+            panelToolTip.InitialDelay = 250;
             panelToolTip.ReshowDelay = 500;
             panelToolTip.SetToolTip(pl_menulogo, "Klik untuk ganti logo");
         }
