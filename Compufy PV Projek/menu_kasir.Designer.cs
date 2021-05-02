@@ -62,7 +62,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pl_topbar.SuspendLayout();
             this.pl_main.SuspendLayout();
             this.pl_submainleft.SuspendLayout();
@@ -522,10 +521,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Checkout";
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // menu_kasir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -590,6 +585,5 @@
         public System.Windows.Forms.CheckBox cb_member;
         private System.Windows.Forms.ComboBox cb_categories;
         private FontAwesome.Sharp.IconButton btn_restartcategory;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

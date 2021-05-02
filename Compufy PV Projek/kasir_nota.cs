@@ -16,7 +16,6 @@ namespace Compufy_PV_Projek
         {
             InitializeComponent();
         }
-        public menu_kasir frm_kasir;
         public login frm_login;
         public int h_id;
         public List<string> id_barang;
@@ -52,12 +51,6 @@ namespace Compufy_PV_Projek
             nota.SetParameterValue("Pmetode", metode);
 
             creport.ReportSource = nota;
-        }
-
-        private void kasir_nota_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            frm_kasir.frm_nota = null;
-            frm_kasir.Show();
         }
     }
 }
