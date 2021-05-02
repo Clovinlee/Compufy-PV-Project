@@ -27,6 +27,7 @@ namespace Compufy_PV_Projek
         public admin_dashboard frm_dashboard;
         public admin_manage_user frm_manageuser;
         public admin_manage_member frm_managemember;
+        public Admin_Transaction frm_transaction;
 
         Button sub_active;
         public string id_login;
@@ -65,15 +66,23 @@ namespace Compufy_PV_Projek
             frm_managemember.FormBorderStyle = FormBorderStyle.None;
             frm_managemember.Hide();
 
+            frm_transaction = new Admin_Transaction();
+            frm_transaction.TopLevel = false;
+            frm_transaction.Dock = DockStyle.Fill;
+            frm_transaction.frm_login = frm_login;
+            frm_transaction.FormBorderStyle = FormBorderStyle.None;
+            frm_transaction.Hide();
+
             pl_submenu.Controls.Add(frm_stock);
             pl_submenu.Controls.Add(frm_dashboard);
             pl_submenu.Controls.Add(frm_manageuser);
             pl_submenu.Controls.Add(frm_managemember);
+            pl_submenu.Controls.Add(frm_transaction);
 
             this.ActiveControl = btn_menudashboard;
             noGambar = true;
-            setToolTip();
 
+            setToolTip();
             readLogoDirectory();
         }
 
@@ -101,9 +110,10 @@ namespace Compufy_PV_Projek
                 else if (b.Text == "Sales")
                 {
                     
-                }else if(b.Text == "Transactions") 
-                { 
-
+                }
+                else if(b.Text == "Transactions") 
+                {
+                    frm_transaction.Show();
                 }
                 else if(b.Text == "Stocks")
                 {
