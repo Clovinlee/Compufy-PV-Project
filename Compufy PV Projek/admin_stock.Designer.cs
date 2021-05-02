@@ -28,16 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnInsert = new FontAwesome.Sharp.IconButton();
-            this.btn_search = new FontAwesome.Sharp.IconButton();
-            this.btnUpdate = new FontAwesome.Sharp.IconButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.id_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kategori = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +40,11 @@
             this.Stok = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gambar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Hapus = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnInsert = new FontAwesome.Sharp.IconButton();
+            this.btn_search = new FontAwesome.Sharp.IconButton();
+            this.btnUpdate = new FontAwesome.Sharp.IconButton();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,14 +56,14 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.PapayaWhip;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Nirmala UI", 11F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Nirmala UI", 11F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_barang,
@@ -80,6 +80,67 @@
             this.dataGridView1.Size = new System.Drawing.Size(682, 388);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // id_barang
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.id_barang.DefaultCellStyle = dataGridViewCellStyle10;
+            this.id_barang.FillWeight = 35F;
+            this.id_barang.HeaderText = "ID";
+            this.id_barang.Name = "id_barang";
+            // 
+            // Kategori
+            // 
+            this.Kategori.FillWeight = 75F;
+            this.Kategori.HeaderText = "Kategori";
+            this.Kategori.Name = "Kategori";
+            // 
+            // Nama
+            // 
+            this.Nama.FillWeight = 150F;
+            this.Nama.HeaderText = "Nama";
+            this.Nama.Name = "Nama";
+            // 
+            // Harga
+            // 
+            this.Harga.FillWeight = 75F;
+            this.Harga.HeaderText = "Harga";
+            this.Harga.Name = "Harga";
+            // 
+            // Stok
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Stok.DefaultCellStyle = dataGridViewCellStyle11;
+            this.Stok.FillWeight = 45F;
+            this.Stok.HeaderText = "Stok";
+            this.Stok.Name = "Stok";
+            // 
+            // Gambar
+            // 
+            this.Gambar.HeaderText = "Gambar";
+            this.Gambar.Name = "Gambar";
+            this.Gambar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Gambar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Hapus
+            // 
+            this.Hapus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Tomato;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Tomato;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            this.Hapus.DefaultCellStyle = dataGridViewCellStyle12;
+            this.Hapus.FillWeight = 50F;
+            this.Hapus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Hapus.HeaderText = "Hapus";
+            this.Hapus.Name = "Hapus";
+            this.Hapus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Hapus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Hapus.Text = "🗑️";
+            this.Hapus.UseColumnTextForButtonValue = true;
+            this.Hapus.Width = 61;
             // 
             // txtSearch
             // 
@@ -158,7 +219,7 @@
             this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton1.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Recycle;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.SyncAlt;
             this.iconButton1.IconColor = System.Drawing.Color.OrangeRed;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 30;
@@ -170,67 +231,6 @@
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = false;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
-            // 
-            // id_barang
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.id_barang.DefaultCellStyle = dataGridViewCellStyle2;
-            this.id_barang.FillWeight = 35F;
-            this.id_barang.HeaderText = "ID";
-            this.id_barang.Name = "id_barang";
-            // 
-            // Kategori
-            // 
-            this.Kategori.FillWeight = 75F;
-            this.Kategori.HeaderText = "Kategori";
-            this.Kategori.Name = "Kategori";
-            // 
-            // Nama
-            // 
-            this.Nama.FillWeight = 150F;
-            this.Nama.HeaderText = "Nama";
-            this.Nama.Name = "Nama";
-            // 
-            // Harga
-            // 
-            this.Harga.FillWeight = 75F;
-            this.Harga.HeaderText = "Harga";
-            this.Harga.Name = "Harga";
-            // 
-            // Stok
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Stok.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Stok.FillWeight = 45F;
-            this.Stok.HeaderText = "Stok";
-            this.Stok.Name = "Stok";
-            // 
-            // Gambar
-            // 
-            this.Gambar.HeaderText = "Gambar";
-            this.Gambar.Name = "Gambar";
-            this.Gambar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Gambar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Hapus
-            // 
-            this.Hapus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Tomato;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Tomato;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.Hapus.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Hapus.FillWeight = 50F;
-            this.Hapus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Hapus.HeaderText = "Hapus";
-            this.Hapus.Name = "Hapus";
-            this.Hapus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Hapus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Hapus.Text = "T";
-            this.Hapus.UseColumnTextForButtonValue = true;
-            this.Hapus.Width = 61;
             // 
             // admin_stock
             // 

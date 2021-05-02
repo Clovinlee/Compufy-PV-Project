@@ -30,9 +30,7 @@ namespace Compufy_PV_Projek
             this.MinimumSize = new Size(727, 508);
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 11, FontStyle.Bold);
             //this.FormBorderStyle = FormBorderStyle.None;
-
             LoadBarang();
-            CustomFont();
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -154,11 +152,14 @@ namespace Compufy_PV_Projek
             }
         }
 
+        PrivateFontCollection pfc;
+
         private void CustomFont()
         {
-            PrivateFontCollection pfc = new PrivateFontCollection();
+            pfc = new PrivateFontCollection();
             pfc.AddFontFile(Path.Combine(Application.StartupPath, "HeydingsControls-GBlZ.ttf"));
-            dataGridView1.Columns[6].DefaultCellStyle.Font = new Font(pfc.Families[0], 24);
+            Font heydings = new Font(pfc.Families[0], 24);
+            dataGridView1.Columns[6].DefaultCellStyle.Font = heydings;
         }
     }
 }

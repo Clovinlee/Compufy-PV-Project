@@ -147,6 +147,12 @@
     <Compile Include="admin_stock.Designer.cs">
       <DependentUpon>admin_stock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin_Transaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Transaction.Designer.cs">
+      <DependentUpon>Admin_Transaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="cr_nota.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -272,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="admin_stock.resx">
       <DependentUpon>admin_stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Transaction.resx">
+      <DependentUpon>Admin_Transaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cr_nota.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
