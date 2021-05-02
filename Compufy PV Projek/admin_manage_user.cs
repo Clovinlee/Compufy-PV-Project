@@ -46,7 +46,7 @@ namespace Compufy_PV_Projek
             dataGridView1.Rows.Clear();
 
             DataSet ds = new DataSet();
-            string query = "SELECT * from Akun";
+            string query = "SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') from Akun";
             frm_login.executeDataSet(ds, query, "Akun");
 
             for (int i = 0; i < ds.Tables["Akun"].Rows.Count; i++)
@@ -59,6 +59,23 @@ namespace Compufy_PV_Projek
                 if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "2")
                 {
                     dataGridView1.Rows[i].Cells[6].Value = "Kasir";
+                }
+                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-")
+                {
+                    try
+                    {
+                        Bitmap original = new Bitmap(Application.StartupPath + "\\logo_picture\\profile_sample4.png");
+                        Bitmap resized = new Bitmap(original, new Size(75, 75));
+                        ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
+                    }
+                    catch
+                    {
+
+                    }
+                }
+                else
+                {
+
                 }
             }
         }
@@ -99,6 +116,45 @@ namespace Compufy_PV_Projek
                 string query = $"DELETE [Akun] where id_user = '{id}'";
                 frm_login.executeQuery(query);
                 LoadBarang();
+            }
+        }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+
+            DataSet ds = new DataSet();
+            string query = $"SELECT * from Akun WHERE lower(username) like '%{textBox1.Text.ToLower()}%'";
+            frm_login.executeDataSet(ds, query, "Akun");
+
+            for (int i = 0; i < ds.Tables["Akun"].Rows.Count; i++)
+            {
+                dataGridView1.Rows.Add(ds.Tables["Akun"].Rows[i].ItemArray[0], ds.Tables["Akun"].Rows[i].ItemArray[1], ds.Tables["Akun"].Rows[i].ItemArray[2], ds.Tables["Akun"].Rows[i].ItemArray[3], ds.Tables["Akun"].Rows[i].ItemArray[4], ds.Tables["Akun"].Rows[i].ItemArray[5], ds.Tables["Akun"].Rows[i].ItemArray[6]);
+                if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "1")
+                {
+                    dataGridView1.Rows[i].Cells[6].Value = "Admin";
+                }
+                if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "2")
+                {
+                    dataGridView1.Rows[i].Cells[6].Value = "Kasir";
+                }
+                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "null")
+                {
+                    try
+                    {
+                        Bitmap original = new Bitmap(Application.StartupPath + "\\logo_picture\\profile_sample4.png");
+                        Bitmap resized = new Bitmap(original, new Size(75, 75));
+                        ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
+                    }
+                    catch
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
             }
         }
     }
