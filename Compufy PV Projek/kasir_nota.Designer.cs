@@ -49,8 +49,8 @@
             this.ClientSize = new System.Drawing.Size(934, 508);
             this.Controls.Add(this.creport);
             this.Name = "kasir_nota";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "kasir_nota";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.kasir_nota_FormClosed);
             this.Load += new System.EventHandler(this.kasir_nota_Load);
             this.ResumeLayout(false);
 

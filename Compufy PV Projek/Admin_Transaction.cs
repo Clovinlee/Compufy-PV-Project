@@ -115,10 +115,39 @@ namespace Compufy_PV_Projek
             detail.TextImageRelation = TextImageRelation.ImageBeforeText;
             detail.ImageAlign = ContentAlignment.MiddleLeft;
             detail.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            detail.Tag = Convert.ToString(ds.Tables["Trans"].Rows[idx].ItemArray[0]);
+            detail.Click += new EventHandler(showNota);
             panelTrans.Controls.Add(detail);
 
             flowLayoutPanel1.Controls.Add(panelTrans);
         }
+
+        private void showNota(object sender, EventArgs e)
+        {
+            int h_id = Convert.ToInt32(((FontAwesome.Sharp.IconButton)sender).Tag);
+            string q = $"SELECT m.nama_member, h.bayar, h.metode_trans FROM h_transaksi h LEFT JOIN member m ON m.id_member = h.id_member WHERE h.id_trans = {h_id}";
+            DataSet ds_temp = new DataSet();
+            frm_login.executeDataSet(ds_temp, q, "h_tb");
+            q = $"SELECT id_barang FROM d_transaksi WHERE id_trans = {h_id}";
+            frm_login.executeDataSet(ds_temp, q, "d_tb");
+            List<string> id_barang = new List<string>();
+            foreach(DataRow r in ds_temp.Tables["d_tb"].Rows)
+            {
+                id_barang.Add(r[0].ToString());
+            }
+
+            kasir_nota frm_nota = new kasir_nota();
+            frm_nota.id_barang = id_barang;
+
+            DataRow dr = ds_temp.Tables["h_tb"].Rows[0];
+            frm_nota.nama_member = dr[0].ToString();
+            frm_nota.bayar = Convert.ToDecimal(dr[1]);
+            frm_nota.metode = dr[2].ToString();
+            frm_nota.h_id = h_id;
+            frm_nota.frm_login = frm_login;
+            frm_nota.Show();
+        }
+
 
         private void flowLayoutPanel1_SizeChanged(object sender, EventArgs e)
         {

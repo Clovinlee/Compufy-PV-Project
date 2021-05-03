@@ -31,6 +31,7 @@ namespace Compufy_PV_Projek
         {
             this.MinimumSize = new Size(727, 508);
             frmAdd = new Add_Member();
+            frmUpdate = new Update_Member();
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 11, FontStyle.Bold);
             LoadBarang();
             //this.FormBorderStyle = FormBorderStyle.None;
@@ -103,6 +104,18 @@ namespace Compufy_PV_Projek
             frmUpdate.gender = gender;
             frmUpdate.alamat = alamat;
             LoadBarang();
+        }
+
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Yakin mau delete Member ini ?", "Delete Member", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                string query = $"DELETE [Member] where id_member = '{id}'";
+                frm_login.executeQuery(query);
+                LoadBarang();
+            }
         }
     }
 }

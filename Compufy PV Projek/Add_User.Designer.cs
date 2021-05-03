@@ -42,6 +42,11 @@ namespace Compufy_PV_Projek
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.btnFile = new FontAwesome.Sharp.IconButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // cbGender
@@ -75,7 +80,7 @@ namespace Compufy_PV_Projek
             this.btnUpdate.IconColor = System.Drawing.Color.DeepSkyBlue;
             this.btnUpdate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnUpdate.IconSize = 30;
-            this.btnUpdate.Location = new System.Drawing.Point(127, 221);
+            this.btnUpdate.Location = new System.Drawing.Point(127, 264);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(87, 40);
@@ -172,8 +177,7 @@ namespace Compufy_PV_Projek
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "1",
-            "2",
-            "3"});
+            "2"});
             this.comboBox1.Location = new System.Drawing.Point(127, 192);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBox1.Name = "comboBox1";
@@ -187,12 +191,58 @@ namespace Compufy_PV_Projek
             this.dateTimePicker1.Size = new System.Drawing.Size(292, 20);
             this.dateTimePicker1.TabIndex = 28;
             // 
+            // btnFile
+            // 
+            this.btnFile.BackColor = System.Drawing.SystemColors.Control;
+            this.btnFile.FlatAppearance.BorderSize = 0;
+            this.btnFile.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFile.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFile.ForeColor = System.Drawing.Color.Black;
+            this.btnFile.IconChar = FontAwesome.Sharp.IconChar.FolderPlus;
+            this.btnFile.IconColor = System.Drawing.Color.DarkOrange;
+            this.btnFile.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnFile.IconSize = 25;
+            this.btnFile.Location = new System.Drawing.Point(127, 221);
+            this.btnFile.Name = "btnFile";
+            this.btnFile.Size = new System.Drawing.Size(110, 28);
+            this.btnFile.TabIndex = 30;
+            this.btnFile.Text = "Pilih File";
+            this.btnFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFile.UseVisualStyleBackColor = false;
+            this.btnFile.Click += new System.EventHandler(this.btnFile_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(51, 225);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 20);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "Gambar :";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(300, 221);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(75, 75);
+            this.pictureBox1.TabIndex = 31;
+            this.pictureBox1.TabStop = false;
+            // 
             // Add_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(494, 265);
+            this.ClientSize = new System.Drawing.Size(494, 307);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnFile);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comboBox1);
@@ -209,6 +259,7 @@ namespace Compufy_PV_Projek
             this.Name = "Add_User";
             this.Text = "Add_User";
             this.Load += new System.EventHandler(this.Add_User_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,5 +280,9 @@ namespace Compufy_PV_Projek
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private FontAwesome.Sharp.IconButton btnFile;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

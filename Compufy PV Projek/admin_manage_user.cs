@@ -39,6 +39,7 @@ namespace Compufy_PV_Projek
         private void btnInsert_Click(object sender, EventArgs e)
         {
             frmAdd.ShowDialog();
+            LoadBarang();
         }
 
         private void LoadBarang()
@@ -153,9 +154,24 @@ namespace Compufy_PV_Projek
                 }
                 else
                 {
+                    try
+                    {
+                        Bitmap original = new Bitmap(Application.StartupPath + "\\logo_picture\\"+ ds.Tables["Akun"].Rows[i].ItemArray[7]);
+                        Bitmap resized = new Bitmap(original, new Size(75, 75));
+                        ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
+                    }
+                    catch
+                    {
 
+                    }
                 }
             }
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            frmAdd.ShowDialog();
+            LoadBarang();
         }
     }
 }

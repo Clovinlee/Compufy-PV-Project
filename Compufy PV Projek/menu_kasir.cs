@@ -437,14 +437,14 @@ namespace Compufy_PV_Projek
             frm_addmember.frm_kasir = this;
             frm_addmember.frm_login = frm_login;
             frm_addmember.ShowDialog();
-            Console.WriteLine(id_member);
-            Console.WriteLine(nama_member);
         }
 
         public decimal bayar = -1;
         public string metode = "";
+        public string nokartu = "";
         public kasir_bayar frm_kasirbayar;
-        public kasir_nota frm_nota;
+        cr_nota nota;
+        PrintDialog pd;
         private void btn_checkout_Click(object sender, EventArgs e)
         {
             int h_id = -1;
@@ -470,12 +470,13 @@ namespace Compufy_PV_Projek
                     string q;
                     if (id_member == -1)
                     {
-                        q = $"INSERT INTO h_transaksi(id_user,total_trans,tgl_trans,metode_trans,diskon) VALUES('{id_login}','{subtotal}',CONVERT(datetime,'{System.DateTime.Now}',103),'{metode}','{discount}')";
+                        q = $"INSERT INTO h_transaksi(id_user,total_trans,tgl_trans,metode_trans,diskon,no_kartu,bayar) VALUES('{id_login}','{subtotal}',CONVERT(datetime,'{System.DateTime.Now}',103),'{metode}','{discount}','{nokartu}','{bayar}')";
                     }
                     else
                     {
-                        q = $"INSERT INTO h_transaksi(id_user,id_member,total_trans,tgl_trans,metode_trans,diskon) VALUES('{id_login}','{id_member}','{subtotal}',CONVERT(datetime,'{System.DateTime.Now}',103),'{metode}','{discount}')";
+                        q = $"INSERT INTO h_transaksi(id_user,id_member,total_trans,tgl_trans,metode_trans,diskon,no_kartu,bayar) VALUES('{id_login}','{id_member}','{subtotal}',CONVERT(datetime,'{System.DateTime.Now}',103),'{metode}','{discount}','{nokartu}','{bayar}')";
                     }
+
                     frm_login.executeQuery(q);
                     h_id = frm_login.execScalar("SELECT MAX(id_trans) FROM h_transaksi");
 
@@ -500,20 +501,66 @@ namespace Compufy_PV_Projek
                         frm_login.executeQuery(q);
 
                     }
-                    if(frm_nota == null)
+                    //if(frm_nota == null)
+                    //{
+                    //    frm_nota = new kasir_nota();
+                    //}
+
+                    //CRYSTAL REPORT AUTO PRINT//////////////////////////////
+                    ds_nota ds_checkout = new ds_nota();
+
+                    string barang = "(";
+                    for (int x = 0; x < id_barang.Count - 1; x++)
                     {
-                        frm_nota = new kasir_nota();
+                        barang += id_barang[x] + ",";
                     }
-                    frm_nota.frm_login = frm_login;
-                    frm_nota.frm_kasir = this;
-                    frm_nota.h_id = h_id;
-                    frm_nota.id_barang = id_barang;
-                    frm_nota.bayar = bayar;
-                    frm_nota.nama_member = nama_member;
-                    frm_nota.metode = metode;
-                    this.Hide();
+                    barang += id_barang[id_barang.Count - 1] + ")";
+
+                    q = $"SELECT * FROM h_transaksi WHERE id_trans = '{h_id}'";
+                    frm_login.executeDataSet(ds_checkout, q, "h_transaksi");
+
+                    q = $"SELECT * FROM d_transaksi WHERE id_trans = '{h_id}'";
+                    frm_login.executeDataSet(ds_checkout, q, "d_transaksi");
+
+                    q = $"SELECT * FROM Barang WHERE id_barang IN {barang}";
+                    frm_login.executeDataSet(ds_checkout, q, "barang");
+
+                    nota = new cr_nota();
+                    nota.SetDataSource(ds_checkout);
+                    nota.SetParameterValue("Pid_trans", h_id.ToString());
+                    nota.SetParameterValue("Pnama_cust", nama_member);
+                    nota.SetParameterValue("Pbayar", bayar);
+                    nota.SetParameterValue("Pmetode", metode);
+
+                    pd = new PrintDialog();
+                    pd.AllowSomePages = true;
+                    pd.AllowPrintToFile = true;
+
+                    if (pd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        int copies = pd.PrinterSettings.Copies;
+                        int fromPage = pd.PrinterSettings.FromPage;
+                        int toPage = pd.PrinterSettings.ToPage;
+                        bool collate = pd.PrinterSettings.Collate;
+
+                        nota.PrintOptions.PrinterName = pd.PrinterSettings.PrinterName;
+                        nota.PrintToPrinter(copies, collate, fromPage, toPage);
+                    }
                     resetCheckout();
-                    frm_nota.Show();
+                    nota = null;
+                    pd = null;
+                    //END CRYSTAL REPORT/////////////////////////////////////
+
+                    //frm_nota.frm_login = frm_login;
+                    //frm_nota.frm_kasir = this;
+                    //frm_nota.h_id = h_id;
+                    //frm_nota.id_barang = id_barang;
+                    //frm_nota.bayar = bayar;
+                    //frm_nota.nama_member = nama_member;
+                    //frm_nota.metode = metode;
+                    //this.Hide();
+                    //resetCheckout();
+                    //frm_nota.Show();
                 }
             }
         }

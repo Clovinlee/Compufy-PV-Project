@@ -24,20 +24,32 @@ namespace Compufy_PV_Projek
         {
             num_cash.Controls[0].Visible = false;
             num_cash.ResetText();
-            this.MinimumSize = new Size(387, 333);
-            this.MaximumSize = new Size(387, 333);
+            this.MinimumSize = new Size(387, 384);
+            this.MaximumSize = new Size(387, 384);
             lbl_total.Text = "Rp "+total.ToString("#,##");
         }
 
         private void rb_cash_Click(object sender, EventArgs e)
         {
             num_cash.Enabled = true;
+            tb_kk1.Enabled = false;
+            tb_kk1.Text = "";
+            tb_kk2.Enabled = false;
+            tb_kk2.Text = "";
+            tb_kk3.Enabled = false;
+            tb_kk3.Text = "";
+            tb_kk4.Enabled = false;
+            tb_kk4.Text = "";
         }
 
         private void rb_kredit_Click(object sender, EventArgs e)
         {
             num_cash.Enabled = false;
             num_cash.ResetText();
+            tb_kk1.Enabled = true;
+            tb_kk2.Enabled = true;
+            tb_kk3.Enabled = true;
+            tb_kk4.Enabled = true;
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
@@ -57,16 +69,50 @@ namespace Compufy_PV_Projek
             }
             else
             {
-                frm_kasir.bayar = Convert.ToDecimal(num_cash.Value);
+                string nokartu = tb_kk1.Text + tb_kk2.Text + tb_kk3.Text + tb_kk4.Text;
                 string metode = rb_cash.Checked == true ? "Cash" : "Kredit";
-                frm_kasir.metode = metode;
-                this.Close();
+                if(metode == "Kredit" && (nokartu.Length < 16 || !frm_kasir.isAngka(nokartu)))
+                {
+                    num_cash.ResetText();
+                    MessageBox.Show("Invalid input kartu!");
+                }
+                else
+                {
+                    frm_kasir.bayar = Convert.ToDecimal(num_cash.Value);
+                    frm_kasir.metode = metode;
+                    frm_kasir.nokartu = nokartu;
+                    this.Close();
+                }
             }
         }
 
         private void kasir_bayar_FormClosing(object sender, FormClosingEventArgs e)
         {
             frm_kasir.frm_kasirbayar = null;
+        }
+
+        private void tb_kk1_TextChanged(object sender, EventArgs e)
+        {
+            if(tb_kk1.Text.Length == 4)
+            {
+                tb_kk2.Focus();
+            }
+        }
+
+        private void tb_kk2_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_kk2.Text.Length == 4)
+            {
+                tb_kk3.Focus();
+            }
+        }
+
+        private void tb_kk3_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_kk3.Text.Length == 4)
+            {
+                tb_kk4.Focus();
+            }
         }
     }
 }
