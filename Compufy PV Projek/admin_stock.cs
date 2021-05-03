@@ -31,6 +31,7 @@ namespace Compufy_PV_Projek
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 11, FontStyle.Bold);
             //this.FormBorderStyle = FormBorderStyle.None;
             LoadBarang();
+            CustomFont();
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
