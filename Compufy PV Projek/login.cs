@@ -100,7 +100,7 @@ namespace Compufy_PV_Projek
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            string qu = $"SELECT * FROM [Akun] WHERE username = '{tb_username.Text}' AND password = '{tb_password.Text}';";
+            string qu = $"SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') as gambar FROM [Akun] WHERE username = '{tb_username.Text}' AND password = '{tb_password.Text}';";
             ds = new DataSet();
             executeDataSet(ds, qu, "akun");
 
@@ -129,6 +129,10 @@ namespace Compufy_PV_Projek
                     }
                     frm_admin.lbl_namauser.Text = ds.Tables["akun"].Rows[0]["nama_user"].ToString();
                     frm_admin.lbl_jabatanuser.Text = role;
+                    frm_admin.usergambar = ds.Tables["akun"].Rows[0]["gambar"].ToString();
+                    frm_admin.gender = ds.Tables["akun"].Rows[0]["jk_user"].ToString();
+                    
+
 
                     frm_admin.frm_login = this;
                     frm_admin.id_login = ds.Tables["akun"].Rows[0]["id_user"].ToString();
@@ -142,6 +146,8 @@ namespace Compufy_PV_Projek
                     }
                     frm_kasir.lbl_namauser.Text = ds.Tables["akun"].Rows[0]["nama_user"].ToString();
                     frm_kasir.lbl_jabatanuser.Text = role;
+                    frm_kasir.usergambar = ds.Tables["akun"].Rows[0]["gambar"].ToString();
+                    frm_kasir.gender = ds.Tables["akun"].Rows[0]["jk_user"].ToString();
 
                     frm_kasir.frm_login = frm_login;
                     frm_kasir.id_login = ds.Tables["akun"].Rows[0]["id_user"].ToString();

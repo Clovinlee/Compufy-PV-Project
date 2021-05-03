@@ -102,6 +102,7 @@
             this.pl_avatar.Name = "pl_avatar";
             this.pl_avatar.Size = new System.Drawing.Size(70, 70);
             this.pl_avatar.TabIndex = 3;
+            this.pl_avatar.Paint += new System.Windows.Forms.PaintEventHandler(this.pl_avatar_Paint);
             // 
             // lbl_jabatanuser
             // 

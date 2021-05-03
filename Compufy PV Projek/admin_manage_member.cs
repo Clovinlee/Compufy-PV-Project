@@ -89,13 +89,13 @@ namespace Compufy_PV_Projek
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
+            frmAdd.frm_login = frm_login;
             frmAdd.ShowDialog();
             LoadBarang();
         }
 
         private void btnUpdate_Click_1(object sender, EventArgs e)
         {
-            frmUpdate.ShowDialog();
             frmUpdate.id = id;
             frmUpdate.nama = nama;
             frmUpdate.nohp = nohp;
@@ -103,6 +103,8 @@ namespace Compufy_PV_Projek
             frmUpdate.tanggaldaftar = tanggaldaftar;
             frmUpdate.gender = gender;
             frmUpdate.alamat = alamat;
+            frmUpdate.ShowDialog();
+            
             LoadBarang();
         }
 

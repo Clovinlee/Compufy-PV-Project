@@ -28,6 +28,8 @@ namespace Compufy_PV_Projek
         public admin_manage_user frm_manageuser;
         public admin_manage_member frm_managemember;
         public Admin_Transaction frm_transaction;
+        public string usergambar;
+        public string gender;
 
         Button sub_active;
         public string id_login;
@@ -84,6 +86,7 @@ namespace Compufy_PV_Projek
 
             setToolTip();
             readLogoDirectory();
+            
         }
 
         private void btn_submenu_Enter(object sender, EventArgs e)
@@ -257,6 +260,26 @@ namespace Compufy_PV_Projek
             if (pl_menulogo.BackgroundImage == null)
             {
                 noGambar = true;
+            }
+        }
+
+        private void pl_avatar_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            if (usergambar == "-" && gender.Trim() == "L")
+            {
+                Image img = Image.FromFile("profile_picture/profile_sample7.png");
+                g.DrawImage(img, 0, 0, 70, 70);
+            }
+            if (usergambar == "-" && gender == "P")
+            {
+                Image img = Image.FromFile("profile_picture/profile_sample1.png");
+                g.DrawImage(img, 0, 0, 70, 70);
+            }
+            if (usergambar != "-")
+            {
+                Image img = Image.FromFile("profile_picture/"+ usergambar);
+                g.DrawImage(img, 0, 0, 70, 70);
             }
         }
     }

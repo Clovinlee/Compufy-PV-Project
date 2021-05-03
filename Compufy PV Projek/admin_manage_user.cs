@@ -38,6 +38,7 @@ namespace Compufy_PV_Projek
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
+            
             frmAdd.ShowDialog();
             LoadBarang();
         }
@@ -95,28 +96,42 @@ namespace Compufy_PV_Projek
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            frmUpdate.frm_login = frm_login;
-            frmUpdate.id = id;
-            frmUpdate.username = username;
-            frmUpdate.password = password;
-            frmUpdate.nama = nama;
-            frmUpdate.datebirth = datebirth;
-            frmUpdate.gender = gender;
-            frmUpdate.tipeuser = tipeuser;
-            frmUpdate.ShowDialog();
-            
-            LoadBarang();
+            if (username == "")
+            {
+                frmUpdate.frm_login = frm_login;
+                frmUpdate.id = id;
+                frmUpdate.username = username;
+                frmUpdate.password = password;
+                frmUpdate.nama = nama;
+                frmUpdate.datebirth = datebirth;
+                frmUpdate.gender = gender;
+                frmUpdate.tipeuser = tipeuser;
+                frmUpdate.ShowDialog();
+
+                LoadBarang();
+            }
+            else
+            {
+                MessageBox.Show("Tidak Ada User yang diselect");
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Yakin mau delete User ini ?", "Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (dialogResult == DialogResult.Yes)
+            if (username != "")
             {
-                string query = $"DELETE [Akun] where id_user = '{id}'";
-                frm_login.executeQuery(query);
-                LoadBarang();
+                DialogResult dialogResult = MessageBox.Show("Yakin mau delete User ini ?", "Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    string query = $"DELETE [Akun] where id_user = '{id}'";
+                    frm_login.executeQuery(query);
+                    LoadBarang();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Tidak Ada User yang diselect");
             }
         }
 
@@ -139,11 +154,11 @@ namespace Compufy_PV_Projek
                 {
                     dataGridView1.Rows[i].Cells[6].Value = "Kasir";
                 }
-                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "null")
+                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "null" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "L")
                 {
                     try
                     {
-                        Bitmap original = new Bitmap(Application.StartupPath + "\\logo_picture\\profile_sample4.png");
+                        Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\profile_sample7.png");
                         Bitmap resized = new Bitmap(original, new Size(75, 75));
                         ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
                     }
@@ -152,11 +167,24 @@ namespace Compufy_PV_Projek
 
                     }
                 }
-                else
+                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "null" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "P")
                 {
                     try
                     {
-                        Bitmap original = new Bitmap(Application.StartupPath + "\\logo_picture\\"+ ds.Tables["Akun"].Rows[i].ItemArray[7]);
+                        Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\profile_sample1.png");
+                        Bitmap resized = new Bitmap(original, new Size(75, 75));
+                        ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
+                    }
+                    catch
+                    {
+
+                    }
+                }
+                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() != "null")
+                {
+                    try
+                    {
+                        Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\"+ ds.Tables["Akun"].Rows[i].ItemArray[7]);
                         Bitmap resized = new Bitmap(original, new Size(75, 75));
                         ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
                     }
@@ -170,6 +198,7 @@ namespace Compufy_PV_Projek
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
+            frmAdd.frm_login = frm_login;
             frmAdd.ShowDialog();
             LoadBarang();
         }

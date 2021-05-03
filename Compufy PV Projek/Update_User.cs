@@ -30,11 +30,15 @@ namespace Compufy_PV_Projek
         {
             this.MinimumSize = new Size(510, 304);
             this.MaximumSize = new Size(510, 304);
+            txtUsername.Text = username;
+            textBox1.Text = password;
+            txtNama.Text = nama;
+            dateTimePicker1.Value = Convert.ToDateTime(datebirth);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string query = $"UPDATE [Akun] set username = '{username}', password = '{(password)}', nama_user = '{nama}', tgl_lahir_user = '{datebirth}', jk_user = '{gender}', tipe_user = '{tipeuser}' WHERE id_user = '{id}'";
+            string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{(textBox1.Text)}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{dateTimePicker1.Value}', jk_user = '{cbGender.Text}', tipe_user = '{comboBox1.Text}' WHERE id_user = '{id}'";
             frm_login.executeQuery(query);
             this.Close();
         }

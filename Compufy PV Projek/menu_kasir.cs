@@ -21,6 +21,8 @@ namespace Compufy_PV_Projek
         public login frm_login;
         DataSet ds_barang;
         public string id_login;
+        public string usergambar;
+        public string gender;
 
         private void menu_kasir_Load(object sender, EventArgs e)
         {
@@ -638,6 +640,26 @@ namespace Compufy_PV_Projek
 
             }
             sr.Close();
+        }
+
+        private void pl_avatar_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            if (usergambar == "-" && gender == "L")
+            {
+                Image img = Image.FromFile("profile_picture/profile_sample7.png");
+                g.DrawImage(img, 0, 0, 70, 70);
+            }
+            if (usergambar == "-" && gender == "P")
+            {
+                Image img = Image.FromFile("profile_picture/profile_sample1.png");
+                g.DrawImage(img, 0, 0, 70, 70);
+            }
+            if (usergambar != "-")
+            {
+                Image img = Image.FromFile("profile_picture/" + usergambar);
+                g.DrawImage(img, 0, 0, 70, 70);
+            }
         }
     }
 }
