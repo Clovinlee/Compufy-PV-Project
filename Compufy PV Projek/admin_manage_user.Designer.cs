@@ -44,6 +44,7 @@ namespace Compufy_PV_Projek
             this.btnUpdate = new FontAwesome.Sharp.IconButton();
             this.btnDelete = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btn_restartcategory = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -206,12 +207,28 @@ namespace Compufy_PV_Projek
             this.iconButton1.UseVisualStyleBackColor = false;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
+            // btn_restartcategory
+            // 
+            this.btn_restartcategory.FlatAppearance.BorderSize = 0;
+            this.btn_restartcategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_restartcategory.IconChar = FontAwesome.Sharp.IconChar.SyncAlt;
+            this.btn_restartcategory.IconColor = System.Drawing.Color.Black;
+            this.btn_restartcategory.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_restartcategory.IconSize = 30;
+            this.btn_restartcategory.Location = new System.Drawing.Point(368, 15);
+            this.btn_restartcategory.Name = "btn_restartcategory";
+            this.btn_restartcategory.Size = new System.Drawing.Size(33, 33);
+            this.btn_restartcategory.TabIndex = 43;
+            this.btn_restartcategory.UseVisualStyleBackColor = true;
+            this.btn_restartcategory.Click += new System.EventHandler(this.btn_restartcategory_Click);
+            // 
             // admin_manage_user
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(711, 469);
+            this.Controls.Add(this.btn_restartcategory);
             this.Controls.Add(this.iconButton1);
             this.Controls.Add(this.btn_search);
             this.Controls.Add(this.textBox1);
@@ -242,5 +259,6 @@ namespace Compufy_PV_Projek
         private System.Windows.Forms.DataGridViewTextBoxColumn tipe_user;
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.DataGridViewImageColumn Gambar;
+        private FontAwesome.Sharp.IconButton btn_restartcategory;
     }
 }

@@ -62,11 +62,11 @@ namespace Compufy_PV_Projek
                 {
                     dataGridView1.Rows[i].Cells[6].Value = "Kasir";
                 }
-                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-")
+                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "L")
                 {
                     try
                     {
-                        Bitmap original = new Bitmap(Application.StartupPath + "\\logo_picture\\profile_sample4.png");
+                        Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\profile_sample7.png");
                         Bitmap resized = new Bitmap(original, new Size(75, 75));
                         ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
                     }
@@ -75,9 +75,31 @@ namespace Compufy_PV_Projek
 
                     }
                 }
-                else
+                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "P")
                 {
+                    try
+                    {
+                        Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\profile_sample1.png");
+                        Bitmap resized = new Bitmap(original, new Size(75, 75));
+                        ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
+                    }
+                    catch
+                    {
 
+                    }
+                }
+                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() != "-")
+                {
+                    try
+                    {
+                        Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\" + ds.Tables["Akun"].Rows[i].ItemArray[7]);
+                        Bitmap resized = new Bitmap(original, new Size(75, 75));
+                        ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
+                    }
+                    catch
+                    {
+
+                    }
                 }
             }
         }
@@ -140,7 +162,7 @@ namespace Compufy_PV_Projek
             dataGridView1.Rows.Clear();
 
             DataSet ds = new DataSet();
-            string query = $"SELECT * from Akun WHERE lower(username) like '%{textBox1.Text.ToLower()}%'";
+            string query = $"SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') from Akun WHERE lower(username) like '%{textBox1.Text.ToLower()}%'";
             frm_login.executeDataSet(ds, query, "Akun");
 
             for (int i = 0; i < ds.Tables["Akun"].Rows.Count; i++)
@@ -154,7 +176,7 @@ namespace Compufy_PV_Projek
                 {
                     dataGridView1.Rows[i].Cells[6].Value = "Kasir";
                 }
-                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "null" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "L")
+                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "L")
                 {
                     try
                     {
@@ -167,7 +189,7 @@ namespace Compufy_PV_Projek
 
                     }
                 }
-                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "null" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "P")
+                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "P")
                 {
                     try
                     {
@@ -180,11 +202,11 @@ namespace Compufy_PV_Projek
 
                     }
                 }
-                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() != "null")
+                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() != "-")
                 {
                     try
                     {
-                        Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\"+ ds.Tables["Akun"].Rows[i].ItemArray[7]);
+                        Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\" + ds.Tables["Akun"].Rows[i].ItemArray[7]);
                         Bitmap resized = new Bitmap(original, new Size(75, 75));
                         ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
                     }
@@ -200,6 +222,11 @@ namespace Compufy_PV_Projek
         {
             frmAdd.frm_login = frm_login;
             frmAdd.ShowDialog();
+            LoadBarang();
+        }
+
+        private void btn_restartcategory_Click(object sender, EventArgs e)
+        {
             LoadBarang();
         }
     }

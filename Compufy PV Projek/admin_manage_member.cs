@@ -119,5 +119,23 @@ namespace Compufy_PV_Projek
                 LoadBarang();
             }
         }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+
+            DataSet ds = new DataSet();
+            string query = $"SELECT * from Member WHERE lower(nama_member) like '%{textBox1.Text.ToLower()}%'";
+            frm_login.executeDataSet(ds, query, "Member");
+            for (int i = 0; i < ds.Tables["Member"].Rows.Count; i++)
+            {
+                dataGridView1.Rows.Add(ds.Tables["Member"].Rows[i].ItemArray[0], ds.Tables["Member"].Rows[i].ItemArray[1], ds.Tables["Member"].Rows[i].ItemArray[2], ds.Tables["Member"].Rows[i].ItemArray[3], ds.Tables["Member"].Rows[i].ItemArray[4], ds.Tables["Member"].Rows[i].ItemArray[5], ds.Tables["Member"].Rows[i].ItemArray[6]);
+            }
+        }
+
+        private void btn_restartcategory_Click(object sender, EventArgs e)
+        {
+            LoadBarang();
+        }
     }
 }
