@@ -19,6 +19,11 @@ namespace Compufy_PV_Projek
 
         public login frm_login;
         string member_terbaru;
+        int baranglow = 99999;
+        string namalow;
+        int totaltransaksi = 0;
+        int totaldiskon = 0;
+        int totalpendapatan = 0;
 
         private void admin_dashboard_Load(object sender, EventArgs e)
         {
@@ -34,6 +39,29 @@ namespace Compufy_PV_Projek
             }
             label4.Text = member_terbaru;
 
+            
+            query = "SELECT nama_barang, stok_barang from Barang";
+            frm_login.executeDataSet(ds, query, "Barang");
+            for (int i = 0; i < ds.Tables["Barang"].Rows.Count; i++)
+            {
+                if (Convert.ToInt32(ds.Tables["Barang"].Rows[i].ItemArray[1]) <= baranglow)
+                {
+                    baranglow = Convert.ToInt32(ds.Tables["Barang"].Rows[i].ItemArray[1]);
+                    namalow = ds.Tables["Barang"].Rows[i].ItemArray[0].ToString();
+                }
+            }
+            label6.Text = namalow;
+            label8.Text = Convert.ToString(baranglow);
+
+            query = "SELECT total_trans, diskon from h_transaksi";
+            frm_login.executeDataSet(ds, query, "h_transaksi");
+            for (int i = 0; i < ds.Tables["h_transaksi"].Rows.Count; i++)
+            {
+                totaltransaksi += Convert.ToInt32(ds.Tables["h_transaksi"].Rows[i].ItemArray[0]);
+                totaldiskon += Convert.ToInt32(ds.Tables["h_transaksi"].Rows[i].ItemArray[1]);
+            }
+            totalpendapatan = totaltransaksi - totaldiskon;
+            label11.Text = Convert.ToString(totalpendapatan);
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
