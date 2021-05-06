@@ -103,6 +103,7 @@ namespace Compufy_PV_Projek
             frmUpdate.tanggaldaftar = tanggaldaftar;
             frmUpdate.gender = gender;
             frmUpdate.alamat = alamat;
+            frmUpdate.frm_login = frm_login;
             frmUpdate.ShowDialog();
             
             LoadBarang();
@@ -136,6 +137,29 @@ namespace Compufy_PV_Projek
         private void btn_restartcategory_Click(object sender, EventArgs e)
         {
             LoadBarang();
+        }
+
+        private void textBox1_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Search By ID/Nama")
+            {
+                textBox1.Text = "";
+                textBox1.ForeColor = Color.Black;
+            }
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "Search By ID/Nama";
+                textBox1.ForeColor = SystemColors.ScrollBar;
+            }
         }
     }
 }

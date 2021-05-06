@@ -118,7 +118,7 @@ namespace Compufy_PV_Projek
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (username == "")
+            if (username != "")
             {
                 frmUpdate.frm_login = frm_login;
                 frmUpdate.id = id;
@@ -228,6 +228,24 @@ namespace Compufy_PV_Projek
         private void btn_restartcategory_Click(object sender, EventArgs e)
         {
             LoadBarang();
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "Search By ID/Username";
+                textBox1.ForeColor = SystemColors.ScrollBar;
+            }
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Search By ID/Username")
+            {
+                textBox1.Text = "";
+                textBox1.ForeColor = Color.Black;
+            }
         }
     }
 }

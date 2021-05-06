@@ -40,9 +40,9 @@
             this.lbl_jabatanuser = new System.Windows.Forms.Label();
             this.link_logout = new System.Windows.Forms.LinkLabel();
             this.lbl_namauser = new System.Windows.Forms.Label();
+            this.pl_avatar = new System.Windows.Forms.Panel();
             this.pl_submenu = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.pl_avatar = new System.Windows.Forms.Panel();
             this.pl_leftbar.SuspendLayout();
             this.pl_topbar.SuspendLayout();
             this.SuspendLayout();
@@ -265,6 +265,16 @@
             this.lbl_namauser.Text = "Nama User";
             this.lbl_namauser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // pl_avatar
+            // 
+            this.pl_avatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pl_avatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pl_avatar.Location = new System.Drawing.Point(829, 11);
+            this.pl_avatar.Name = "pl_avatar";
+            this.pl_avatar.Size = new System.Drawing.Size(70, 70);
+            this.pl_avatar.TabIndex = 3;
+            this.pl_avatar.Paint += new System.Windows.Forms.PaintEventHandler(this.pl_avatar_Paint);
+            // 
             // pl_submenu
             // 
             this.pl_submenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(160)))), ((int)(((byte)(152)))));
@@ -277,15 +287,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // pl_avatar
-            // 
-            this.pl_avatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pl_avatar.Location = new System.Drawing.Point(829, 11);
-            this.pl_avatar.Name = "pl_avatar";
-            this.pl_avatar.Size = new System.Drawing.Size(70, 70);
-            this.pl_avatar.TabIndex = 3;
-            this.pl_avatar.Paint += new System.Windows.Forms.PaintEventHandler(this.pl_avatar_Paint);
             // 
             // menu_admin
             // 
