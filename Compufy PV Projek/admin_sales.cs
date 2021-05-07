@@ -27,6 +27,7 @@ namespace Compufy_PV_Projek
             cbFilter.SelectedIndex = 0;
             cbOpsi.SelectedIndex = 0;
             radPendapatan.Checked = true;
+            chartSalary.Series["Pendapatan"].IsVisibleInLegend = false;
             chartSalary.Series["JumlahTrans"].IsVisibleInLegend = false;
             chartSalary.Series["BarangLaku"].IsVisibleInLegend = false;
             chartSalary.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
@@ -71,7 +72,6 @@ namespace Compufy_PV_Projek
         private void LoadPendapatan()
         {
             chartSalary.Series["Pendapatan"].Points.Clear();
-            chartSalary.Series["Pendapatan"].IsVisibleInLegend = true;
             chartSalary.Series["Pendapatan"].MarkerSize = 15;
             chartSalary.Series["Pendapatan"].MarkerStyle = MarkerStyle.Circle;
             chartSalary.Series["Pendapatan"].BorderWidth = 4;
@@ -89,8 +89,6 @@ namespace Compufy_PV_Projek
             }
             else if (cbFilter.SelectedIndex == 1)
             {
-                chartSalary.Series["Pendapatan"].XValueType = ChartValueType.String;
-
                 DataSet ds = new DataSet();
                 string query = $"SELECT year(tgl_trans), SUM(total_trans) from h_transaksi group by year(tgl_trans) order by 1 asc";
                 frm_login.executeDataSet(ds, query, "Pendapatan");
@@ -105,7 +103,6 @@ namespace Compufy_PV_Projek
         private void LoadTrans()
         {
             chartSalary.Series["JumlahTrans"].Points.Clear();
-            chartSalary.Series["JumlahTrans"].IsVisibleInLegend = true;
             chartSalary.Series["JumlahTrans"].MarkerSize = 15;
             chartSalary.Series["JumlahTrans"].MarkerStyle = MarkerStyle.Circle;
             chartSalary.Series["JumlahTrans"].BorderWidth = 4;
@@ -129,7 +126,7 @@ namespace Compufy_PV_Projek
 
                 for (int i = 0; i < ds.Tables["Trans"].Rows.Count; i++)
                 {
-                    chartSalary.Series["JumlahTrans"].Points.AddXY(ds.Tables["Trans"].Rows[i].ItemArray[0], ds.Tables["Trans"].Rows[i].ItemArray[1]);
+                    chartSalary.Series["JumlahTrans"].Points.AddXY(ds.Tables["Trans"].Rows[i].ItemArray[0].ToString(), ds.Tables["Trans"].Rows[i].ItemArray[1]);
                 }
             }
         }
@@ -137,7 +134,6 @@ namespace Compufy_PV_Projek
         private void LoadBarang()
         {
             chartSalary.Series["BarangLaku"].Points.Clear();
-            chartSalary.Series["BarangLaku"].IsVisibleInLegend = true;
             chartSalary.Series["BarangLaku"].MarkerSize = 15;
             chartSalary.Series["BarangLaku"].MarkerStyle = MarkerStyle.Circle;
             chartSalary.Series["BarangLaku"].BorderWidth = 4;
@@ -161,7 +157,7 @@ namespace Compufy_PV_Projek
 
                 for (int i = 0; i < ds.Tables["Barang"].Rows.Count; i++)
                 {
-                    chartSalary.Series["BarangLaku"].Points.AddXY(ds.Tables["Barang"].Rows[i].ItemArray[0], ds.Tables["Barang"].Rows[i].ItemArray[1]);
+                    chartSalary.Series["BarangLaku"].Points.AddXY(ds.Tables["Barang"].Rows[i].ItemArray[0].ToString(), ds.Tables["Barang"].Rows[i].ItemArray[1]);
                 }
             }
         }
