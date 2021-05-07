@@ -44,19 +44,26 @@ namespace Compufy_PV_Projek
             this.btnUpdate = new FontAwesome.Sharp.IconButton();
             this.btnDelete = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btn_restartcategory = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox1.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox1.Location = new System.Drawing.Point(407, 18);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(248, 20);
             this.textBox1.TabIndex = 20;
+            this.textBox1.Text = "Search By ID/Username";
+            this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -85,49 +92,59 @@ namespace Compufy_PV_Projek
             this.dataGridView1.Location = new System.Drawing.Point(14, 58);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(682, 398);
             this.dataGridView1.TabIndex = 18;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // id_barang
             // 
             this.id_barang.HeaderText = "ID";
             this.id_barang.Name = "id_barang";
+            this.id_barang.ReadOnly = true;
             // 
             // Username
             // 
             this.Username.HeaderText = "Username";
             this.Username.Name = "Username";
+            this.Username.ReadOnly = true;
             // 
             // Password
             // 
             this.Password.HeaderText = "Password";
             this.Password.Name = "Password";
+            this.Password.ReadOnly = true;
             // 
             // Nama
             // 
             this.Nama.HeaderText = "Nama";
             this.Nama.Name = "Nama";
+            this.Nama.ReadOnly = true;
             // 
             // tgl_lahir
             // 
             this.tgl_lahir.HeaderText = "Tanggal Lahir";
             this.tgl_lahir.Name = "tgl_lahir";
+            this.tgl_lahir.ReadOnly = true;
             // 
             // Gender
             // 
             this.Gender.HeaderText = "Gender";
             this.Gender.Name = "Gender";
+            this.Gender.ReadOnly = true;
             // 
             // tipe_user
             // 
             this.tipe_user.HeaderText = "Tipe User";
             this.tipe_user.Name = "tipe_user";
+            this.tipe_user.ReadOnly = true;
             // 
             // Gambar
             // 
             this.Gambar.HeaderText = "Gambar";
             this.Gambar.Name = "Gambar";
+            this.Gambar.ReadOnly = true;
             // 
             // btn_search
             // 
@@ -206,12 +223,28 @@ namespace Compufy_PV_Projek
             this.iconButton1.UseVisualStyleBackColor = false;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
+            // btn_restartcategory
+            // 
+            this.btn_restartcategory.FlatAppearance.BorderSize = 0;
+            this.btn_restartcategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_restartcategory.IconChar = FontAwesome.Sharp.IconChar.SyncAlt;
+            this.btn_restartcategory.IconColor = System.Drawing.Color.Black;
+            this.btn_restartcategory.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_restartcategory.IconSize = 30;
+            this.btn_restartcategory.Location = new System.Drawing.Point(368, 12);
+            this.btn_restartcategory.Name = "btn_restartcategory";
+            this.btn_restartcategory.Size = new System.Drawing.Size(33, 33);
+            this.btn_restartcategory.TabIndex = 43;
+            this.btn_restartcategory.UseVisualStyleBackColor = true;
+            this.btn_restartcategory.Click += new System.EventHandler(this.btn_restartcategory_Click);
+            // 
             // admin_manage_user
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(711, 469);
+            this.Controls.Add(this.btn_restartcategory);
             this.Controls.Add(this.iconButton1);
             this.Controls.Add(this.btn_search);
             this.Controls.Add(this.textBox1);
@@ -242,5 +275,6 @@ namespace Compufy_PV_Projek
         private System.Windows.Forms.DataGridViewTextBoxColumn tipe_user;
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.DataGridViewImageColumn Gambar;
+        private FontAwesome.Sharp.IconButton btn_restartcategory;
     }
 }

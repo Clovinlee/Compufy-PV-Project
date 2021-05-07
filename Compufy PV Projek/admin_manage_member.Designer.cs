@@ -49,6 +49,8 @@ namespace Compufy_PV_Projek
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -75,44 +77,53 @@ namespace Compufy_PV_Projek
             this.dataGridView1.Location = new System.Drawing.Point(14, 58);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(682, 398);
             this.dataGridView1.TabIndex = 24;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // id_barang
             // 
             this.id_barang.HeaderText = "ID";
             this.id_barang.Name = "id_barang";
+            this.id_barang.ReadOnly = true;
             // 
             // Nama
             // 
             this.Nama.HeaderText = "Nama";
             this.Nama.Name = "Nama";
+            this.Nama.ReadOnly = true;
             // 
             // no_hp
             // 
             this.no_hp.HeaderText = "No HP";
             this.no_hp.Name = "no_hp";
+            this.no_hp.ReadOnly = true;
             // 
             // BirthDate
             // 
             this.BirthDate.HeaderText = "Tanggal Lahir";
             this.BirthDate.Name = "BirthDate";
+            this.BirthDate.ReadOnly = true;
             // 
             // tgl_daftar
             // 
             this.tgl_daftar.HeaderText = "Tanggal Daftar";
             this.tgl_daftar.Name = "tgl_daftar";
+            this.tgl_daftar.ReadOnly = true;
             // 
             // Gender
             // 
             this.Gender.HeaderText = "Gender";
             this.Gender.Name = "Gender";
+            this.Gender.ReadOnly = true;
             // 
             // Alamat
             // 
             this.Alamat.HeaderText = "Alamat";
             this.Alamat.Name = "Alamat";
+            this.Alamat.ReadOnly = true;
             // 
             // iconButton1
             // 
@@ -149,14 +160,20 @@ namespace Compufy_PV_Projek
             this.btn_search.Size = new System.Drawing.Size(35, 35);
             this.btn_search.TabIndex = 40;
             this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox1.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox1.Location = new System.Drawing.Point(406, 18);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(248, 20);
             this.textBox1.TabIndex = 39;
+            this.textBox1.Text = "Search By ID/Nama";
+            this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
+            this.textBox1.MouseEnter += new System.EventHandler(this.textBox1_MouseEnter);
             // 
             // btnUpdate
             // 
@@ -211,6 +228,7 @@ namespace Compufy_PV_Projek
             this.btn_restartcategory.Size = new System.Drawing.Size(33, 33);
             this.btn_restartcategory.TabIndex = 42;
             this.btn_restartcategory.UseVisualStyleBackColor = true;
+            this.btn_restartcategory.Click += new System.EventHandler(this.btn_restartcategory_Click);
             // 
             // admin_manage_member
             // 

@@ -34,6 +34,15 @@ namespace Compufy_PV_Projek
             textBox1.Text = password;
             txtNama.Text = nama;
             dateTimePicker1.Value = Convert.ToDateTime(datebirth);
+            cbGender.Text = gender;
+            if (tipeuser == "Admin")
+            {
+                comboBox1.Text = "1";
+            }
+            if (tipeuser == "Kasir")
+            {
+                comboBox1.Text = "2";
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

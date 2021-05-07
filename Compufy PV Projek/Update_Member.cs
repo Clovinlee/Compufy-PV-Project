@@ -35,6 +35,7 @@ namespace Compufy_PV_Projek
             dateTimePicker1.Value = Convert.ToDateTime(tanggallahir);
             dateTimePicker2.Value = Convert.ToDateTime(tanggaldaftar);
             textBox2.Text = alamat;
+            cbGender.Text = gender;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
