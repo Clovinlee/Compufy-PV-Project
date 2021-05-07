@@ -26,12 +26,14 @@ namespace Compufy_PV_Projek
         public string datebirth;
         public string gender;
         public string tipeuser;
+        public List<string> semuapassword = new List<string>();
         private void admin_manage_user_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new Size(727, 508);
             frmAdd = new Add_User();
             frmUpdate = new Update_User();
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 11, FontStyle.Bold);
+            
             LoadBarang();
             //this.FormBorderStyle = FormBorderStyle.None;
         }
@@ -61,6 +63,14 @@ namespace Compufy_PV_Projek
                 if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "2")
                 {
                     dataGridView1.Rows[i].Cells[6].Value = "Kasir";
+                }
+
+                string secretpass = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                semuapassword.Add(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                dataGridView1.Rows[i].Cells[2].Value = "";
+                for (int j = 0; j< secretpass.Length; j++ )
+                {
+                    dataGridView1.Rows[i].Cells[2].Value += "*";
                 }
                 if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "L")
                 {
@@ -101,6 +111,14 @@ namespace Compufy_PV_Projek
 
                     }
                 }
+                if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "L")
+                {
+                    dataGridView1.Rows[i].Cells[5].Value = "Laki-Laki";
+                }
+                if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "P")
+                {
+                    dataGridView1.Rows[i].Cells[5].Value = "Perempuan";
+                }
             }
         }
         int idx;
@@ -109,7 +127,7 @@ namespace Compufy_PV_Projek
             idx = e.RowIndex;
             id = dataGridView1.Rows[idx].Cells[0].Value.ToString();
             username = dataGridView1.Rows[idx].Cells[1].Value.ToString();
-            password = dataGridView1.Rows[idx].Cells[2].Value.ToString();
+            password = semuapassword[idx];
             nama = (dataGridView1.Rows[idx].Cells[3].Value.ToString());
             datebirth = dataGridView1.Rows[idx].Cells[4].Value.ToString();
             gender = dataGridView1.Rows[idx].Cells[5].Value.ToString();
@@ -260,7 +278,7 @@ namespace Compufy_PV_Projek
             idx = e.RowIndex;
             id = dataGridView1.Rows[idx].Cells[0].Value.ToString();
             username = dataGridView1.Rows[idx].Cells[1].Value.ToString();
-            password = dataGridView1.Rows[idx].Cells[2].Value.ToString();
+            password = semuapassword[idx];
             nama = (dataGridView1.Rows[idx].Cells[3].Value.ToString());
             datebirth = dataGridView1.Rows[idx].Cells[4].Value.ToString();
             gender = dataGridView1.Rows[idx].Cells[5].Value.ToString();
