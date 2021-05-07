@@ -62,6 +62,14 @@ namespace Compufy_PV_Projek
             }
             totalpendapatan = totaltransaksi - totaldiskon;
             label11.Text = Convert.ToString(totalpendapatan);
+
+            query = $"SELECT h.tgl_trans, SUM(d.jumlah_barang) from d_transaksi d, h_transaksi h where h.id_trans = d.id_trans group by tgl_trans order by 1 asc";
+            frm_login.executeDataSet(ds, query, "Barang");
+
+            for (int i = 0; i < ds.Tables["Barang"].Rows.Count; i++)
+            {
+                chartSalary.Series["BarangLaku"].Points.AddXY(ds.Tables["Barang"].Rows[i].ItemArray[0], ds.Tables["Barang"].Rows[i].ItemArray[1]);
+            }
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)

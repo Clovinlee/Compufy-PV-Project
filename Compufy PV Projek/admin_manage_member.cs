@@ -67,6 +67,7 @@ namespace Compufy_PV_Projek
             tanggaldaftar = Convert.ToString(dataGridView1.Rows[idx].Cells[4].Value);
             gender = dataGridView1.Rows[idx].Cells[5].Value.ToString();
             alamat = dataGridView1.Rows[idx].Cells[6].Value.ToString();
+            
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -112,7 +113,7 @@ namespace Compufy_PV_Projek
             }
             else
             {
-                MessageBox.Show("Tidak Ada User yang diselect");
+                MessageBox.Show("User Belum Dipilih");
             }
         }
 
@@ -179,6 +180,7 @@ namespace Compufy_PV_Projek
             tanggaldaftar = Convert.ToString(dataGridView1.Rows[idx].Cells[4].Value);
             gender = dataGridView1.Rows[idx].Cells[5].Value.ToString();
             alamat = dataGridView1.Rows[idx].Cells[6].Value.ToString();
+            
         }
     }
 }

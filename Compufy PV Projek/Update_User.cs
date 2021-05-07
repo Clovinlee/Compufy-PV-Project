@@ -47,7 +47,7 @@ namespace Compufy_PV_Projek
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{(textBox1.Text)}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{dateTimePicker1.Value}', jk_user = '{cbGender.Text}', tipe_user = '{comboBox1.Text}' WHERE id_user = '{id}'";
+            string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{(textBox1.Text)}', nama_user = '{txtNama.Text}', tgl_lahir_user = CONVERT(datetime,'{dateTimePicker1.Value}',103), jk_user = '{cbGender.Text}', tipe_user = '{comboBox1.Text}' WHERE id_user = '{id}'";
             frm_login.executeQuery(query);
             this.Close();
         }

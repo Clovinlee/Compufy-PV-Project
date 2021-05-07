@@ -118,13 +118,8 @@ namespace Compufy_PV_Projek
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (username == "")
+            if (username != "")
             {
-                MessageBox.Show("Tidak Ada User yang diselect");
-            }
-            else
-            {
-                
                 frmUpdate.frm_login = frm_login;
                 frmUpdate.id = id;
                 frmUpdate.username = username;
@@ -136,6 +131,10 @@ namespace Compufy_PV_Projek
                 frmUpdate.ShowDialog();
 
                 LoadBarang();
+            }
+            else
+            {
+                MessageBox.Show("Tidak Ada User yang diselect");
             }
         }
 
