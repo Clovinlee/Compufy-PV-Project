@@ -54,7 +54,16 @@ namespace Compufy_PV_Projek
             for (int i = 0; i < ds.Tables["Member"].Rows.Count; i++)
             {
                 dataGridView1.Rows.Add(ds.Tables["Member"].Rows[i].ItemArray[0], ds.Tables["Member"].Rows[i].ItemArray[1], ds.Tables["Member"].Rows[i].ItemArray[2], ds.Tables["Member"].Rows[i].ItemArray[3], ds.Tables["Member"].Rows[i].ItemArray[4], ds.Tables["Member"].Rows[i].ItemArray[5], ds.Tables["Member"].Rows[i].ItemArray[6]);
+                if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "L")
+                {
+                    dataGridView1.Rows[i].Cells[5].Value = "Laki-Laki";
+                }
+                if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "P")
+                {
+                    dataGridView1.Rows[i].Cells[5].Value = "Perempuan";
+                }
             }
+
         }
         int idx;
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -128,19 +137,59 @@ namespace Compufy_PV_Projek
                 LoadBarang();
             }
         }
+        private bool checkNumber(string txt)
+        {
+            foreach (char c in txt)
+            {
+                if (!char.IsDigit(c))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         private void btn_search_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
 
-            if (textBox1.Text != "")
+            if (textBox1.Text != "Search By ID/Nama")
             {
-                DataSet ds = new DataSet();
-                string query = $"SELECT * from Member WHERE lower(nama_member) like '%{textBox1.Text.ToLower()}%'";
-                frm_login.executeDataSet(ds, query, "Member");
-                for (int i = 0; i < ds.Tables["Member"].Rows.Count; i++)
+                if (checkNumber(textBox1.Text) == false)
                 {
-                    dataGridView1.Rows.Add(ds.Tables["Member"].Rows[i].ItemArray[0], ds.Tables["Member"].Rows[i].ItemArray[1], ds.Tables["Member"].Rows[i].ItemArray[2], ds.Tables["Member"].Rows[i].ItemArray[3], ds.Tables["Member"].Rows[i].ItemArray[4], ds.Tables["Member"].Rows[i].ItemArray[5], ds.Tables["Member"].Rows[i].ItemArray[6]);
+                    DataSet ds = new DataSet();
+                    string query = $"SELECT * from Member WHERE lower(nama_member) like '%{textBox1.Text.ToLower()}%'";
+                    frm_login.executeDataSet(ds, query, "Member");
+                    for (int i = 0; i < ds.Tables["Member"].Rows.Count; i++)
+                    {
+                        dataGridView1.Rows.Add(ds.Tables["Member"].Rows[i].ItemArray[0], ds.Tables["Member"].Rows[i].ItemArray[1], ds.Tables["Member"].Rows[i].ItemArray[2], ds.Tables["Member"].Rows[i].ItemArray[3], ds.Tables["Member"].Rows[i].ItemArray[4], ds.Tables["Member"].Rows[i].ItemArray[5], ds.Tables["Member"].Rows[i].ItemArray[6]);
+                        if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "L")
+                        {
+                            dataGridView1.Rows[i].Cells[5].Value = "Laki-Laki";
+                        }
+                        if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "P")
+                        {
+                            dataGridView1.Rows[i].Cells[5].Value = "Perempuan";
+                        }
+                    }
+                }
+                else
+                {
+                    DataSet ds = new DataSet();
+                    string query = $"SELECT * from Member WHERE id_member like '%{textBox1.Text}%'";
+                    frm_login.executeDataSet(ds, query, "Member");
+                    for (int i = 0; i < ds.Tables["Member"].Rows.Count; i++)
+                    {
+                        dataGridView1.Rows.Add(ds.Tables["Member"].Rows[i].ItemArray[0], ds.Tables["Member"].Rows[i].ItemArray[1], ds.Tables["Member"].Rows[i].ItemArray[2], ds.Tables["Member"].Rows[i].ItemArray[3], ds.Tables["Member"].Rows[i].ItemArray[4], ds.Tables["Member"].Rows[i].ItemArray[5], ds.Tables["Member"].Rows[i].ItemArray[6]);
+                        if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "L")
+                        {
+                            dataGridView1.Rows[i].Cells[5].Value = "Laki-Laki";
+                        }
+                        if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "P")
+                        {
+                            dataGridView1.Rows[i].Cells[5].Value = "Perempuan";
+                        }
+                    }
                 }
             }
             else
