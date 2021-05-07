@@ -168,6 +168,7 @@ namespace Compufy_PV_Projek
 
         private void btn_history_Click(object sender, EventArgs e)
         {
+            Console.WriteLine(history);
             if(frm_history == null)
             {
                 frm_history = new menu_history();
@@ -178,16 +179,23 @@ namespace Compufy_PV_Projek
             
             if(h_login[0] != "")
             {
-                tb_username.Text = h_login[1];
-                tb_password.Text = h_login[2];
-                btn_login_Click(btn_login, e);
-                if(h_login[3] == "Administrator")
+                if(h_login[0] == "exit")
                 {
-                    frm_admin.doHistory(history);
+                    Application.Exit();
                 }
-                else if(h_login[3] == "Kasir")
+                else
                 {
-                    frm_kasir.doHistory(history);
+                    tb_username.Text = h_login[1];
+                    tb_password.Text = h_login[2];
+                    btn_login_Click(btn_login, e);
+                    if (h_login[3] == "Administrator")
+                    {
+                        frm_admin.doHistory(history);
+                    }
+                    else if (h_login[3] == "Kasir")
+                    {
+                        frm_kasir.doHistory(history);
+                    }
                 }
             }
         }

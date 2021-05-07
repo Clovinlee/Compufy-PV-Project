@@ -98,10 +98,12 @@ namespace Compufy_PV_Projek
         bool logout = false;
         private void link_logout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            var mbox_logout = MessageBox.Show("Are you sure you want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (mbox_logout == DialogResult.Yes)
             {
                 frm_login.Show();
                 frm_login.resetLogin();
+                frm_login.history += $"logout%\n";
                 frm_login.writeHistory();
                 login.frm_kasir = null;
                 logout = true;
@@ -111,6 +113,7 @@ namespace Compufy_PV_Projek
 
         private void menu_kasir_FormClosing(object sender, FormClosingEventArgs e)
         {
+            tmr_history.Stop();
             if (logout == false)
             {
                 Application.Exit();
@@ -657,7 +660,7 @@ namespace Compufy_PV_Projek
         {
             historyState = true;
             string[] temp = h.Split('\n');
-            for (int i = 1; i < temp.Length; i++)
+            for (int i = 1; i < temp.Length-1; i++)
             {
                 string[] h_temp = temp[i].Split('%');
                 h_list.Add(h_temp);
@@ -673,6 +676,15 @@ namespace Compufy_PV_Projek
                 {
                     Panel p = (Panel)fpl_products.Controls.Find(h_list[0][1], true)[0];
                     addItem(p);
+                }
+                else if(h_list[0][0] == "logout")
+                {
+                    frm_login.Show();
+                    frm_login.resetLogin();
+                    frm_login.writeHistory();
+                    login.frm_admin = null;
+                    logout = true;
+                    this.Close();
                 }
                 h_list.RemoveAt(0);
             }

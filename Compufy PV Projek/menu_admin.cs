@@ -43,7 +43,7 @@ namespace Compufy_PV_Projek
         {
             sub_active = btn_menusales;
             this.MinimumSize = new Size(925, 639);
-
+            historyState = false;
             //CREATE FORM
             frm_stock = new admin_stock();
             frm_stock.TopLevel = false;
@@ -182,11 +182,12 @@ namespace Compufy_PV_Projek
         bool logout = false;
         private void link_logout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to logout?","Logout",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+            var mbox_logout = MessageBox.Show("Are you sure you want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (mbox_logout == DialogResult.Yes)
             {
                 frm_login.Show();
                 frm_login.resetLogin();
-                //frm_login.history += $"logout\n";
+                frm_login.history += $"logout%\n";
                 frm_login.writeHistory();
                 login.frm_admin = null;
                 logout = true;
@@ -196,6 +197,7 @@ namespace Compufy_PV_Projek
 
         private void menu_admin_FormClosing(object sender, FormClosingEventArgs e)
         {
+            tmr_history.Stop();
             if (logout == false)
             {
                 Application.Exit();
@@ -307,7 +309,7 @@ namespace Compufy_PV_Projek
                 frm_login.history += $"mainbutton%{b.Name}%{b.Text}\n";
             }
         }
-        public Boolean historyState = false;
+        public Boolean historyState;
 
         List<FontAwesome.Sharp.IconButton> h_btn = new List<FontAwesome.Sharp.IconButton>();
         //List<Control> h_list = new List<Control>();
@@ -317,7 +319,7 @@ namespace Compufy_PV_Projek
         {
             historyState = true;
             string[] temp = h.Split('\n');
-            for(int i = 1; i < temp.Length; i++)
+            for(int i = 1; i < temp.Length-1; i++)
             {
                 string[] h_temp = temp[i].Split('%');
                 h_list.Add(h_temp);
@@ -335,8 +337,16 @@ namespace Compufy_PV_Projek
                     btn_submenu_MouseDown(b, new MouseEventArgs(MouseButtons.Left, 1, b.Location.X + 10, b.Location.Y + 10, 1));
                     btn_submenu_MouseUp(b, new MouseEventArgs(MouseButtons.Left, 1, b.Location.X + 10, b.Location.Y + 10, 1));
                     btn_submenu_Enter(b, new MouseEventArgs(MouseButtons.Left, 1, b.Location.X + 10, b.Location.Y + 10, 1));
-                    h_list.RemoveAt(0);
+                }else if(h_list[0][0] == "logout")
+                {
+                    frm_login.Show();
+                    frm_login.resetLogin();
+                    frm_login.writeHistory();
+                    login.frm_admin = null;
+                    logout = true;
+                    this.Close();
                 }
+                h_list.RemoveAt(0);
             }
             else
             {

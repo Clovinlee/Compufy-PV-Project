@@ -1,4 +1,5 @@
 login%kasir%kasir%Kasir
-product%pcontainer_3%Ram 8GB Kingston DDR4
-product%pcontainer_2%ASUS GeForce GT 710 2GB
-product%pcontainer_1%SSD Midasforce 1TB Caddy 9.5
+product%pcontainer_0%Monitor LED Viewsonic 22 inch
+product%pcontainer_4%Processor AMD Ryzen 7 3800XT 3.9 Ghz AM4
+product%pcontainer_5%Xiaomi Redmi 9T
+logout%

@@ -71,20 +71,32 @@ namespace Compufy_PV_Projek
         int step = -1;
         private void menu_history_Load(object sender, EventArgs e)
         {
+            clb_history.Items.Clear();
             StreamReader reader = new StreamReader(Application.StartupPath + @"\history.txt");
+            string username = "";
+            string password = "";
+            string role = "";
             while (!reader.EndOfStream)
             {
                 string[] temp = reader.ReadLine().Split('%');
                 if (temp[0] == "login")
                 {
                     clb_history.Items.Add($"Login | Username : {temp[1]} | Password : {temp[2]} | Role : {temp[3]}");
+                    username = temp[1];
+                    password = temp[2];
+                    role = temp[3];
                 }
                 else if (temp[0] == "mainbutton" || temp[0] == "button")
                 {
                     clb_history.Items.Add($"Button | Button : {temp[2]}");
-                }else if(temp[0] == "product")
+                }
+                else if(temp[0] == "product")
                 {
                     clb_history.Items.Add($"Add Checkout | Product : {temp[2]}");
+                }
+                else if(temp[0] == "logout")
+                {
+                    clb_history.Items.Add($"Logout | Username : {username} | Password : {password} | Role : {role}");
                 }
             }
             reader.Close();
