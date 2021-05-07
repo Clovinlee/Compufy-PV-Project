@@ -20,7 +20,7 @@ namespace Compufy_PV_Projek
         public login frm_login;
         Update_User frmUpdate;
         public string id;
-        public string username;
+        public string username = "";
         public string password;
         public string nama;
         public string datebirth;
@@ -118,8 +118,13 @@ namespace Compufy_PV_Projek
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (username != "")
+            if (username == "")
             {
+                MessageBox.Show("Tidak Ada User yang diselect");
+            }
+            else
+            {
+                
                 frmUpdate.frm_login = frm_login;
                 frmUpdate.id = id;
                 frmUpdate.username = username;
@@ -131,10 +136,6 @@ namespace Compufy_PV_Projek
                 frmUpdate.ShowDialog();
 
                 LoadBarang();
-            }
-            else
-            {
-                MessageBox.Show("Tidak Ada User yang diselect");
             }
         }
 
@@ -246,6 +247,18 @@ namespace Compufy_PV_Projek
                 textBox1.Text = "";
                 textBox1.ForeColor = Color.Black;
             }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idx = e.RowIndex;
+            id = dataGridView1.Rows[idx].Cells[0].Value.ToString();
+            username = dataGridView1.Rows[idx].Cells[1].Value.ToString();
+            password = dataGridView1.Rows[idx].Cells[2].Value.ToString();
+            nama = (dataGridView1.Rows[idx].Cells[3].Value.ToString());
+            datebirth = dataGridView1.Rows[idx].Cells[4].Value.ToString();
+            gender = dataGridView1.Rows[idx].Cells[5].Value.ToString();
+            tipeuser = dataGridView1.Rows[idx].Cells[6].Value.ToString();
         }
     }
 }
