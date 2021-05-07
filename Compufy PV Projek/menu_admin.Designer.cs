@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.pl_leftbar = new System.Windows.Forms.Panel();
             this.btn_member = new FontAwesome.Sharp.IconButton();
             this.btn_manageuser = new FontAwesome.Sharp.IconButton();
@@ -46,7 +45,6 @@
             this.pl_avatar = new System.Windows.Forms.Panel();
             this.pl_submenu = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pl_leftbar.SuspendLayout();
             this.pl_topbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbArrow)).BeginInit();
@@ -239,10 +237,10 @@
             this.pbArrow.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft;
             this.pbArrow.IconColor = System.Drawing.Color.White;
             this.pbArrow.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.pbArrow.IconSize = 61;
-            this.pbArrow.Location = new System.Drawing.Point(178, 31);
+            this.pbArrow.IconSize = 26;
+            this.pbArrow.Location = new System.Drawing.Point(182, 54);
             this.pbArrow.Name = "pbArrow";
-            this.pbArrow.Size = new System.Drawing.Size(62, 61);
+            this.pbArrow.Size = new System.Drawing.Size(26, 38);
             this.pbArrow.TabIndex = 9;
             this.pbArrow.TabStop = false;
             // 
@@ -250,11 +248,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(236, 15);
+            this.label1.Location = new System.Drawing.Point(204, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 63);
+            this.label1.Size = new System.Drawing.Size(77, 39);
             this.label1.TabIndex = 8;
             this.label1.Text = "\r\nClick To\r\nChange Logo";
             // 
@@ -320,11 +318,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 150;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // menu_admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,7 +359,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         public System.Windows.Forms.Panel pl_avatar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Timer timer1;
         private FontAwesome.Sharp.IconPictureBox pbArrow;
     }
 }

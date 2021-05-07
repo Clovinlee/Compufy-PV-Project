@@ -37,6 +37,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.chartSalary = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.cbOpsi = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,19 +48,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblBrg = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chartPie = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.cbTanggal = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.radPendapatan = new System.Windows.Forms.RadioButton();
             this.radTrans = new System.Windows.Forms.RadioButton();
             this.radBarang = new System.Windows.Forms.RadioButton();
-            this.cbTanggal = new System.Windows.Forms.ComboBox();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.chartSalary)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPie)).BeginInit();
             this.SuspendLayout();
             // 
             // chartSalary
             // 
+            this.chartSalary.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             chartArea1.BorderColor = System.Drawing.Color.White;
             chartArea1.Name = "ChartArea1";
             this.chartSalary.ChartAreas.Add(chartArea1);
@@ -181,8 +185,10 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.Info;
-            this.panel1.Controls.Add(this.chart1);
+            this.panel1.Controls.Add(this.chartPie);
             this.panel1.Controls.Add(this.cbTanggal);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.lblBrg);
@@ -193,6 +199,38 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(292, 469);
             this.panel1.TabIndex = 12;
+            // 
+            // chartPie
+            // 
+            this.chartPie.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.chartPie.BackColor = System.Drawing.SystemColors.Control;
+            chartArea2.Name = "ChartArea1";
+            this.chartPie.ChartAreas.Add(chartArea2);
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend2.Name = "Legend1";
+            this.chartPie.Legends.Add(legend2);
+            this.chartPie.Location = new System.Drawing.Point(25, 247);
+            this.chartPie.Name = "chartPie";
+            this.chartPie.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chartPie.Series.Add(series4);
+            this.chartPie.Size = new System.Drawing.Size(244, 201);
+            this.chartPie.TabIndex = 16;
+            title2.Name = "Presentase";
+            this.chartPie.Titles.Add(title2);
+            // 
+            // cbTanggal
+            // 
+            this.cbTanggal.FormattingEnabled = true;
+            this.cbTanggal.Location = new System.Drawing.Point(121, 80);
+            this.cbTanggal.Name = "cbTanggal";
+            this.cbTanggal.Size = new System.Drawing.Size(138, 28);
+            this.cbTanggal.TabIndex = 13;
+            this.cbTanggal.SelectedIndexChanged += new System.EventHandler(this.cbTanggal_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -243,34 +281,6 @@
             this.radBarang.UseVisualStyleBackColor = true;
             this.radBarang.CheckedChanged += new System.EventHandler(this.radBarang_CheckedChanged);
             // 
-            // cbTanggal
-            // 
-            this.cbTanggal.FormattingEnabled = true;
-            this.cbTanggal.Location = new System.Drawing.Point(121, 80);
-            this.cbTanggal.Name = "cbTanggal";
-            this.cbTanggal.Size = new System.Drawing.Size(138, 28);
-            this.cbTanggal.TabIndex = 13;
-            this.cbTanggal.SelectedIndexChanged += new System.EventHandler(this.cbTanggal_SelectedIndexChanged);
-            // 
-            // chart1
-            // 
-            this.chart1.BackColor = System.Drawing.SystemColors.Control;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(26, 244);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chart1.Series.Add(series4);
-            this.chart1.Size = new System.Drawing.Size(250, 179);
-            this.chart1.TabIndex = 16;
-            this.chart1.Text = "chart1";
-            // 
             // lblOpsi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -294,7 +304,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartSalary)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPie)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,6 +327,6 @@
         private System.Windows.Forms.RadioButton radTrans;
         private System.Windows.Forms.RadioButton radBarang;
         private System.Windows.Forms.ComboBox cbTanggal;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartPie;
     }
 }

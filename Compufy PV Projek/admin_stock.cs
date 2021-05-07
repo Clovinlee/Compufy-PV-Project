@@ -78,28 +78,54 @@ namespace Compufy_PV_Projek
             string nama = Convert.ToString(dataGridView1.Rows[idx].Cells[2].Value);
             string harga = Convert.ToString(dataGridView1.Rows[idx].Cells[3].Value);
             string stok = Convert.ToString(dataGridView1.Rows[idx].Cells[4].Value);
+            string[] arrStok = stok.Split(' ');
 
             frmUpdate.frm_login = frm_login;
             frmUpdate.id = id;
             frmUpdate.cbKategori.Text = kategori;
             frmUpdate.txtNama.Text = nama;
-            frmUpdate.txtHarga.Text = harga;
-            frmUpdate.txtStok.Text = stok;
+            frmUpdate.txtHarga.Text = Convert.ToString(double.Parse(harga, NumberStyles.Currency));
+            frmUpdate.txtStok.Text = arrStok[0];
             frmUpdate.ShowDialog();
             LoadBarang();
+        }
+
+        private bool checkNumber(string txt)
+        {
+            foreach (char c in txt)
+            {
+                if (!char.IsDigit(c))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         private void btn_search_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
+            DataSet ds;
 
-            DataSet ds = new DataSet();
-            string query = $"SELECT b.id_barang, k.nama_kategori, b.nama_barang, b.harga_barang, b.stok_barang, b.gambar from Barang b, Kategori k WHERE lower(b.nama_barang) like '%{txtSearch.Text.ToLower()}%' and b.id_kategori = k.id_kategori";
-            frm_login.executeDataSet(ds, query, "Barang");
+            if (checkNumber(txtSearch.Text) == false)
+            {
+                ds = new DataSet();
+                string query = $"SELECT b.id_barang, k.nama_kategori, b.nama_barang, b.harga_barang, b.stok_barang, b.gambar from Barang b, Kategori k WHERE lower(b.nama_barang) like '%{txtSearch.Text.ToLower()}%' and b.id_kategori = k.id_kategori";
+                frm_login.executeDataSet(ds, query, "Barang");
+            }
+            else
+            {
+                ds = new DataSet();
+                string query = $"SELECT b.id_barang, k.nama_kategori, b.nama_barang, b.harga_barang, b.stok_barang, b.gambar from Barang b, Kategori k WHERE b.id_barang = '{txtSearch.Text}' and b.id_kategori = k.id_kategori";
+                frm_login.executeDataSet(ds, query, "Barang");
+            }
 
             for (int i = 0; i < ds.Tables["Barang"].Rows.Count; i++)
             {
-                dataGridView1.Rows.Add(ds.Tables["Barang"].Rows[i].ItemArray[0], ds.Tables["Barang"].Rows[i].ItemArray[1], ds.Tables["Barang"].Rows[i].ItemArray[2], ds.Tables["Barang"].Rows[i].ItemArray[3], ds.Tables["Barang"].Rows[i].ItemArray[4]);
+                string harga = Convert.ToInt32(ds.Tables["Barang"].Rows[i].ItemArray[3]).ToString("C", new CultureInfo("id-ID"));
+                string stok = ds.Tables["Barang"].Rows[i].ItemArray[4].ToString() + " Unit";
+
+                dataGridView1.Rows.Add(ds.Tables["Barang"].Rows[i].ItemArray[0], ds.Tables["Barang"].Rows[i].ItemArray[1], ds.Tables["Barang"].Rows[i].ItemArray[2], harga, stok);
 
                 try
                 {

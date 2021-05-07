@@ -41,8 +41,6 @@ namespace Compufy_PV_Projek
 
         private void menu_admin_Load(object sender, EventArgs e)
         {
-            move = 5;
-            timer1.Start();
             sub_active = btn_menusales;
             this.MinimumSize = new Size(925, 639);
 
@@ -294,22 +292,6 @@ namespace Compufy_PV_Projek
             {
                 Image img = Image.FromFile("profile_picture/"+ usergambar);
                 g.DrawImage(img, 0, 0, 70, 70);
-            }
-        }
-
-        int move;
-        private void timer1_Tick(object sender, EventArgs e)
-        { 
-            pbArrow.Left += move;
-            label1.Left += move;
-
-            if (pbArrow.Left <= 178) 
-            {
-                move *= -1;
-            }
-            else if (pbArrow.Left >= 202)
-            {
-                move *= -1;
             }
         }
     }
