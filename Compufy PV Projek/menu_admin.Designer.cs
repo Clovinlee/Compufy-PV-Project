@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pl_leftbar = new System.Windows.Forms.Panel();
             this.btn_member = new FontAwesome.Sharp.IconButton();
             this.btn_manageuser = new FontAwesome.Sharp.IconButton();
@@ -45,6 +46,7 @@
             this.pl_avatar = new System.Windows.Forms.Panel();
             this.pl_submenu = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.tmr_history = new System.Windows.Forms.Timer(this.components);
             this.pl_leftbar.SuspendLayout();
             this.pl_topbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbArrow)).BeginInit();
@@ -84,6 +86,7 @@
             this.btn_member.Text = "Manage Member";
             this.btn_member.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_member.UseVisualStyleBackColor = true;
+            this.btn_member.Click += new System.EventHandler(this.btn_historyAdd_Click);
             this.btn_member.Enter += new System.EventHandler(this.btn_submenu_Enter);
             this.btn_member.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
             this.btn_member.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
@@ -108,6 +111,7 @@
             this.btn_manageuser.Text = "Manage User";
             this.btn_manageuser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_manageuser.UseVisualStyleBackColor = false;
+            this.btn_manageuser.Click += new System.EventHandler(this.btn_historyAdd_Click);
             this.btn_manageuser.Enter += new System.EventHandler(this.btn_submenu_Enter);
             this.btn_manageuser.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
             this.btn_manageuser.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
@@ -131,6 +135,7 @@
             this.btn_menustocks.Text = "Stocks";
             this.btn_menustocks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_menustocks.UseVisualStyleBackColor = true;
+            this.btn_menustocks.Click += new System.EventHandler(this.btn_historyAdd_Click);
             this.btn_menustocks.Enter += new System.EventHandler(this.btn_submenu_Enter);
             this.btn_menustocks.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
             this.btn_menustocks.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
@@ -154,6 +159,7 @@
             this.btn_menutransactions.Text = "Transactions";
             this.btn_menutransactions.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_menutransactions.UseVisualStyleBackColor = true;
+            this.btn_menutransactions.Click += new System.EventHandler(this.btn_historyAdd_Click);
             this.btn_menutransactions.Enter += new System.EventHandler(this.btn_submenu_Enter);
             this.btn_menutransactions.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
             this.btn_menutransactions.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
@@ -177,6 +183,7 @@
             this.btn_menusales.Text = "Sales";
             this.btn_menusales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_menusales.UseVisualStyleBackColor = true;
+            this.btn_menusales.Click += new System.EventHandler(this.btn_historyAdd_Click);
             this.btn_menusales.Enter += new System.EventHandler(this.btn_submenu_Enter);
             this.btn_menusales.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
             this.btn_menusales.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
@@ -200,6 +207,7 @@
             this.btn_menudashboard.Text = "Dashboard";
             this.btn_menudashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_menudashboard.UseVisualStyleBackColor = true;
+            this.btn_menudashboard.Click += new System.EventHandler(this.btn_historyAdd_Click);
             this.btn_menudashboard.Enter += new System.EventHandler(this.btn_submenu_Enter);
             this.btn_menudashboard.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
             this.btn_menudashboard.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
@@ -318,6 +326,11 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // tmr_history
+            // 
+            this.tmr_history.Interval = 1000;
+            this.tmr_history.Tick += new System.EventHandler(this.tmr_history_Tick);
+            // 
             // menu_admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,6 +373,7 @@
         public System.Windows.Forms.Panel pl_avatar;
         private System.Windows.Forms.Label label1;
         private FontAwesome.Sharp.IconPictureBox pbArrow;
+        private System.Windows.Forms.Timer tmr_history;
     }
 }
 

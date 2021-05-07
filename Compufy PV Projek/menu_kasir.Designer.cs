@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pl_menulogo = new System.Windows.Forms.Panel();
             this.pl_topbar = new System.Windows.Forms.Panel();
             this.pl_avatar = new System.Windows.Forms.Panel();
@@ -62,6 +63,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.tmr_history = new System.Windows.Forms.Timer(this.components);
             this.pl_topbar.SuspendLayout();
             this.pl_main.SuspendLayout();
             this.pl_submainleft.SuspendLayout();
@@ -522,6 +524,11 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Checkout";
             // 
+            // tmr_history
+            // 
+            this.tmr_history.Interval = 1000;
+            this.tmr_history.Tick += new System.EventHandler(this.tmr_history_Tick);
+            // 
             // menu_kasir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -586,5 +593,6 @@
         public System.Windows.Forms.CheckBox cb_member;
         private System.Windows.Forms.ComboBox cb_categories;
         private FontAwesome.Sharp.IconButton btn_restartcategory;
+        private System.Windows.Forms.Timer tmr_history;
     }
 }

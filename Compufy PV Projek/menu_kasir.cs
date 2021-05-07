@@ -34,7 +34,7 @@ namespace Compufy_PV_Projek
             ds_barang = new DataSet();
             string q = "SELECT * FROM barang";
             frm_login.executeDataSet(ds_barang, q, "barang");
-
+            int ctr = 0;
             foreach(DataRow r in ds_barang.Tables["barang"].Rows)
             {
                 Panel p_container = new Panel();
@@ -77,7 +77,9 @@ namespace Compufy_PV_Projek
                 }
                 p_picture.Click += new EventHandler(buttonItemAdd_Click);
                 //ID_Barang-ID_Kategori-Nama-Harga-QTY-Image
-               
+
+                p_container.Name = "pcontainer_" + ctr.ToString();
+                ctr++;
                 p_container.Tag = $"{r[0]}={r[1]}={r[2]}={r[3]}={r[4]}={r[5]}";
 
                 fpl_products.Controls.Add(p_container);
@@ -93,24 +95,16 @@ namespace Compufy_PV_Projek
             readLogoDirectory();
         }
 
-        private void pl_menulogo_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            Rectangle container = new Rectangle(0, 0, pl_menulogo.Width - 1, pl_menulogo.Height - 1);
-            StringFormat format = new StringFormat();
-            format.LineAlignment = StringAlignment.Center;
-            format.Alignment = StringAlignment.Center;
-            //g.DrawImage(new Bitmap(materials.compufy_0), 0,0,pl_menulogo.Width, pl_menulogo.Height);
-            g.DrawString("<Logo>", new Font("Arial", 20), Brushes.White, container, format);
-        }
-
         bool logout = false;
         private void link_logout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            var mbox_logout = MessageBox.Show("Are you sure you want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (mbox_logout == DialogResult.Yes)
             {
                 frm_login.Show();
                 frm_login.resetLogin();
+                frm_login.history += $"logout%\n";
+                frm_login.writeHistory();
                 login.frm_kasir = null;
                 logout = true;
                 this.Close();
@@ -119,6 +113,7 @@ namespace Compufy_PV_Projek
 
         private void menu_kasir_FormClosing(object sender, FormClosingEventArgs e)
         {
+            tmr_history.Stop();
             if (logout == false)
             {
                 Application.Exit();
@@ -174,22 +169,33 @@ namespace Compufy_PV_Projek
             }
         }
 
-        private void buttonItemAdd_Click(object sender, EventArgs e)
+        public void addItem(object sender)
         {
             Panel p_parent;
-            if(sender.GetType().Name == "Label")
+            if (historyState == true)
             {
-                p_parent = (Panel)((Label)sender).Parent;
+                p_parent = (Panel)sender;
             }
             else
             {
-                p_parent = (Panel)((Panel)sender).Parent;
+                if (sender.GetType().Name == "Label")
+                {
+                    p_parent = (Panel)((Label)sender).Parent;
+                }
+                else
+                {
+                    p_parent = (Panel)((Panel)sender).Parent;
+                }
+                Console.WriteLine("ASD");
+                frm_login.history += $"product%{p_parent.Name}%{p_parent.Tag.ToString().Split('=')[2]}\n";
             }
+
             string[] info = p_parent.Tag.ToString().Split('=');
+
             bool valid = true;
-            foreach(Panel p in flp_checkout.Controls)
+            foreach (Panel p in flp_checkout.Controls)
             {
-                if(info[0] == p.Tag.ToString().Split('=')[0])
+                if (info[0] == p.Tag.ToString().Split('=')[0])
                 {
                     MessageBox.Show("Barang sudah ada di checkout!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     valid = false;
@@ -305,6 +311,11 @@ namespace Compufy_PV_Projek
                 flp_checkout.Controls.Add(p_container);
                 sumHarga();
             }
+        }
+
+        private void buttonItemAdd_Click(object sender, EventArgs e)
+        {
+            addItem(sender);
         }
 
         private void b_trash_Click(object sender, EventArgs e)
@@ -640,6 +651,48 @@ namespace Compufy_PV_Projek
 
             }
             sr.Close();
+        }
+
+        public Boolean historyState = false;
+
+        List<string[]> h_list = new List<string[]>();
+        public void doHistory(string h)
+        {
+            historyState = true;
+            string[] temp = h.Split('\n');
+            for (int i = 1; i < temp.Length-1; i++)
+            {
+                string[] h_temp = temp[i].Split('%');
+                h_list.Add(h_temp);
+            }
+            tmr_history.Start();
+        }
+
+        private void tmr_history_Tick(object sender, EventArgs e)
+        {
+            if (h_list.Count > 0)
+            {
+                if(h_list[0][0] == "product")
+                {
+                    Panel p = (Panel)fpl_products.Controls.Find(h_list[0][1], true)[0];
+                    addItem(p);
+                }
+                else if(h_list[0][0] == "logout")
+                {
+                    frm_login.Show();
+                    frm_login.resetLogin();
+                    frm_login.writeHistory();
+                    login.frm_admin = null;
+                    logout = true;
+                    this.Close();
+                }
+                h_list.RemoveAt(0);
+            }
+            else
+            {
+                historyState = false;
+                tmr_history.Stop();
+            }
         }
 
         private void pl_avatar_Paint(object sender, PaintEventArgs e)

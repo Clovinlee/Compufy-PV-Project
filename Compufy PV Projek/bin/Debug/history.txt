@@ -1,0 +1,5 @@
+login%kasir%kasir%Kasir
+product%pcontainer_0%Monitor LED Viewsonic 22 inch
+product%pcontainer_4%Processor AMD Ryzen 7 3800XT 3.9 Ghz AM4
+product%pcontainer_5%Xiaomi Redmi 9T
+logout%
