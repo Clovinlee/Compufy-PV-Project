@@ -179,9 +179,9 @@
             this.lblBrg.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBrg.Location = new System.Drawing.Point(22, 202);
             this.lblBrg.Name = "lblBrg";
-            this.lblBrg.Size = new System.Drawing.Size(97, 20);
+            this.lblBrg.Size = new System.Drawing.Size(110, 20);
             this.lblBrg.TabIndex = 11;
-            this.lblBrg.Text = "Barang Laku :";
+            this.lblBrg.Text = "Barang Terjual :";
             // 
             // panel1
             // 
@@ -274,10 +274,10 @@
             this.radBarang.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radBarang.Location = new System.Drawing.Point(238, 72);
             this.radBarang.Name = "radBarang";
-            this.radBarang.Size = new System.Drawing.Size(108, 24);
+            this.radBarang.Size = new System.Drawing.Size(121, 24);
             this.radBarang.TabIndex = 15;
             this.radBarang.TabStop = true;
-            this.radBarang.Text = "Barang Laku";
+            this.radBarang.Text = "Barang Terjual";
             this.radBarang.UseVisualStyleBackColor = true;
             this.radBarang.CheckedChanged += new System.EventHandler(this.radBarang_CheckedChanged);
             // 
