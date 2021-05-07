@@ -62,7 +62,7 @@ namespace Compufy_PV_Projek
             {
                 g.FillRectangle(Brushes.DarkBlue, 0, 5, totaltoday / max * 400, 75);
                 g.FillRectangle(Brushes.Gray, 0, 85, totalyesterday/max * 400, 75);
-                label15.Text = max.ToString();
+                label15.Text = "Rp."+max.ToString("#,##");
             }
         }
 
