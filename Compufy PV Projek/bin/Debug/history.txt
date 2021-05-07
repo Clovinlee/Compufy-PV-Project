@@ -1,0 +1,4 @@
+login%kasir%kasir%Kasir
+product%pcontainer_3%Ram 8GB Kingston DDR4
+product%pcontainer_2%ASUS GeForce GT 710 2GB
+product%pcontainer_1%SSD Midasforce 1TB Caddy 9.5

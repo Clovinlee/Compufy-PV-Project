@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Drawing.Drawing2D;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace Compufy_PV_Projek
 {
@@ -22,12 +23,13 @@ namespace Compufy_PV_Projek
         //public static menu_superadmin frm_super;
         public static menu_kasir frm_kasir;
         //
+        public menu_history frm_history;
 
         public login()
         {
             InitializeComponent();
             this.Text = "Compufy";
-            this.MinimumSize = new Size(390, 610);
+            this.MinimumSize = new Size(390, 640);
             frm_login = this;
         }
 
@@ -121,6 +123,10 @@ namespace Compufy_PV_Projek
                 {
                     role = "Kasir";
                 }
+                if(history == "")
+                {
+                    history += $"login%{tb_username.Text}%{tb_password.Text}%{role}\n";
+                }
                 if (tipe == 1)
                 {
                     if (frm_admin == null)
@@ -156,6 +162,46 @@ namespace Compufy_PV_Projek
                     }
                 this.Hide();
             }
+        }
+
+        public string history = "";
+
+        private void btn_history_Click(object sender, EventArgs e)
+        {
+            if(frm_history == null)
+            {
+                frm_history = new menu_history();
+            }
+            frm_history.frm_login = this;
+            frm_history.ShowDialog();
+            string[] h_login = history.Split('\n')[0].Split('%');
+            
+            if(h_login[0] != "")
+            {
+                tb_username.Text = h_login[1];
+                tb_password.Text = h_login[2];
+                btn_login_Click(btn_login, e);
+                if(h_login[3] == "Administrator")
+                {
+                    frm_admin.doHistory(history);
+                }
+                else if(h_login[3] == "Kasir")
+                {
+                    frm_kasir.doHistory(history);
+                }
+            }
+        }
+
+        public void writeHistory()
+        {
+            StreamWriter writer = new StreamWriter(Application.StartupPath + @"\history.txt");
+            writer.Write(history);
+            writer.Close();
+            history = "";
+        }
+
+        private void login_FormClosing(object sender, FormClosingEventArgs e)
+        {
         }
     }
 }

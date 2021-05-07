@@ -41,6 +41,7 @@
             this.pb_anon = new System.Windows.Forms.PictureBox();
             this.pl_topbar = new System.Windows.Forms.Panel();
             this.Label1 = new System.Windows.Forms.Label();
+            this.btn_history = new FontAwesome.Sharp.IconButton();
             this.pl_interface.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon_username)).BeginInit();
@@ -54,6 +55,7 @@
             // 
             this.pl_interface.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pl_interface.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(56)))), ((int)(((byte)(70)))));
+            this.pl_interface.Controls.Add(this.btn_history);
             this.pl_interface.Controls.Add(this.panel2);
             this.pl_interface.Controls.Add(this.panel1);
             this.pl_interface.Controls.Add(this.btn_login);
@@ -61,7 +63,7 @@
             this.pl_interface.Location = new System.Drawing.Point(296, 85);
             this.pl_interface.Name = "pl_interface";
             this.pl_interface.Size = new System.Drawing.Size(352, 579);
-            this.pl_interface.TabIndex = 1;
+            this.pl_interface.TabIndex = 0;
             // 
             // panel2
             // 
@@ -136,7 +138,7 @@
             this.tb_password.Name = "tb_password";
             this.tb_password.PasswordChar = '*';
             this.tb_password.Size = new System.Drawing.Size(204, 24);
-            this.tb_password.TabIndex = 1;
+            this.tb_password.TabIndex = 0;
             this.tb_password.Tag = "Password";
             this.tb_password.Text = "Password";
             this.tb_password.Enter += new System.EventHandler(this.tb_input_Focus);
@@ -213,6 +215,24 @@
             this.Label1.Text = "Login Page";
             this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btn_history
+            // 
+            this.btn_history.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(160)))), ((int)(((byte)(152)))));
+            this.btn_history.FlatAppearance.BorderSize = 0;
+            this.btn_history.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_history.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_history.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(56)))), ((int)(((byte)(70)))));
+            this.btn_history.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btn_history.IconColor = System.Drawing.Color.Black;
+            this.btn_history.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_history.Location = new System.Drawing.Point(45, 428);
+            this.btn_history.Name = "btn_history";
+            this.btn_history.Size = new System.Drawing.Size(262, 51);
+            this.btn_history.TabIndex = 1;
+            this.btn_history.Text = "History";
+            this.btn_history.UseVisualStyleBackColor = false;
+            this.btn_history.Click += new System.EventHandler(this.btn_history_Click);
+            // 
             // login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,6 +244,7 @@
             this.Name = "login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compufy";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.login_FormClosing);
             this.Load += new System.EventHandler(this.login_Load);
             this.pl_interface.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -253,6 +274,7 @@
         private System.Windows.Forms.PictureBox pb_anon;
         private System.Windows.Forms.Panel pl_topbar;
         private System.Windows.Forms.Label Label1;
+        private FontAwesome.Sharp.IconButton btn_history;
     }
 }
 
