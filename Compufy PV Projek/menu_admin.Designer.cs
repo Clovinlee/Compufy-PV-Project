@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pl_leftbar = new System.Windows.Forms.Panel();
             this.btn_member = new FontAwesome.Sharp.IconButton();
             this.btn_manageuser = new FontAwesome.Sharp.IconButton();
@@ -40,11 +41,15 @@
             this.lbl_jabatanuser = new System.Windows.Forms.Label();
             this.link_logout = new System.Windows.Forms.LinkLabel();
             this.lbl_namauser = new System.Windows.Forms.Label();
+            this.pl_avatar = new System.Windows.Forms.Panel();
             this.pl_submenu = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.pl_avatar = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pbArrow = new FontAwesome.Sharp.IconPictureBox();
             this.pl_leftbar.SuspendLayout();
             this.pl_topbar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbArrow)).BeginInit();
             this.SuspendLayout();
             // 
             // pl_leftbar
@@ -215,6 +220,8 @@
             // pl_topbar
             // 
             this.pl_topbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(56)))), ((int)(((byte)(70)))));
+            this.pl_topbar.Controls.Add(this.pbArrow);
+            this.pl_topbar.Controls.Add(this.label1);
             this.pl_topbar.Controls.Add(this.lbl_jabatanuser);
             this.pl_topbar.Controls.Add(this.link_logout);
             this.pl_topbar.Controls.Add(this.lbl_namauser);
@@ -265,6 +272,15 @@
             this.lbl_namauser.Text = "Nama User";
             this.lbl_namauser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // pl_avatar
+            // 
+            this.pl_avatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pl_avatar.Location = new System.Drawing.Point(829, 11);
+            this.pl_avatar.Name = "pl_avatar";
+            this.pl_avatar.Size = new System.Drawing.Size(70, 70);
+            this.pl_avatar.TabIndex = 3;
+            this.pl_avatar.Paint += new System.Windows.Forms.PaintEventHandler(this.pl_avatar_Paint);
+            // 
             // pl_submenu
             // 
             this.pl_submenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(160)))), ((int)(((byte)(152)))));
@@ -278,14 +294,35 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // pl_avatar
+            // label1
             // 
-            this.pl_avatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pl_avatar.Location = new System.Drawing.Point(829, 11);
-            this.pl_avatar.Name = "pl_avatar";
-            this.pl_avatar.Size = new System.Drawing.Size(70, 70);
-            this.pl_avatar.TabIndex = 3;
-            this.pl_avatar.Paint += new System.Windows.Forms.PaintEventHandler(this.pl_avatar_Paint);
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(236, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 63);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "\r\nClick To\r\nChange Logo";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 150;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // pbArrow
+            // 
+            this.pbArrow.BackColor = System.Drawing.Color.Transparent;
+            this.pbArrow.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft;
+            this.pbArrow.IconColor = System.Drawing.Color.White;
+            this.pbArrow.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.pbArrow.IconSize = 61;
+            this.pbArrow.Location = new System.Drawing.Point(178, 31);
+            this.pbArrow.Name = "pbArrow";
+            this.pbArrow.Size = new System.Drawing.Size(62, 61);
+            this.pbArrow.TabIndex = 9;
+            this.pbArrow.TabStop = false;
             // 
             // menu_admin
             // 
@@ -296,6 +333,7 @@
             this.Controls.Add(this.pl_submenu);
             this.Controls.Add(this.pl_leftbar);
             this.Controls.Add(this.pl_topbar);
+            this.DoubleBuffered = true;
             this.Name = "menu_admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compufy";
@@ -304,6 +342,7 @@
             this.pl_leftbar.ResumeLayout(false);
             this.pl_topbar.ResumeLayout(false);
             this.pl_topbar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbArrow)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -325,6 +364,9 @@
         private System.Windows.Forms.Panel pl_submenu;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         public System.Windows.Forms.Panel pl_avatar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer1;
+        private FontAwesome.Sharp.IconPictureBox pbArrow;
     }
 }
 
