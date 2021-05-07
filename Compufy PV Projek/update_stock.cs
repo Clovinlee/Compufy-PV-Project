@@ -99,16 +99,13 @@ namespace Compufy_PV_Projek
             }
             else if (checkHarga == false || checkStok == false)
             {
-                MessageBox.Show("Harga dan Stok harus angka !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Harga dan Stok harus angka !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (pictureBox1.ImageLocation == null)
             {
-                if (MessageBox.Show("Yakin update tanpa gambar ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    string query = $"UPDATE [Barang] set nama_barang = '{txtNama.Text}', id_kategori = '{cbKategori.SelectedIndex + 1}', harga_barang = '{txtHarga.Text}', stok_barang = '{txtStok.Text}', gambar = '{openFileDialog1.SafeFileName}' where id_barang = {id}";
-                    frm_login.executeQuery(query);
-                    this.Close();
-                }
+                string query = $"UPDATE [Barang] set nama_barang = '{txtNama.Text}', id_kategori = '{cbKategori.SelectedIndex + 1}', harga_barang = '{txtHarga.Text}', stok_barang = '{txtStok.Text}', gambar = 'NULL' where id_barang = {id}";
+                frm_login.executeQuery(query);
+                this.Close();
             }
             else
             {

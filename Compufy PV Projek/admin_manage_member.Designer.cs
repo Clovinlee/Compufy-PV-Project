@@ -29,7 +29,7 @@ namespace Compufy_PV_Projek
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.id_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,19 +49,21 @@ namespace Compufy_PV_Projek
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.PapayaWhip;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Nirmala UI", 11F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Nirmala UI", 11F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_barang,
@@ -75,44 +77,53 @@ namespace Compufy_PV_Projek
             this.dataGridView1.Location = new System.Drawing.Point(14, 58);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(682, 398);
             this.dataGridView1.TabIndex = 24;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // id_barang
             // 
             this.id_barang.HeaderText = "ID";
             this.id_barang.Name = "id_barang";
+            this.id_barang.ReadOnly = true;
             // 
             // Nama
             // 
             this.Nama.HeaderText = "Nama";
             this.Nama.Name = "Nama";
+            this.Nama.ReadOnly = true;
             // 
             // no_hp
             // 
             this.no_hp.HeaderText = "No HP";
             this.no_hp.Name = "no_hp";
+            this.no_hp.ReadOnly = true;
             // 
             // BirthDate
             // 
             this.BirthDate.HeaderText = "Tanggal Lahir";
             this.BirthDate.Name = "BirthDate";
+            this.BirthDate.ReadOnly = true;
             // 
             // tgl_daftar
             // 
             this.tgl_daftar.HeaderText = "Tanggal Daftar";
             this.tgl_daftar.Name = "tgl_daftar";
+            this.tgl_daftar.ReadOnly = true;
             // 
             // Gender
             // 
             this.Gender.HeaderText = "Gender";
             this.Gender.Name = "Gender";
+            this.Gender.ReadOnly = true;
             // 
             // Alamat
             // 
             this.Alamat.HeaderText = "Alamat";
             this.Alamat.Name = "Alamat";
+            this.Alamat.ReadOnly = true;
             // 
             // iconButton1
             // 
@@ -154,10 +165,15 @@ namespace Compufy_PV_Projek
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox1.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox1.Location = new System.Drawing.Point(406, 18);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(248, 20);
             this.textBox1.TabIndex = 39;
+            this.textBox1.Text = "Search By ID/Nama";
+            this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
+            this.textBox1.MouseEnter += new System.EventHandler(this.textBox1_MouseEnter);
             // 
             // btnUpdate
             // 

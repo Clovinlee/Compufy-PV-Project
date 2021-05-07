@@ -42,6 +42,11 @@ namespace Compufy_PV_Projek
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnUpdate = new FontAwesome.Sharp.IconButton();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnFile = new FontAwesome.Sharp.IconButton();
+            this.label7 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -176,7 +181,7 @@ namespace Compufy_PV_Projek
             this.btnUpdate.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnUpdate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnUpdate.IconSize = 30;
-            this.btnUpdate.Location = new System.Drawing.Point(119, 218);
+            this.btnUpdate.Location = new System.Drawing.Point(119, 291);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(116, 35);
             this.btnUpdate.TabIndex = 58;
@@ -185,12 +190,59 @@ namespace Compufy_PV_Projek
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(328, 228);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(75, 75);
+            this.pictureBox1.TabIndex = 61;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnFile
+            // 
+            this.btnFile.BackColor = System.Drawing.SystemColors.Control;
+            this.btnFile.FlatAppearance.BorderSize = 0;
+            this.btnFile.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFile.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFile.ForeColor = System.Drawing.Color.Black;
+            this.btnFile.IconChar = FontAwesome.Sharp.IconChar.FolderPlus;
+            this.btnFile.IconColor = System.Drawing.Color.DarkOrange;
+            this.btnFile.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnFile.IconSize = 25;
+            this.btnFile.Location = new System.Drawing.Point(155, 228);
+            this.btnFile.Name = "btnFile";
+            this.btnFile.Size = new System.Drawing.Size(110, 28);
+            this.btnFile.TabIndex = 60;
+            this.btnFile.Text = "Pilih File";
+            this.btnFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFile.UseVisualStyleBackColor = false;
+            this.btnFile.Click += new System.EventHandler(this.btnFile_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(86, 232);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 20);
+            this.label7.TabIndex = 59;
+            this.label7.Text = "Gambar";
+            // 
             // Update_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(494, 265);
+            this.ClientSize = new System.Drawing.Size(569, 338);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnFile);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label4);
@@ -207,6 +259,7 @@ namespace Compufy_PV_Projek
             this.Name = "Update_User";
             this.Text = "Update_User";
             this.Load += new System.EventHandler(this.Update_User_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,5 +280,9 @@ namespace Compufy_PV_Projek
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private FontAwesome.Sharp.IconButton btnUpdate;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private FontAwesome.Sharp.IconButton btnFile;
+        private System.Windows.Forms.Label label7;
     }
 }

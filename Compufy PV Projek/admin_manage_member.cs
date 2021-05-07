@@ -21,7 +21,7 @@ namespace Compufy_PV_Projek
         public login frm_login;
         Update_Member frmUpdate;
         public string id;
-        public string nama;
+        public string nama = "";
         public string nohp;
         public string tanggallahir;
         public string tanggaldaftar;
@@ -67,6 +67,7 @@ namespace Compufy_PV_Projek
             tanggaldaftar = Convert.ToString(dataGridView1.Rows[idx].Cells[4].Value);
             gender = dataGridView1.Rows[idx].Cells[5].Value.ToString();
             alamat = dataGridView1.Rows[idx].Cells[6].Value.ToString();
+            
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -96,21 +97,29 @@ namespace Compufy_PV_Projek
 
         private void btnUpdate_Click_1(object sender, EventArgs e)
         {
-            frmUpdate.id = id;
-            frmUpdate.nama = nama;
-            frmUpdate.nohp = nohp;
-            frmUpdate.tanggallahir = tanggallahir;
-            frmUpdate.tanggaldaftar = tanggaldaftar;
-            frmUpdate.gender = gender;
-            frmUpdate.alamat = alamat;
-            frmUpdate.ShowDialog();
-            
-            LoadBarang();
+            if (nama != "")
+            {
+                frmUpdate.id = id;
+                frmUpdate.nama = nama;
+                frmUpdate.nohp = nohp;
+                frmUpdate.tanggallahir = tanggallahir;
+                frmUpdate.tanggaldaftar = tanggaldaftar;
+                frmUpdate.gender = gender;
+                frmUpdate.alamat = alamat;
+                frmUpdate.frm_login = frm_login;
+                frmUpdate.ShowDialog();
+
+                LoadBarang();
+            }
+            else
+            {
+                MessageBox.Show("User Belum Dipilih");
+            }
         }
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Yakin mau delete Member ini ?", "Delete Member", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult dialogResult = MessageBox.Show($"Yakin mau delete [{nama}] ?", "Delete Member", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (dialogResult == DialogResult.Yes)
             {
@@ -124,18 +133,61 @@ namespace Compufy_PV_Projek
         {
             dataGridView1.Rows.Clear();
 
-            DataSet ds = new DataSet();
-            string query = $"SELECT * from Member WHERE lower(nama_member) like '%{textBox1.Text.ToLower()}%'";
-            frm_login.executeDataSet(ds, query, "Member");
-            for (int i = 0; i < ds.Tables["Member"].Rows.Count; i++)
+            if (textBox1.Text != "")
             {
-                dataGridView1.Rows.Add(ds.Tables["Member"].Rows[i].ItemArray[0], ds.Tables["Member"].Rows[i].ItemArray[1], ds.Tables["Member"].Rows[i].ItemArray[2], ds.Tables["Member"].Rows[i].ItemArray[3], ds.Tables["Member"].Rows[i].ItemArray[4], ds.Tables["Member"].Rows[i].ItemArray[5], ds.Tables["Member"].Rows[i].ItemArray[6]);
+                DataSet ds = new DataSet();
+                string query = $"SELECT * from Member WHERE lower(nama_member) like '%{textBox1.Text.ToLower()}%'";
+                frm_login.executeDataSet(ds, query, "Member");
+                for (int i = 0; i < ds.Tables["Member"].Rows.Count; i++)
+                {
+                    dataGridView1.Rows.Add(ds.Tables["Member"].Rows[i].ItemArray[0], ds.Tables["Member"].Rows[i].ItemArray[1], ds.Tables["Member"].Rows[i].ItemArray[2], ds.Tables["Member"].Rows[i].ItemArray[3], ds.Tables["Member"].Rows[i].ItemArray[4], ds.Tables["Member"].Rows[i].ItemArray[5], ds.Tables["Member"].Rows[i].ItemArray[6]);
+                }
+            }
+            else
+            {
+                LoadBarang();
             }
         }
 
         private void btn_restartcategory_Click(object sender, EventArgs e)
         {
             LoadBarang();
+        }
+
+        private void textBox1_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Search By ID/Nama")
+            {
+                textBox1.Text = "";
+                textBox1.ForeColor = Color.Black;
+            }
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "Search By ID/Nama";
+                textBox1.ForeColor = SystemColors.ScrollBar;
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idx = e.RowIndex;
+            id = dataGridView1.Rows[idx].Cells[0].Value.ToString();
+            nama = dataGridView1.Rows[idx].Cells[1].Value.ToString();
+            nohp = dataGridView1.Rows[idx].Cells[2].Value.ToString();
+            tanggallahir = Convert.ToString(dataGridView1.Rows[idx].Cells[3].Value);
+            tanggaldaftar = Convert.ToString(dataGridView1.Rows[idx].Cells[4].Value);
+            gender = dataGridView1.Rows[idx].Cells[5].Value.ToString();
+            alamat = dataGridView1.Rows[idx].Cells[6].Value.ToString();
+            
         }
     }
 }

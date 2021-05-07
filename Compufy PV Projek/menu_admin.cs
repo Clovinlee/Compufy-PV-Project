@@ -18,6 +18,10 @@ namespace Compufy_PV_Projek
         {
             InitializeComponent();
             this.Text = "Compufy";
+            SetStyle(ControlStyles.AllPaintingInWmPaint |
+             ControlStyles.UserPaint |
+             ControlStyles.OptimizedDoubleBuffer, true);
+            this.UpdateStyles();
         }
 
         //CODE BEGIN//
@@ -28,6 +32,7 @@ namespace Compufy_PV_Projek
         public admin_manage_user frm_manageuser;
         public admin_manage_member frm_managemember;
         public Admin_Transaction frm_transaction;
+        public lblOpsi frm_sales;
         public string usergambar;
         public string gender;
 
@@ -52,6 +57,7 @@ namespace Compufy_PV_Projek
             frm_dashboard.Dock = DockStyle.Fill;
             frm_dashboard.frm_login = frm_login;
             frm_dashboard.FormBorderStyle = FormBorderStyle.None;
+
             frm_dashboard.Hide();
 
             frm_manageuser = new admin_manage_user();
@@ -75,18 +81,25 @@ namespace Compufy_PV_Projek
             frm_transaction.FormBorderStyle = FormBorderStyle.None;
             frm_transaction.Hide();
 
+            frm_sales = new lblOpsi();
+            frm_sales.TopLevel = false;
+            frm_sales.Dock = DockStyle.Fill;
+            frm_sales.frm_login = frm_login;
+            frm_sales.FormBorderStyle = FormBorderStyle.None;
+            frm_sales.Hide();
+
             pl_submenu.Controls.Add(frm_stock);
             pl_submenu.Controls.Add(frm_dashboard);
             pl_submenu.Controls.Add(frm_manageuser);
             pl_submenu.Controls.Add(frm_managemember);
             pl_submenu.Controls.Add(frm_transaction);
+            pl_submenu.Controls.Add(frm_sales);
 
             this.ActiveControl = btn_menudashboard;
             noGambar = true;
 
             setToolTip();
             readLogoDirectory();
-            
         }
 
         private void btn_submenu_Enter(object sender, EventArgs e)
@@ -108,11 +121,12 @@ namespace Compufy_PV_Projek
 
                 if (b.Text == "Dashboard")
                 {
+                    frm_dashboard.loaddashboard();
                     frm_dashboard.Show();
                 }
                 else if (b.Text == "Sales")
                 {
-                    
+                    frm_sales.Show();
                 }
                 else if(b.Text == "Transactions") 
                 {

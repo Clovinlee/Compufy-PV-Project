@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.pl_leftbar = new System.Windows.Forms.Panel();
             this.btn_member = new FontAwesome.Sharp.IconButton();
             this.btn_manageuser = new FontAwesome.Sharp.IconButton();
@@ -38,15 +37,17 @@
             this.btn_menudashboard = new FontAwesome.Sharp.IconButton();
             this.pl_menulogo = new System.Windows.Forms.Panel();
             this.pl_topbar = new System.Windows.Forms.Panel();
+            this.pbArrow = new FontAwesome.Sharp.IconPictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.lbl_jabatanuser = new System.Windows.Forms.Label();
             this.link_logout = new System.Windows.Forms.LinkLabel();
             this.lbl_namauser = new System.Windows.Forms.Label();
             this.pl_avatar = new System.Windows.Forms.Panel();
             this.pl_submenu = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.tmr_history = new System.Windows.Forms.Timer(this.components);
             this.pl_leftbar.SuspendLayout();
             this.pl_topbar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbArrow)).BeginInit();
             this.SuspendLayout();
             // 
             // pl_leftbar
@@ -83,7 +84,6 @@
             this.btn_member.Text = "Manage Member";
             this.btn_member.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_member.UseVisualStyleBackColor = true;
-            this.btn_member.Click += new System.EventHandler(this.btn_historyAdd_Click);
             this.btn_member.Enter += new System.EventHandler(this.btn_submenu_Enter);
             this.btn_member.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
             this.btn_member.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
@@ -108,7 +108,6 @@
             this.btn_manageuser.Text = "Manage User";
             this.btn_manageuser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_manageuser.UseVisualStyleBackColor = false;
-            this.btn_manageuser.Click += new System.EventHandler(this.btn_historyAdd_Click);
             this.btn_manageuser.Enter += new System.EventHandler(this.btn_submenu_Enter);
             this.btn_manageuser.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
             this.btn_manageuser.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
@@ -132,7 +131,6 @@
             this.btn_menustocks.Text = "Stocks";
             this.btn_menustocks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_menustocks.UseVisualStyleBackColor = true;
-            this.btn_menustocks.Click += new System.EventHandler(this.btn_historyAdd_Click);
             this.btn_menustocks.Enter += new System.EventHandler(this.btn_submenu_Enter);
             this.btn_menustocks.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
             this.btn_menustocks.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
@@ -156,7 +154,6 @@
             this.btn_menutransactions.Text = "Transactions";
             this.btn_menutransactions.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_menutransactions.UseVisualStyleBackColor = true;
-            this.btn_menutransactions.Click += new System.EventHandler(this.btn_historyAdd_Click);
             this.btn_menutransactions.Enter += new System.EventHandler(this.btn_submenu_Enter);
             this.btn_menutransactions.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
             this.btn_menutransactions.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
@@ -180,7 +177,6 @@
             this.btn_menusales.Text = "Sales";
             this.btn_menusales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_menusales.UseVisualStyleBackColor = true;
-            this.btn_menusales.Click += new System.EventHandler(this.btn_historyAdd_Click);
             this.btn_menusales.Enter += new System.EventHandler(this.btn_submenu_Enter);
             this.btn_menusales.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
             this.btn_menusales.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
@@ -204,7 +200,6 @@
             this.btn_menudashboard.Text = "Dashboard";
             this.btn_menudashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_menudashboard.UseVisualStyleBackColor = true;
-            this.btn_menudashboard.Click += new System.EventHandler(this.btn_historyAdd_Click);
             this.btn_menudashboard.Enter += new System.EventHandler(this.btn_submenu_Enter);
             this.btn_menudashboard.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseDown);
             this.btn_menudashboard.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_submenu_MouseUp);
@@ -223,6 +218,8 @@
             // pl_topbar
             // 
             this.pl_topbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(56)))), ((int)(((byte)(70)))));
+            this.pl_topbar.Controls.Add(this.pbArrow);
+            this.pl_topbar.Controls.Add(this.label1);
             this.pl_topbar.Controls.Add(this.lbl_jabatanuser);
             this.pl_topbar.Controls.Add(this.link_logout);
             this.pl_topbar.Controls.Add(this.lbl_namauser);
@@ -233,6 +230,31 @@
             this.pl_topbar.Name = "pl_topbar";
             this.pl_topbar.Size = new System.Drawing.Size(909, 92);
             this.pl_topbar.TabIndex = 4;
+            // 
+            // pbArrow
+            // 
+            this.pbArrow.BackColor = System.Drawing.Color.Transparent;
+            this.pbArrow.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft;
+            this.pbArrow.IconColor = System.Drawing.Color.White;
+            this.pbArrow.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.pbArrow.IconSize = 26;
+            this.pbArrow.Location = new System.Drawing.Point(182, 54);
+            this.pbArrow.Name = "pbArrow";
+            this.pbArrow.Size = new System.Drawing.Size(26, 38);
+            this.pbArrow.TabIndex = 9;
+            this.pbArrow.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(204, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 39);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "\r\nClick To\r\nChange Logo";
             // 
             // lbl_jabatanuser
             // 
@@ -275,6 +297,7 @@
             // 
             // pl_avatar
             // 
+            this.pl_avatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pl_avatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pl_avatar.Location = new System.Drawing.Point(829, 11);
             this.pl_avatar.Name = "pl_avatar";
@@ -295,11 +318,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // tmr_history
-            // 
-            this.tmr_history.Interval = 1000;
-            this.tmr_history.Tick += new System.EventHandler(this.tmr_history_Tick);
-            // 
             // menu_admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -309,6 +327,7 @@
             this.Controls.Add(this.pl_submenu);
             this.Controls.Add(this.pl_leftbar);
             this.Controls.Add(this.pl_topbar);
+            this.DoubleBuffered = true;
             this.Name = "menu_admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compufy";
@@ -317,6 +336,7 @@
             this.pl_leftbar.ResumeLayout(false);
             this.pl_topbar.ResumeLayout(false);
             this.pl_topbar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbArrow)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -338,7 +358,8 @@
         private System.Windows.Forms.Panel pl_submenu;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         public System.Windows.Forms.Panel pl_avatar;
-        public System.Windows.Forms.Timer tmr_history;
+        private System.Windows.Forms.Label label1;
+        private FontAwesome.Sharp.IconPictureBox pbArrow;
     }
 }
 
