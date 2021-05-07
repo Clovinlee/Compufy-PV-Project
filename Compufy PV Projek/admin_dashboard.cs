@@ -24,6 +24,9 @@ namespace Compufy_PV_Projek
         int totaltransaksi = 0;
         int totaldiskon = 0;
         int totalpendapatan = 0;
+        int totaltoday = 0;
+        int totalyesterday = 0;
+        DateTime yesterday = DateTime.Today.AddDays(-1);
 
         private void admin_dashboard_Load(object sender, EventArgs e)
         {
@@ -61,20 +64,69 @@ namespace Compufy_PV_Projek
                 totaldiskon += Convert.ToInt32(ds.Tables["h_transaksi"].Rows[i].ItemArray[1]);
             }
             totalpendapatan = totaltransaksi - totaldiskon;
-            label11.Text = Convert.ToString(totalpendapatan);
+            label11.Text = Convert.ToInt32(totalpendapatan).ToString("#,##");
 
-            query = $"SELECT h.tgl_trans, SUM(d.jumlah_barang) from d_transaksi d, h_transaksi h where h.id_trans = d.id_trans group by tgl_trans order by 1 asc";
-            frm_login.executeDataSet(ds, query, "Barang");
-
-            for (int i = 0; i < ds.Tables["Barang"].Rows.Count; i++)
+            query = $"SELECT h.tgl_trans, SUM(total_trans) from h_transaksi h where FORMAT(h.tgl_trans, 'dd/MM/yyyy ') = FORMAT(getDate(), 'dd/MM/yyyy ') group by h.tgl_trans";
+            frm_login.executeDataSet(ds, query, "Sum Hari Ini");
+            if (ds.Tables["Sum Hari Ini"] != null)
             {
-                chartSalary.Series["BarangLaku"].Points.AddXY(ds.Tables["Barang"].Rows[i].ItemArray[0], ds.Tables["Barang"].Rows[i].ItemArray[1]);
+                try
+                {
+                    totaltoday = Convert.ToInt32(ds.Tables["Sum Hari Ini"].Rows[0].ItemArray[1]);
+                }
+                catch
+                {
+
+                }
             }
+
+            
+
+            query = $"SELECT h.tgl_trans, SUM(total_trans) from h_transaksi h where FORMAT(h.tgl_trans, 'dd/MM/yyyy ') = FORMAT(DATEADD(day, -1, CAST(GETDATE() AS date)), 'dd/MM/yyyy ') group by h.tgl_trans";
+            frm_login.executeDataSet(ds, query, "Sum Kemarin");
+            if (ds.Tables["Sum Kemarin"] != null)
+            {
+                try
+                {
+                    totalyesterday = Convert.ToInt32(ds.Tables["Sum Kemarin"].Rows[0].ItemArray[1]);
+                }
+                catch
+                {
+
+                }
+            }
+
+
+
+
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void chartSalary_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+            List<int> temp = new List<int> { totaltoday,totalyesterday };
+            int max = temp.Max();
+            Graphics g = e.Graphics;
+            if (totaltoday == totalyesterday) {
+                g.FillRectangle(Brushes.DarkBlue, 0, 5, 60 , 75);
+                g.FillRectangle(Brushes.Gray, 0, 85, 60, 75);
+                label15.Text = "";
+            }
+            else
+            {
+                g.FillRectangle(Brushes.DarkBlue, 0, 5, totaltoday / max * 400, 75);
+                g.FillRectangle(Brushes.Gray, 0, 85, totalyesterday/max * 400, 75);
+                label15.Text = max.ToString();
+            }
         }
     }
 }

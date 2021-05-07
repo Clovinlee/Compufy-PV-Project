@@ -142,7 +142,7 @@ namespace Compufy_PV_Projek
         {
             if (username != "")
             {
-                DialogResult dialogResult = MessageBox.Show("Yakin mau delete User ini ?", "Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBox.Show($"Yakin mau delete [{username}] ?", "Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -161,60 +161,67 @@ namespace Compufy_PV_Projek
         {
             dataGridView1.Rows.Clear();
 
+            if (textBox1.Text != "") { 
             DataSet ds = new DataSet();
             string query = $"SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') from Akun WHERE lower(username) like '%{textBox1.Text.ToLower()}%'";
             frm_login.executeDataSet(ds, query, "Akun");
 
-            for (int i = 0; i < ds.Tables["Akun"].Rows.Count; i++)
-            {
-                dataGridView1.Rows.Add(ds.Tables["Akun"].Rows[i].ItemArray[0], ds.Tables["Akun"].Rows[i].ItemArray[1], ds.Tables["Akun"].Rows[i].ItemArray[2], ds.Tables["Akun"].Rows[i].ItemArray[3], ds.Tables["Akun"].Rows[i].ItemArray[4], ds.Tables["Akun"].Rows[i].ItemArray[5], ds.Tables["Akun"].Rows[i].ItemArray[6]);
-                if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "1")
+                for (int i = 0; i < ds.Tables["Akun"].Rows.Count; i++)
                 {
-                    dataGridView1.Rows[i].Cells[6].Value = "Admin";
-                }
-                if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "2")
-                {
-                    dataGridView1.Rows[i].Cells[6].Value = "Kasir";
-                }
-                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "L")
-                {
-                    try
+                    dataGridView1.Rows.Add(ds.Tables["Akun"].Rows[i].ItemArray[0], ds.Tables["Akun"].Rows[i].ItemArray[1], ds.Tables["Akun"].Rows[i].ItemArray[2], ds.Tables["Akun"].Rows[i].ItemArray[3], ds.Tables["Akun"].Rows[i].ItemArray[4], ds.Tables["Akun"].Rows[i].ItemArray[5], ds.Tables["Akun"].Rows[i].ItemArray[6]);
+                    if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "1")
                     {
-                        Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\profile_sample7.png");
-                        Bitmap resized = new Bitmap(original, new Size(75, 75));
-                        ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
+                        dataGridView1.Rows[i].Cells[6].Value = "Admin";
                     }
-                    catch
+                    if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "2")
                     {
+                        dataGridView1.Rows[i].Cells[6].Value = "Kasir";
+                    }
+                    if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "L")
+                    {
+                        try
+                        {
+                            Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\profile_sample7.png");
+                            Bitmap resized = new Bitmap(original, new Size(75, 75));
+                            ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
+                        }
+                        catch
+                        {
 
+                        }
                     }
-                }
-                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "P")
-                {
-                    try
+                    if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "P")
                     {
-                        Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\profile_sample1.png");
-                        Bitmap resized = new Bitmap(original, new Size(75, 75));
-                        ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
-                    }
-                    catch
-                    {
+                        try
+                        {
+                            Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\profile_sample1.png");
+                            Bitmap resized = new Bitmap(original, new Size(75, 75));
+                            ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
+                        }
+                        catch
+                        {
 
+                        }
                     }
-                }
-                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() != "-")
-                {
-                    try
+                    if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() != "-")
                     {
-                        Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\" + ds.Tables["Akun"].Rows[i].ItemArray[7]);
-                        Bitmap resized = new Bitmap(original, new Size(75, 75));
-                        ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
-                    }
-                    catch
-                    {
+                        try
+                        {
+                            Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\" + ds.Tables["Akun"].Rows[i].ItemArray[7]);
+                            Bitmap resized = new Bitmap(original, new Size(75, 75));
+                            ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
+                        }
+                        catch
+                        {
 
+                        }
+                    }
+                    else
+                    {
+                        LoadBarang();
                     }
                 }
+                
             }
         }
 

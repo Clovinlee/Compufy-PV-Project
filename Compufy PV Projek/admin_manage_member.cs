@@ -119,7 +119,7 @@ namespace Compufy_PV_Projek
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Yakin mau delete Member ini ?", "Delete Member", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult dialogResult = MessageBox.Show($"Yakin mau delete [{nama}] ?", "Delete Member", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (dialogResult == DialogResult.Yes)
             {
@@ -133,12 +133,19 @@ namespace Compufy_PV_Projek
         {
             dataGridView1.Rows.Clear();
 
-            DataSet ds = new DataSet();
-            string query = $"SELECT * from Member WHERE lower(nama_member) like '%{textBox1.Text.ToLower()}%'";
-            frm_login.executeDataSet(ds, query, "Member");
-            for (int i = 0; i < ds.Tables["Member"].Rows.Count; i++)
+            if (textBox1.Text != "")
             {
-                dataGridView1.Rows.Add(ds.Tables["Member"].Rows[i].ItemArray[0], ds.Tables["Member"].Rows[i].ItemArray[1], ds.Tables["Member"].Rows[i].ItemArray[2], ds.Tables["Member"].Rows[i].ItemArray[3], ds.Tables["Member"].Rows[i].ItemArray[4], ds.Tables["Member"].Rows[i].ItemArray[5], ds.Tables["Member"].Rows[i].ItemArray[6]);
+                DataSet ds = new DataSet();
+                string query = $"SELECT * from Member WHERE lower(nama_member) like '%{textBox1.Text.ToLower()}%'";
+                frm_login.executeDataSet(ds, query, "Member");
+                for (int i = 0; i < ds.Tables["Member"].Rows.Count; i++)
+                {
+                    dataGridView1.Rows.Add(ds.Tables["Member"].Rows[i].ItemArray[0], ds.Tables["Member"].Rows[i].ItemArray[1], ds.Tables["Member"].Rows[i].ItemArray[2], ds.Tables["Member"].Rows[i].ItemArray[3], ds.Tables["Member"].Rows[i].ItemArray[4], ds.Tables["Member"].Rows[i].ItemArray[5], ds.Tables["Member"].Rows[i].ItemArray[6]);
+                }
+            }
+            else
+            {
+                LoadBarang();
             }
         }
 
