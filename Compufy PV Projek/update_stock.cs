@@ -99,7 +99,7 @@ namespace Compufy_PV_Projek
             }
             else if (checkHarga == false || checkStok == false)
             {
-                MessageBox.Show("Harga dan Stok harus angka !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Harga dan Stok harus angka !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (pictureBox1.ImageLocation == null)
             {
