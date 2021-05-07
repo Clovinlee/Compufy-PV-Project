@@ -21,6 +21,7 @@ namespace Compufy_PV_Projek
         string member_terbaru;
         int baranglow = 99999;
         string namalow;
+        string idlow;
         int totaltransaksi = 0;
         int totaldiskon = 0;
         int totalpendapatan = 0;
@@ -54,15 +55,42 @@ namespace Compufy_PV_Projek
             int max = temp.Max();
             Graphics g = e.Graphics;
             if (totaltoday == totalyesterday) {
-                g.FillRectangle(Brushes.DarkBlue, 0, 5, 60 , 75);
-                g.FillRectangle(Brushes.Gray, 0, 85, 60, 75);
-                label15.Text = "";
+                g.FillRectangle(Brushes.LightBlue, 0, 5, 60 , 75);
+                g.FillRectangle(Brushes.LightSalmon, 0, 85, 60, 75);
+                label14.Text = "Rp 0";
+                label15.Text = "Rp 0";
+                label14.Location = new Point(70, 33);
+                label15.Location = new Point(70, 110);
             }
             else
             {
-                g.FillRectangle(Brushes.DarkBlue, 0, 5, totaltoday / max * 400, 75);
-                g.FillRectangle(Brushes.Gray, 0, 85, totalyesterday/max * 400, 75);
-                label15.Text = "Rp."+max.ToString("#,##");
+                if (totaltoday == 0)
+                {
+                    g.FillRectangle(Brushes.LightBlue, 0, 5, 60, 75);
+                    g.FillRectangle(Brushes.LightSalmon, 0, 85, totalyesterday / max * 400, 75);
+                    label14.Text = "Rp 0";
+                    label15.Text = "Rp " + totalyesterday.ToString("#,##");
+                    label14.Location = new Point(70, 33);
+                    label15.Location = new Point((totalyesterday / max * 400) + 50, 110);
+                }
+                if (totalyesterday == 0)
+                {
+                    g.FillRectangle(Brushes.LightBlue, 0, 5, totaltoday / max * 400, 75);
+                    g.FillRectangle(Brushes.LightSalmon, 0, 85, 60 , 75);
+                    label14.Text = "Rp " + totaltoday.ToString("#,##");
+                    label15.Text = "Rp 0";
+                    label15.Location = new Point(70, 33);
+                    label14.Location = new Point((totaltoday / max * 400) + 50, 110);
+                }
+                else
+                {
+                    g.FillRectangle(Brushes.LightBlue, 0, 5, totaltoday / max * 400, 75);
+                    g.FillRectangle(Brushes.LightSalmon, 0, 85, totalyesterday / max * 400, 75);
+                    label14.Text = "Rp " + totaltoday.ToString("#,##");
+                    label15.Text = "Rp " + totalyesterday.ToString("#,##");
+                    label14.Location = new Point((totaltoday / max * 400) + 50, 33);
+                    label15.Location = new Point((totalyesterday / max * 400) + 50, 110);
+                }
             }
         }
 
@@ -80,7 +108,7 @@ namespace Compufy_PV_Projek
             label4.Text = member_terbaru;
 
 
-            query = "SELECT nama_barang, stok_barang from Barang";
+            query = "SELECT nama_barang, stok_barang, id_barang from Barang";
             frm_login.executeDataSet(ds, query, "Barang");
             for (int i = 0; i < ds.Tables["Barang"].Rows.Count; i++)
             {
@@ -88,10 +116,12 @@ namespace Compufy_PV_Projek
                 {
                     baranglow = Convert.ToInt32(ds.Tables["Barang"].Rows[i].ItemArray[1]);
                     namalow = ds.Tables["Barang"].Rows[i].ItemArray[0].ToString();
+                    idlow = ds.Tables["Barang"].Rows[i].ItemArray[2].ToString();
                 }
             }
             label6.Text = namalow;
             label8.Text = Convert.ToString(baranglow);
+            label28.Text = "ID: " + idlow;
 
             query = "SELECT total_trans, diskon from h_transaksi";
             frm_login.executeDataSet(ds, query, "h_transaksi");
@@ -101,7 +131,9 @@ namespace Compufy_PV_Projek
                 totaldiskon += Convert.ToInt32(ds.Tables["h_transaksi"].Rows[i].ItemArray[1]);
             }
             totalpendapatan = totaltransaksi - totaldiskon;
-            label11.Text = Convert.ToInt32(totalpendapatan).ToString("#,##");
+            label11.Text = Convert.ToInt32(totaltransaksi).ToString("#,##");
+            label21.Text = Convert.ToInt32(totaldiskon).ToString("#,##");
+            label25.Text = Convert.ToInt32(totalpendapatan).ToString("#,##");
 
             query = $"SELECT h.tgl_trans, SUM(total_trans) from h_transaksi h where FORMAT(h.tgl_trans, 'dd/MM/yyyy ') = FORMAT(getDate(), 'dd/MM/yyyy ') group by h.tgl_trans";
             frm_login.executeDataSet(ds, query, "Sum Hari Ini");
@@ -132,6 +164,16 @@ namespace Compufy_PV_Projek
 
                 }
             }
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
