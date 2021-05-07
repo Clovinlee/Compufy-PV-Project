@@ -68,19 +68,19 @@ namespace Compufy_PV_Projek
                 {
                     g.FillRectangle(Brushes.LightBlue, 0, 5, 60, 75);
                     g.FillRectangle(Brushes.LightSalmon, 0, 85, totalyesterday / max * 400, 75);
-                    label14.Text = "Rp 0";
-                    label15.Text = "Rp " + totalyesterday.ToString("#,##");
+                    label14.Text = "Rp " + totalyesterday.ToString("#,##");
+                    label15.Text = "Rp 0";
                     label14.Location = new Point(70, 33);
-                    label15.Location = new Point((totalyesterday / max * 400) + 50, 110);
+                    label15.Location = new Point((totalyesterday / max * 400) + 20, 110);
                 }
                 if (totalyesterday == 0)
                 {
                     g.FillRectangle(Brushes.LightBlue, 0, 5, totaltoday / max * 400, 75);
                     g.FillRectangle(Brushes.LightSalmon, 0, 85, 60 , 75);
-                    label14.Text = "Rp " + totaltoday.ToString("#,##");
-                    label15.Text = "Rp 0";
+                    label14.Text =  "Rp 0";
+                    label15.Text =  "Rp " + totaltoday.ToString("#,##");
                     label15.Location = new Point(70, 33);
-                    label14.Location = new Point((totaltoday / max * 400) + 50, 110);
+                    label14.Location = new Point((totaltoday / max * 400) + 20, 110);
                 }
                 else
                 {
@@ -88,8 +88,8 @@ namespace Compufy_PV_Projek
                     g.FillRectangle(Brushes.LightSalmon, 0, 85, totalyesterday / max * 400, 75);
                     label14.Text = "Rp " + totaltoday.ToString("#,##");
                     label15.Text = "Rp " + totalyesterday.ToString("#,##");
-                    label14.Location = new Point((totaltoday / max * 400) + 50, 33);
-                    label15.Location = new Point((totalyesterday / max * 400) + 50, 110);
+                    label14.Location = new Point((totaltoday / max * 400) + 20, 33);
+                    label15.Location = new Point((totalyesterday / max * 400) + 20, 110);
                 }
             }
         }
