@@ -32,6 +32,7 @@ namespace Compufy_PV_Projek
             chartSalary.Series["BarangLaku"].IsVisibleInLegend = false;
             chartSalary.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
             chartSalary.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = true;
+            chartSalary.ChartAreas["ChartArea1"].AxisY.LabelStyle.Format = "#,##";
             LoadCBHarian();
             LoadPieChart();
         }
@@ -84,8 +85,12 @@ namespace Compufy_PV_Projek
 
                 for (int i = 0; i < ds.Tables["Pendapatan"].Rows.Count; i++)
                 {
-                    chartSalary.Series["Pendapatan"].Points.AddXY(ds.Tables["Pendapatan"].Rows[i].ItemArray[0], ds.Tables["Pendapatan"].Rows[i].ItemArray[1]);
+                    string pendapatan = Convert.ToInt32(ds.Tables["Pendapatan"].Rows[i].ItemArray[1]).ToString("#,##");
+
+                    chartSalary.Series["Pendapatan"].Points.AddXY(ds.Tables["Pendapatan"].Rows[i].ItemArray[0], pendapatan);
                 }
+
+                chartSalary.Titles["Title"].Text = $"Data Pendapatan {cbFilter.Text} tahun {cbOpsi.Text}";
             }
             else if (cbFilter.SelectedIndex == 1)
             {
@@ -95,8 +100,12 @@ namespace Compufy_PV_Projek
 
                 for (int i = 0; i < ds.Tables["Pendapatan"].Rows.Count; i++)
                 {
-                    chartSalary.Series["Pendapatan"].Points.AddXY(ds.Tables["Pendapatan"].Rows[i].ItemArray[0].ToString(), ds.Tables["Pendapatan"].Rows[i].ItemArray[1]);
+                    string pendapatan = Convert.ToInt32(ds.Tables["Pendapatan"].Rows[i].ItemArray[1]).ToString("#,##");
+
+                    chartSalary.Series["Pendapatan"].Points.AddXY(ds.Tables["Pendapatan"].Rows[i].ItemArray[0].ToString(), pendapatan);
                 }
+
+                chartSalary.Titles["Title"].Text = $"Data Pendapatan {cbFilter.Text}";
             }
         }
 
@@ -117,6 +126,8 @@ namespace Compufy_PV_Projek
                 {
                     chartSalary.Series["JumlahTrans"].Points.AddXY(ds.Tables["Trans"].Rows[i].ItemArray[0], ds.Tables["Trans"].Rows[i].ItemArray[1]);
                 }
+
+                chartSalary.Titles["Title"].Text = $"Data Jumlah Transaksi {cbFilter.Text} tahun {cbOpsi.Text}";
             }
             else if (cbFilter.SelectedIndex == 1)
             {
@@ -128,6 +139,8 @@ namespace Compufy_PV_Projek
                 {
                     chartSalary.Series["JumlahTrans"].Points.AddXY(ds.Tables["Trans"].Rows[i].ItemArray[0].ToString(), ds.Tables["Trans"].Rows[i].ItemArray[1]);
                 }
+
+                chartSalary.Titles["Title"].Text = $"Data Jumlah Transaksi {cbFilter.Text}";
             }
         }
 
@@ -148,6 +161,8 @@ namespace Compufy_PV_Projek
                 {
                     chartSalary.Series["BarangLaku"].Points.AddXY(ds.Tables["Barang"].Rows[i].ItemArray[0], ds.Tables["Barang"].Rows[i].ItemArray[1]);
                 }
+
+                chartSalary.Titles["Title"].Text = $"Data Barang Terjual {cbFilter.Text} tahun {cbOpsi.Text}";
             }
             else if (cbFilter.SelectedIndex == 1)
             {
@@ -159,6 +174,8 @@ namespace Compufy_PV_Projek
                 {
                     chartSalary.Series["BarangLaku"].Points.AddXY(ds.Tables["Barang"].Rows[i].ItemArray[0].ToString(), ds.Tables["Barang"].Rows[i].ItemArray[1]);
                 }
+
+                chartSalary.Titles["Title"].Text = $"Data Barang Terjual {cbFilter.Text}";
             }
         }
 
@@ -203,6 +220,11 @@ namespace Compufy_PV_Projek
             {
                 LoadBarang();
             }
+        }
+
+        private void ChangeTitle()
+        {
+            chartSalary.Titles["Title"].Text = "Data";
         }
 
         private void cbOpsi_SelectedIndexChanged(object sender, EventArgs e)

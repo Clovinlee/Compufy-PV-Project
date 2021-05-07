@@ -105,39 +105,66 @@ namespace Compufy_PV_Projek
         private void btn_search_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
-            DataSet ds;
 
-            if (checkNumber(txtSearch.Text) == false)
+            if (txtSearch.Text == "Search By ID/Nama" || txtSearch.Text == "")
             {
-                ds = new DataSet();
-                string query = $"SELECT b.id_barang, k.nama_kategori, b.nama_barang, b.harga_barang, b.stok_barang, b.gambar from Barang b, Kategori k WHERE lower(b.nama_barang) like '%{txtSearch.Text.ToLower()}%' and b.id_kategori = k.id_kategori";
-                frm_login.executeDataSet(ds, query, "Barang");
+                LoadBarang();
             }
             else
             {
-                ds = new DataSet();
-                string query = $"SELECT b.id_barang, k.nama_kategori, b.nama_barang, b.harga_barang, b.stok_barang, b.gambar from Barang b, Kategori k WHERE b.id_barang = '{txtSearch.Text}' and b.id_kategori = k.id_kategori";
-                frm_login.executeDataSet(ds, query, "Barang");
+                if (checkNumber(txtSearch.Text) == false)
+                {
+                    DataSet ds = new DataSet();
+                    string query = $"SELECT b.id_barang, k.nama_kategori, b.nama_barang, b.harga_barang, b.stok_barang, b.gambar from Barang b, Kategori k WHERE lower(b.nama_barang) like '%{txtSearch.Text.ToLower()}%' and b.id_kategori = k.id_kategori";
+                    frm_login.executeDataSet(ds, query, "Barang");
+
+                    for (int i = 0; i < ds.Tables["Barang"].Rows.Count; i++)
+                    {
+                        string harga = Convert.ToInt32(ds.Tables["Barang"].Rows[i].ItemArray[3]).ToString("C", new CultureInfo("id-ID"));
+                        string stok = ds.Tables["Barang"].Rows[i].ItemArray[4].ToString() + " Unit";
+
+                        dataGridView1.Rows.Add(ds.Tables["Barang"].Rows[i].ItemArray[0], ds.Tables["Barang"].Rows[i].ItemArray[1], ds.Tables["Barang"].Rows[i].ItemArray[2], harga, stok);
+
+                        try
+                        {
+                            Bitmap original = new Bitmap(Application.StartupPath + "\\product_picture\\" + ds.Tables["Barang"].Rows[i].ItemArray[5]);
+                            Bitmap resized = new Bitmap(original, new Size(75, 75));
+                            ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[5]).Value = resized;
+                        }
+                        catch
+                        {
+
+                        }
+                    }
+                }
+                else
+                {
+                    DataSet ds = new DataSet();
+                    string query = $"SELECT b.id_barang, k.nama_kategori, b.nama_barang, b.harga_barang, b.stok_barang, b.gambar from Barang b, Kategori k WHERE b.id_barang = '{txtSearch.Text}' and b.id_kategori = k.id_kategori";
+                    frm_login.executeDataSet(ds, query, "Barang");
+
+                    for (int i = 0; i < ds.Tables["Barang"].Rows.Count; i++)
+                    {
+                        string harga = Convert.ToInt32(ds.Tables["Barang"].Rows[i].ItemArray[3]).ToString("C", new CultureInfo("id-ID"));
+                        string stok = ds.Tables["Barang"].Rows[i].ItemArray[4].ToString() + " Unit";
+
+                        dataGridView1.Rows.Add(ds.Tables["Barang"].Rows[i].ItemArray[0], ds.Tables["Barang"].Rows[i].ItemArray[1], ds.Tables["Barang"].Rows[i].ItemArray[2], harga, stok);
+
+                        try
+                        {
+                            Bitmap original = new Bitmap(Application.StartupPath + "\\product_picture\\" + ds.Tables["Barang"].Rows[i].ItemArray[5]);
+                            Bitmap resized = new Bitmap(original, new Size(75, 75));
+                            ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[5]).Value = resized;
+                        }
+                        catch
+                        {
+
+                        }
+                    }
+                }
             }
 
-            for (int i = 0; i < ds.Tables["Barang"].Rows.Count; i++)
-            {
-                string harga = Convert.ToInt32(ds.Tables["Barang"].Rows[i].ItemArray[3]).ToString("C", new CultureInfo("id-ID"));
-                string stok = ds.Tables["Barang"].Rows[i].ItemArray[4].ToString() + " Unit";
-
-                dataGridView1.Rows.Add(ds.Tables["Barang"].Rows[i].ItemArray[0], ds.Tables["Barang"].Rows[i].ItemArray[1], ds.Tables["Barang"].Rows[i].ItemArray[2], harga, stok);
-
-                try
-                {
-                    Bitmap original = new Bitmap(Application.StartupPath + "\\product_picture\\" + ds.Tables["Barang"].Rows[i].ItemArray[5]);
-                    Bitmap resized = new Bitmap(original, new Size(75, 75));
-                    ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[5]).Value = resized;
-                }
-                catch
-                {
-
-                }
-            }
+            
         }
 
         private void txtSearch_Enter(object sender, EventArgs e)

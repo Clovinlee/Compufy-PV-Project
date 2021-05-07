@@ -182,17 +182,24 @@ namespace Compufy_PV_Projek
         {
             flowLayoutPanel1.Controls.Clear();
 
-            if (comboBox1.SelectedIndex != -1)
+            if (txtSearch.Text == "Search By ID" || txtSearch.Text == "")
             {
-                ds = new DataSet();
-                string query = $"SELECT h.id_trans, h.tgl_trans, a.nama_user, isnull(m.nama_member, '-'), h.metode_trans, h.total_trans, h.diskon from h_transaksi h left join akun a on h.id_user = a.id_user left join member m on h.id_member = m.id_member where h.id_trans = '{txtSearch.Text}' and h.metode_trans = '{comboBox1.Text}'";
-                frm_login.executeDataSet(ds, query, "Trans");
+                LoadTrans();
             }
             else
             {
-                ds = new DataSet();
-                string query = $"SELECT h.id_trans, h.tgl_trans, a.nama_user, isnull(m.nama_member, '-'), h.metode_trans, h.total_trans, h.diskon from h_transaksi h left join akun a on h.id_user = a.id_user left join member m on h.id_member = m.id_member where h.id_trans = '{txtSearch.Text}'";
-                frm_login.executeDataSet(ds, query, "Trans");
+                if (comboBox1.SelectedIndex != -1)
+                {
+                    ds = new DataSet();
+                    string query = $"SELECT h.id_trans, h.tgl_trans, a.nama_user, isnull(m.nama_member, '-'), h.metode_trans, h.total_trans, h.diskon from h_transaksi h left join akun a on h.id_user = a.id_user left join member m on h.id_member = m.id_member where h.id_trans = '{txtSearch.Text}' and h.metode_trans = '{comboBox1.Text}'";
+                    frm_login.executeDataSet(ds, query, "Trans");
+                }
+                else
+                {
+                    ds = new DataSet();
+                    string query = $"SELECT h.id_trans, h.tgl_trans, a.nama_user, isnull(m.nama_member, '-'), h.metode_trans, h.total_trans, h.diskon from h_transaksi h left join akun a on h.id_user = a.id_user left join member m on h.id_member = m.id_member where h.id_trans = '{txtSearch.Text}'";
+                    frm_login.executeDataSet(ds, query, "Trans");
+                }
             }
 
             for (int i = 0; i < ds.Tables["Trans"].Rows.Count; i++)

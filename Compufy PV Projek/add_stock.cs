@@ -51,12 +51,9 @@ namespace Compufy_PV_Projek
             }
             else if (pictureBox1.ImageLocation == null)
             {
-                if (MessageBox.Show("Gambar kosong, yakin menambah barang ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    string query = $"INSERT into [Barang] (nama_barang, id_kategori, harga_barang, stok_barang, gambar) VALUES('{txtNama.Text}', '{cbKategori.SelectedIndex + 1}', '{txtHarga.Text}', '{txtStok.Text}', '{openFileDialog1.SafeFileName}')";
-                    frm_login.executeQuery(query);
-                    this.Close();
-                }
+                string query = $"INSERT into [Barang] (nama_barang, id_kategori, harga_barang, stok_barang) VALUES('{txtNama.Text}', '{cbKategori.SelectedIndex + 1}', '{txtHarga.Text}', '{txtStok.Text}')";
+                frm_login.executeQuery(query);
+                this.Close();
             }
             else
             {
