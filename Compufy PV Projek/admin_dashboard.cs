@@ -31,6 +31,43 @@ namespace Compufy_PV_Projek
         private void admin_dashboard_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new Size(727, 508);
+            loaddashboard();
+
+
+
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chartSalary_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+            List<int> temp = new List<int> { totaltoday,totalyesterday };
+            int max = temp.Max();
+            Graphics g = e.Graphics;
+            if (totaltoday == totalyesterday) {
+                g.FillRectangle(Brushes.DarkBlue, 0, 5, 60 , 75);
+                g.FillRectangle(Brushes.Gray, 0, 85, 60, 75);
+                label15.Text = "";
+            }
+            else
+            {
+                g.FillRectangle(Brushes.DarkBlue, 0, 5, totaltoday / max * 400, 75);
+                g.FillRectangle(Brushes.Gray, 0, 85, totalyesterday/max * 400, 75);
+                label15.Text = max.ToString();
+            }
+        }
+
+        public void loaddashboard()
+        {
             DataSet ds = new DataSet();
             string query = "SELECT * from Member";
             frm_login.executeDataSet(ds, query, "Member");
@@ -42,7 +79,7 @@ namespace Compufy_PV_Projek
             }
             label4.Text = member_terbaru;
 
-            
+
             query = "SELECT nama_barang, stok_barang from Barang";
             frm_login.executeDataSet(ds, query, "Barang");
             for (int i = 0; i < ds.Tables["Barang"].Rows.Count; i++)
@@ -80,7 +117,7 @@ namespace Compufy_PV_Projek
                 }
             }
 
-            
+
 
             query = $"SELECT h.tgl_trans, SUM(total_trans) from h_transaksi h where FORMAT(h.tgl_trans, 'dd/MM/yyyy ') = FORMAT(DATEADD(day, -1, CAST(GETDATE() AS date)), 'dd/MM/yyyy ') group by h.tgl_trans";
             frm_login.executeDataSet(ds, query, "Sum Kemarin");
@@ -94,38 +131,6 @@ namespace Compufy_PV_Projek
                 {
 
                 }
-            }
-
-
-
-
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chartSalary_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel5_Paint(object sender, PaintEventArgs e)
-        {
-            List<int> temp = new List<int> { totaltoday,totalyesterday };
-            int max = temp.Max();
-            Graphics g = e.Graphics;
-            if (totaltoday == totalyesterday) {
-                g.FillRectangle(Brushes.DarkBlue, 0, 5, 60 , 75);
-                g.FillRectangle(Brushes.Gray, 0, 85, 60, 75);
-                label15.Text = "";
-            }
-            else
-            {
-                g.FillRectangle(Brushes.DarkBlue, 0, 5, totaltoday / max * 400, 75);
-                g.FillRectangle(Brushes.Gray, 0, 85, totalyesterday/max * 400, 75);
-                label15.Text = max.ToString();
             }
         }
     }

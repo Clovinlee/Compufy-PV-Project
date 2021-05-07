@@ -57,6 +57,7 @@ namespace Compufy_PV_Projek
             frm_dashboard.Dock = DockStyle.Fill;
             frm_dashboard.frm_login = frm_login;
             frm_dashboard.FormBorderStyle = FormBorderStyle.None;
+
             frm_dashboard.Hide();
 
             frm_manageuser = new admin_manage_user();
@@ -120,6 +121,7 @@ namespace Compufy_PV_Projek
 
                 if (b.Text == "Dashboard")
                 {
+                    frm_dashboard.loaddashboard();
                     frm_dashboard.Show();
                 }
                 else if (b.Text == "Sales")
