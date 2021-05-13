@@ -169,7 +169,7 @@ namespace Compufy_PV_Projek
             chart1.Series["Series1"].BorderWidth = 4;
             
             ds = new DataSet();
-            query = $"select d.thedate, isnull(SUM(h.total_trans),0) from (SELECT FORMAT(DATEADD(day, 0, CAST(GETDATE() AS date)), 'dd/MM/yyyy ')  as thedate union all SELECT FORMAT(DATEADD(day, -1, CAST(GETDATE() AS date)), 'dd/MM/yyyy ')  union all SELECT FORMAT(DATEADD(day, -2, CAST(GETDATE() AS date)), 'dd/MM/yyyy ')  union all SELECT FORMAT(DATEADD(day, -3, CAST(GETDATE() AS date)), 'dd/MM/yyyy ')  union all SELECT FORMAT(DATEADD(day, -4, CAST(GETDATE() AS date)), 'dd/MM/yyyy ')  union all SELECT FORMAT(DATEADD(day, -5, CAST(GETDATE() AS date)), 'dd/MM/yyyy ')  union all SELECT FORMAT(DATEADD(day, -6, CAST(GETDATE() AS date)), 'dd/MM/yyyy ') ) d left join h_transaksi h on convert(datetime,h.tgl_trans,103) = d.thedate Group By d.thedate";
+            query = $"select d.thedate, isnull(SUM(h.total_trans),0) from (SELECT convert(datetime,DATEADD(day, 0, CAST(GETDATE() AS date)),103)  as thedate union all SELECT convert(datetime,DATEADD(day, -1, CAST(GETDATE() AS date)),103) union all SELECT convert(datetime,DATEADD(day, -2, CAST(GETDATE() AS date)),103)union all SELECT convert(datetime,DATEADD(day, -3, CAST(GETDATE() AS date)),103) union all SELECT convert(datetime,DATEADD(day, -4, CAST(GETDATE() AS date)),103) union all SELECT convert(datetime,DATEADD(day, -5, CAST(GETDATE() AS date)),103) union all SELECT convert(datetime,DATEADD(day, -6, CAST(GETDATE() AS date)),103) )d left join h_transaksi h on convert(datetime,h.tgl_trans,103) = d.thedate Group By d.thedate";
             frm_login.executeDataSet(ds, query, "Pendapatan");
             for (int i = 0; i < ds.Tables["Pendapatan"].Rows.Count; i++)
             {
