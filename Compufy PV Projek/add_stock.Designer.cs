@@ -96,6 +96,7 @@
             this.txtNama.Location = new System.Drawing.Point(94, 32);
             this.txtNama.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNama.Name = "txtNama";
+            this.txtNama.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtNama.Size = new System.Drawing.Size(146, 27);
             this.txtNama.TabIndex = 8;
             // 

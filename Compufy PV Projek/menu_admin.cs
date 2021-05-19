@@ -32,7 +32,7 @@ namespace Compufy_PV_Projek
         public admin_manage_user frm_manageuser;
         public admin_manage_member frm_managemember;
         public Admin_Transaction frm_transaction;
-        public lblOpsi frm_sales;
+        public admin_sales frm_sales;
         public string usergambar;
         public string gender;
 
@@ -81,7 +81,7 @@ namespace Compufy_PV_Projek
             frm_transaction.FormBorderStyle = FormBorderStyle.None;
             frm_transaction.Hide();
 
-            frm_sales = new lblOpsi();
+            frm_sales = new admin_sales();
             frm_sales.TopLevel = false;
             frm_sales.Dock = DockStyle.Fill;
             frm_sales.frm_login = frm_login;
@@ -121,7 +121,7 @@ namespace Compufy_PV_Projek
 
                 if (b.Text == "Dashboard")
                 {
-                    frm_dashboard.loaddashboard();
+                    //frm_dashboard.loaddashboard();
                     frm_dashboard.Show();
                 }
                 else if (b.Text == "Sales")

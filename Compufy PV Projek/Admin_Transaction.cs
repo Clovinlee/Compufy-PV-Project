@@ -116,7 +116,7 @@ namespace Compufy_PV_Projek
             detail.ImageAlign = ContentAlignment.MiddleLeft;
             detail.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             detail.Tag = Convert.ToString(ds.Tables["Trans"].Rows[idx].ItemArray[0]);
-            detail.Click += new EventHandler(showNota);
+            detail.Click += new EventHandler(showDetail);
             panelTrans.Controls.Add(detail);
 
             flowLayoutPanel1.Controls.Add(panelTrans);
@@ -148,6 +148,14 @@ namespace Compufy_PV_Projek
             frm_nota.Show();
         }
 
+        private void showDetail(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(((FontAwesome.Sharp.IconButton)sender).Tag);
+            admin_detail_transaction frm_detail = new admin_detail_transaction();
+            frm_detail.frm_login = frm_login;
+            frm_detail.id = id;
+            frm_detail.Show();
+        }
 
         private void flowLayoutPanel1_SizeChanged(object sender, EventArgs e)
         {

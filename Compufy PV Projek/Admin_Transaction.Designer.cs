@@ -32,9 +32,9 @@
             this.lblHead = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_search = new FontAwesome.Sharp.IconButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btn_search = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -55,10 +55,10 @@
             // lblHead
             // 
             this.lblHead.AutoSize = true;
-            this.lblHead.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHead.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHead.Location = new System.Drawing.Point(17, 13);
             this.lblHead.Name = "lblHead";
-            this.lblHead.Size = new System.Drawing.Size(275, 32);
+            this.lblHead.Size = new System.Drawing.Size(308, 37);
             this.lblHead.TabIndex = 1;
             this.lblHead.Text = "⏰ History Transaksi ⏰";
             // 
@@ -87,23 +87,6 @@
             this.label1.Size = new System.Drawing.Size(53, 21);
             this.label1.TabIndex = 3;
             this.label1.Text = "Filter ";
-            // 
-            // btn_search
-            // 
-            this.btn_search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_search.FlatAppearance.BorderSize = 0;
-            this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_search.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_search.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btn_search.IconColor = System.Drawing.Color.Black;
-            this.btn_search.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_search.IconSize = 30;
-            this.btn_search.Location = new System.Drawing.Point(665, 13);
-            this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(34, 36);
-            this.btn_search.TabIndex = 10;
-            this.btn_search.UseVisualStyleBackColor = true;
-            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // txtSearch
             // 
@@ -137,6 +120,23 @@
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = false;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
+            // btn_search
+            // 
+            this.btn_search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_search.FlatAppearance.BorderSize = 0;
+            this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_search.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_search.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btn_search.IconColor = System.Drawing.Color.Black;
+            this.btn_search.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_search.IconSize = 30;
+            this.btn_search.Location = new System.Drawing.Point(665, 13);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(34, 36);
+            this.btn_search.TabIndex = 10;
+            this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // Admin_Transaction
             // 

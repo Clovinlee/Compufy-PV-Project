@@ -12,9 +12,9 @@ using System.Globalization;
 
 namespace Compufy_PV_Projek
 {
-    public partial class lblOpsi : Form
+    public partial class admin_sales : Form
     {
-        public lblOpsi()
+        public admin_sales()
         {
             InitializeComponent();
         }
@@ -27,61 +27,184 @@ namespace Compufy_PV_Projek
             cbFilter.SelectedIndex = 0;
             cbOpsi.SelectedIndex = 0;
             radPendapatan.Checked = true;
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = " ";
+
             chartSalary.Series["Pendapatan"].IsVisibleInLegend = false;
             chartSalary.Series["JumlahTrans"].IsVisibleInLegend = false;
             chartSalary.Series["BarangLaku"].IsVisibleInLegend = false;
+            chartPie.Series["Series1"]["PieLineColor"] = "Blue";
+
             chartSalary.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
             chartSalary.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = true;
             chartSalary.ChartAreas["ChartArea1"].AxisY.LabelStyle.Format = "#,##";
-            LoadCBHarian();
-            LoadPieChart();
+
+            chartSalary.ChartAreas["ChartArea1"].AxisY.LabelAutoFitStyle = LabelAutoFitStyles.None;
+            chartSalary.ChartAreas["ChartArea1"].AxisX.LabelAutoFitStyle = LabelAutoFitStyles.None;
+            chartSalary.ChartAreas["ChartArea1"].AxisY.LabelStyle.Font = new Font("Nirmala UI", 10);
+            chartSalary.ChartAreas["ChartArea1"].AxisX.LabelStyle.Font = new Font("Nirmala UI", 10, FontStyle.Bold);
+
+            chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+            chartSalary.ChartAreas["ChartArea1"].AxisX.ScaleView.Zoomable = true;
+            chartSalary.ChartAreas["ChartArea1"].AxisX.ScaleView.Zoom(0, 4);
+            chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.SmallScroll;
+            chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.IsPositionedInside = false;
+            chartSalary.ChartAreas["ChartArea1"].AxisX.ScaleView.SmallScrollSize = 7;
+            chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.Size = 15;
+            chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.BackColor = Color.WhiteSmoke;
+            chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.ButtonColor = Color.Silver;
+
+            LoadDummyPie();
+        }
+
+        private void LoadDummyPie()
+        {
+            chartPie.Series["Series1"].Points.Clear();
+            chartPie.Series["Series1"].Font = new Font("Nirmala UI", 10, FontStyle.Bold);
+            chartPie.Series["Series1"].Points.AddXY("NO DATA", 100);
+            chartPie.Series["Series1"].Points[0].IsVisibleInLegend = false;
+            chartPie.Series["Series1"]["PieLabelStyle"] = "outside";
+            chartPie.ChartAreas[0].Area3DStyle.Enable3D = false;
         }
 
         private void LoadPieChart()
         {
-            chartPie.Series["Series1"].Points.AddXY("Desktop", 500000);
-            chartPie.Series["Series1"].Points.AddXY("Smartphone", 250000);
-            chartPie.Series["Series1"].Points.AddXY("Laptop", 750000);
-            chartPie.Series["Series1"].Points.AddXY("Accesories", 150000);
-        }
+            chartPie.Series["Series1"].Points.Clear();
+            chartPie.Series["Series1"].Font = new Font("Nirmala UI", 8, FontStyle.Bold);
+            chartPie.ChartAreas[0].Area3DStyle.Enable3D = true;
+            chartPie.ChartAreas[0].Area3DStyle.Inclination = 0;
 
-        private void LoadCBHarian()
-        {
+            int desktop = 0;
+            int smartphone = 0;
+            int laptop = 0;
+            int accesories = 0;
+            int total = 0;
+
             DataSet ds = new DataSet();
-            string query = $"SELECT distinct Convert(varchar, tgl_trans, 106), tgl_trans from h_transaksi order by 2 asc";
-            frm_login.executeDataSet(ds, query, "Tgl");
+            string date = dateTimePicker1.Value.Date.ToString("MM/dd/yyyy");
+            string query = $"select b.nama_barang, b.harga_barang * d.jumlah_barang, k.nama_kategori from barang b, d_transaksi d, h_transaksi h, kategori k where d.id_barang = b.id_barang and d.id_trans = h.id_trans and b.id_kategori = k.id_kategori and convert(varchar, h.tgl_trans, 101) = '{date}'";
+            frm_login.executeDataSet(ds, query, "Kategori");
 
-            for (int i = 0; i < ds.Tables["Tgl"].Rows.Count; i++)
+            for (int i = 0; i < ds.Tables["Kategori"].Rows.Count; i++)
             {
-                cbTanggal.Items.Add(ds.Tables["Tgl"].Rows[i].ItemArray[0]);
+                total += Convert.ToInt32(ds.Tables["Kategori"].Rows[i].ItemArray[1]);
+
+                if (ds.Tables["Kategori"].Rows[i].ItemArray[2].ToString() == "Desktop")
+                {
+                    desktop += Convert.ToInt32(ds.Tables["Kategori"].Rows[i].ItemArray[1]);
+                }
+                else if (ds.Tables["Kategori"].Rows[i].ItemArray[2].ToString() == "Smartphone")
+                {
+                    smartphone += Convert.ToInt32(ds.Tables["Kategori"].Rows[i].ItemArray[1]);
+                }
+                else if (ds.Tables["Kategori"].Rows[i].ItemArray[2].ToString() == "Laptop")
+                {
+                    laptop += Convert.ToInt32(ds.Tables["Kategori"].Rows[i].ItemArray[1]);
+                }
+                else
+                {
+                    accesories += Convert.ToInt32(ds.Tables["Kategori"].Rows[i].ItemArray[1]);
+                }
             }
+
+            double checkDesktop = Convert.ToDouble(desktop) / Convert.ToDouble(total) * 100;
+            double checkSmartphone = Convert.ToDouble(smartphone) / Convert.ToDouble(total) * 100;
+            double checkLaptop = Convert.ToDouble(laptop) / Convert.ToDouble(total) * 100;
+            double checkAcc = Convert.ToDouble(accesories) / Convert.ToDouble(total) * 100;
+
+            if (checkDesktop != 0)
+            {
+                chartPie.Series["Series1"].Points.AddXY(checkDesktop.ToString("0.0") + "%", desktop);
+                chartPie.Series["Series1"].Points[0].LegendText = "Desktop";
+            }
+            if (checkSmartphone != 0)
+            {
+                chartPie.Series["Series1"].Points.AddXY(checkSmartphone.ToString("0.0") + "%", smartphone);
+                chartPie.Series["Series1"].Points[1].LegendText = "Smartphone";
+            }
+            if (checkLaptop != 0)
+            {
+                chartPie.Series["Series1"].Points.AddXY(checkLaptop.ToString("0.0") + "%", laptop);
+                chartPie.Series["Series1"].Points[2].LegendText = "Laptop";
+            }
+            if (checkAcc != 0)
+            {
+                chartPie.Series["Series1"].Points.AddXY(checkAcc.ToString("0.0") + "%", accesories);
+                chartPie.Series["Series1"].Points[3].LegendText = "Accesories";
+            }
+
+            if (chartPie.Series["Series1"].Points.Count == 1)
+            {
+                chartPie.Series["Series1"]["PieLabelStyle"] = "outside";
+            }
+            else
+            {
+                chartPie.Series["Series1"]["PieLabelStyle"] = "inside";
+
+                if (checkDesktop < 10 && checkDesktop != 0)
+                {
+                    chartPie.Series["Series1"].Points[0]["PieLabelStyle"] = "outside";
+                }
+                if (checkSmartphone < 10 && checkSmartphone != 0)
+                {
+                    chartPie.Series["Series1"].Points[1]["PieLabelStyle"] = "outside";
+                }
+                if (checkLaptop < 10 && checkLaptop != 0)
+                {
+                    chartPie.Series["Series1"].Points[2]["PieLabelStyle"] = "outside";
+                }
+                if (checkAcc < 10 && checkAcc != 0)
+                {
+                    chartPie.Series["Series1"].Points[3]["PieLabelStyle"] = "outside";
+                }
+            }       
         }
+
+        int pendHarian;
 
         private void LoadHarian()
         {
             DataSet ds = new DataSet();
-            string query = $"select tab1.tgl, tab1.total, tab1.trans, tab2.jumlah from (SELECT h.tgl_Trans as tgl, SUM(h.total_trans) as total, count(h.id_trans) as trans from h_transaksi h group by h.tgl_trans) tab1, (SELECT h.tgl_trans as tgl, SUM(d.jumlah_barang) as jumlah from h_transaksi h, d_transaksi d where h.id_trans = d.id_trans group by h.tgl_trans) tab2 where tab1.tgl = tab2.tgl and tab1.tgl = Convert(date, '{cbTanggal.Text}')";
+            string date = dateTimePicker1.Value.Date.ToString("MM/dd/yyyy");
+            string query = $"select tab1.tgl, tab1.total, tab1.trans, tab2.jumlah from (SELECT h.tgl_Trans as tgl, SUM(h.total_trans) as total, count(h.id_trans) as trans from h_transaksi h group by h.tgl_trans) tab1, (SELECT h.tgl_trans as tgl, SUM(d.jumlah_barang) as jumlah from h_transaksi h, d_transaksi d where h.id_trans = d.id_trans group by h.tgl_trans) tab2 where tab1.tgl = tab2.tgl and convert(varchar, tab1.tgl, 101) = '{date}'";
             frm_login.executeDataSet(ds, query, "Harian");
 
-            string pendapatan = Convert.ToInt32(ds.Tables["Harian"].Rows[0].ItemArray[1]).ToString("C", new CultureInfo("id-ID"));
+            if (ds.Tables["Harian"].Rows.Count == 0)
+            {
+                lblPdpt.Text = "Rp0";
+                lblTrans.Text = "0 Transaksi";
+                lblBrg.Text = "0 Unit";
+                LoadDummyPie();
+            }
+            else
+            {
+                pendHarian = Convert.ToInt32(ds.Tables["Harian"].Rows[0].ItemArray[1]);
+                string pendapatan = Convert.ToInt32(ds.Tables["Harian"].Rows[0].ItemArray[1]).ToString("C", new CultureInfo("id-ID"));
 
-            lblPdpt.Text = "Pendapatan : " + pendapatan;
-            lblTrans.Text = "Jumlah Transaksi : " + ds.Tables["Harian"].Rows[0].ItemArray[2].ToString() + " Transaksi";
-            lblBrg.Text = "Barang Laku : " + ds.Tables["Harian"].Rows[0].ItemArray[3].ToString() + " Unit";
+                lblPdpt.Text = pendapatan;
+                lblTrans.Text = ds.Tables["Harian"].Rows[0].ItemArray[2].ToString() + " Transaksi";
+                lblBrg.Text = ds.Tables["Harian"].Rows[0].ItemArray[3].ToString() + " Unit";
+                LoadPieChart();
+            }
         }
 
         private void LoadPendapatan()
         {
             chartSalary.Series["Pendapatan"].Points.Clear();
+
             chartSalary.Series["Pendapatan"].MarkerSize = 15;
             chartSalary.Series["Pendapatan"].MarkerStyle = MarkerStyle.Circle;
-            chartSalary.Series["Pendapatan"].BorderWidth = 4;
-            
+            chartSalary.Series["Pendapatan"].MarkerColor = Color.Black;
+            chartSalary.Series["Pendapatan"].BorderWidth = 5;
+            chartSalary.ChartAreas["ChartArea1"].AxisX.LineWidth = 0;
+
             if (cbFilter.SelectedIndex == 0)
             {
                 DataSet ds = new DataSet();
-                string query = $"SELECT Convert(varchar, DATENAME(MONTH, DATEADD(MONTH, 0, tgl_trans))), SUM(total_trans) from h_transaksi where year(tgl_trans) = '{cbOpsi.Text}' group by Convert(varchar, DATENAME(MONTH, DATEADD(MONTH, 0, tgl_trans)))";
+                string query = $"SELECT substring(tab1.bulan, 0, 4), isnull(tab2.total, 0) from (SELECT DATENAME(MONTH, DATEADD(MM, s.number, CONVERT(DATETIME, 0))) AS bulan FROM master.dbo.spt_values s WHERE[type] = 'P' AND s.number BETWEEN 0 AND 11) tab1 left join (SELECT Convert(varchar, DATENAME(MONTH, DATEADD(MONTH, 0, tgl_trans))) as bulan, SUM(total_trans) as total from h_transaksi where year(tgl_trans) = {cbOpsi.Text} group by Convert(varchar, DATENAME(MONTH, DATEADD(MONTH, 0, tgl_trans)))) tab2 on tab1.bulan = tab2.bulan";
                 frm_login.executeDataSet(ds, query, "Pendapatan");
+
+                chartSalary.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
                 for (int i = 0; i < ds.Tables["Pendapatan"].Rows.Count; i++)
                 {
@@ -114,12 +237,13 @@ namespace Compufy_PV_Projek
             chartSalary.Series["JumlahTrans"].Points.Clear();
             chartSalary.Series["JumlahTrans"].MarkerSize = 15;
             chartSalary.Series["JumlahTrans"].MarkerStyle = MarkerStyle.Circle;
-            chartSalary.Series["JumlahTrans"].BorderWidth = 4;
+            chartSalary.Series["JumlahTrans"].MarkerColor = Color.Black;
+            chartSalary.Series["JumlahTrans"].BorderWidth = 5;
 
             if (cbFilter.SelectedIndex == 0)
             {
                 DataSet ds = new DataSet();
-                string query = $"SELECT Convert(varchar, DATENAME(MONTH, DATEADD(MONTH, 0, tgl_trans))), count(id_trans) from h_transaksi where year(tgl_trans) = {cbOpsi.Text} group by Convert(varchar, DATENAME(MONTH, DATEADD(MONTH, 0, tgl_trans)))";
+                string query = $"select substring(tab1.bulan, 0, 4), isnull(tab2.trans, 0) from (SELECT DATENAME(MONTH, DATEADD(MM, s.number, CONVERT(DATETIME, 0))) AS bulan FROM master.dbo.spt_values s WHERE[type] = 'P' AND s.number BETWEEN 0 AND 11) tab1 left join(SELECT Convert(varchar, DATENAME(MONTH, DATEADD(MONTH, 0, tgl_trans))) as bulan, count(id_trans) as trans from h_transaksi where year(tgl_trans) = {cbOpsi.Text} group by Convert(varchar, DATENAME(MONTH, DATEADD(MONTH, 0, tgl_trans)))) tab2 on tab1.bulan = tab2.bulan";
                 frm_login.executeDataSet(ds, query, "Trans");
 
                 for (int i = 0; i < ds.Tables["Trans"].Rows.Count; i++)
@@ -148,13 +272,14 @@ namespace Compufy_PV_Projek
         {
             chartSalary.Series["BarangLaku"].Points.Clear();
             chartSalary.Series["BarangLaku"].MarkerSize = 15;
+            chartSalary.Series["BarangLaku"].MarkerColor = Color.Black;
             chartSalary.Series["BarangLaku"].MarkerStyle = MarkerStyle.Circle;
-            chartSalary.Series["BarangLaku"].BorderWidth = 4;
+            chartSalary.Series["BarangLaku"].BorderWidth = 5;
 
             if (cbFilter.SelectedIndex == 0)
             {
                 DataSet ds = new DataSet();
-                string query = $"SELECT CONVERT(varchar, DATENAME(MONTH, DATEADD(MONTH, 0, h.tgl_trans))), sum(d.jumlah_barang) from h_transaksi h, d_transaksi d where h.id_trans = d.id_trans and year(tgl_trans) = {cbOpsi.Text} group by CONVERT(varchar, DATENAME(MONTH, DATEADD(MONTH, 0, h.tgl_trans)))";
+                string query = $"select substring(tab1.bulan, 0, 4), isnull(tab2.barang, 0) from (SELECT DATENAME(MONTH, DATEADD(MM, s.number, CONVERT(DATETIME, 0))) AS bulan FROM master.dbo.spt_values s WHERE[type] = 'P' AND s.number BETWEEN 0 AND 11) tab1 left join (SELECT CONVERT(varchar, DATENAME(MONTH, DATEADD(MONTH, 0, h.tgl_trans))) as bulan, sum(d.jumlah_barang) as barang from h_transaksi h, d_transaksi d where h.id_trans = d.id_trans and year(tgl_trans) = {cbOpsi.Text} group by CONVERT(varchar, DATENAME(MONTH, DATEADD(MONTH, 0, h.tgl_trans)))) tab2 on tab1.bulan = tab2.bulan";
                 frm_login.executeDataSet(ds, query, "Barang");
 
                 for (int i = 0; i < ds.Tables["Barang"].Rows.Count; i++)
@@ -220,11 +345,6 @@ namespace Compufy_PV_Projek
             {
                 LoadBarang();
             }
-        }
-
-        private void ChangeTitle()
-        {
-            chartSalary.Titles["Title"].Text = "Data";
         }
 
         private void cbOpsi_SelectedIndexChanged(object sender, EventArgs e)
@@ -295,11 +415,44 @@ namespace Compufy_PV_Projek
             }
         }
 
-        private void cbTanggal_SelectedIndexChanged(object sender, EventArgs e)
+        private void dateTimePicker1_CloseUp(object sender, EventArgs e)
         {
-            if (cbTanggal.SelectedIndex != -1)
+            dateTimePicker1.Format = DateTimePickerFormat.Long;
+            LoadHarian();
+        }
+
+        private void admin_sales_SizeChanged(object sender, EventArgs e)
+        {
+            if (this.Width >= 870)
             {
-                LoadHarian();
+                chartSalary.ChartAreas["ChartArea1"].AxisX.ScaleView.Zoom(0, 11);
+                chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = false;
+            }
+            else
+            {
+                chartSalary.ChartAreas["ChartArea1"].AxisX.ScaleView.Zoom(0, 4);
+                chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+            }
+        }
+
+        private void chartSalary_GetToolTipText(object sender, ToolTipEventArgs e)
+        {
+            if (e.HitTestResult.ChartElementType == ChartElementType.DataPoint)
+            {
+                DataPoint dataPoint = (DataPoint)e.HitTestResult.Object;
+
+                if (radPendapatan.Checked)
+                {
+                    e.Text = "Rp " + dataPoint.YValues[0].ToString("#,##");
+                }
+                else if (radTrans.Checked)
+                {
+                    e.Text = dataPoint.YValues[0].ToString() + " Transaksi";
+                }
+                else if (radBarang.Checked)
+                {
+                    e.Text = dataPoint.YValues[0].ToString() + " Unit";
+                }
             }
         }
     }

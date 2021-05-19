@@ -28,7 +28,8 @@ namespace Compufy_PV_Projek
         private void admin_stock_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new Size(727, 508);
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 11, FontStyle.Bold);
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
+            dataGridView1.RowHeadersVisible = false;
             //this.FormBorderStyle = FormBorderStyle.None;
             LoadBarang();
             CustomFont();
@@ -38,6 +39,7 @@ namespace Compufy_PV_Projek
         {
             frmAdd = new add_stock();
             frmAdd.frm_login = frm_login;
+            frmAdd.StartPosition = FormStartPosition.CenterScreen;
             frmAdd.ShowDialog();
             LoadBarang();
         }

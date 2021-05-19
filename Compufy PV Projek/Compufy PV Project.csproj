@@ -130,6 +130,12 @@
     <Compile Include="admin_dashboard.Designer.cs">
       <DependentUpon>admin_dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="admin_detail_transaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin_detail_transaction.Designer.cs">
+      <DependentUpon>admin_detail_transaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="admin_manage_member.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="admin_dashboard.resx">
       <DependentUpon>admin_dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin_detail_transaction.resx">
+      <DependentUpon>admin_detail_transaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="admin_manage_member.resx">
       <DependentUpon>admin_manage_member.cs</DependentUpon>

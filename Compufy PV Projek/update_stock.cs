@@ -26,6 +26,7 @@ namespace Compufy_PV_Projek
             this.MinimumSize = new Size(500, 300);
             this.MaximumSize = new Size(500, 300);
             kosong = false;
+            txtNama.Select(0, 0);
             loadKategori();
             cbKategori.SelectedIndex = cbKategori.Items.IndexOf(cbKategori.Text);
         }
