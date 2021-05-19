@@ -21,7 +21,7 @@ namespace Compufy_PV_Projek
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string query = $"INSERT into [Akun] (username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, gambar) VALUES('{txtUsername.Text}', '{textBox1.Text}', '{txtNama.Text}', '{dateTimePicker1.Value}', '{cbGender.SelectedItem.ToString()}', '{comboBox1.SelectedItem.ToString()}', '{openFileDialog1.SafeFileName}')";
+            string query = $"INSERT into [Akun] (username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, gambar, status_delete) VALUES('{txtUsername.Text}', '{textBox1.Text}', '{txtNama.Text}', '{dateTimePicker1.Value}', '{cbGender.SelectedItem.ToString()}', '{comboBox1.SelectedItem.ToString()}', '{openFileDialog1.SafeFileName}', '0')";
             frm_login.executeQuery(query);
             this.Close();
         }

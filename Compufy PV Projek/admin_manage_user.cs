@@ -50,7 +50,7 @@ namespace Compufy_PV_Projek
             dataGridView1.Rows.Clear();
 
             DataSet ds = new DataSet();
-            string query = "SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') from Akun";
+            string query = "SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') from Akun where status_delete = '0'";
             frm_login.executeDataSet(ds, query, "Akun");
 
             for (int i = 0; i < ds.Tables["Akun"].Rows.Count; i++)
@@ -164,7 +164,7 @@ namespace Compufy_PV_Projek
 
                 if (dialogResult == DialogResult.Yes)
                 {
-                    string query = $"DELETE [Akun] where id_user = '{id}'";
+                    string query = $"update [Akun] set status_delete = '1' where id_user = '{id}'";
                     frm_login.executeQuery(query);
                     LoadBarang();
                 }

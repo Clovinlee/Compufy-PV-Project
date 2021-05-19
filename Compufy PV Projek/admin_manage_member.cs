@@ -48,7 +48,7 @@ namespace Compufy_PV_Projek
             dataGridView1.Rows.Clear();
 
             DataSet ds = new DataSet();
-            string query = "SELECT * from Member";
+            string query = "SELECT * from Member where status_delete = '0'";
             frm_login.executeDataSet(ds, query, "Member");
 
             for (int i = 0; i < ds.Tables["Member"].Rows.Count; i++)
@@ -132,7 +132,7 @@ namespace Compufy_PV_Projek
 
             if (dialogResult == DialogResult.Yes)
             {
-                string query = $"DELETE [Member] where id_member = '{id}'";
+                string query = $"update [Member] set status_delete = '1' where id_member = '{id}'";
                 frm_login.executeQuery(query);
                 LoadBarang();
             }
