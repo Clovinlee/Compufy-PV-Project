@@ -102,7 +102,7 @@ namespace Compufy_PV_Projek
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            string qu = $"SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') as gambar FROM [Akun] WHERE username = '{tb_username.Text}' AND password = '{tb_password.Text}';";
+            string qu = $"SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') as gambar FROM [Akun] WHERE username = '{tb_username.Text}' AND password = '{tb_password.Text}' and status_delete = 0";
             ds = new DataSet();
             executeDataSet(ds, qu, "akun");
 

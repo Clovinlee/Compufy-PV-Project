@@ -49,7 +49,7 @@ namespace Compufy_PV_Projek
             dataGridView1.Rows.Clear();
 
             DataSet ds = new DataSet();
-            string query = "SELECT b.id_barang, k.nama_kategori, b.nama_barang, b.harga_barang, b.stok_barang, b.gambar from Barang b, Kategori k WHERE b.id_kategori = k.id_kategori";
+            string query = "SELECT b.id_barang, k.nama_kategori, b.nama_barang, b.harga_barang, b.stok_barang, b.gambar from Barang b, Kategori k WHERE b.id_kategori = k.id_kategori and b.status_del = 0";
             frm_login.executeDataSet(ds, query, "Barang");
 
             for (int i = 0; i < ds.Tables["Barang"].Rows.Count; i++)
@@ -201,7 +201,7 @@ namespace Compufy_PV_Projek
             {
                 if (MessageBox.Show("Yakin mendelete barang ini?", "Delete Barang", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    string query = $"DELETE from [Barang] where id_barang = '{Convert.ToInt32(dataGridView1.Rows[idx].Cells[0].Value)}'";
+                    string query = $"Update [Barang] set status_del = 1 where id_barang = '{Convert.ToInt32(dataGridView1.Rows[idx].Cells[0].Value)}'";
                     frm_login.executeQuery(query);
                     LoadBarang();
                 }

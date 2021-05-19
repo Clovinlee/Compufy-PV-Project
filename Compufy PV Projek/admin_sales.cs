@@ -25,7 +25,7 @@ namespace Compufy_PV_Projek
         {
             this.MinimumSize = new Size(727, 508);
             cbFilter.SelectedIndex = 0;
-            cbOpsi.SelectedIndex = 0;
+            cbOpsi.SelectedIndex = 6;
             radPendapatan.Checked = true;
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = " ";
@@ -34,6 +34,10 @@ namespace Compufy_PV_Projek
             chartSalary.Series["JumlahTrans"].IsVisibleInLegend = false;
             chartSalary.Series["BarangLaku"].IsVisibleInLegend = false;
             chartPie.Series["Series1"]["PieLineColor"] = "Blue";
+
+            chartSalary.Series["Pendapatan"].YValueType = ChartValueType.Int32;
+            chartSalary.Series["JumlahTrans"].YValueType = ChartValueType.Int32;
+            chartSalary.Series["BarangLaku"].YValueType = ChartValueType.Int32;
 
             chartSalary.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
             chartSalary.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = true;
@@ -44,15 +48,24 @@ namespace Compufy_PV_Projek
             chartSalary.ChartAreas["ChartArea1"].AxisY.LabelStyle.Font = new Font("Nirmala UI", 10);
             chartSalary.ChartAreas["ChartArea1"].AxisX.LabelStyle.Font = new Font("Nirmala UI", 10, FontStyle.Bold);
 
-            chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
             chartSalary.ChartAreas["ChartArea1"].AxisX.ScaleView.Zoomable = true;
-            chartSalary.ChartAreas["ChartArea1"].AxisX.ScaleView.Zoom(0, 4);
             chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.SmallScroll;
             chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.IsPositionedInside = false;
             chartSalary.ChartAreas["ChartArea1"].AxisX.ScaleView.SmallScrollSize = 7;
             chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.Size = 15;
             chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.BackColor = Color.WhiteSmoke;
             chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.ButtonColor = Color.Silver;
+
+            if (this.Width >= 870)
+            {
+                chartSalary.ChartAreas["ChartArea1"].AxisX.ScaleView.ZoomReset(0);
+                chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = false;
+            }
+            else
+            {
+                chartSalary.ChartAreas["ChartArea1"].AxisX.ScaleView.Zoom(0, 4);
+                chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+            }
 
             LoadDummyPie();
         }
@@ -345,6 +358,17 @@ namespace Compufy_PV_Projek
             {
                 LoadBarang();
             }
+
+            if (this.Width >= 870)
+            {
+                chartSalary.ChartAreas["ChartArea1"].AxisX.ScaleView.ZoomReset(0);
+                chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = false;
+            }
+            else
+            {
+                chartSalary.ChartAreas["ChartArea1"].AxisX.ScaleView.Zoom(0, 4);
+                chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
+            }
         }
 
         private void cbOpsi_SelectedIndexChanged(object sender, EventArgs e)
@@ -425,7 +449,7 @@ namespace Compufy_PV_Projek
         {
             if (this.Width >= 870)
             {
-                chartSalary.ChartAreas["ChartArea1"].AxisX.ScaleView.Zoom(0, 11);
+                chartSalary.ChartAreas["ChartArea1"].AxisX.ScaleView.ZoomReset(0);
                 chartSalary.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = false;
             }
             else
