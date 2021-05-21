@@ -24,8 +24,8 @@ namespace Compufy_PV_Projek
         private void admin_detail_transaction_Load(object sender, EventArgs e)
         {
             LoadDetail();
-            this.MaximumSize = new Size(600, 400);
-            this.MinimumSize = new Size(600, 400);
+            this.MaximumSize = new Size(601, 560);
+            this.MinimumSize = new Size(601, 560);
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
         }
 
