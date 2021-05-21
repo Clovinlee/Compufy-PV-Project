@@ -37,52 +37,55 @@ namespace Compufy_PV_Projek
             int ctr = 0;
             foreach(DataRow r in ds_barang.Tables["barang"].Rows)
             {
-                Panel p_container = new Panel();
-                p_container.Size = new Size(154, 180);
-
-                Label l_judul = new Label();
-                p_container.Controls.Add(l_judul);
-                l_judul.Font = new Font("Nirmala UI", 10);
-                l_judul.Size = new Size(156, 40);
-                l_judul.Text = r[2].ToString();
-                l_judul.TextAlign = ContentAlignment.MiddleCenter;
-                l_judul.Location = new Point(0, 115);
-                l_judul.Tag = "judul";
-                l_judul.Click += new EventHandler(buttonItemAdd_Click);
-
-
-                Label l_harga = new Label();
-                p_container.Controls.Add(l_harga);
-                l_harga.AutoSize = false;
-                l_harga.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
-                l_harga.Size = new Size(163, 21);
-                l_harga.Text = "Rp " + Convert.ToDecimal(r[3]).ToString("#,##");
-                l_harga.TextAlign = ContentAlignment.MiddleCenter;
-                l_harga.Location = new Point(0, 155);
-                l_harga.Tag = "harga";
-
-                Panel p_picture = new Panel();
-                p_container.Controls.Add(p_picture);
-                p_picture.Location = new Point(27, 12);
-                p_picture.Size = new Size(100, 100);
-                p_picture.BackColor = Color.Peru;
-                try
+                if(r[6].ToString().Trim() == "0")
                 {
-                    p_picture.BackgroundImage = Image.FromFile(@"product_picture\"+r[5].ToString());
-                    p_picture.BackgroundImageLayout = ImageLayout.Stretch;
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine(r[5].ToString() + " Error!");
-                }
-                p_picture.Click += new EventHandler(buttonItemAdd_Click);
-                //ID_Barang-ID_Kategori-Nama-Harga-QTY-Image
+                    Panel p_container = new Panel();
+                    p_container.Size = new Size(154, 180);
 
-                p_container.Name = "pcontainer_" + ctr.ToString();
-                ctr++;
-                p_container.Tag = $"{r[0]}={r[1]}={r[2]}={r[3]}={r[4]}={r[5]}";
+                    Label l_judul = new Label();
+                    p_container.Controls.Add(l_judul);
+                    l_judul.Font = new Font("Nirmala UI", 10);
+                    l_judul.Size = new Size(156, 40);
+                    l_judul.Text = r[2].ToString();
+                    l_judul.TextAlign = ContentAlignment.MiddleCenter;
+                    l_judul.Location = new Point(0, 115);
+                    l_judul.Tag = "judul";
+                    l_judul.Click += new EventHandler(buttonItemAdd_Click);
 
-                fpl_products.Controls.Add(p_container);
+
+                    Label l_harga = new Label();
+                    p_container.Controls.Add(l_harga);
+                    l_harga.AutoSize = false;
+                    l_harga.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
+                    l_harga.Size = new Size(163, 21);
+                    l_harga.Text = "Rp " + Convert.ToDecimal(r[3]).ToString("#,##");
+                    l_harga.TextAlign = ContentAlignment.MiddleCenter;
+                    l_harga.Location = new Point(0, 155);
+                    l_harga.Tag = "harga";
+
+                    Panel p_picture = new Panel();
+                    p_container.Controls.Add(p_picture);
+                    p_picture.Location = new Point(27, 12);
+                    p_picture.Size = new Size(100, 100);
+                    p_picture.BackColor = Color.Peru;
+                    try
+                    {
+                        p_picture.BackgroundImage = Image.FromFile(@"product_picture\" + r[5].ToString());
+                        p_picture.BackgroundImageLayout = ImageLayout.Stretch;
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine(r[5].ToString() + " Error!");
+                    }
+                    p_picture.Click += new EventHandler(buttonItemAdd_Click);
+                    //ID_Barang-ID_Kategori-Nama-Harga-QTY-Image
+
+                    p_container.Name = "pcontainer_" + ctr.ToString();
+                    ctr++;
+                    p_container.Tag = $"{r[0]}={r[1]}={r[2]}={r[3]}={r[4]}={r[5]}";
+
+                    fpl_products.Controls.Add(p_container);
+                }
             }
             DataSet ds_categories = new DataSet();
             q = "SELECT id_kategori, nama_kategori FROM KATEGORI";
