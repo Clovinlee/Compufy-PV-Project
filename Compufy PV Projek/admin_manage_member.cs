@@ -32,7 +32,8 @@ namespace Compufy_PV_Projek
             this.MinimumSize = new Size(727, 508);
             frmAdd = new Add_Member();
             frmUpdate = new Update_Member();
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 11, FontStyle.Bold);
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
+            dataGridView1.RowHeadersVisible = false;
             LoadBarang();
             //this.FormBorderStyle = FormBorderStyle.None;
         }
