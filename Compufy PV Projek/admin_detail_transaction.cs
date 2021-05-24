@@ -38,6 +38,7 @@ namespace Compufy_PV_Projek
             string query = $"SELECT h.id_trans, h.tgl_trans, a.nama_user, isnull(m.nama_member, '-'), isnull(h.no_kartu, '-'), h.total_trans, h.bayar, h.diskon from h_transaksi h left join akun a on h.id_user = a.id_user left join member m on h.id_member = m.id_member where h.id_trans = {id}";
             frm_login.executeDataSet(ds, query, "Trans");
 
+            int diskon = Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[7]);
             int total = Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[5]) - Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[7]);
             int kembalian = Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[6]) - total;
 
@@ -68,7 +69,16 @@ namespace Compufy_PV_Projek
             lbl_nokartu.Text = kartuKredit;
             lbl_total.Text = "Rp" + total.ToString("#,##");
             lbl_bayar.Text = "Rp" + Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[6]).ToString("#,##");
-            lbl_diskon.Text = "Rp" + Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[7]).ToString("#,##");
+
+            if (diskon == 0)
+            {
+                lbl_diskon.Text = "Rp0";
+            }
+            else
+            {
+                lbl_diskon.Text = "Rp" + Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[7]).ToString("#,##");
+
+            }
 
             if (kembalian == 0)
             {
