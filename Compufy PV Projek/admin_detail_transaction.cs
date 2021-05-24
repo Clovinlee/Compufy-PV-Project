@@ -48,15 +48,23 @@ namespace Compufy_PV_Projek
 
             string kartuKreditDariDB = ds.Tables[0].Rows[0].ItemArray[4].ToString();
             string kartuKredit = "";
-            for (int x = 1; x < 13; x++)
+
+            if (kartuKreditDariDB != "-" && kartuKreditDariDB != "" && kartuKreditDariDB != " ")
             {
-                kartuKredit += kartuKreditDariDB[x - 1];
-                if (x % 4 == 0 && x != 13)
+                for (int x = 1; x < 13; x++)
                 {
-                    kartuKredit += "-";
+                    kartuKredit += kartuKreditDariDB[x - 1];
+                    if (x % 4 == 0 && x != 12)
+                    {
+                        kartuKredit += "-";
+                    }
                 }
             }
-
+            else
+            {
+                kartuKredit = "-";
+            }
+            
             lbl_nokartu.Text = kartuKredit;
             lbl_total.Text = "Rp" + total.ToString("#,##");
             lbl_bayar.Text = "Rp" + Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[6]).ToString("#,##");
