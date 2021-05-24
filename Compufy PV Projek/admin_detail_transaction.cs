@@ -38,17 +38,38 @@ namespace Compufy_PV_Projek
             string query = $"SELECT h.id_trans, h.tgl_trans, a.nama_user, isnull(m.nama_member, '-'), isnull(h.no_kartu, '-'), h.total_trans, h.bayar, h.diskon from h_transaksi h left join akun a on h.id_user = a.id_user left join member m on h.id_member = m.id_member where h.id_trans = {id}";
             frm_login.executeDataSet(ds, query, "Trans");
 
-            int kembalian = Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[6]) - Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[5]);
+            int total = Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[5]) - Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[7]);
+            int kembalian = Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[6]) - total;
 
             lbl_id.Text = ds.Tables[0].Rows[0].ItemArray[0].ToString();
             lbl_tanggal.Text = ds.Tables[0].Rows[0].ItemArray[1].ToString();
             lbl_kasir.Text = ds.Tables[0].Rows[0].ItemArray[2].ToString();
             lbl_member.Text = ds.Tables[0].Rows[0].ItemArray[3].ToString();
-            lbl_nokartu.Text = ds.Tables[0].Rows[0].ItemArray[4].ToString();
-            lbl_total.Text = ds.Tables[0].Rows[0].ItemArray[5].ToString();
-            lbl_bayar.Text = ds.Tables[0].Rows[0].ItemArray[6].ToString();
-            lbl_diskon.Text = ds.Tables[0].Rows[0].ItemArray[7].ToString();
-            lbl_kembalian.Text = kembalian.ToString();
+
+            string kartuKreditDariDB = ds.Tables[0].Rows[0].ItemArray[4].ToString();
+            string kartuKredit = "";
+            for (int x = 1; x < 13; x++)
+            {
+                kartuKredit += kartuKreditDariDB[x - 1];
+                if (x % 4 == 0 && x != 13)
+                {
+                    kartuKredit += "-";
+                }
+            }
+
+            lbl_nokartu.Text = kartuKredit;
+            lbl_total.Text = "Rp" + total.ToString("#,##");
+            lbl_bayar.Text = "Rp" + Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[6]).ToString("#,##");
+            lbl_diskon.Text = "Rp" + Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[7]).ToString("#,##");
+
+            if (kembalian == 0)
+            {
+                lbl_kembalian.Text = "Rp0";
+            }
+            else
+            {
+                lbl_kembalian.Text = "Rp" + kembalian.ToString("#,##");
+            } 
         }
 
         private void LoadDetail()
