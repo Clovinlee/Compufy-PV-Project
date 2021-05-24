@@ -32,11 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnNota = new FontAwesome.Sharp.IconButton();
             this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Jumlah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnNota = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,7 +73,7 @@
             this.Jumlah,
             this.Total});
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 67);
+            this.dataGridView1.Location = new System.Drawing.Point(14, 137);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -86,28 +86,8 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(558, 226);
+            this.dataGridView1.Size = new System.Drawing.Size(558, 156);
             this.dataGridView1.TabIndex = 3;
-            // 
-            // btnNota
-            // 
-            this.btnNota.BackColor = System.Drawing.SystemColors.Desktop;
-            this.btnNota.FlatAppearance.BorderSize = 0;
-            this.btnNota.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNota.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNota.ForeColor = System.Drawing.Color.White;
-            this.btnNota.IconChar = FontAwesome.Sharp.IconChar.FileInvoiceDollar;
-            this.btnNota.IconColor = System.Drawing.Color.White;
-            this.btnNota.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnNota.IconSize = 30;
-            this.btnNota.Location = new System.Drawing.Point(446, 309);
-            this.btnNota.Name = "btnNota";
-            this.btnNota.Size = new System.Drawing.Size(126, 40);
-            this.btnNota.TabIndex = 17;
-            this.btnNota.Text = "Lihat Nota";
-            this.btnNota.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNota.UseVisualStyleBackColor = false;
-            this.btnNota.Click += new System.EventHandler(this.btnNota_Click);
             // 
             // Nama
             // 
@@ -136,6 +116,26 @@
             this.Total.HeaderText = "Total";
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
+            // 
+            // btnNota
+            // 
+            this.btnNota.BackColor = System.Drawing.SystemColors.Desktop;
+            this.btnNota.FlatAppearance.BorderSize = 0;
+            this.btnNota.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNota.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNota.ForeColor = System.Drawing.Color.White;
+            this.btnNota.IconChar = FontAwesome.Sharp.IconChar.FileInvoiceDollar;
+            this.btnNota.IconColor = System.Drawing.Color.White;
+            this.btnNota.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnNota.IconSize = 30;
+            this.btnNota.Location = new System.Drawing.Point(446, 309);
+            this.btnNota.Name = "btnNota";
+            this.btnNota.Size = new System.Drawing.Size(126, 40);
+            this.btnNota.TabIndex = 17;
+            this.btnNota.Text = "Lihat Nota";
+            this.btnNota.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNota.UseVisualStyleBackColor = false;
+            this.btnNota.Click += new System.EventHandler(this.btnNota_Click);
             // 
             // admin_detail_transaction
             // 
