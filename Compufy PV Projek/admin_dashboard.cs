@@ -210,5 +210,29 @@ namespace Compufy_PV_Projek
         {
 
         }
+
+        private void admin_dashboard_SizeChanged(object sender, EventArgs e)
+        {
+            int xform = this.Width;
+            int yform = this.Height;
+            int ysize = groupBox1.Height;
+            groupBox2.Location = new Point(0, ysize + 25);
+            groupBox2.Size = new Size(xform / 3, yform/2);
+            groupBox3.Location = new Point(xform / 3 + 10, ysize +25);
+            groupBox3.Size = new Size(xform / 3, yform / 2);
+            groupBox4.Location = new Point(xform * 2 / 3 + 20, ysize + 25);
+            groupBox4.Size = new Size(xform / 3, yform / 2);
+            label18.Location = new Point(xform / 3 / 2 - 25,9);
+            label17.Location = new Point(xform / 3 / 2 - 45, 9);
+            label9.Location = new Point(xform / 3 / 2 - 87, 9);
+            panel5.Location = new Point(xform / 3 / 2 - 90, 49);
+            panel6.Location = new Point(xform / 3 / 2 - 90, 49);
+            panel7.Location = new Point(xform / 3 / 2 - 120, 49);
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
