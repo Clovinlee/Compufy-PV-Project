@@ -222,12 +222,43 @@ namespace Compufy_PV_Projek
             groupBox3.Size = new Size(xform / 3, yform / 2);
             groupBox4.Location = new Point(xform * 2 / 3 + 20, ysize + 25);
             groupBox4.Size = new Size(xform / 3, yform / 2);
-            label18.Location = new Point(xform / 3 / 2 - 25,9);
-            label17.Location = new Point(xform / 3 / 2 - 45, 9);
+            label18.Location = new Point(xform / 3 / 2 - 70,9);
+            label17.Location = new Point(xform / 3 / 2 - 70, 9);
             label9.Location = new Point(xform / 3 / 2 - 87, 9);
-            panel5.Location = new Point(xform / 3 / 2 - 90, 49);
+            //panel5.Location = new Point(xform / 3 / 2 - 90, 49);
             panel6.Location = new Point(xform / 3 / 2 - 90, 49);
-            panel7.Location = new Point(xform / 3 / 2 - 120, 49);
+            //panel7.Location = new Point(xform / 3 / 2 - 120, 49);
+            label5.Font = new Font("Nirmala UI", 14 + (xform-727)/80 , FontStyle.Bold);
+            label6.Font = new Font("Nirmala UI", 12 + (xform - 727) / 80, FontStyle.Regular);
+            label6.Location = new Point(9, label5.Height + 50);
+            label28.Font = new Font("Nirmala UI", 12 + (xform - 727) / 80, FontStyle.Regular);
+            label28.Location = new Point(9, label6.Height + 80);
+            label7.Font = new Font("Nirmala UI", 14 + (xform - 727) / 80, FontStyle.Bold);
+            label7.Location = new Point(9, label28.Height + 100);
+            label8.Font = new Font("Nirmala UI", 12 + (xform - 727) / 80, FontStyle.Regular);
+            label8.Location = new Point(9, label7.Height + 130);
+            label19.Font = new Font("Nirmala UI", 10 + (xform - 727) / 80, FontStyle.Bold);
+            label19.Location = new Point(6 , 56);
+            label10.Font = new Font("Nirmala UI", 10 + (xform - 727) / 80, FontStyle.Bold);
+            label10.Location = new Point(label19.Width + 3, 56);
+            label11.Font = new Font("Nirmala UI", 10 + (xform - 727) / 80, FontStyle.Bold);
+            label11.Location = new Point(label10.Width + label19.Width, 56);
+            label20.Font = new Font("Nirmala UI", 10 + (xform - 727) / 80, FontStyle.Bold);
+            label20.Location = new Point(6, 86);
+            label22.Font = new Font("Nirmala UI", 10 + (xform - 727) / 80, FontStyle.Bold);
+            label22.Location = new Point(label19.Width + 3, 86);
+            label21.Font = new Font("Nirmala UI", 10 + (xform - 727) / 80, FontStyle.Bold);
+            label21.Location = new Point(label10.Width + label19.Width, 86);
+            label23.Font = new Font("Nirmala UI", 10 + (xform - 727) / 80, FontStyle.Bold);
+            label23.Location = new Point(6, 116);
+            label27.Font = new Font("Nirmala UI", 10 + (xform - 727) / 80, FontStyle.Bold);
+            label27.Location = new Point(label23.Width + 20, 116);
+            label24.Font = new Font("Nirmala UI", 10 + (xform - 727) / 80, FontStyle.Bold);
+            label24.Location = new Point(6, 146);
+            label26.Font = new Font("Nirmala UI", 10 + (xform - 727) / 80, FontStyle.Bold);
+            label26.Location = new Point(label19.Width + 3, 146);
+            label25.Font = new Font("Nirmala UI", 10 + (xform - 727) / 80, FontStyle.Bold);
+            label25.Location = new Point(label10.Width + label19.Width, 146);
         }
 
         private void label4_Click(object sender, EventArgs e)
