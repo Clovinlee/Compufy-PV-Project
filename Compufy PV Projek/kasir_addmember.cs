@@ -59,7 +59,7 @@ namespace Compufy_PV_Projek
             {
                 foreach (DataRow r in ds_member.Tables[0].Rows)
                 {
-                    if (r[0].ToString() == tb_id.Text)
+                    if (r[0].ToString() == tb_id.Text && r[7].ToString() == "0")
                     {
                         temp_id = Convert.ToInt32(r[0]);
                         tb_nama.Text = r[1].ToString();
