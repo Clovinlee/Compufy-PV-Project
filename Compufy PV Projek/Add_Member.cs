@@ -42,11 +42,6 @@ namespace Compufy_PV_Projek
             {
                 string query = $"INSERT into [Member] (nama_member, no_hp_member, birthdate, tgl_daftar, jk_member, alamat_member, status_delete) VALUES('{txtNama.Text}', '{textBox1.Text}', '{tgl1}', '{tgl2}', '{chckgender}', '{textBox2.Text}', '0')";
                 frm_login.executeQuery(query);
-                txtNama.Text = "";
-                textBox1.Text = "";
-                textBox2.Text = "";
-                cbGender.Text = "";
-                
                 this.Close();
             }
             else
