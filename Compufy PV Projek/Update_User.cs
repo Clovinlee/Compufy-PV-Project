@@ -56,28 +56,25 @@ namespace Compufy_PV_Projek
             cbGender.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
         }
-
+        bool chck = false;
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            try
+            if (txtUsername.Text == "" || textBox1.Text == "" || txtNama.Text == "" || cbGender.Text == "" || comboBox1.Text == "")
             {
-                if (chckimg == true)
+                chck = true;
+            }
+                if (chckimg == true && chck == false)
                 {
                     string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{textBox1.Text}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{dateTimePicker1.Value}', jk_user = '{cbGender.Text}', tipe_user = '{comboBox1.Text}', gambar = '{openFileDialog1.SafeFileName}' WHERE id_user = {id}";
                     frm_login.executeQuery(query);
                     this.Close();
                 }
-                else if (chckimg == false)
+                else if (chckimg == false && chck == false)
                 {
                     string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{textBox1.Text}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{dateTimePicker1.Value}', jk_user = '{cbGender.Text}', tipe_user = '{comboBox1.Text}' WHERE id_user = {id}";
                     frm_login.executeQuery(query);
                     this.Close();
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Ada Field Kosong");
-            }
         }
 
         private void btnFile_Click(object sender, EventArgs e)

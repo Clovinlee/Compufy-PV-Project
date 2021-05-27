@@ -19,18 +19,20 @@ namespace Compufy_PV_Projek
         }
         public login frm_login;
 
+        bool chck = false;
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            try
+            if (txtUsername.Text == "" || textBox1.Text == "" || txtNama.Text == "" || cbGender.Text == "" || comboBox1.Text == "")
+            {
+                chck = true;
+            }
+            if (chck == false)
             {
                 string query = $"INSERT into [Akun] (username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, gambar, status_delete) VALUES('{txtUsername.Text}', '{textBox1.Text}', '{txtNama.Text}', '{dateTimePicker1.Value}', '{cbGender.SelectedItem.ToString()}', '{comboBox1.SelectedItem.ToString()}', '{openFileDialog1.SafeFileName}', '0')";
                 frm_login.executeQuery(query);
                 this.Close();
             }
-            catch
-            {
-                MessageBox.Show("Ada Field Kosong");
-            }
+            
         }
 
         private void Add_User_Load(object sender, EventArgs e)

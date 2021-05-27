@@ -45,19 +45,21 @@ namespace Compufy_PV_Projek
             }
             cbGender.DropDownStyle = ComboBoxStyle.DropDownList;
         }
-
+        bool chck = false;
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            try
+
+            if (txtNama.Text == "" || textBox1.Text == "" || txtNama.Text == "" || cbGender.Text == "")
+            {
+                chck = true;
+            }
+            if (chck == false)
             {
                 string query = $"UPDATE [Member] set nama_member = '{txtNama.Text}', no_hp_member = '{(textBox1.Text)}', birthdate = '{dateTimePicker1.Value}', tgl_daftar = '{dateTimePicker2.Value}', jk_member = '{cbGender.Text}', alamat_member = '{textBox2.Text}' WHERE id_member = {id}";
                 frm_login.executeQuery(query);
                 this.Close();
             }
-            catch
-            {
-                MessageBox.Show("Ada Field Kosong");
-            }
+            
         }
 
     }
