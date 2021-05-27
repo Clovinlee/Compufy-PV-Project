@@ -36,9 +36,19 @@ namespace Compufy_PV_Projek
             string query = "SELECT h.id_trans, h.tgl_trans, a.nama_user, isnull(m.nama_member, '-'), h.metode_trans, h.total_trans, h.diskon from h_transaksi h left join akun a on h.id_user = a.id_user left join member m on h.id_member = m.id_member";
             frm_login.executeDataSet(ds, query, "Trans");
 
-            for (int i = 0; i < ds.Tables["Trans"].Rows.Count; i++)
+            loadTransRecursive(ds, "Trans", 0);
+        }
+
+        private void loadTransRecursive(DataSet ds, string namaTab, int idx)
+        {
+            if (idx == ds.Tables[namaTab].Rows.Count)
             {
-                AddPanel(i);
+                return;
+            }
+            else
+            {
+                AddPanel(idx);
+                loadTransRecursive(ds, namaTab, idx + 1);
             }
         }
 
@@ -198,7 +208,11 @@ namespace Compufy_PV_Projek
             {
                 if (comboBox1.SelectedIndex != -1)
                 {
-                    searchFilterRecursive(0);
+                    ds = new DataSet();
+                    string query = $"SELECT h.id_trans, h.tgl_trans, a.nama_user, isnull(m.nama_member, '-'), h.metode_trans, h.total_trans, h.diskon from h_transaksi h left join akun a on h.id_user = a.id_user left join member m on h.id_member = m.id_member where h.id_trans = '{txtSearch.Text}' and h.metode_trans = '{comboBox1.Text}'";
+                    frm_login.executeDataSet(ds, query, "Trans");
+
+                    searchRecursive(ds, "Trans", 0);
                 }
                 else
                 {
@@ -214,20 +228,16 @@ namespace Compufy_PV_Projek
             }
         }
 
-        private void searchFilterRecursive(int idx)
+        private void searchRecursive(DataSet ds, string namaTab, int idx)
         {
-            ds = new DataSet();
-            string query = $"SELECT h.id_trans, h.tgl_trans, a.nama_user, isnull(m.nama_member, '-'), h.metode_trans, h.total_trans, h.diskon from h_transaksi h left join akun a on h.id_user = a.id_user left join member m on h.id_member = m.id_member where h.id_trans = '{txtSearch.Text}' and h.metode_trans = '{comboBox1.Text}'";
-            frm_login.executeDataSet(ds, query, "Trans");
-
-            if (idx == ds.Tables["Trans"].Rows.Count)
+            if (idx == ds.Tables[namaTab].Rows.Count)
             {
                 return;
             }
             else
             {
                 AddPanel(idx);
-                searchFilterRecursive(idx + 1);
+                searchRecursive(ds, namaTab, idx + 1);
             }
         }
 
@@ -239,9 +249,19 @@ namespace Compufy_PV_Projek
             string query = $"SELECT h.id_trans, h.tgl_trans, a.nama_user, isnull(m.nama_member, '-'), h.metode_trans, h.total_trans, h.diskon from h_transaksi h left join akun a on h.id_user = a.id_user left join member m on h.id_member = m.id_member where h.metode_trans = '{comboBox1.Text}'";
             frm_login.executeDataSet(ds, query, "Trans");
 
-            for (int i = 0; i < ds.Tables["Trans"].Rows.Count; i++)
+            filterRecursive(ds, "Trans", 0);
+        }
+
+        private void filterRecursive(DataSet ds, string namaTab, int idx)
+        {
+            if (idx == ds.Tables[namaTab].Rows.Count)
             {
-                AddPanel(i);
+                return;
+            }
+            else
+            {
+                AddPanel(idx);
+                filterRecursive(ds, namaTab, idx + 1);
             }
         }
 

@@ -19,6 +19,7 @@ namespace Compufy_PV_Projek
         }
 
         public login frm_login;
+        public DataSet ds_kategori;
         bool kosong;
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -112,17 +113,13 @@ namespace Compufy_PV_Projek
 
         private void loadKategoriRecursive(int idx)
         {
-            DataSet ds = new DataSet();
-            string query = "SELECT nama_kategori from Kategori";
-            frm_login.executeDataSet(ds, query, "Kategori");
-
-            if (idx == ds.Tables["Kategori"].Rows.Count)
+            if (idx == ds_kategori.Tables["Kategori"].Rows.Count)
             {
                 return;
             }
             else
             {
-                cbKategori.Items.Add(ds.Tables["Kategori"].Rows[idx].ItemArray[0]);
+                cbKategori.Items.Add(ds_kategori.Tables["Kategori"].Rows[idx].ItemArray[0]);
             }
 
             loadKategoriRecursive(idx + 1);
