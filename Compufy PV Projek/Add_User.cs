@@ -32,7 +32,11 @@ namespace Compufy_PV_Projek
                 frm_login.executeQuery(query);
                 this.Close();
             }
-            
+            else
+            {
+                MessageBox.Show("Field Kosong");
+            }
+
         }
 
         private void Add_User_Load(object sender, EventArgs e)

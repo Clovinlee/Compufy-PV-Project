@@ -31,6 +31,10 @@ namespace Compufy_PV_Projek
                 frm_login.executeQuery(query);
                 this.Close();
             }
+            else
+            {
+                MessageBox.Show("Field Kosong");
+            }
             
         }
 

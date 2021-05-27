@@ -36,14 +36,7 @@ namespace Compufy_PV_Projek
             textBox1.Text = password;
             txtNama.Text = nama;
             dateTimePicker1.Value = Convert.ToDateTime(datebirth);
-            if (gender == "Laki-Laki")
-            {
-                cbGender.Text = "L";
-            }
-            if (gender == "Perempuan")
-            {
-                cbGender.Text = "P";
-            }
+            cbGender.Text = gender;
 
             if (tipeuser == "Admin")
             {
@@ -75,6 +68,10 @@ namespace Compufy_PV_Projek
                     frm_login.executeQuery(query);
                     this.Close();
                 }
+            else
+            {
+                MessageBox.Show("Field Kosong");
+            }
         }
 
         private void btnFile_Click(object sender, EventArgs e)

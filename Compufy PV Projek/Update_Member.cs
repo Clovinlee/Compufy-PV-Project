@@ -35,14 +35,7 @@ namespace Compufy_PV_Projek
             dateTimePicker1.Value = Convert.ToDateTime(tanggallahir);
             dateTimePicker2.Value = Convert.ToDateTime(tanggaldaftar);
             textBox2.Text = alamat;
-            if (gender == "Laki-Laki")
-            {
-                cbGender.Text = "L";
-            }
-            if (gender == "Perempuan")
-            {
-                cbGender.Text = "P";
-            }
+            cbGender.Text = gender;
             cbGender.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         bool chck = false;
@@ -59,7 +52,11 @@ namespace Compufy_PV_Projek
                 frm_login.executeQuery(query);
                 this.Close();
             }
-            
+            else
+            {
+                MessageBox.Show("Field Kosong");
+            }
+
         }
 
     }
