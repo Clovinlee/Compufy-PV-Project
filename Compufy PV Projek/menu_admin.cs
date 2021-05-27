@@ -121,7 +121,7 @@ namespace Compufy_PV_Projek
 
                 if (b.Text == "Dashboard")
                 {
-                    //frm_dashboard.loaddashboard();
+                    frm_dashboard.loaddashboard();
                     frm_dashboard.Show();
                 }
                 else if (b.Text == "Sales")

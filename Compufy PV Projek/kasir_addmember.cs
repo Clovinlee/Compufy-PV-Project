@@ -64,13 +64,13 @@ namespace Compufy_PV_Projek
                         temp_id = Convert.ToInt32(r[0]);
                         tb_nama.Text = r[1].ToString();
                         tb_birthdate.Text = Convert.ToDateTime(r[3]).ToString("dd-MM-yyyy");
-                        if (r[5].ToString() == "l")
+                        if (r[5].ToString() == "L")
                         {
                             rb_pria.Checked = true;
                         }
                         else
                         {
-                            rb_wanita.Checked = false;
+                            rb_wanita.Checked = true;
                         }
                         btn_tambahmember.Enabled = true;
                         found = true;

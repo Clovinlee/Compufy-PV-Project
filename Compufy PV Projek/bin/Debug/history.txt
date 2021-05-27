@@ -1,2 +1,3 @@
 login%admin%admin%Administrator
+mainbutton%btn_member%Manage Member
 logout%

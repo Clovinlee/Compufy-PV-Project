@@ -53,12 +53,12 @@ namespace Compufy_PV_Projek
             {
                 if (isAngka(tb_nohp.Text))
                 {
-                    string jenis_kelamin = "l";
+                    string jenis_kelamin = "L";
                     if (rb_wanita.Checked == true)
                     {
-                        jenis_kelamin = "p";
+                        jenis_kelamin = "P";
                     }
-                    string q = $"INSERT INTO [Member] VALUES('{tb_nama.Text}','{tb_nohp.Text}',CONVERT(datetime,'{dt_birthdate.Value}',103),CONVERT(datetime,'{System.DateTime.Now}',103),'{jenis_kelamin}','{tb_tempattinggal.Text}')";
+                    string q = $"INSERT INTO [Member] VALUES('{tb_nama.Text}','{tb_nohp.Text}',CONVERT(datetime,'{dt_birthdate.Value}',103),CONVERT(datetime,'{System.DateTime.Now}',103),'{jenis_kelamin}','{tb_tempattinggal.Text}','0')";
                     frm_login.executeQuery(q);
                     MessageBox.Show("Berhasil Menambahkan Member!");
                     frm_kasir.frm_registermember = null;
