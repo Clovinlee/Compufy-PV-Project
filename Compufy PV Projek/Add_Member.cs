@@ -20,7 +20,6 @@ namespace Compufy_PV_Projek
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             try
             {
                 string query = $"INSERT into [Member] (nama_member, no_hp_member, birthdate, tgl_daftar, jk_member, alamat_member, status_delete) VALUES('{txtNama.Text}', '{textBox1.Text}', '{dateTimePicker1.Value}', '{dateTimePicker2.Value}', '{cbGender.SelectedItem.ToString()}', '{textBox2.Text}', '0')";
@@ -31,11 +30,6 @@ namespace Compufy_PV_Projek
             {
                 MessageBox.Show("Ada Field Kosong");
             }
-=======
-            string query = $"INSERT into [Member] (nama_member, no_hp_member, birthdate, tgl_daftar, jk_member, alamat_member, status_delete) VALUES('{txtNama.Text}', '{textBox1.Text}', '{dateTimePicker1.Value}', '{dateTimePicker2.Value}', '{cbGender.SelectedItem.ToString()}', '{textBox2.Text}'), '0'";
-            frm_login.executeQuery(query);
-            this.Close();
->>>>>>> 0ef79dcbdc0662aae85868988e037ec719edb4c0
         }
 
         private void Add_Member_Load(object sender, EventArgs e)
