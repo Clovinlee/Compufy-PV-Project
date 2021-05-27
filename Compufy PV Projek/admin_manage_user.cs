@@ -34,7 +34,7 @@ namespace Compufy_PV_Projek
             frmUpdate = new Update_User();
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
             dataGridView1.RowHeadersVisible = false;
-            LoadBarang();
+            LoadUser();
             //this.FormBorderStyle = FormBorderStyle.None;
         }
 
@@ -42,10 +42,10 @@ namespace Compufy_PV_Projek
         {
             
             frmAdd.ShowDialog();
-            LoadBarang();
+            LoadUser();
         }
 
-        private void LoadBarang()
+        private void LoadUser()
         {
             dataGridView1.Rows.Clear();
 
@@ -148,7 +148,7 @@ namespace Compufy_PV_Projek
                 frmUpdate.tipeuser = tipeuser;
                 frmUpdate.ShowDialog();
 
-                LoadBarang();
+                LoadUser();
             }
             else
             {
@@ -166,7 +166,7 @@ namespace Compufy_PV_Projek
                 {
                     string query = $"update [Akun] set status_delete = '1' where id_user = '{id}'";
                     frm_login.executeQuery(query);
-                    LoadBarang();
+                    LoadUser();
                 }
             }
             else
@@ -333,7 +333,7 @@ namespace Compufy_PV_Projek
             }
             else
             {
-                LoadBarang();
+                LoadUser();
             }
         }
 
@@ -341,12 +341,12 @@ namespace Compufy_PV_Projek
         {
             frmAdd.frm_login = frm_login;
             frmAdd.ShowDialog();
-            LoadBarang();
+            LoadUser();
         }
 
         private void btn_restartcategory_Click(object sender, EventArgs e)
         {
-            LoadBarang();
+            LoadUser();
         }
 
         private void textBox1_Leave(object sender, EventArgs e)

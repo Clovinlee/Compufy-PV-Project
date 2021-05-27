@@ -28,8 +28,8 @@ namespace Compufy_PV_Projek
 
         private void Update_Member_Load(object sender, EventArgs e)
         {
-            this.MinimumSize = new Size(510, 304);
-            this.MaximumSize = new Size(510, 304);
+            this.MinimumSize = new Size(460, 304);
+            this.MaximumSize = new Size(460, 304);
             txtNama.Text = nama;
             textBox1.Text = nohp;
             dateTimePicker1.Value = Convert.ToDateTime(tanggallahir);
@@ -48,9 +48,16 @@ namespace Compufy_PV_Projek
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string query = $"UPDATE [Member] set nama_member = '{txtNama.Text}', no_hp_member = '{(textBox1.Text)}', birthdate = '{dateTimePicker1.Value}', tgl_daftar = '{dateTimePicker2.Value}', jk_member = '{cbGender.Text}', alamat_member = '{textBox2.Text}' WHERE id_member = '{id}'";
-            frm_login.executeQuery(query);
-            this.Close();
+            try
+            {
+                string query = $"UPDATE [Member] set nama_member = '{txtNama.Text}', no_hp_member = '{(textBox1.Text)}', birthdate = '{dateTimePicker1.Value}', tgl_daftar = '{dateTimePicker2.Value}', jk_member = '{cbGender.Text}', alamat_member = '{textBox2.Text}' WHERE id_member = '{id}'";
+                frm_login.executeQuery(query);
+                this.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Ada Field Kosong");
+            }
         }
 
     }

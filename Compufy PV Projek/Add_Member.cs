@@ -20,16 +20,23 @@ namespace Compufy_PV_Projek
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string query = $"INSERT into [Member] (nama_member, no_hp_member, birthdate, tgl_daftar, jk_member, alamat_member, status_delete) VALUES('{txtNama.Text}', '{textBox1.Text}', '{dateTimePicker1.Value}', '{dateTimePicker2.Value}', '{cbGender.SelectedItem.ToString()}', '{textBox2.Text}'), '0'";
-            frm_login.executeQuery(query);
-            this.Close();
-            
+            try
+            {
+                string query = $"INSERT into [Member] (nama_member, no_hp_member, birthdate, tgl_daftar, jk_member, alamat_member, status_delete) VALUES('{txtNama.Text}', '{textBox1.Text}', '{dateTimePicker1.Value}', '{dateTimePicker2.Value}', '{cbGender.SelectedItem.ToString()}', '{textBox2.Text}', '0')";
+                frm_login.executeQuery(query);
+                this.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Ada Field Kosong");
+            }
         }
 
         private void Add_Member_Load(object sender, EventArgs e)
         {
-            this.MinimumSize = new Size(510, 304);
-            this.MaximumSize = new Size(510, 304);
+            this.MinimumSize = new Size(448, 304);
+            this.MaximumSize = new Size(448, 304);
+            cbGender.DropDownStyle = ComboBoxStyle.DropDownList;
         }
     }
 }
