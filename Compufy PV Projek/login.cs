@@ -179,23 +179,16 @@ namespace Compufy_PV_Projek
             
             if(h_login[0] != "")
             {
-                if(h_login[0] == "exit")
+                tb_username.Text = h_login[1];
+                tb_password.Text = h_login[2];
+                btn_login_Click(btn_login, e);
+                if (h_login[3] == "Administrator")
                 {
-                    Application.Exit();
+                    frm_admin.doHistory(history);
                 }
-                else
+                else if (h_login[3] == "Kasir")
                 {
-                    tb_username.Text = h_login[1];
-                    tb_password.Text = h_login[2];
-                    btn_login_Click(btn_login, e);
-                    if (h_login[3] == "Administrator")
-                    {
-                        frm_admin.doHistory(history);
-                    }
-                    else if (h_login[3] == "Kasir")
-                    {
-                        frm_kasir.doHistory(history);
-                    }
+                    frm_kasir.doHistory(history);
                 }
             }
         }
