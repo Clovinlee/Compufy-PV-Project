@@ -25,7 +25,7 @@ namespace Compufy_PV_Projek
         {
             this.MinimumSize = new Size(727, 508);
             cbFilter.SelectedIndex = 0;
-            cbOpsi.SelectedIndex = 6;
+            cbOpsi.SelectedIndex = 4;
             radPendapatan.Checked = true;
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = " ";

@@ -28,23 +28,28 @@ namespace Compufy_PV_Projek
             this.MaximumSize = new Size(500, 300);
             kosong = false;
             txtNama.Select(0, 0);
-            loadKategori();
+            cbKategori.Items.Clear();
+            loadKategoriRecursive(0);
             cbKategori.Text = kategori;
             loadFoto();
         }
 
-        private void loadKategori()
+        private void loadKategoriRecursive(int idx)
         {
-            cbKategori.Items.Clear();
-
             DataSet ds = new DataSet();
             string query = "SELECT nama_kategori from Kategori";
             frm_login.executeDataSet(ds, query, "Kategori");
 
-            for (int i = 0; i < ds.Tables["Kategori"].Rows.Count; i++)
+            if (idx == ds.Tables["Kategori"].Rows.Count)
             {
-                cbKategori.Items.Add(ds.Tables["Kategori"].Rows[i].ItemArray[0]);
+                return;
             }
+            else
+            {
+                cbKategori.Items.Add(ds.Tables["Kategori"].Rows[idx].ItemArray[0]);
+            }
+
+            loadKategoriRecursive(idx + 1);
         }
 
         private void loadFoto()
