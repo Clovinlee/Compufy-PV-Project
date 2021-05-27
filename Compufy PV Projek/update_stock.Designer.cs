@@ -86,6 +86,7 @@
             // 
             // cbKategori
             // 
+            this.cbKategori.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbKategori.FormattingEnabled = true;
             this.cbKategori.Location = new System.Drawing.Point(96, 70);
             this.cbKategori.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -206,6 +207,7 @@
             this.Font = new System.Drawing.Font("Nirmala UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "update_stock";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "update_stock";
             this.Load += new System.EventHandler(this.update_stock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

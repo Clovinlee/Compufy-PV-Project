@@ -84,7 +84,7 @@ namespace Compufy_PV_Projek
 
             frmUpdate.frm_login = frm_login;
             frmUpdate.id = id;
-            frmUpdate.cbKategori.Text = kategori;
+            frmUpdate.kategori = kategori;
             frmUpdate.txtNama.Text = nama;
             frmUpdate.txtHarga.Text = Convert.ToString(double.Parse(harga, NumberStyles.Currency));
             frmUpdate.txtStok.Text = arrStok[0];
@@ -190,14 +190,18 @@ namespace Compufy_PV_Projek
         private void iconButton1_Click(object sender, EventArgs e)
         {
             LoadBarang();
+            txtSearch.Text = "Search By ID/Nama";
+            txtSearch.ForeColor = SystemColors.ScrollBar;
         }
 
         int idx;
+        int idxCol;
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             idx = e.RowIndex;
+            idxCol = e.ColumnIndex;
 
-            if (e.ColumnIndex == 6)
+            if (e.ColumnIndex == 6 && dataGridView1.Rows[idx].Cells[idxCol].Value != null)
             {
                 if (MessageBox.Show("Yakin mendelete barang ini?", "Delete Barang", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {

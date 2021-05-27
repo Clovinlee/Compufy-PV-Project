@@ -23,7 +23,6 @@ namespace Compufy_PV_Projek
             string query = $"INSERT into [Member] (nama_member, no_hp_member, birthdate, tgl_daftar, jk_member, alamat_member, status_delete) VALUES('{txtNama.Text}', '{textBox1.Text}', '{dateTimePicker1.Value}', '{dateTimePicker2.Value}', '{cbGender.SelectedItem.ToString()}', '{textBox2.Text}'), '0'";
             frm_login.executeQuery(query);
             this.Close();
-            
         }
 
         private void Add_Member_Load(object sender, EventArgs e)
