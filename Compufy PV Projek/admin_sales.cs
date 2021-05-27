@@ -140,7 +140,7 @@ namespace Compufy_PV_Projek
                     chartPie.Series["Series1"].Points.AddXY(checkDesktop.ToString("0.0") + "%", desktop);
                     chartPie.Series["Series1"].Points[ctr].LegendText = "Desktop";
                     
-                    if (checkDesktop < 10)
+                    if (checkDesktop < 12)
                     {
                         chartPie.Series["Series1"].Points[ctr]["PieLabelStyle"] = "outside";
                     }
@@ -152,7 +152,7 @@ namespace Compufy_PV_Projek
                     chartPie.Series["Series1"].Points.AddXY(checkSmartphone.ToString("0.0") + "%", smartphone);
                     chartPie.Series["Series1"].Points[ctr].LegendText = "Smartphone";
 
-                    if (checkSmartphone < 10)
+                    if (checkSmartphone < 12)
                     {
                         chartPie.Series["Series1"].Points[ctr]["PieLabelStyle"] = "outside";
                     }
@@ -164,7 +164,7 @@ namespace Compufy_PV_Projek
                     chartPie.Series["Series1"].Points.AddXY(checkLaptop.ToString("0.0") + "%", laptop);
                     chartPie.Series["Series1"].Points[ctr].LegendText = "Laptop";
 
-                    if (checkLaptop < 10)
+                    if (checkLaptop < 12)
                     {
                         chartPie.Series["Series1"].Points[ctr]["PieLabelStyle"] = "outside";
                     }
@@ -176,7 +176,7 @@ namespace Compufy_PV_Projek
                     chartPie.Series["Series1"].Points.AddXY(checkAcc.ToString("0.0") + "%", accesories);
                     chartPie.Series["Series1"].Points[ctr].LegendText = "Accesories";
 
-                    if (checkAcc < 10)
+                    if (checkAcc < 12)
                     {
                         chartPie.Series["Series1"].Points[ctr]["PieLabelStyle"] = "outside";
                     }

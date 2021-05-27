@@ -20,6 +20,7 @@ namespace Compufy_PV_Projek
 
         public login frm_login;
         public string id;
+        public string kategori;
 
         private void update_stock_Load(object sender, EventArgs e)
         {
@@ -28,7 +29,8 @@ namespace Compufy_PV_Projek
             kosong = false;
             txtNama.Select(0, 0);
             loadKategori();
-            cbKategori.SelectedIndex = cbKategori.Items.IndexOf(cbKategori.Text);
+            cbKategori.Text = kategori;
+            loadFoto();
         }
 
         private void loadKategori()
@@ -43,6 +45,14 @@ namespace Compufy_PV_Projek
             {
                 cbKategori.Items.Add(ds.Tables["Kategori"].Rows[i].ItemArray[0]);
             }
+        }
+
+        private void loadFoto()
+        {
+            DataSet ds = new DataSet();
+            string query = $"SELECT gambar from barang where id_barang = {id}";
+            frm_login.executeDataSet(ds, query, "gambar");
+            pictureBox1.ImageLocation = Application.StartupPath + "\\product_picture\\" + ds.Tables["gambar"].Rows[0].ItemArray[0];
         }
 
         private void btnFile_Click(object sender, EventArgs e)
@@ -110,7 +120,7 @@ namespace Compufy_PV_Projek
             }
             else
             {
-                string query = $"UPDATE [Barang] set nama_barang = '{txtNama.Text}', id_kategori = '{cbKategori.SelectedIndex + 1}', harga_barang = '{txtHarga.Text}', stok_barang = '{txtStok.Text}', gambar = '{openFileDialog1.SafeFileName}' where id_barang = {id}";
+                string query = $"UPDATE [Barang] set nama_barang = '{txtNama.Text}', id_kategori = '{cbKategori.SelectedIndex + 1}', harga_barang = '{txtHarga.Text}', stok_barang = '{txtStok.Text}', gambar = '{Path.GetFileName(pictureBox1.ImageLocation)}' where id_barang = {id}";
                 frm_login.executeQuery(query);
                 this.Close();
             }
