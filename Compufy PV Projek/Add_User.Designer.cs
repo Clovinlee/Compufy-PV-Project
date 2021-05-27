@@ -53,8 +53,8 @@ namespace Compufy_PV_Projek
             // 
             this.cbGender.FormattingEnabled = true;
             this.cbGender.Items.AddRange(new object[] {
-            "Laki-Laki",
-            "Perempuan"});
+            "L",
+            "P"});
             this.cbGender.Location = new System.Drawing.Point(127, 152);
             this.cbGender.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbGender.Name = "cbGender";
