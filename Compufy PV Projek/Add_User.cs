@@ -111,7 +111,7 @@ namespace Compufy_PV_Projek
                 MessageBox.Show("No File",
                     "No File Choosen",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                    MessageBoxIcon.Error); 
             }
 
         }
