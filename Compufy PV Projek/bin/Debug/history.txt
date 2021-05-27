@@ -1,8 +1,2 @@
 login%admin%admin%Administrator
-mainbutton%btn_menusales%Sales
-mainbutton%btn_menutransactions%Transactions
-mainbutton%btn_menustocks%Stocks
-mainbutton%btn_manageuser%Manage User
-mainbutton%btn_menustocks%Stocks
-mainbutton%btn_menusales%Sales
 logout%

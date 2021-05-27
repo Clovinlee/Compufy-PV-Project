@@ -188,6 +188,7 @@ namespace Compufy_PV_Projek
         }
         private void btn_search_Click(object sender, EventArgs e)
         {
+
             dataGridView1.Rows.Clear();
 
             if (textBox1.Text != "Search By ID/Username") {
@@ -263,7 +264,7 @@ namespace Compufy_PV_Projek
                 else
                 {
                     DataSet ds = new DataSet();
-                    string query = $"SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') from Akun WHERE id_user like '%{textBox1.Text}%'";
+                    string query = $"SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') from Akun WHERE id_user = '{textBox1.Text}'";
                     frm_login.executeDataSet(ds, query, "Akun");
 
                     for (int i = 0; i < ds.Tables["Akun"].Rows.Count; i++)

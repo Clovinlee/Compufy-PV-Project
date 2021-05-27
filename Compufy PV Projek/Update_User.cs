@@ -26,6 +26,7 @@ namespace Compufy_PV_Projek
         public string datebirth;
         public string gender;
         public string tipeuser;
+        bool chckimg = false;
 
         private void Update_User_Load(object sender, EventArgs e)
         {
@@ -35,7 +36,15 @@ namespace Compufy_PV_Projek
             textBox1.Text = password;
             txtNama.Text = nama;
             dateTimePicker1.Value = Convert.ToDateTime(datebirth);
-            cbGender.Text = gender;
+            if (gender == "Laki-Laki")
+            {
+                cbGender.Text = "L";
+            }
+            if (gender == "Perempuan")
+            {
+                cbGender.Text = "P";
+            }
+
             if (tipeuser == "Admin")
             {
                 comboBox1.Text = "1";
@@ -44,13 +53,24 @@ namespace Compufy_PV_Projek
             {
                 comboBox1.Text = "2";
             }
+            cbGender.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{(textBox1.Text)}', nama_user = '{txtNama.Text}', tgl_lahir_user = CONVERT(datetime,'{dateTimePicker1.Value}',103), jk_user = '{cbGender.Text}', tipe_user = '{comboBox1.Text}', gambar = '{openFileDialog1.SafeFileName}' WHERE id_user = '{id}'";
-            frm_login.executeQuery(query);
-            this.Close();
+            if (chckimg == true)
+            {
+                string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{(textBox1.Text)}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{dateTimePicker1.Value}', jk_user = '{cbGender.Text}', tipe_user = '{comboBox1.Text}', gambar = '{openFileDialog1.SafeFileName}' WHERE id_user = '{id}'";
+                frm_login.executeQuery(query);
+                this.Close();
+            }
+            else if (chckimg == false)
+            {
+                string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{(textBox1.Text)}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{dateTimePicker1.Value}', jk_user = '{cbGender.Text}', tipe_user = '{comboBox1.Text}' WHERE id_user = '{id}'";
+                frm_login.executeQuery(query);
+                this.Close();
+            }
         }
 
         private void btnFile_Click(object sender, EventArgs e)
@@ -68,6 +88,7 @@ namespace Compufy_PV_Projek
                 }
 
                 pictureBox1.ImageLocation = Application.StartupPath + "\\profile_picture\\" + openFileDialog1.SafeFileName;
+                chckimg = true;
             }
             else
             {
@@ -76,6 +97,7 @@ namespace Compufy_PV_Projek
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+
         }
     }
 }
