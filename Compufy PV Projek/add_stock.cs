@@ -51,13 +51,51 @@ namespace Compufy_PV_Projek
             }
             else if (pictureBox1.ImageLocation == null)
             {
-                string query = $"INSERT into [Barang] (nama_barang, id_kategori, harga_barang, stok_barang, status_del) VALUES('{txtNama.Text}', '{cbKategori.SelectedIndex + 1}', '{txtHarga.Text}', '{txtStok.Text}', 0)";
+                DataSet ds;
+                string query;
+
+                ds = new DataSet();
+                query = $"SELECT nama_kategori from Kategori where nama_kategori = '{cbKategori.Text}'";
+                frm_login.executeDataSet(ds, query, "Kategori");
+
+                if (ds.Tables["Kategori"].Rows.Count == 0)
+                {
+                    query = $"INSERT into kategori (nama_kategori) VALUES ('{cbKategori.Text}')";
+                    frm_login.executeQuery(query);
+                }
+
+                ds = new DataSet();
+                query = $"SELECT id_kategori, nama_kategori from Kategori where nama_kategori = '{cbKategori.Text}'";
+                frm_login.executeDataSet(ds, query, "Kategori");
+
+                idKat = Convert.ToInt32(ds.Tables["Kategori"].Rows[0].ItemArray[0]);
+
+                query = $"INSERT into [Barang] (nama_barang, id_kategori, harga_barang, stok_barang, status_del) VALUES('{txtNama.Text}', '{idKat}', '{txtHarga.Text}', '{txtStok.Text}', 0)";
                 frm_login.executeQuery(query);
                 this.Close();
             }
             else
             {
-                string query = $"INSERT into [Barang] (nama_barang, id_kategori, harga_barang, stok_barang, gambar, status_del) VALUES('{txtNama.Text}', '{cbKategori.SelectedIndex + 1}', '{txtHarga.Text}', '{txtStok.Text}', '{openFileDialog1.SafeFileName}', 0)";
+                DataSet ds;
+                string query;
+
+                ds = new DataSet();
+                query = $"SELECT nama_kategori from Kategori where nama_kategori = '{cbKategori.Text}'";
+                frm_login.executeDataSet(ds, query, "Kategori");
+
+                if (ds.Tables["Kategori"].Rows.Count == 0)
+                {
+                    query = $"INSERT into kategori (nama_kategori) VALUES ('{cbKategori.Text}')";
+                    frm_login.executeQuery(query);
+                }
+
+                ds = new DataSet();
+                query = $"SELECT id_kategori, nama_kategori from Kategori where nama_kategori = '{cbKategori.Text}'";
+                frm_login.executeDataSet(ds, query, "Kategori");
+
+                idKat = Convert.ToInt32(ds.Tables["Kategori"].Rows[0].ItemArray[0]);
+
+                query = $"INSERT into [Barang] (nama_barang, id_kategori, harga_barang, stok_barang, gambar, status_del) VALUES('{txtNama.Text}', '{idKat}', '{txtHarga.Text}', '{txtStok.Text}', '{openFileDialog1.SafeFileName}', 0)";
                 frm_login.executeQuery(query);
                 this.Close();
             }
@@ -84,6 +122,8 @@ namespace Compufy_PV_Projek
                 cbKategori.Items.Add(ds.Tables["Kategori"].Rows[i].ItemArray[0]);
             }
         }
+
+        int idKat;
 
         private void btnFile_Click(object sender, EventArgs e)
         {
