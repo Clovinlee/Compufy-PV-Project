@@ -177,7 +177,7 @@ namespace Compufy_PV_Projek
                 else
                 {
                     DataSet ds = new DataSet();
-                    string query = $"SELECT * from Member WHERE id_member like '%{textBox1.Text}%'";
+                    string query = $"SELECT * from Member WHERE id_member = '{textBox1.Text}'";
                     frm_login.executeDataSet(ds, query, "Member");
                     for (int i = 0; i < ds.Tables["Member"].Rows.Count; i++)
                     {
