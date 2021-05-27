@@ -47,6 +47,7 @@ namespace Compufy_PV_Projek
             else
             {
                 MessageBox.Show("Field Kosong");
+                chck = false;
             }
             
         }
