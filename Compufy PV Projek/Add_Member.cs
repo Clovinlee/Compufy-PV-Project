@@ -24,6 +24,7 @@ namespace Compufy_PV_Projek
         public string tgl2 = "";
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+
             tgl1 = dateTimePicker1.Value.Month.ToString() + "/" + dateTimePicker1.Value.Day.ToString() + "/" + dateTimePicker1.Value.Year.ToString();
             tgl2 = dateTimePicker2.Value.Month.ToString() + "/" + dateTimePicker2.Value.Day.ToString() + "/" + dateTimePicker2.Value.Year.ToString();
             if (txtNama.Text == "" || textBox1.Text == "" || txtNama.Text == "" || cbGender.Text == "")
@@ -47,6 +48,7 @@ namespace Compufy_PV_Projek
             else
             {
                 MessageBox.Show("Field Kosong");
+                chck = false;
             }
             
         }

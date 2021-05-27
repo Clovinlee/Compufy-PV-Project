@@ -30,8 +30,8 @@ namespace Compufy_PV_Projek
         private void admin_manage_user_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new Size(727, 508);
-            frmAdd = new Add_User();
-            frmUpdate = new Update_User();
+            
+            
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
             dataGridView1.RowHeadersVisible = false;
             LoadUser();
@@ -40,7 +40,7 @@ namespace Compufy_PV_Projek
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            
+            frmAdd = new Add_User();
             frmAdd.ShowDialog();
             LoadUser();
         }
@@ -137,6 +137,7 @@ namespace Compufy_PV_Projek
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            frmUpdate = new Update_User();
             if (username != "")
             {
                 frmUpdate.frm_login = frm_login;
@@ -354,6 +355,7 @@ namespace Compufy_PV_Projek
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
+            frmAdd = new Add_User();
             frmAdd.frm_login = frm_login;
             frmAdd.ShowDialog();
             LoadUser();
