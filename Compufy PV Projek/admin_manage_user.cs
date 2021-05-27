@@ -34,7 +34,7 @@ namespace Compufy_PV_Projek
             frmUpdate = new Update_User();
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
             dataGridView1.RowHeadersVisible = false;
-            LoadBarang();
+            LoadUser();
             //this.FormBorderStyle = FormBorderStyle.None;
         }
 
@@ -42,12 +42,13 @@ namespace Compufy_PV_Projek
         {
             
             frmAdd.ShowDialog();
-            LoadBarang();
+            LoadUser();
         }
 
-        private void LoadBarang()
+        private void LoadUser()
         {
             dataGridView1.Rows.Clear();
+            semuapassword.Clear();
 
             DataSet ds = new DataSet();
             string query = "SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') from Akun where status_delete = '0'";
@@ -148,7 +149,7 @@ namespace Compufy_PV_Projek
                 frmUpdate.tipeuser = tipeuser;
                 frmUpdate.ShowDialog();
 
-                LoadBarang();
+                LoadUser();
             }
             else
             {
@@ -166,7 +167,7 @@ namespace Compufy_PV_Projek
                 {
                     string query = $"update [Akun] set status_delete = '1' where id_user = '{id}'";
                     frm_login.executeQuery(query);
-                    LoadBarang();
+                    LoadUser();
                 }
             }
             else
@@ -188,8 +189,8 @@ namespace Compufy_PV_Projek
         }
         private void btn_search_Click(object sender, EventArgs e)
         {
-
             dataGridView1.Rows.Clear();
+            semuapassword.Clear();
 
             if (textBox1.Text != "Search By ID/Username") {
                 if (checkNumber(textBox1.Text) == false)
@@ -209,7 +210,14 @@ namespace Compufy_PV_Projek
                         {
                             dataGridView1.Rows[i].Cells[6].Value = "Kasir";
                         }
-                        
+                        string secretpass = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                        semuapassword.Add(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                        dataGridView1.Rows[i].Cells[2].Value = "";
+                        for (int j = 0; j < secretpass.Length; j++)
+                        {
+                            dataGridView1.Rows[i].Cells[2].Value += "*";
+                        }
+
                         if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "L")
                         {
                             try
@@ -278,6 +286,13 @@ namespace Compufy_PV_Projek
                         {
                             dataGridView1.Rows[i].Cells[6].Value = "Kasir";
                         }
+                        string secretpass = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                        semuapassword.Add(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                        dataGridView1.Rows[i].Cells[2].Value = "";
+                        for (int j = 0; j < secretpass.Length; j++)
+                        {
+                            dataGridView1.Rows[i].Cells[2].Value += "*";
+                        }
 
                         if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "L")
                         {
@@ -333,7 +348,7 @@ namespace Compufy_PV_Projek
             }
             else
             {
-                LoadBarang();
+                LoadUser();
             }
         }
 
@@ -341,12 +356,12 @@ namespace Compufy_PV_Projek
         {
             frmAdd.frm_login = frm_login;
             frmAdd.ShowDialog();
-            LoadBarang();
+            LoadUser();
         }
 
         private void btn_restartcategory_Click(object sender, EventArgs e)
         {
-            LoadBarang();
+            LoadUser();
         }
 
         private void textBox1_Leave(object sender, EventArgs e)

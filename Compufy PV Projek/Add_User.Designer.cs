@@ -176,8 +176,8 @@ namespace Compufy_PV_Projek
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "1",
-            "2"});
+            "Admin",
+            "Kasir"});
             this.comboBox1.Location = new System.Drawing.Point(127, 186);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBox1.Name = "comboBox1";
@@ -232,6 +232,7 @@ namespace Compufy_PV_Projek
             this.pictureBox1.Location = new System.Drawing.Point(300, 221);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(75, 75);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 31;
             this.pictureBox1.TabStop = false;
             // 

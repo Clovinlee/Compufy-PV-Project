@@ -48,7 +48,7 @@ namespace Compufy_PV_Projek
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(91, 189);
+            this.label4.Location = new System.Drawing.Point(67, 190);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 20);
@@ -59,7 +59,7 @@ namespace Compufy_PV_Projek
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(91, 152);
+            this.label1.Location = new System.Drawing.Point(67, 153);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 20);
@@ -68,7 +68,7 @@ namespace Compufy_PV_Projek
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(154, 46);
+            this.textBox1.Location = new System.Drawing.Point(130, 47);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(292, 20);
@@ -78,9 +78,9 @@ namespace Compufy_PV_Projek
             // 
             this.cbGender.FormattingEnabled = true;
             this.cbGender.Items.AddRange(new object[] {
-            "L",
-            "P"});
-            this.cbGender.Location = new System.Drawing.Point(154, 154);
+            "Laki-Laki",
+            "Perempuan"});
+            this.cbGender.Location = new System.Drawing.Point(130, 155);
             this.cbGender.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(292, 21);
@@ -88,7 +88,7 @@ namespace Compufy_PV_Projek
             // 
             // txtNama
             // 
-            this.txtNama.Location = new System.Drawing.Point(154, 10);
+            this.txtNama.Location = new System.Drawing.Point(130, 11);
             this.txtNama.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNama.Name = "txtNama";
             this.txtNama.Size = new System.Drawing.Size(292, 20);
@@ -105,7 +105,7 @@ namespace Compufy_PV_Projek
             this.btnUpdate.IconColor = System.Drawing.Color.DeepSkyBlue;
             this.btnUpdate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnUpdate.IconSize = 30;
-            this.btnUpdate.Location = new System.Drawing.Point(154, 217);
+            this.btnUpdate.Location = new System.Drawing.Point(130, 218);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(87, 40);
@@ -119,7 +119,7 @@ namespace Compufy_PV_Projek
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(100, 10);
+            this.label3.Location = new System.Drawing.Point(76, 11);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 20);
@@ -130,7 +130,7 @@ namespace Compufy_PV_Projek
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(97, 46);
+            this.label2.Location = new System.Drawing.Point(73, 47);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 20);
@@ -141,7 +141,7 @@ namespace Compufy_PV_Projek
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(39, 119);
+            this.label5.Location = new System.Drawing.Point(15, 120);
             this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(112, 20);
@@ -152,7 +152,7 @@ namespace Compufy_PV_Projek
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(49, 81);
+            this.label6.Location = new System.Drawing.Point(25, 82);
             this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(102, 20);
@@ -161,7 +161,7 @@ namespace Compufy_PV_Projek
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(154, 190);
+            this.textBox2.Location = new System.Drawing.Point(130, 191);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(292, 20);
@@ -169,14 +169,14 @@ namespace Compufy_PV_Projek
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(154, 82);
+            this.dateTimePicker1.Location = new System.Drawing.Point(130, 83);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(292, 20);
             this.dateTimePicker1.TabIndex = 42;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(154, 118);
+            this.dateTimePicker2.Location = new System.Drawing.Point(130, 119);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(292, 20);
             this.dateTimePicker2.TabIndex = 43;
@@ -186,7 +186,7 @@ namespace Compufy_PV_Projek
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(494, 265);
+            this.ClientSize = new System.Drawing.Size(432, 265);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBox2);

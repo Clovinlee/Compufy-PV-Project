@@ -34,17 +34,17 @@ namespace Compufy_PV_Projek
             frmUpdate = new Update_Member();
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
             dataGridView1.RowHeadersVisible = false;
-            LoadBarang();
+            LoadMember();
             //this.FormBorderStyle = FormBorderStyle.None;
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
             frmAdd.ShowDialog();
-            LoadBarang();
+            LoadMember();
         }
 
-        private void LoadBarang()
+        private void LoadMember()
         {
             dataGridView1.Rows.Clear();
 
@@ -94,7 +94,7 @@ namespace Compufy_PV_Projek
             {
                 string query = $"DELETE [Member] where id_member = '{id}'";
                 frm_login.executeQuery(query);
-                LoadBarang();
+                LoadMember();
             }
         }
 
@@ -102,7 +102,7 @@ namespace Compufy_PV_Projek
         {
             frmAdd.frm_login = frm_login;
             frmAdd.ShowDialog();
-            LoadBarang();
+            LoadMember();
         }
 
         private void btnUpdate_Click_1(object sender, EventArgs e)
@@ -119,7 +119,7 @@ namespace Compufy_PV_Projek
                 frmUpdate.frm_login = frm_login;
                 frmUpdate.ShowDialog();
 
-                LoadBarang();
+                LoadMember();
             }
             else
             {
@@ -135,7 +135,7 @@ namespace Compufy_PV_Projek
             {
                 string query = $"update [Member] set status_delete = '1' where id_member = '{id}'";
                 frm_login.executeQuery(query);
-                LoadBarang();
+                LoadMember();
             }
         }
         private bool checkNumber(string txt)
@@ -196,13 +196,13 @@ namespace Compufy_PV_Projek
             }
             else
             {
-                LoadBarang();
+                LoadMember();
             }
         }
 
         private void btn_restartcategory_Click(object sender, EventArgs e)
         {
-            LoadBarang();
+            LoadMember();
         }
 
         private void textBox1_MouseEnter(object sender, EventArgs e)
