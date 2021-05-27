@@ -52,6 +52,7 @@ namespace Compufy_PV_Projek
             this.MinimumSize = new Size(448, 304);
             this.MaximumSize = new Size(448, 304);
             cbGender.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
     }
 }
