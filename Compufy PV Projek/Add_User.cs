@@ -22,8 +22,10 @@ namespace Compufy_PV_Projek
         bool chck = false;
         public string chckgender;
         public string chcktipe;
+        public string tgl1 = "";
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            tgl1 = dateTimePicker1.Value.Month.ToString() + "/" + dateTimePicker1.Value.Day.ToString() + "/" + dateTimePicker1.Value.Year.ToString();
             if (txtUsername.Text == "" || textBox1.Text == "" || txtNama.Text == "" || cbGender.Text == "" || comboBox1.Text == "")
             {
                 chck = true;
@@ -46,7 +48,7 @@ namespace Compufy_PV_Projek
             }
             if (chck == false)
             {
-                string query = $"INSERT into [Akun] (username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, gambar, status_delete) VALUES('{txtUsername.Text}', '{textBox1.Text}', '{txtNama.Text}', '{dateTimePicker1.Value}', '{chckgender}', '{chcktipe}', '{openFileDialog1.SafeFileName}', '0')";
+                string query = $"INSERT into [Akun] (username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, gambar, status_delete) VALUES('{txtUsername.Text}', '{textBox1.Text}', '{txtNama.Text}', '{tgl1}', '{chckgender}', '{chcktipe}', '{openFileDialog1.SafeFileName}', '0')";
                 frm_login.executeQuery(query);
                 this.Close();
             }

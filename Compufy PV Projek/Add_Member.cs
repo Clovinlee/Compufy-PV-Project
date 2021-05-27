@@ -20,8 +20,12 @@ namespace Compufy_PV_Projek
 
         bool chck = false;
         public string chckgender;
+        public string tgl1 = "";
+        public string tgl2 = "";
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            tgl1 = dateTimePicker1.Value.Month.ToString() + "/" + dateTimePicker1.Value.Day.ToString() + "/" + dateTimePicker1.Value.Year.ToString();
+            tgl2 = dateTimePicker2.Value.Month.ToString() + "/" + dateTimePicker2.Value.Day.ToString() + "/" + dateTimePicker2.Value.Year.ToString();
             if (txtNama.Text == "" || textBox1.Text == "" || txtNama.Text == "" || cbGender.Text == "")
             {
                 chck = true;
@@ -36,7 +40,7 @@ namespace Compufy_PV_Projek
             }
             if (chck == false)
             {
-                string query = $"INSERT into [Member] (nama_member, no_hp_member, birthdate, tgl_daftar, jk_member, alamat_member, status_delete) VALUES('{txtNama.Text}', '{textBox1.Text}', '{dateTimePicker1.Value}', '{dateTimePicker2.Value}', '{chckgender}', '{textBox2.Text}', '0')";
+                string query = $"INSERT into [Member] (nama_member, no_hp_member, birthdate, tgl_daftar, jk_member, alamat_member, status_delete) VALUES('{txtNama.Text}', '{textBox1.Text}', '{tgl1}', '{tgl2}', '{chckgender}', '{textBox2.Text}', '0')";
                 frm_login.executeQuery(query);
                 this.Close();
             }

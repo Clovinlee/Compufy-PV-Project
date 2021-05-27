@@ -28,6 +28,7 @@ namespace Compufy_PV_Projek
         public string tipeuser;
         bool chckimg = false;
         public string chckgender;
+        public string tgl1 = "";
 
         private void Update_User_Load(object sender, EventArgs e)
         {
@@ -47,6 +48,7 @@ namespace Compufy_PV_Projek
         public string chcktipe;
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            tgl1 = dateTimePicker1.Value.Month.ToString() + "/" + dateTimePicker1.Value.Day.ToString() + "/" + dateTimePicker1.Value.Year.ToString();
             if (txtUsername.Text == "" || textBox1.Text == "" || txtNama.Text == "" || cbGender.Text == "" || comboBox1.Text == "")
             {
                 chck = true;
@@ -69,13 +71,13 @@ namespace Compufy_PV_Projek
             }
             if (chckimg == true && chck == false)
                 {
-                    string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{textBox1.Text}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{dateTimePicker1.Value}', jk_user = '{chckgender}', tipe_user = '{chcktipe}', gambar = '{openFileDialog1.SafeFileName}' WHERE id_user = {id}";
+                    string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{textBox1.Text}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{tgl1}', jk_user = '{chckgender}', tipe_user = '{chcktipe}', gambar = '{openFileDialog1.SafeFileName}' WHERE id_user = {id}";
                     frm_login.executeQuery(query);
                     this.Close();
                 }
                 else if (chckimg == false && chck == false)
                 {
-                    string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{textBox1.Text}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{dateTimePicker1.Value}', jk_user = '{chckgender}', tipe_user = '{chcktipe}' WHERE id_user = {id}";
+                    string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{textBox1.Text}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{tgl1}', jk_user = '{chckgender}', tipe_user = '{chcktipe}' WHERE id_user = {id}";
                     frm_login.executeQuery(query);
                     this.Close();
                 }

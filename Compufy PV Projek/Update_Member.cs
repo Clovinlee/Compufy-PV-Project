@@ -26,6 +26,8 @@ namespace Compufy_PV_Projek
         public string gender;
         public string alamat;
         public string chckgender;
+        public string tgl1 = "";
+        public string tgl2 = "";
 
         private void Update_Member_Load(object sender, EventArgs e)
         {
@@ -42,7 +44,8 @@ namespace Compufy_PV_Projek
         bool chck = false;
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            tgl1 = dateTimePicker1.Value.Month.ToString() + "/" + dateTimePicker1.Value.Day.ToString() + "/" + dateTimePicker1.Value.Year.ToString();
+            tgl2 = dateTimePicker2.Value.Month.ToString() + "/" + dateTimePicker2.Value.Day.ToString() + "/" + dateTimePicker2.Value.Year.ToString();
             if (txtNama.Text == "" || textBox1.Text == "" || txtNama.Text == "" || cbGender.Text == "")
             {
                 chck = true;
@@ -57,7 +60,7 @@ namespace Compufy_PV_Projek
             }
             if (chck == false)
             {
-                string query = $"UPDATE [Member] set nama_member = '{txtNama.Text}', no_hp_member = '{(textBox1.Text)}', birthdate = '{dateTimePicker1.Value}', tgl_daftar = '{dateTimePicker2.Value}', jk_member = '{chckgender}', alamat_member = '{textBox2.Text}' WHERE id_member = {id}";
+                string query = $"UPDATE [Member] set nama_member = '{txtNama.Text}', no_hp_member = '{(textBox1.Text)}', birthdate = '{tgl1}', tgl_daftar = '{tgl2}', jk_member = '{chckgender}', alamat_member = '{textBox2.Text}' WHERE id_member = {id}";
                 frm_login.executeQuery(query);
                 this.Close();
             }
