@@ -46,6 +46,7 @@ namespace Compufy_PV_Projek
                 textBox1.Text = "";
                 textBox2.Text = "";
                 cbGender.Text = "";
+                
                 this.Close();
             }
             else

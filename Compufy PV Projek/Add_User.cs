@@ -47,6 +47,10 @@ namespace Compufy_PV_Projek
             {
                 chcktipe = "2";
             }
+            if (chck == true)
+            {
+                MessageBox.Show("Field Kosong");
+            }
             if (chck == false && chckgambar == false)
             {
                 string query = $"INSERT into [Akun] (username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, status_delete) VALUES('{txtUsername.Text}', '{textBox1.Text}', '{txtNama.Text}', '{tgl1}', '{chckgender}', '{chcktipe}', '0')";
@@ -55,6 +59,8 @@ namespace Compufy_PV_Projek
                 textBox1.Text = "";
                 txtNama.Text = "";
                 pictureBox1.ImageLocation = "";
+                cbGender.Text = "";
+                comboBox1.Text = "";
                 this.Close();
             }
             if (chck == false && chckgambar == true)
@@ -65,12 +71,11 @@ namespace Compufy_PV_Projek
                 textBox1.Text = "";
                 txtNama.Text = "";
                 pictureBox1.ImageLocation = "";
+                cbGender.Text = "";
+                comboBox1.Text = "";
                 this.Close();
             }
-            if (chck == true)
-            {
-                MessageBox.Show("Field Kosong");
-            }
+            
 
         }
 
