@@ -176,8 +176,8 @@ namespace Compufy_PV_Projek
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "1",
-            "2"});
+            "Admin",
+            "Kasir"});
             this.comboBox1.Location = new System.Drawing.Point(127, 186);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBox1.Name = "comboBox1";

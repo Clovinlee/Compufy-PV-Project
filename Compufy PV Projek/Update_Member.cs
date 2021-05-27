@@ -25,6 +25,7 @@ namespace Compufy_PV_Projek
         public string tanggaldaftar;
         public string gender;
         public string alamat;
+        public string chckgender;
 
         private void Update_Member_Load(object sender, EventArgs e)
         {
@@ -46,9 +47,17 @@ namespace Compufy_PV_Projek
             {
                 chck = true;
             }
+            if (cbGender.Text == "Laki-Laki")
+            {
+                chckgender = "L";
+            }
+            if (cbGender.Text == "Perempuan")
+            {
+                chckgender = "P";
+            }
             if (chck == false)
             {
-                string query = $"UPDATE [Member] set nama_member = '{txtNama.Text}', no_hp_member = '{(textBox1.Text)}', birthdate = '{dateTimePicker1.Value}', tgl_daftar = '{dateTimePicker2.Value}', jk_member = '{cbGender.Text}', alamat_member = '{textBox2.Text}' WHERE id_member = {id}";
+                string query = $"UPDATE [Member] set nama_member = '{txtNama.Text}', no_hp_member = '{(textBox1.Text)}', birthdate = '{dateTimePicker1.Value}', tgl_daftar = '{dateTimePicker2.Value}', jk_member = '{chckgender}', alamat_member = '{textBox2.Text}' WHERE id_member = {id}";
                 frm_login.executeQuery(query);
                 this.Close();
             }

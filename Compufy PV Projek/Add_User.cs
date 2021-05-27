@@ -20,15 +20,33 @@ namespace Compufy_PV_Projek
         public login frm_login;
 
         bool chck = false;
+        public string chckgender;
+        public string chcktipe;
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (txtUsername.Text == "" || textBox1.Text == "" || txtNama.Text == "" || cbGender.Text == "" || comboBox1.Text == "")
             {
                 chck = true;
             }
+            if (cbGender.Text == "Laki-Laki")
+            {
+                chckgender = "L";
+            }
+            if (cbGender.Text == "Perempuan")
+            {
+                chckgender = "P";
+            }
+            if (comboBox1.Text == "Admin")
+            {
+                chcktipe = "1";
+            }
+            if (comboBox1.Text == "Kasir")
+            {
+                chcktipe = "2";
+            }
             if (chck == false)
             {
-                string query = $"INSERT into [Akun] (username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, gambar, status_delete) VALUES('{txtUsername.Text}', '{textBox1.Text}', '{txtNama.Text}', '{dateTimePicker1.Value}', '{cbGender.SelectedItem.ToString()}', '{comboBox1.SelectedItem.ToString()}', '{openFileDialog1.SafeFileName}', '0')";
+                string query = $"INSERT into [Akun] (username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, gambar, status_delete) VALUES('{txtUsername.Text}', '{textBox1.Text}', '{txtNama.Text}', '{dateTimePicker1.Value}', '{chckgender}', '{chcktipe}', '{openFileDialog1.SafeFileName}', '0')";
                 frm_login.executeQuery(query);
                 this.Close();
             }
