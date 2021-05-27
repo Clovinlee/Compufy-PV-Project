@@ -52,5 +52,6 @@ namespace Compufy_PV_Projek
             frm_login.executeQuery(query);
             this.Close();
         }
+
     }
 }

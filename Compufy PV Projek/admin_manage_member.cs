@@ -152,6 +152,7 @@ namespace Compufy_PV_Projek
 
         private void btn_search_Click(object sender, EventArgs e)
         {
+
             dataGridView1.Rows.Clear();
 
             if (textBox1.Text != "Search By ID/Nama")
