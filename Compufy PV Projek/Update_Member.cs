@@ -50,7 +50,7 @@ namespace Compufy_PV_Projek
         {
             try
             {
-                string query = $"UPDATE [Member] set nama_member = '{txtNama.Text}', no_hp_member = '{(textBox1.Text)}', birthdate = '{dateTimePicker1.Value}', tgl_daftar = '{dateTimePicker2.Value}', jk_member = '{cbGender.Text}', alamat_member = '{textBox2.Text}' WHERE id_member = '{id}'";
+                string query = $"UPDATE [Member] set nama_member = '{txtNama.Text}', no_hp_member = '{(textBox1.Text)}', birthdate = '{dateTimePicker1.Value}', tgl_daftar = '{dateTimePicker2.Value}', jk_member = '{cbGender.Text}', alamat_member = '{textBox2.Text}' WHERE id_member = {id}";
                 frm_login.executeQuery(query);
                 this.Close();
             }

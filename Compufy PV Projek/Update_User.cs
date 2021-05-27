@@ -63,13 +63,13 @@ namespace Compufy_PV_Projek
             {
                 if (chckimg == true)
                 {
-                    string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{(textBox1.Text)}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{dateTimePicker1.Value}', jk_user = '{cbGender.Text}', tipe_user = '{comboBox1.Text}', gambar = '{openFileDialog1.SafeFileName}' WHERE id_user = '{id}'";
+                    string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{textBox1.Text}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{dateTimePicker1.Value}', jk_user = '{cbGender.Text}', tipe_user = '{comboBox1.Text}', gambar = '{openFileDialog1.SafeFileName}' WHERE id_user = {id}";
                     frm_login.executeQuery(query);
                     this.Close();
                 }
                 else if (chckimg == false)
                 {
-                    string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{(textBox1.Text)}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{dateTimePicker1.Value}', jk_user = '{cbGender.Text}', tipe_user = '{comboBox1.Text}' WHERE id_user = '{id}'";
+                    string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{textBox1.Text}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{dateTimePicker1.Value}', jk_user = '{cbGender.Text}', tipe_user = '{comboBox1.Text}' WHERE id_user = {id}";
                     frm_login.executeQuery(query);
                     this.Close();
                 }
