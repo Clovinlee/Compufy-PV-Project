@@ -54,73 +54,86 @@ namespace Compufy_PV_Projek
             string query = "SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') from Akun where status_delete = '0'";
             frm_login.executeDataSet(ds, query, "Akun");
 
-            for (int i = 0; i < ds.Tables["Akun"].Rows.Count; i++)
+            loadUserRecursive(ds, "Akun", 0);
+
+            
+        }
+
+        private void loadUserRecursive(DataSet ds, string tab, int index)
+        {
+            if (index == ds.Tables[tab].Rows.Count)
             {
-                dataGridView1.Rows.Add(ds.Tables["Akun"].Rows[i].ItemArray[0], ds.Tables["Akun"].Rows[i].ItemArray[1], ds.Tables["Akun"].Rows[i].ItemArray[2], ds.Tables["Akun"].Rows[i].ItemArray[3], ds.Tables["Akun"].Rows[i].ItemArray[4], ds.Tables["Akun"].Rows[i].ItemArray[5], ds.Tables["Akun"].Rows[i].ItemArray[6]);
-                if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "1")
+                return;
+            }
+            else
+            {
+                dataGridView1.Rows.Add(ds.Tables[tab].Rows[index].ItemArray[0], ds.Tables[tab].Rows[index].ItemArray[1], ds.Tables[tab].Rows[index].ItemArray[2], ds.Tables[tab].Rows[index].ItemArray[3], ds.Tables[tab].Rows[index].ItemArray[4], ds.Tables[tab].Rows[index].ItemArray[5], ds.Tables[tab].Rows[index].ItemArray[6]);
+                if (dataGridView1.Rows[index].Cells[6].Value.ToString() == "1")
                 {
-                    dataGridView1.Rows[i].Cells[6].Value = "Admin";
+                    dataGridView1.Rows[index].Cells[6].Value = "Admin";
                 }
-                if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "2")
+                if (dataGridView1.Rows[index].Cells[6].Value.ToString() == "2")
                 {
-                    dataGridView1.Rows[i].Cells[6].Value = "Kasir";
+                    dataGridView1.Rows[index].Cells[6].Value = "Kasir";
                 }
 
-                string secretpass = dataGridView1.Rows[i].Cells[2].Value.ToString();
-                semuapassword.Add(dataGridView1.Rows[i].Cells[2].Value.ToString());
-                dataGridView1.Rows[i].Cells[2].Value = "";
-                for (int j = 0; j< secretpass.Length; j++ )
+                string secretpass = dataGridView1.Rows[index].Cells[2].Value.ToString();
+                semuapassword.Add(dataGridView1.Rows[index].Cells[2].Value.ToString());
+                dataGridView1.Rows[index].Cells[2].Value = "";
+                for (int j = 0; j < secretpass.Length; j++)
                 {
-                    dataGridView1.Rows[i].Cells[2].Value += "*";
+                    dataGridView1.Rows[index].Cells[2].Value += "*";
                 }
-                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "L")
+                if (ds.Tables[tab].Rows[index].ItemArray[7].ToString() == "-" && ds.Tables[tab].Rows[index].ItemArray[5].ToString() == "L")
                 {
                     try
                     {
                         Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\profile_sample7.png");
                         Bitmap resized = new Bitmap(original, new Size(75, 75));
-                        ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
+                        ((DataGridViewImageCell)dataGridView1.Rows[index].Cells[7]).Value = resized;
                     }
                     catch
                     {
 
                     }
                 }
-                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "P")
+                if (ds.Tables[tab].Rows[index].ItemArray[7].ToString() == "-" && ds.Tables[tab].Rows[index].ItemArray[5].ToString() == "P")
                 {
                     try
                     {
                         Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\profile_sample1.png");
                         Bitmap resized = new Bitmap(original, new Size(75, 75));
-                        ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
+                        ((DataGridViewImageCell)dataGridView1.Rows[index].Cells[7]).Value = resized;
                     }
                     catch
                     {
 
                     }
                 }
-                if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() != "-")
+                if (ds.Tables[tab].Rows[index].ItemArray[7].ToString() != "-")
                 {
                     try
                     {
-                        Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\" + ds.Tables["Akun"].Rows[i].ItemArray[7]);
+                        Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\" + ds.Tables[tab].Rows[index].ItemArray[7]);
                         Bitmap resized = new Bitmap(original, new Size(75, 75));
-                        ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
+                        ((DataGridViewImageCell)dataGridView1.Rows[index].Cells[7]).Value = resized;
                     }
                     catch
                     {
 
                     }
                 }
-                if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "L")
+                if (dataGridView1.Rows[index].Cells[5].Value.ToString() == "L")
                 {
-                    dataGridView1.Rows[i].Cells[5].Value = "Laki-Laki";
+                    dataGridView1.Rows[index].Cells[5].Value = "Laki-Laki";
                 }
-                if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "P")
+                if (dataGridView1.Rows[index].Cells[5].Value.ToString() == "P")
                 {
-                    dataGridView1.Rows[i].Cells[5].Value = "Perempuan";
+                    dataGridView1.Rows[index].Cells[5].Value = "Perempuan";
                 }
+                loadUserRecursive(ds, tab, index + 1);
             }
+            
         }
         int idx;
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -200,74 +213,7 @@ namespace Compufy_PV_Projek
                     string query = $"SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') from Akun WHERE lower(username) like '%{textBox1.Text.ToLower()}%'";
                     frm_login.executeDataSet(ds, query, "Akun");
 
-                    for (int i = 0; i < ds.Tables["Akun"].Rows.Count; i++)
-                    {
-                        dataGridView1.Rows.Add(ds.Tables["Akun"].Rows[i].ItemArray[0], ds.Tables["Akun"].Rows[i].ItemArray[1], ds.Tables["Akun"].Rows[i].ItemArray[2], ds.Tables["Akun"].Rows[i].ItemArray[3], ds.Tables["Akun"].Rows[i].ItemArray[4], ds.Tables["Akun"].Rows[i].ItemArray[5], ds.Tables["Akun"].Rows[i].ItemArray[6]);
-                        if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "1")
-                        {
-                            dataGridView1.Rows[i].Cells[6].Value = "Admin";
-                        }
-                        if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "2")
-                        {
-                            dataGridView1.Rows[i].Cells[6].Value = "Kasir";
-                        }
-                        string secretpass = dataGridView1.Rows[i].Cells[2].Value.ToString();
-                        semuapassword.Add(dataGridView1.Rows[i].Cells[2].Value.ToString());
-                        dataGridView1.Rows[i].Cells[2].Value = "";
-                        for (int j = 0; j < secretpass.Length; j++)
-                        {
-                            dataGridView1.Rows[i].Cells[2].Value += "*";
-                        }
-
-                        if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "L")
-                        {
-                            try
-                            {
-                                Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\profile_sample7.png");
-                                Bitmap resized = new Bitmap(original, new Size(75, 75));
-                                ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
-                            }
-                            catch
-                            {
-
-                            }
-                        }
-                        if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "P")
-                        {
-                            try
-                            {
-                                Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\profile_sample1.png");
-                                Bitmap resized = new Bitmap(original, new Size(75, 75));
-                                ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
-                            }
-                            catch
-                            {
-
-                            }
-                        }
-                        if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() != "-")
-                        {
-                            try
-                            {
-                                Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\" + ds.Tables["Akun"].Rows[i].ItemArray[7]);
-                                Bitmap resized = new Bitmap(original, new Size(75, 75));
-                                ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
-                            }
-                            catch
-                            {
-
-                            }
-                        }
-                        if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "L")
-                        {
-                            dataGridView1.Rows[i].Cells[5].Value = "Laki-Laki";
-                        }
-                        if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "P")
-                        {
-                            dataGridView1.Rows[i].Cells[5].Value = "Perempuan";
-                        }
-
-                    }
+                    loadUserRecursive(ds, "Akun", 0);
 
                 }
                 else
@@ -276,74 +222,7 @@ namespace Compufy_PV_Projek
                     string query = $"SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') from Akun WHERE id_user = '{textBox1.Text}'";
                     frm_login.executeDataSet(ds, query, "Akun");
 
-                    for (int i = 0; i < ds.Tables["Akun"].Rows.Count; i++)
-                    {
-                        dataGridView1.Rows.Add(ds.Tables["Akun"].Rows[i].ItemArray[0], ds.Tables["Akun"].Rows[i].ItemArray[1], ds.Tables["Akun"].Rows[i].ItemArray[2], ds.Tables["Akun"].Rows[i].ItemArray[3], ds.Tables["Akun"].Rows[i].ItemArray[4], ds.Tables["Akun"].Rows[i].ItemArray[5], ds.Tables["Akun"].Rows[i].ItemArray[6]);
-                        if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "1")
-                        {
-                            dataGridView1.Rows[i].Cells[6].Value = "Admin";
-                        }
-                        if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "2")
-                        {
-                            dataGridView1.Rows[i].Cells[6].Value = "Kasir";
-                        }
-                        string secretpass = dataGridView1.Rows[i].Cells[2].Value.ToString();
-                        semuapassword.Add(dataGridView1.Rows[i].Cells[2].Value.ToString());
-                        dataGridView1.Rows[i].Cells[2].Value = "";
-                        for (int j = 0; j < secretpass.Length; j++)
-                        {
-                            dataGridView1.Rows[i].Cells[2].Value += "*";
-                        }
-
-                        if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "L")
-                        {
-                            try
-                            {
-                                Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\profile_sample7.png");
-                                Bitmap resized = new Bitmap(original, new Size(75, 75));
-                                ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
-                            }
-                            catch
-                            {
-
-                            }
-                        }
-                        if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() == "-" && ds.Tables["Akun"].Rows[i].ItemArray[5].ToString() == "P")
-                        {
-                            try
-                            {
-                                Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\profile_sample1.png");
-                                Bitmap resized = new Bitmap(original, new Size(75, 75));
-                                ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
-                            }
-                            catch
-                            {
-
-                            }
-                        }
-                        if (ds.Tables["Akun"].Rows[i].ItemArray[7].ToString() != "-")
-                        {
-                            try
-                            {
-                                Bitmap original = new Bitmap(Application.StartupPath + "\\profile_picture\\" + ds.Tables["Akun"].Rows[i].ItemArray[7]);
-                                Bitmap resized = new Bitmap(original, new Size(75, 75));
-                                ((DataGridViewImageCell)dataGridView1.Rows[i].Cells[7]).Value = resized;
-                            }
-                            catch
-                            {
-
-                            }
-                        }
-                        if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "L")
-                        {
-                            dataGridView1.Rows[i].Cells[5].Value = "Laki-Laki";
-                        }
-                        if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "P")
-                        {
-                            dataGridView1.Rows[i].Cells[5].Value = "Perempuan";
-                        }
-
-                    }
+                    loadUserRecursive(ds, "Akun", 0);
                 }
                 
             }

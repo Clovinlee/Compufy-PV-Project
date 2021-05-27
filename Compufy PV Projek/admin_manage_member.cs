@@ -51,20 +51,29 @@ namespace Compufy_PV_Projek
             DataSet ds = new DataSet();
             string query = "SELECT * from Member where status_delete = '0'";
             frm_login.executeDataSet(ds, query, "Member");
+            loadMemberRecursive(ds, "Member", 0);
 
-            for (int i = 0; i < ds.Tables["Member"].Rows.Count; i++)
+        }
+
+        private void loadMemberRecursive(DataSet ds, string tab, int index)
+        {
+            if (index == ds.Tables[tab].Rows.Count)
             {
-                dataGridView1.Rows.Add(ds.Tables["Member"].Rows[i].ItemArray[0], ds.Tables["Member"].Rows[i].ItemArray[1], ds.Tables["Member"].Rows[i].ItemArray[2], ds.Tables["Member"].Rows[i].ItemArray[3], ds.Tables["Member"].Rows[i].ItemArray[4], ds.Tables["Member"].Rows[i].ItemArray[5], ds.Tables["Member"].Rows[i].ItemArray[6]);
-                if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "L")
-                {
-                    dataGridView1.Rows[i].Cells[5].Value = "Laki-Laki";
-                }
-                if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "P")
-                {
-                    dataGridView1.Rows[i].Cells[5].Value = "Perempuan";
-                }
+                return;
             }
-
+            else
+            {
+                dataGridView1.Rows.Add(ds.Tables[tab].Rows[index].ItemArray[0], ds.Tables[tab].Rows[index].ItemArray[1], ds.Tables[tab].Rows[index].ItemArray[2], ds.Tables[tab].Rows[index].ItemArray[3], ds.Tables[tab].Rows[index].ItemArray[4], ds.Tables[tab].Rows[index].ItemArray[5], ds.Tables[tab].Rows[index].ItemArray[6]);
+                if (dataGridView1.Rows[index].Cells[5].Value.ToString() == "L")
+                {
+                    dataGridView1.Rows[index].Cells[5].Value = "Laki-Laki";
+                }
+                if (dataGridView1.Rows[index].Cells[5].Value.ToString() == "P")
+                {
+                    dataGridView1.Rows[index].Cells[5].Value = "Perempuan";
+                }
+                loadMemberRecursive(ds, tab, index + 1);
+            }
         }
         int idx;
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -164,36 +173,14 @@ namespace Compufy_PV_Projek
                     DataSet ds = new DataSet();
                     string query = $"SELECT * from Member WHERE lower(nama_member) like '%{textBox1.Text.ToLower()}%'";
                     frm_login.executeDataSet(ds, query, "Member");
-                    for (int i = 0; i < ds.Tables["Member"].Rows.Count; i++)
-                    {
-                        dataGridView1.Rows.Add(ds.Tables["Member"].Rows[i].ItemArray[0], ds.Tables["Member"].Rows[i].ItemArray[1], ds.Tables["Member"].Rows[i].ItemArray[2], ds.Tables["Member"].Rows[i].ItemArray[3], ds.Tables["Member"].Rows[i].ItemArray[4], ds.Tables["Member"].Rows[i].ItemArray[5], ds.Tables["Member"].Rows[i].ItemArray[6]);
-                        if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "L")
-                        {
-                            dataGridView1.Rows[i].Cells[5].Value = "Laki-Laki";
-                        }
-                        if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "P")
-                        {
-                            dataGridView1.Rows[i].Cells[5].Value = "Perempuan";
-                        }
-                    }
+                    loadMemberRecursive(ds, "Member", 0);
                 }
                 else
                 {
                     DataSet ds = new DataSet();
                     string query = $"SELECT * from Member WHERE id_member = '{textBox1.Text}'";
                     frm_login.executeDataSet(ds, query, "Member");
-                    for (int i = 0; i < ds.Tables["Member"].Rows.Count; i++)
-                    {
-                        dataGridView1.Rows.Add(ds.Tables["Member"].Rows[i].ItemArray[0], ds.Tables["Member"].Rows[i].ItemArray[1], ds.Tables["Member"].Rows[i].ItemArray[2], ds.Tables["Member"].Rows[i].ItemArray[3], ds.Tables["Member"].Rows[i].ItemArray[4], ds.Tables["Member"].Rows[i].ItemArray[5], ds.Tables["Member"].Rows[i].ItemArray[6]);
-                        if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "L")
-                        {
-                            dataGridView1.Rows[i].Cells[5].Value = "Laki-Laki";
-                        }
-                        if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "P")
-                        {
-                            dataGridView1.Rows[i].Cells[5].Value = "Perempuan";
-                        }
-                    }
+                    loadMemberRecursive(ds, "Member", 0);
                 }
             }
             else
