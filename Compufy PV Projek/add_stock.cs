@@ -140,15 +140,8 @@ namespace Compufy_PV_Projek
                 {
                     File.Copy(openFileDialog1.FileName, directory + openFileDialog1.SafeFileName, true);
                 }
-                
+
                 pictureBox1.ImageLocation = Application.StartupPath + "\\product_picture\\" + openFileDialog1.SafeFileName;
-            }
-            else
-            {
-                MessageBox.Show("No File",
-                    "No File Choosen",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
             }
         }
 
