@@ -57,7 +57,7 @@ namespace Compufy_PV_Projek
         {
             tb_password.Text = tb_password.Tag.ToString();
             tb_username.Text = tb_username.Tag.ToString();
-            pb_anon.Image = new Bitmap(Image.FromFile($"profile_sample{rnd.Next(1, 10)}.png"), pb_anon.Width - 1, pb_anon.Height - 1);
+            pb_anon.Image = new Bitmap(Image.FromFile($"logo_picture\\profile_sample{rnd.Next(1, 10)}.png"), pb_anon.Width - 1, pb_anon.Height - 1);
         }
 
         private void login_Load(object sender, EventArgs e)
