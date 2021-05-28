@@ -73,13 +73,6 @@ namespace Compufy_PV_Projek
                 
                 pictureBox1.ImageLocation = Application.StartupPath + "\\product_picture\\" + openFileDialog1.SafeFileName;
             }
-            else
-            {
-                MessageBox.Show("No File",
-                    "No File Choosen",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
         }
 
         bool kosong;
