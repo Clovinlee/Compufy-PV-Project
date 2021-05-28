@@ -122,6 +122,7 @@ namespace Compufy_PV_Projek
                 if (b.Text == "Dashboard")
                 {
                     frm_dashboard.loaddashboard();
+                    
                     frm_dashboard.Show();
                 }
                 else if (b.Text == "Sales")
@@ -138,7 +139,9 @@ namespace Compufy_PV_Projek
                 }
                 else if(b.Text == "Manage User")
                 {
+                    frm_manageuser.frm_admin = this;
                     frm_manageuser.Show();
+
                 }
                 else if (b.Text == "Manage Member")
                 {

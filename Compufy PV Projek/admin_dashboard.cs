@@ -265,5 +265,14 @@ namespace Compufy_PV_Projek
         {
 
         }
+
+        private void chart1_GetToolTipText(object sender, ToolTipEventArgs e)
+        {
+            if (e.HitTestResult.ChartElementType == ChartElementType.DataPoint)
+            {
+                DataPoint dataPoint = (DataPoint)e.HitTestResult.Object;
+                e.Text = "Rp " + dataPoint.YValues[0].ToString("#,##");
+            }
+        }
     }
 }
