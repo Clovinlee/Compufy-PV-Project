@@ -39,6 +39,7 @@ namespace Compufy_PV_Projek
         private void admin_dashboard_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new Size(727, 508);
+            chart1.Size = new Size(700, 250);
             loaddashboard();
         }
 
@@ -177,7 +178,7 @@ namespace Compufy_PV_Projek
 
                 chart1.Series["Series1"].Points.AddXY(ds.Tables["Pendapatan"].Rows[i].ItemArray[0], pendapatan);
             }
-            chart1.Size = new Size(700, 250);
+            
             chart1.ChartAreas["ChartArea1"].AxisY.LabelStyle.Format = "#,##";
         }
 
@@ -273,6 +274,11 @@ namespace Compufy_PV_Projek
                 DataPoint dataPoint = (DataPoint)e.HitTestResult.Object;
                 e.Text = "Rp " + dataPoint.YValues[0].ToString("#,##");
             }
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
