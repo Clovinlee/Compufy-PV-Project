@@ -244,10 +244,11 @@ namespace Compufy_PV_Projek
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             idx = e.RowIndex;
+            string namaBarang = dataGridView1.Rows[idx].Cells[2].Value.ToString();
 
             if (e.ColumnIndex == 6)
             {
-                if (MessageBox.Show("Yakin mendelete barang ini?", "Delete Barang", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (MessageBox.Show($"Yakin mendelete {namaBarang}?", "Delete Barang", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     string query = $"Update [Barang] set status_del = 1 where id_barang = '{Convert.ToInt32(dataGridView1.Rows[idx].Cells[0].Value)}'";
                     frm_login.executeQuery(query);
