@@ -51,6 +51,7 @@ namespace Compufy_PV_Projek
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.BackColor = System.Drawing.SystemColors.Info;
             this.textBox1.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox1.Location = new System.Drawing.Point(407, 18);
@@ -157,6 +158,7 @@ namespace Compufy_PV_Projek
             // 
             // btn_search
             // 
+            this.btn_search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_search.FlatAppearance.BorderSize = 0;
             this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_search.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -234,6 +236,7 @@ namespace Compufy_PV_Projek
             // 
             // btn_restartcategory
             // 
+            this.btn_restartcategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_restartcategory.FlatAppearance.BorderSize = 0;
             this.btn_restartcategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_restartcategory.IconChar = FontAwesome.Sharp.IconChar.SyncAlt;

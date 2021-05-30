@@ -81,7 +81,7 @@ namespace Compufy_PV_Projek
                 {
                     string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{textBox1.Text}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{tgl1}', jk_user = '{chckgender}', tipe_user = '{chcktipe}', gambar = '{openFileDialog1.SafeFileName}' WHERE id_user = {id}";
                     frm_login.executeQuery(query);
-                    frm_admin.usergambar = openFileDialog1.SafeFileName;
+
                     frm_admin.pl_avatar.Invalidate();
                     this.Close();
                 }

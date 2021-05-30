@@ -33,8 +33,9 @@ namespace Compufy_PV_Projek
         private void admin_manage_user_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new Size(727, 508);
-            
-            
+
+            dataGridView1.Columns[0].Width = 30;
+            dataGridView1.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
             dataGridView1.RowHeadersVisible = false;
             LoadUser();
@@ -52,6 +53,7 @@ namespace Compufy_PV_Projek
         {
             dataGridView1.Rows.Clear();
             semuapassword.Clear();
+            semuagambar.Clear();
 
             DataSet ds = new DataSet();
             string query = "SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') from Akun where status_delete = '0'";
@@ -142,14 +144,21 @@ namespace Compufy_PV_Projek
         int idx;
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            idx = e.RowIndex;
-            id = dataGridView1.Rows[idx].Cells[0].Value.ToString();
-            username = dataGridView1.Rows[idx].Cells[1].Value.ToString();
-            password = semuapassword[idx];
-            nama = (dataGridView1.Rows[idx].Cells[3].Value.ToString());
-            datebirth = dataGridView1.Rows[idx].Cells[4].Value.ToString();
-            gender = dataGridView1.Rows[idx].Cells[5].Value.ToString();
-            tipeuser = dataGridView1.Rows[idx].Cells[6].Value.ToString();
+            try
+            {
+                idx = e.RowIndex;
+                id = dataGridView1.Rows[idx].Cells[0].Value.ToString();
+                username = dataGridView1.Rows[idx].Cells[1].Value.ToString();
+                password = semuapassword[idx];
+                nama = (dataGridView1.Rows[idx].Cells[3].Value.ToString());
+                datebirth = dataGridView1.Rows[idx].Cells[4].Value.ToString();
+                gender = dataGridView1.Rows[idx].Cells[5].Value.ToString();
+                tipeuser = dataGridView1.Rows[idx].Cells[6].Value.ToString();
+            }
+            catch
+            {
+                idx = 0;
+            }
             
         }
 
@@ -169,6 +178,7 @@ namespace Compufy_PV_Projek
                 frmUpdate.gambar = gambar;
                 frmUpdate.frm_admin = frm_admin;
                 frmUpdate.ShowDialog();
+                
 
                 LoadUser();
             }
@@ -256,6 +266,7 @@ namespace Compufy_PV_Projek
         {
             if (textBox1.Text == "")
             {
+                textBox1.Font = new Font("Nirmala UI", 8, FontStyle.Regular);
                 textBox1.Text = "Search By ID/Username";
                 textBox1.ForeColor = SystemColors.ScrollBar;
             }
@@ -265,6 +276,7 @@ namespace Compufy_PV_Projek
         {
             if (textBox1.Text == "Search By ID/Username")
             {
+                textBox1.Font = new Font("Nirmala UI", 8, FontStyle.Regular);
                 textBox1.Text = "";
                 textBox1.ForeColor = Color.Black;
             }
@@ -272,15 +284,22 @@ namespace Compufy_PV_Projek
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            idx = e.RowIndex;
-            id = dataGridView1.Rows[idx].Cells[0].Value.ToString();
-            username = dataGridView1.Rows[idx].Cells[1].Value.ToString();
-            password = semuapassword[idx];
-            nama = (dataGridView1.Rows[idx].Cells[3].Value.ToString());
-            datebirth = dataGridView1.Rows[idx].Cells[4].Value.ToString();
-            gender = dataGridView1.Rows[idx].Cells[5].Value.ToString();
-            tipeuser = dataGridView1.Rows[idx].Cells[6].Value.ToString();
-            gambar = semuagambar[idx];
+            try
+            {
+                idx = e.RowIndex;
+                id = dataGridView1.Rows[idx].Cells[0].Value.ToString();
+                username = dataGridView1.Rows[idx].Cells[1].Value.ToString();
+                password = semuapassword[idx];
+                nama = (dataGridView1.Rows[idx].Cells[3].Value.ToString());
+                datebirth = dataGridView1.Rows[idx].Cells[4].Value.ToString();
+                gender = dataGridView1.Rows[idx].Cells[5].Value.ToString();
+                tipeuser = dataGridView1.Rows[idx].Cells[6].Value.ToString();
+                gambar = semuagambar[idx];
+            }
+            catch
+            {
+                idx = 0;
+            }
         }
     }
 }

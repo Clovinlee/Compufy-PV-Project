@@ -30,8 +30,10 @@ namespace Compufy_PV_Projek
         private void admin_manage_member_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new Size(727, 508);
-            
-            
+
+            dataGridView1.Columns[0].Width = 30;
+            dataGridView1.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dataGridView1.Columns[3].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
             dataGridView1.RowHeadersVisible = false;
             LoadMember();
@@ -203,6 +205,7 @@ namespace Compufy_PV_Projek
         {
             if (textBox1.Text == "Search By ID/Nama")
             {
+                textBox1.Font = new Font("Nirmala UI", 8, FontStyle.Regular);
                 textBox1.Text = "";
                 textBox1.ForeColor = Color.Black;
             }
@@ -212,6 +215,7 @@ namespace Compufy_PV_Projek
         {
             if (textBox1.Text == "")
             {
+                textBox1.Font = new Font("Nirmala UI", 8, FontStyle.Regular);
                 textBox1.Text = "Search By ID/Nama";
                 textBox1.ForeColor = SystemColors.ScrollBar;
             }
