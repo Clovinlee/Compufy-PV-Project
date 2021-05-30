@@ -18,6 +18,7 @@ namespace Compufy_PV_Projek
         }
         Add_User frmAdd;
         public login frm_login;
+        public menu_admin frm_admin;
         Update_User frmUpdate;
         public string id;
         public string username = "";
@@ -26,6 +27,8 @@ namespace Compufy_PV_Projek
         public string datebirth;
         public string gender;
         public string tipeuser;
+        public List<string> semuagambar = new List<string>();
+        public string gambar;
         public List<string> semuapassword = new List<string>();
         private void admin_manage_user_Load(object sender, EventArgs e)
         {
@@ -79,6 +82,7 @@ namespace Compufy_PV_Projek
 
                 string secretpass = dataGridView1.Rows[index].Cells[2].Value.ToString();
                 semuapassword.Add(dataGridView1.Rows[index].Cells[2].Value.ToString());
+                semuagambar.Add(ds.Tables[tab].Rows[index].ItemArray[7].ToString());
                 dataGridView1.Rows[index].Cells[2].Value = "";
                 for (int j = 0; j < secretpass.Length; j++)
                 {
@@ -146,6 +150,7 @@ namespace Compufy_PV_Projek
             datebirth = dataGridView1.Rows[idx].Cells[4].Value.ToString();
             gender = dataGridView1.Rows[idx].Cells[5].Value.ToString();
             tipeuser = dataGridView1.Rows[idx].Cells[6].Value.ToString();
+            
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -161,6 +166,8 @@ namespace Compufy_PV_Projek
                 frmUpdate.datebirth = datebirth;
                 frmUpdate.gender = gender;
                 frmUpdate.tipeuser = tipeuser;
+                frmUpdate.gambar = gambar;
+                frmUpdate.frm_admin = frm_admin;
                 frmUpdate.ShowDialog();
 
                 LoadUser();
@@ -273,6 +280,7 @@ namespace Compufy_PV_Projek
             datebirth = dataGridView1.Rows[idx].Cells[4].Value.ToString();
             gender = dataGridView1.Rows[idx].Cells[5].Value.ToString();
             tipeuser = dataGridView1.Rows[idx].Cells[6].Value.ToString();
+            gambar = semuagambar[idx];
         }
     }
 }

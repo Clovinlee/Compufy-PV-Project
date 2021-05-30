@@ -19,6 +19,7 @@ namespace Compufy_PV_Projek
         }
         public login frm_login;
         public admin_manage_user amu;
+        public menu_admin frm_admin;
         public string id;
         public string username;
         public string password;
@@ -29,6 +30,7 @@ namespace Compufy_PV_Projek
         bool chckimg = false;
         public string chckgender;
         public string tgl1 = "";
+        public string gambar;
 
         private void Update_User_Load(object sender, EventArgs e)
         {
@@ -43,6 +45,10 @@ namespace Compufy_PV_Projek
             comboBox1.Text = tipeuser;
             cbGender.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            if (gambar != "-")
+            {
+                pictureBox1.ImageLocation = Application.StartupPath + "\\profile_picture\\" + gambar;
+            }
         }
         bool chck = false;
         public string chcktipe;
@@ -71,15 +77,32 @@ namespace Compufy_PV_Projek
             }
             if (chckimg == true && chck == false)
                 {
+                try
+                {
                     string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{textBox1.Text}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{tgl1}', jk_user = '{chckgender}', tipe_user = '{chcktipe}', gambar = '{openFileDialog1.SafeFileName}' WHERE id_user = {id}";
                     frm_login.executeQuery(query);
+                    frm_admin.usergambar = openFileDialog1.SafeFileName;
+                    frm_admin.pl_avatar.Invalidate();
                     this.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("User Sudah Ada");
+                }
                 }
                 else if (chckimg == false && chck == false)
                 {
+                try
+                {
                     string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{textBox1.Text}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{tgl1}', jk_user = '{chckgender}', tipe_user = '{chcktipe}' WHERE id_user = {id}";
                     frm_login.executeQuery(query);
+                    frm_admin.pl_avatar.Invalidate();
                     this.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("User Sudah Ada");
+                }
                 }
             else
             {
@@ -107,10 +130,7 @@ namespace Compufy_PV_Projek
             }
             else
             {
-                MessageBox.Show("No File",
-                    "No File Choosen",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                
             }
 
         }
@@ -134,10 +154,7 @@ namespace Compufy_PV_Projek
             }
             else
             {
-                MessageBox.Show("No File",
-                    "No File Choosen",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                
             }
         }
     }
