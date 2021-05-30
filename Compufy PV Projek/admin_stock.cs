@@ -243,6 +243,8 @@ namespace Compufy_PV_Projek
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1) return;
+
             idx = e.RowIndex;
             string namaBarang = dataGridView1.Rows[idx].Cells[2].Value.ToString();
 
