@@ -21,7 +21,7 @@ namespace Compufy_PV_Projek
 
         public login frm_login;
         string member_terbaru;
-        int baranglow = 99999;
+        //int baranglow = 99999;
         string namalow;
         string idlow;
         int totaltransaksi = 0;
@@ -103,20 +103,20 @@ namespace Compufy_PV_Projek
             label4.Text = member_terbaru;
 
             ds = new DataSet();
-            query = "SELECT nama_barang, stok_barang, id_barang from Barang";
+            query = "SELECT TOP 1 b1.id_barang, b1.nama_barang, b1.stok_barang FROM barang b1 WHERE b1.stok_barang = (SELECT MIN(stok_barang) FROM barang);";
             frm_login.executeDataSet(ds, query, "Barang");
-            for (int i = 0; i < ds.Tables["Barang"].Rows.Count; i++)
-            {
-                if (Convert.ToInt32(ds.Tables["Barang"].Rows[i].ItemArray[1]) <= baranglow)
-                {
-                    baranglow = Convert.ToInt32(ds.Tables["Barang"].Rows[i].ItemArray[1]);
-                    namalow = ds.Tables["Barang"].Rows[i].ItemArray[0].ToString();
-                    idlow = ds.Tables["Barang"].Rows[i].ItemArray[2].ToString();
-                }
-            }
-            label6.Text = namalow;
-            label8.Text = Convert.ToString(baranglow);
-            label28.Text = "ID: " + idlow;
+            //for (int i = 0; i < ds.Tables["Barang"].Rows.Count; i++)
+            //{
+            //    if (Convert.ToInt32(ds.Tables["Barang"].Rows[i].ItemArray[1]) <= baranglow)
+            //    {
+            //        baranglow = Convert.ToInt32(ds.Tables["Barang"].Rows[i].ItemArray[1]);
+            //        namalow = ds.Tables["Barang"].Rows[i].ItemArray[0].ToString();
+            //        idlow = ds.Tables["Barang"].Rows[i].ItemArray[2].ToString();
+            //    }
+            //}
+            label6.Text = ds.Tables[0].Rows[0][1].ToString();
+            label8.Text = ds.Tables[0].Rows[0][2].ToString();
+            label28.Text = "ID: " + ds.Tables[0].Rows[0][0].ToString();
 
             ds = new DataSet();
             query = "SELECT total_trans, diskon from h_transaksi";
