@@ -104,6 +104,9 @@ namespace Compufy_PV_Projek
             if (tb_kk2.Text.Length == 4)
             {
                 tb_kk3.Focus();
+            }else if(tb_kk2.Text.Length == 0)
+            {
+                tb_kk1.Focus();
             }
         }
 
@@ -112,6 +115,17 @@ namespace Compufy_PV_Projek
             if (tb_kk3.Text.Length == 4)
             {
                 tb_kk4.Focus();
+            }else if(tb_kk3.Text.Length == 0)
+            {
+                tb_kk2.Focus();
+            }
+        }
+
+        private void tb_kk4_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_kk4.Text.Length == 0)
+            {
+                tb_kk3.Focus();
             }
         }
     }

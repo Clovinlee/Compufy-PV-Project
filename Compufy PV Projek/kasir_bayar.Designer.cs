@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             this.pl_addmember = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tb_kk4 = new System.Windows.Forms.TextBox();
+            this.tb_kk3 = new System.Windows.Forms.TextBox();
+            this.tb_kk2 = new System.Windows.Forms.TextBox();
+            this.tb_kk1 = new System.Windows.Forms.TextBox();
             this.lbl_total = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.num_cash = new System.Windows.Forms.NumericUpDown();
@@ -38,13 +45,6 @@
             this.btn_checkout = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tb_kk1 = new System.Windows.Forms.TextBox();
-            this.tb_kk2 = new System.Windows.Forms.TextBox();
-            this.tb_kk3 = new System.Windows.Forms.TextBox();
-            this.tb_kk4 = new System.Windows.Forms.TextBox();
             this.pl_addmember.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_cash)).BeginInit();
             this.SuspendLayout();
@@ -73,6 +73,80 @@
             this.pl_addmember.Name = "pl_addmember";
             this.pl_addmember.Size = new System.Drawing.Size(371, 345);
             this.pl_addmember.TabIndex = 9;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(204, 189);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(16, 21);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "-";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(142, 189);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(16, 21);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "-";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(81, 189);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(16, 21);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "-";
+            // 
+            // tb_kk4
+            // 
+            this.tb_kk4.Enabled = false;
+            this.tb_kk4.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_kk4.Location = new System.Drawing.Point(221, 188);
+            this.tb_kk4.MaxLength = 4;
+            this.tb_kk4.Name = "tb_kk4";
+            this.tb_kk4.Size = new System.Drawing.Size(41, 27);
+            this.tb_kk4.TabIndex = 18;
+            this.tb_kk4.TextChanged += new System.EventHandler(this.tb_kk4_TextChanged);
+            // 
+            // tb_kk3
+            // 
+            this.tb_kk3.Enabled = false;
+            this.tb_kk3.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_kk3.Location = new System.Drawing.Point(160, 188);
+            this.tb_kk3.MaxLength = 4;
+            this.tb_kk3.Name = "tb_kk3";
+            this.tb_kk3.Size = new System.Drawing.Size(41, 27);
+            this.tb_kk3.TabIndex = 18;
+            this.tb_kk3.TextChanged += new System.EventHandler(this.tb_kk3_TextChanged);
+            // 
+            // tb_kk2
+            // 
+            this.tb_kk2.Enabled = false;
+            this.tb_kk2.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_kk2.Location = new System.Drawing.Point(99, 188);
+            this.tb_kk2.MaxLength = 4;
+            this.tb_kk2.Name = "tb_kk2";
+            this.tb_kk2.Size = new System.Drawing.Size(41, 27);
+            this.tb_kk2.TabIndex = 18;
+            this.tb_kk2.TextChanged += new System.EventHandler(this.tb_kk2_TextChanged);
+            // 
+            // tb_kk1
+            // 
+            this.tb_kk1.Enabled = false;
+            this.tb_kk1.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_kk1.Location = new System.Drawing.Point(38, 188);
+            this.tb_kk1.MaxLength = 4;
+            this.tb_kk1.Name = "tb_kk1";
+            this.tb_kk1.Size = new System.Drawing.Size(41, 27);
+            this.tb_kk1.TabIndex = 18;
+            this.tb_kk1.TextChanged += new System.EventHandler(this.tb_kk1_TextChanged);
             // 
             // lbl_total
             // 
@@ -197,79 +271,6 @@
             this.label1.Size = new System.Drawing.Size(156, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Pembayaran";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(81, 189);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(16, 21);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "-";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(142, 189);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(16, 21);
-            this.label5.TabIndex = 20;
-            this.label5.Text = "-";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(204, 189);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(16, 21);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "-";
-            // 
-            // tb_kk1
-            // 
-            this.tb_kk1.Enabled = false;
-            this.tb_kk1.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_kk1.Location = new System.Drawing.Point(38, 188);
-            this.tb_kk1.MaxLength = 4;
-            this.tb_kk1.Name = "tb_kk1";
-            this.tb_kk1.Size = new System.Drawing.Size(41, 27);
-            this.tb_kk1.TabIndex = 18;
-            this.tb_kk1.TextChanged += new System.EventHandler(this.tb_kk1_TextChanged);
-            // 
-            // tb_kk2
-            // 
-            this.tb_kk2.Enabled = false;
-            this.tb_kk2.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_kk2.Location = new System.Drawing.Point(99, 188);
-            this.tb_kk2.MaxLength = 4;
-            this.tb_kk2.Name = "tb_kk2";
-            this.tb_kk2.Size = new System.Drawing.Size(41, 27);
-            this.tb_kk2.TabIndex = 18;
-            this.tb_kk2.TextChanged += new System.EventHandler(this.tb_kk2_TextChanged);
-            // 
-            // tb_kk3
-            // 
-            this.tb_kk3.Enabled = false;
-            this.tb_kk3.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_kk3.Location = new System.Drawing.Point(160, 188);
-            this.tb_kk3.MaxLength = 4;
-            this.tb_kk3.Name = "tb_kk3";
-            this.tb_kk3.Size = new System.Drawing.Size(41, 27);
-            this.tb_kk3.TabIndex = 18;
-            this.tb_kk3.TextChanged += new System.EventHandler(this.tb_kk3_TextChanged);
-            // 
-            // tb_kk4
-            // 
-            this.tb_kk4.Enabled = false;
-            this.tb_kk4.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_kk4.Location = new System.Drawing.Point(221, 188);
-            this.tb_kk4.MaxLength = 4;
-            this.tb_kk4.Name = "tb_kk4";
-            this.tb_kk4.Size = new System.Drawing.Size(41, 27);
-            this.tb_kk4.TabIndex = 18;
             // 
             // kasir_bayar
             // 
