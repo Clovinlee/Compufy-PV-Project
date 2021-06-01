@@ -189,7 +189,6 @@ namespace Compufy_PV_Projek
                 {
                     p_parent = (Panel)((Panel)sender).Parent;
                 }
-                Console.WriteLine("ASD");
                 frm_login.history += $"product%{p_parent.Name}%{p_parent.Tag.ToString().Split('=')[2]}\n";
             }
 
@@ -478,6 +477,9 @@ namespace Compufy_PV_Projek
 
                 frm_kasirbayar.total = total;
                 frm_kasirbayar.frm_kasir = this;
+                Console.WriteLine(System.DateTime.Now);
+                //01 / 06 / 2021 21:41:09;
+                Console.WriteLine($"{System.DateTime.Now.Month}/{System.DateTime.Now.Day}/{System.DateTime.Now.Year} {System.DateTime.Now.TimeOfDay}");
                 frm_kasirbayar.ShowDialog();
 
                 if(bayar != -1)
@@ -486,11 +488,26 @@ namespace Compufy_PV_Projek
                     string q;
                     if (id_member == -1)
                     {
-                        q = $"INSERT INTO h_transaksi(id_user,total_trans,tgl_trans,metode_trans,diskon,no_kartu,bayar) VALUES('{id_login}','{subtotal}',CONVERT(datetime,'{System.DateTime.Now}',103),'{metode}','{discount}','{nokartu}','{bayar}')";
+                        try
+                        {
+                            q = $"INSERT INTO h_transaksi(id_user,total_trans,tgl_trans,metode_trans,diskon,no_kartu,bayar) VALUES('{id_login}','{subtotal}',CONVERT(datetime,'{System.DateTime.Now}',103),'{metode}','{discount}','{nokartu}','{bayar}')";
+                        }
+                        catch (Exception)
+                        {
+                            q = $"INSERT INTO h_transaksi(id_user,total_trans,tgl_trans,metode_trans,diskon,no_kartu,bayar) VALUES('{id_login}','{subtotal}',CONVERT(datetime,'{System.DateTime.Now.Month}/{System.DateTime.Now.Day}/{System.DateTime.Now.Year} {System.DateTime.Now.TimeOfDay}',103),'{metode}','{discount}','{nokartu}','{bayar}')";
+                        }
+                        
                     }
                     else
                     {
-                        q = $"INSERT INTO h_transaksi(id_user,id_member,total_trans,tgl_trans,metode_trans,diskon,no_kartu,bayar) VALUES('{id_login}','{id_member}','{subtotal}',CONVERT(datetime,'{System.DateTime.Now}',103),'{metode}','{discount}','{nokartu}','{bayar}')";
+                        try
+                        {
+                            q = $"INSERT INTO h_transaksi(id_user,id_member,total_trans,tgl_trans,metode_trans,diskon,no_kartu,bayar) VALUES('{id_login}','{id_member}','{subtotal}',CONVERT(datetime,'{System.DateTime.Now}',103),'{metode}','{discount}','{nokartu}','{bayar}')";
+                        }
+                        catch (Exception)
+                        {
+                            q = $"INSERT INTO h_transaksi(id_user,id_member,total_trans,tgl_trans,metode_trans,diskon,no_kartu,bayar) VALUES('{id_login}','{id_member}','{subtotal}',CONVERT(datetime,'{System.DateTime.Now.Month}/{System.DateTime.Now.Day}/{System.DateTime.Now.Year} {System.DateTime.Now.TimeOfDay}',103),'{metode}','{discount}','{nokartu}','{bayar}')";
+                        }
                     }
 
                     frm_login.executeQuery(q);
