@@ -275,6 +275,9 @@ namespace Compufy_PV_Projek
         private void btn_restartcategory_Click(object sender, EventArgs e)
         {
             LoadUser();
+            textBox1.Font = new Font("Nirmala UI", 10, FontStyle.Regular);
+            textBox1.Text = "Search By ID/Username";
+            textBox1.ForeColor = SystemColors.ScrollBar;
         }
 
         private void textBox1_Leave(object sender, EventArgs e)
