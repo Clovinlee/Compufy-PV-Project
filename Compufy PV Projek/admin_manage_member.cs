@@ -35,6 +35,7 @@ namespace Compufy_PV_Projek
             dataGridView1.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns[3].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
+            textBox1.Font = new Font("Nirmala UI", 10, FontStyle.Regular);
             dataGridView1.RowHeadersVisible = false;
             LoadMember();
             //this.FormBorderStyle = FormBorderStyle.None;
@@ -205,7 +206,7 @@ namespace Compufy_PV_Projek
         {
             if (textBox1.Text == "Search By ID/Nama")
             {
-                textBox1.Font = new Font("Nirmala UI", 8, FontStyle.Regular);
+                textBox1.Font = new Font("Nirmala UI", 10, FontStyle.Regular);
                 textBox1.Text = "";
                 textBox1.ForeColor = Color.Black;
             }
@@ -215,7 +216,7 @@ namespace Compufy_PV_Projek
         {
             if (textBox1.Text == "")
             {
-                textBox1.Font = new Font("Nirmala UI", 8, FontStyle.Regular);
+                textBox1.Font = new Font("Nirmala UI", 10, FontStyle.Regular);
                 textBox1.Text = "Search By ID/Nama";
                 textBox1.ForeColor = SystemColors.ScrollBar;
             }
@@ -223,15 +224,21 @@ namespace Compufy_PV_Projek
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            idx = e.RowIndex;
-            id = dataGridView1.Rows[idx].Cells[0].Value.ToString();
-            nama = dataGridView1.Rows[idx].Cells[1].Value.ToString();
-            nohp = dataGridView1.Rows[idx].Cells[2].Value.ToString();
-            tanggallahir = Convert.ToString(dataGridView1.Rows[idx].Cells[3].Value);
-            tanggaldaftar = Convert.ToString(dataGridView1.Rows[idx].Cells[4].Value);
-            gender = dataGridView1.Rows[idx].Cells[5].Value.ToString();
-            alamat = dataGridView1.Rows[idx].Cells[6].Value.ToString();
-            
+            try
+            {
+                idx = e.RowIndex;
+                id = dataGridView1.Rows[idx].Cells[0].Value.ToString();
+                nama = dataGridView1.Rows[idx].Cells[1].Value.ToString();
+                nohp = dataGridView1.Rows[idx].Cells[2].Value.ToString();
+                tanggallahir = Convert.ToString(dataGridView1.Rows[idx].Cells[3].Value);
+                tanggaldaftar = Convert.ToString(dataGridView1.Rows[idx].Cells[4].Value);
+                gender = dataGridView1.Rows[idx].Cells[5].Value.ToString();
+                alamat = dataGridView1.Rows[idx].Cells[6].Value.ToString();
+            }
+            catch
+            {
+                idx = 0;
+            }
         }
     }
 }

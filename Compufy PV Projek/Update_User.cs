@@ -18,6 +18,7 @@ namespace Compufy_PV_Projek
         {
             InitializeComponent();
         }
+        public List<string> semuauser;
         public login frm_login;
         public admin_manage_user amu;
         public menu_admin frm_admin;
@@ -84,37 +85,51 @@ namespace Compufy_PV_Projek
             }
             if (chckimg == true && chck == false)
                 {
-                try
-                {
-                    string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{textBox1.Text}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{tgl1}', jk_user = '{chckgender}', tipe_user = '{chcktipe}', gambar = '{openFileDialog1.SafeFileName}' WHERE id_user = {id}";
-                    frm_login.executeQuery(query);
-                    string qu = $"SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') as gambar FROM [Akun] WHERE username = '{username}' AND password = '{password}' and status_delete = 0";
-                    ds = new DataSet();
-                    frm_login.executeDataSet(ds, qu, "akun");
-                    if (frm_admin.lbl_namauser.Text == ds.Tables["akun"].Rows[0]["nama_user"].ToString())
-                    {
-                        frm_admin.usergambar = ds.Tables["akun"].Rows[0]["gambar"].ToString();
-                    }
-                    frm_admin.pl_avatar.Invalidate();
-                    this.Close();
-                }
-                catch
+                if (semuauser.Contains(txtUsername.Text))
                 {
                     MessageBox.Show("User Sudah Ada");
+                }
+                else
+                {
+                    try
+                    {
+                        string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{textBox1.Text}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{tgl1}', jk_user = '{chckgender}', tipe_user = '{chcktipe}', gambar = '{openFileDialog1.SafeFileName}' WHERE id_user = {id}";
+                        frm_login.executeQuery(query);
+                        string qu = $"SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') as gambar FROM [Akun] WHERE username = '{username}' AND password = '{password}' and status_delete = 0";
+                        ds = new DataSet();
+                        frm_login.executeDataSet(ds, qu, "akun");
+                        if (frm_admin.lbl_namauser.Text == ds.Tables["akun"].Rows[0]["nama_user"].ToString())
+                        {
+                            frm_admin.usergambar = ds.Tables["akun"].Rows[0]["gambar"].ToString();
+                        }
+                        frm_admin.pl_avatar.Invalidate();
+                        this.Close();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("User Sudah Ada");
+                    }
                 }
                 }
                 else if (chckimg == false && chck == false)
                 {
-                try
-                {
-                    string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{textBox1.Text}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{tgl1}', jk_user = '{chckgender}', tipe_user = '{chcktipe}' WHERE id_user = {id}";
-                    frm_login.executeQuery(query);
-                    frm_admin.pl_avatar.Invalidate();
-                    this.Close();
-                }
-                catch
+                if (semuauser.Contains(txtUsername.Text))
                 {
                     MessageBox.Show("User Sudah Ada");
+                }
+                else
+                {
+                    try
+                    {
+                        string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{textBox1.Text}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{tgl1}', jk_user = '{chckgender}', tipe_user = '{chcktipe}' WHERE id_user = {id}";
+                        frm_login.executeQuery(query);
+                        frm_admin.pl_avatar.Invalidate();
+                        this.Close();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("User Sudah Ada");
+                    }
                 }
                 }
             else

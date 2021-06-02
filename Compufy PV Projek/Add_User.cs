@@ -20,6 +20,7 @@ namespace Compufy_PV_Projek
         public login frm_login;
 
         bool chck = false;
+        public List<string> semuauser;
         public string chckgender;
         public string chcktipe;
         public string tgl1 = "";
@@ -50,40 +51,55 @@ namespace Compufy_PV_Projek
             
             if (chck == false && chckgambar == false)
             {
-                try
-                {
-                    string query = $"INSERT into [Akun] (username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, status_delete) VALUES('{txtUsername.Text}', '{textBox1.Text}', '{txtNama.Text}', '{tgl1}', '{chckgender}', '{chcktipe}', '0')";
-                    frm_login.executeQuery(query);
-                    txtUsername.Text = "";
-                    textBox1.Text = "";
-                    txtNama.Text = "";
-                    pictureBox1.ImageLocation = "";
-                    cbGender.Text = "";
-                    comboBox1.Text = "";
-                    this.Close();
-                }
-                catch
+                if (semuauser.Contains(txtUsername.Text))
                 {
                     MessageBox.Show("User Sudah Ada");
                 }
+                else
+                {
+                    try
+                    {
+                        string query = $"INSERT into [Akun] (username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, status_delete) VALUES('{txtUsername.Text}', '{textBox1.Text}', '{txtNama.Text}', '{tgl1}', '{chckgender}', '{chcktipe}', '0')";
+                        frm_login.executeQuery(query);
+                        txtUsername.Text = "";
+                        textBox1.Text = "";
+                        txtNama.Text = "";
+                        pictureBox1.ImageLocation = "";
+                        cbGender.Text = "";
+                        comboBox1.Text = "";
+                        this.Close();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("User Sudah Ada");
+                    }
+                }
+                
             }
             else if (chck == false && chckgambar == true)
             {
-                try
-                {
-                    string query = $"INSERT into [Akun] (username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, gambar, status_delete) VALUES('{txtUsername.Text}', '{textBox1.Text}', '{txtNama.Text}', '{tgl1}', '{chckgender}', '{chcktipe}', '{openFileDialog1.SafeFileName}', '0')";
-                    frm_login.executeQuery(query);
-                    txtUsername.Text = "";
-                    textBox1.Text = "";
-                    txtNama.Text = "";
-                    pictureBox1.ImageLocation = "";
-                    cbGender.Text = "";
-                    comboBox1.Text = "";
-                    this.Close();
-                }
-                catch
+                if (semuauser.Contains(txtUsername.Text))
                 {
                     MessageBox.Show("User Sudah Ada");
+                }
+                else
+                {
+                    try
+                    {
+                        string query = $"INSERT into [Akun] (username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, gambar, status_delete) VALUES('{txtUsername.Text}', '{textBox1.Text}', '{txtNama.Text}', '{tgl1}', '{chckgender}', '{chcktipe}', '{openFileDialog1.SafeFileName}', '0')";
+                        frm_login.executeQuery(query);
+                        txtUsername.Text = "";
+                        textBox1.Text = "";
+                        txtNama.Text = "";
+                        pictureBox1.ImageLocation = "";
+                        cbGender.Text = "";
+                        comboBox1.Text = "";
+                        this.Close();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("User Sudah Ada");
+                    }
                 }
             }
             else

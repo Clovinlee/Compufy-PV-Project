@@ -30,6 +30,7 @@ namespace Compufy_PV_Projek
         public List<string> semuagambar = new List<string>();
         public string gambar;
         public List<string> semuapassword = new List<string>();
+        public List<string> semuausername = new List<string>();
         private void admin_manage_user_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new Size(727, 508);
@@ -37,6 +38,7 @@ namespace Compufy_PV_Projek
             dataGridView1.Columns[0].Width = 30;
             dataGridView1.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
+            textBox1.Font = new Font("Nirmala UI", 10, FontStyle.Regular);
             dataGridView1.RowHeadersVisible = false;
             LoadUser();
             //this.FormBorderStyle = FormBorderStyle.None;
@@ -54,7 +56,7 @@ namespace Compufy_PV_Projek
             dataGridView1.Rows.Clear();
             semuapassword.Clear();
             semuagambar.Clear();
-
+            semuausername.Clear();
             DataSet ds = new DataSet();
             string query = "SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') from Akun where status_delete = '0'";
             frm_login.executeDataSet(ds, query, "Akun");
@@ -85,6 +87,7 @@ namespace Compufy_PV_Projek
                 string secretpass = dataGridView1.Rows[index].Cells[2].Value.ToString();
                 semuapassword.Add(dataGridView1.Rows[index].Cells[2].Value.ToString());
                 semuagambar.Add(ds.Tables[tab].Rows[index].ItemArray[7].ToString());
+                semuausername.Add(dataGridView1.Rows[index].Cells[1].Value.ToString());
                 dataGridView1.Rows[index].Cells[2].Value = "";
                 for (int j = 0; j < secretpass.Length; j++)
                 {
@@ -177,6 +180,7 @@ namespace Compufy_PV_Projek
                 frmUpdate.tipeuser = tipeuser;
                 frmUpdate.gambar = gambar;
                 frmUpdate.frm_admin = frm_admin;
+                frmUpdate.semuauser = semuausername;
                 frmUpdate.ShowDialog();
                 
 
@@ -222,6 +226,7 @@ namespace Compufy_PV_Projek
         {
             dataGridView1.Rows.Clear();
             semuapassword.Clear();
+            semuausername.Clear();
 
             if (textBox1.Text != "Search By ID/Username") {
                 if (checkNumber(textBox1.Text) == false)
@@ -253,6 +258,7 @@ namespace Compufy_PV_Projek
         {
             frmAdd = new Add_User();
             frmAdd.frm_login = frm_login;
+            frmAdd.semuauser = semuausername;
             frmAdd.ShowDialog();
             LoadUser();
         }
@@ -266,7 +272,7 @@ namespace Compufy_PV_Projek
         {
             if (textBox1.Text == "")
             {
-                textBox1.Font = new Font("Nirmala UI", 8, FontStyle.Regular);
+                textBox1.Font = new Font("Nirmala UI", 10, FontStyle.Regular);
                 textBox1.Text = "Search By ID/Username";
                 textBox1.ForeColor = SystemColors.ScrollBar;
             }
@@ -276,7 +282,7 @@ namespace Compufy_PV_Projek
         {
             if (textBox1.Text == "Search By ID/Username")
             {
-                textBox1.Font = new Font("Nirmala UI", 8, FontStyle.Regular);
+                textBox1.Font = new Font("Nirmala UI", 10, FontStyle.Regular);
                 textBox1.Text = "";
                 textBox1.ForeColor = Color.Black;
             }

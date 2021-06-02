@@ -259,6 +259,7 @@ namespace Compufy_PV_Projek
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
             this.Name = "Add_User";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add_User";
             this.Load += new System.EventHandler(this.Add_User_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
