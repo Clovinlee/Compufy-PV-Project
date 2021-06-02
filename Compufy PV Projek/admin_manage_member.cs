@@ -150,6 +150,7 @@ namespace Compufy_PV_Projek
                 string query = $"update [Member] set status_delete = '1' where id_member = '{id}'";
                 frm_login.executeQuery(query);
                 LoadMember();
+                nama = "";
             }
         }
         private bool checkNumber(string txt)

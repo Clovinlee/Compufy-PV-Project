@@ -203,6 +203,7 @@ namespace Compufy_PV_Projek
                     string query = $"update [Akun] set status_delete = '1' where id_user = '{id}'";
                     frm_login.executeQuery(query);
                     LoadUser();
+                    username = "";
                 }
             }
             else
