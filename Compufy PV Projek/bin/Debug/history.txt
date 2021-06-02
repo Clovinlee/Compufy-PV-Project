@@ -2,5 +2,4 @@ login%admin%admin%Administrator
 mainbutton%btn_menustocks%Stocks
 mainbutton%btn_menudashboard%Dashboard
 mainbutton%btn_menustocks%Stocks
-mainbutton%btn_menudashboard%Dashboard
 logout%
