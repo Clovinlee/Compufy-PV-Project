@@ -103,14 +103,18 @@ namespace Compufy_PV_Projek
             string harga = Convert.ToString(dataGridView1.Rows[idx].Cells[3].Value);
             string stok = Convert.ToString(dataGridView1.Rows[idx].Cells[4].Value);
             string[] arrStok = stok.Split(' ');
-
+            
             frmUpdate.frm_login = frm_login;
             frmUpdate.ds_kategori = ds_kategori;
             frmUpdate.id = id;
             frmUpdate.kategori = kategori;
             frmUpdate.txtNama.Text = nama;
             //frmUpdate.txtHarga.Text = Convert.ToString(double.Parse(harga, NumberStyles.Currency));
-            frmUpdate.txtHarga.Text = "Rp "+Convert.ToDouble(harga).ToString("#,##");
+
+            harga = harga.Replace(".", string.Empty);
+            harga = harga.Replace(",", string.Empty);
+            frmUpdate.txtHarga.Text = harga.Substring(2, harga.Length-4);
+
             frmUpdate.txtStok.Text = arrStok[0];
             frmUpdate.ShowDialog();
             dataGridView1.Rows.Clear();
