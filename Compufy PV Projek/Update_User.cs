@@ -85,7 +85,7 @@ namespace Compufy_PV_Projek
             }
             if (chckimg == true && chck == false)
                 {
-                if (semuauser.Contains(txtUsername.Text))
+                if (semuauser.Contains(txtUsername.Text) && username != txtUsername.Text)
                 {
                     MessageBox.Show("User Sudah Ada");
                 }
@@ -113,7 +113,7 @@ namespace Compufy_PV_Projek
                 }
                 else if (chckimg == false && chck == false)
                 {
-                if (semuauser.Contains(txtUsername.Text))
+                if (semuauser.Contains(txtUsername.Text) && username != txtUsername.Text)
                 {
                     MessageBox.Show("User Sudah Ada");
                 }
