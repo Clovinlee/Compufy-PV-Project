@@ -103,7 +103,7 @@ namespace Compufy_PV_Projek
                             frm_admin.usergambar = ds.Tables["akun"].Rows[0]["gambar"].ToString();
                         }
                         frm_admin.pl_avatar.Invalidate();
-                        this.Close();
+                        this.Close(); 
                     }
                     catch
                     {
