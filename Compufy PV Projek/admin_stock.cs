@@ -262,6 +262,8 @@ namespace Compufy_PV_Projek
                     dataGridView1.Rows.Clear();
                     loadBarang();
                 }
+
+                dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[0];
             }
         }
 
@@ -273,6 +275,11 @@ namespace Compufy_PV_Projek
             pfc.AddFontFile(Path.Combine(Application.StartupPath, "HeydingsControls-GBlZ.ttf"));
             Font heydings = new Font(pfc.Families[0], 24);
             dataGridView1.Columns[6].DefaultCellStyle.Font = heydings;
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            idx = dataGridView1.CurrentCell.RowIndex;
         }
     }
 }
