@@ -702,7 +702,7 @@ namespace Compufy_PV_Projek
                     frm_login.Show();
                     frm_login.resetLogin();
                     frm_login.writeHistory();
-                    login.frm_admin = null;
+                    login.frm_kasir = null;
                     logout = true;
                     this.Close();
                 }
