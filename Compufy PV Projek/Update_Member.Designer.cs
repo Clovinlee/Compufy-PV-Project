@@ -110,7 +110,7 @@ namespace Compufy_PV_Projek
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(130, 158);
+            this.textBox1.Location = new System.Drawing.Point(130, 44);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(292, 20);
