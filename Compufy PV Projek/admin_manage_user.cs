@@ -260,6 +260,14 @@ namespace Compufy_PV_Projek
             frmAdd.frm_login = frm_login;
             frmAdd.semuauser = semuausername;
             frmAdd.ShowDialog();
+            id = "";
+            username = "";
+            password = "";
+            nama = "";
+            datebirth = "";
+            gender = "";
+            tipeuser = "";
+            gambar = "";
             LoadUser();
         }
 

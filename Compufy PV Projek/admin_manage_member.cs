@@ -132,7 +132,7 @@ namespace Compufy_PV_Projek
                 frmUpdate.alamat = alamat;
                 frmUpdate.frm_login = frm_login;
                 frmUpdate.ShowDialog();
-
+                nama = "";
                 LoadMember();
             }
             else
