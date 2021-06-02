@@ -109,8 +109,7 @@ namespace Compufy_PV_Projek
             frmUpdate.id = id;
             frmUpdate.kategori = kategori;
             frmUpdate.txtNama.Text = nama;
-            //frmUpdate.txtHarga.Text = Convert.ToString(double.Parse(harga, NumberStyles.Currency));
-            frmUpdate.txtHarga.Text = "Rp "+Convert.ToDouble(harga).ToString("#,##");
+            frmUpdate.txtHarga.Text = Convert.ToString(double.Parse(harga, NumberStyles.Currency));
             frmUpdate.txtStok.Text = arrStok[0];
             frmUpdate.ShowDialog();
             dataGridView1.Rows.Clear();
