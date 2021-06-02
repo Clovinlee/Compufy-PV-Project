@@ -91,6 +91,9 @@ namespace Compufy_PV_Projek
 
         public void loaddashboard()
         {
+            int totaltransaksi = 0;
+            int totaldiskon = 0;
+            int totalpendapatan = 0;
             DataSet ds = new DataSet();
             string query = "SELECT * from Member";
             frm_login.executeDataSet(ds, query, "Member");
