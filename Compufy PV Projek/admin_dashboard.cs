@@ -95,7 +95,7 @@ namespace Compufy_PV_Projek
             int totaldiskon = 0;
             int totalpendapatan = 0;
             DataSet ds = new DataSet();
-            string query = "SELECT * from Member";
+            string query = "SELECT * from Member where status_delete = '0'";
             frm_login.executeDataSet(ds, query, "Member");
 
             label1.Text = ds.Tables["Member"].Rows.Count.ToString() + " Member";

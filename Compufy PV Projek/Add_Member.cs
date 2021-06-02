@@ -41,9 +41,16 @@ namespace Compufy_PV_Projek
             }
             if (chck == false)
             {
-                string query = $"INSERT into [Member] (nama_member, no_hp_member, birthdate, tgl_daftar, jk_member, alamat_member, status_delete) VALUES('{txtNama.Text}', '{textBox1.Text}', '{tgl1}', '{tgl2}', '{chckgender}', '{textBox2.Text}', '0')";
-                frm_login.executeQuery(query);
-                this.Close();
+                if (checkNumber(textBox1.Text) == true)
+                {
+                    string query = $"INSERT into [Member] (nama_member, no_hp_member, birthdate, tgl_daftar, jk_member, alamat_member, status_delete) VALUES('{txtNama.Text}', '{textBox1.Text}', '{tgl1}', '{tgl2}', '{chckgender}', '{textBox2.Text}', '0')";
+                    frm_login.executeQuery(query);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("No HP Harus Angka");
+                }
             }
             else
             {
@@ -52,7 +59,17 @@ namespace Compufy_PV_Projek
             }
             
         }
-
+        private bool checkNumber(string txt)
+        {
+            foreach (char c in txt)
+            {
+                if (!char.IsDigit(c))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         private void Add_Member_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new Size(448, 304);

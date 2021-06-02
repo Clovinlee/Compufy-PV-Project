@@ -60,9 +60,16 @@ namespace Compufy_PV_Projek
             }
             if (chck == false)
             {
-                string query = $"UPDATE [Member] set nama_member = '{txtNama.Text}', no_hp_member = '{(textBox1.Text)}', birthdate = '{tgl1}', tgl_daftar = '{tgl2}', jk_member = '{chckgender}', alamat_member = '{textBox2.Text}' WHERE id_member = {id}";
-                frm_login.executeQuery(query);
-                this.Close();
+                if (checkNumber(textBox1.Text) == true)
+                {
+                    string query = $"UPDATE [Member] set nama_member = '{txtNama.Text}', no_hp_member = '{(textBox1.Text)}', birthdate = '{tgl1}', tgl_daftar = '{tgl2}', jk_member = '{chckgender}', alamat_member = '{textBox2.Text}' WHERE id_member = {id}";
+                    frm_login.executeQuery(query);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("No HP Harus Angka");
+                }
             }
             else
             {
@@ -70,6 +77,17 @@ namespace Compufy_PV_Projek
                 chck = false; 
             }
 
+        }
+        private bool checkNumber(string txt)
+        {
+            foreach (char c in txt)
+            {
+                if (!char.IsDigit(c))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
     }
