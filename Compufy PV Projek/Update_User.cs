@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace Compufy_PV_Projek
 {
@@ -31,6 +32,11 @@ namespace Compufy_PV_Projek
         public string chckgender;
         public string tgl1 = "";
         public string gambar;
+        SqlConnection conn;
+        string connStr;
+
+        DataSet ds;
+        SqlCommand query;
 
         private void Update_User_Load(object sender, EventArgs e)
         {
@@ -49,6 +55,7 @@ namespace Compufy_PV_Projek
             {
                 pictureBox1.ImageLocation = Application.StartupPath + "\\profile_picture\\" + gambar;
             }
+            
         }
         bool chck = false;
         public string chcktipe;
@@ -81,7 +88,13 @@ namespace Compufy_PV_Projek
                 {
                     string query = $"UPDATE [Akun] set username = '{txtUsername.Text}', password = '{textBox1.Text}', nama_user = '{txtNama.Text}', tgl_lahir_user = '{tgl1}', jk_user = '{chckgender}', tipe_user = '{chcktipe}', gambar = '{openFileDialog1.SafeFileName}' WHERE id_user = {id}";
                     frm_login.executeQuery(query);
-
+                    string qu = $"SELECT id_user, username, password, nama_user, tgl_lahir_user, jk_user, tipe_user, isnull(gambar, '-') as gambar FROM [Akun] WHERE username = '{username}' AND password = '{password}' and status_delete = 0";
+                    ds = new DataSet();
+                    frm_login.executeDataSet(ds, qu, "akun");
+                    if (frm_admin.lbl_namauser.Text == ds.Tables["akun"].Rows[0]["nama_user"].ToString())
+                    {
+                        frm_admin.usergambar = ds.Tables["akun"].Rows[0]["gambar"].ToString();
+                    }
                     frm_admin.pl_avatar.Invalidate();
                     this.Close();
                 }
