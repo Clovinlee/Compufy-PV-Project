@@ -1,5 +1,3 @@
-login%admin%admin%Administrator
-mainbutton%btn_menustocks%Stocks
-mainbutton%btn_menudashboard%Dashboard
-mainbutton%btn_menustocks%Stocks
+login%kasir%kasir%Kasir
+product%pcontainer_0%Monitor LED Viewsonic 22 inch
 logout%

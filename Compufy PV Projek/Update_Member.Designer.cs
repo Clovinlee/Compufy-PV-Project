@@ -200,6 +200,7 @@ namespace Compufy_PV_Projek
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnUpdate);
             this.Name = "Update_Member";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update_Member";
             this.Load += new System.EventHandler(this.Update_Member_Load);
             this.ResumeLayout(false);

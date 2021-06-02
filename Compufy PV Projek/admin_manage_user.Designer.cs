@@ -243,7 +243,7 @@ namespace Compufy_PV_Projek
             this.btn_restartcategory.IconColor = System.Drawing.Color.Black;
             this.btn_restartcategory.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_restartcategory.IconSize = 30;
-            this.btn_restartcategory.Location = new System.Drawing.Point(368, 12);
+            this.btn_restartcategory.Location = new System.Drawing.Point(368, 14);
             this.btn_restartcategory.Name = "btn_restartcategory";
             this.btn_restartcategory.Size = new System.Drawing.Size(33, 33);
             this.btn_restartcategory.TabIndex = 43;
