@@ -186,10 +186,16 @@ namespace Compufy_PV_Projek
                     frm_login.executeDataSet(ds, query, "Member");
                     loadMemberRecursive(ds, "Member", 0);
                 }
+                textBox1.Font = new Font("Nirmala UI", 10, FontStyle.Regular);
+                textBox1.Text = "Search By ID/Nama";
+                textBox1.ForeColor = SystemColors.ScrollBar;
             }
             else
             {
                 LoadMember();
+                textBox1.Font = new Font("Nirmala UI", 10, FontStyle.Regular);
+                textBox1.Text = "Search By ID/Nama";
+                textBox1.ForeColor = SystemColors.ScrollBar;
             }
         }
 
@@ -198,7 +204,7 @@ namespace Compufy_PV_Projek
             LoadMember();
             textBox1.Font = new Font("Nirmala UI", 10, FontStyle.Regular);
             textBox1.Text = "Search By ID/Nama";
-            textBox1.ForeColor = SystemColors.ScrollBar;
+            textBox1.ForeColor = SystemColors.ScrollBar; 
         }
 
         private void textBox1_MouseEnter(object sender, EventArgs e)
