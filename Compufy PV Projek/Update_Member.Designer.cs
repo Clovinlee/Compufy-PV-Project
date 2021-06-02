@@ -110,7 +110,7 @@ namespace Compufy_PV_Projek
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(130, 44);
+            this.textBox1.Location = new System.Drawing.Point(130, 158);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(292, 20);
@@ -200,6 +200,7 @@ namespace Compufy_PV_Projek
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnUpdate);
             this.Name = "Update_Member";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update_Member";
             this.Load += new System.EventHandler(this.Update_Member_Load);
             this.ResumeLayout(false);
