@@ -247,9 +247,7 @@ namespace Compufy_PV_Projek
 
                     loadUserRecursive(ds, "Akun", 0);
                 }
-                textBox1.Font = new Font("Nirmala UI", 10, FontStyle.Regular);
-                textBox1.Text = "Search By ID/Username";
-                textBox1.ForeColor = SystemColors.ScrollBar;
+                
             }
             else
             {
